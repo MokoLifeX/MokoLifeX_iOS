@@ -143,7 +143,7 @@ static NSString *const MKConfigServerQosCellIdenty = @"MKConfigServerQosCellIden
  将所有的信息设置为初始的值
  */
 - (void)setToDefaultParameters{
-    self.qosValueLabel.text = @"2";
+    self.qosValueLabel.text = @"0";
     self.aliveTextField.text = @"60";
 }
 
@@ -195,7 +195,7 @@ static NSString *const MKConfigServerQosCellIdenty = @"MKConfigServerQosCellIden
 - (UILabel *)qosValueLabel{
     if (!_qosValueLabel) {
         _qosValueLabel = [self valueLabel];
-        _qosValueLabel.text = @"2";
+        _qosValueLabel.text = @"1";
     }
     return _qosValueLabel;
 }

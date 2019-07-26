@@ -19,6 +19,8 @@ NSString *const defaultHostIpAddress = @"192.168.4.1";
 //设备默认的端口号
 NSInteger const defaultPort = 8266;
 
+static NSInteger const certPackageDataLength = 200;
+
 static NSTimeInterval const defaultConnectTime = 15.f;
 static NSTimeInterval const defaultCommandTime = 2.f;
 
@@ -232,11 +234,7 @@ static NSTimeInterval const defaultCommandTime = 2.f;
                     password:(NSString *)password
                     sucBlock:(void (^)(id returnData))sucBlock
                  failedBlock:(void (^)(NSError *error))failedBlock{
-    if (![MKSocketAdopter isValidatIP:host]) {
-        [MKSocketBlockAdopter operationParamsErrorWithMessage:@"Host error" block:failedBlock];
-        return;
-    }
-    if (host.length < 1 || host.length > 63) {
+    if (![MKSocketAdopter isValidatIP:host] && (host.length < 1 || host.length > 63)) {
         [MKSocketBlockAdopter operationParamsErrorWithMessage:@"Host error" block:failedBlock];
         return;
     }
@@ -498,23 +496,25 @@ static NSTimeInterval const defaultCommandTime = 2.f;
                     sucBlock:(void (^)(void))sucBlock
                  failedBlock:(void (^)(NSError *error))failedBlock{
     dispatch_async(self.certQueue, ^{
-        NSInteger totalPackages = (certData.length / 500) + 1;
+        NSInteger totalPackages = (certData.length / certPackageDataLength) + 1;
         for (NSInteger i = 0; i < totalPackages; i ++) {
             //正常数据发送
-            NSInteger len = 500;
+            NSInteger len = certPackageDataLength;
             if (i == totalPackages - 1) {
-                len = certData.length % 500;
+                len = certData.length % certPackageDataLength;
             }
-            NSData *tempData = [certData subdataWithRange:NSMakeRange(i * 500, len)];
+            NSData *tempData = [certData subdataWithRange:NSMakeRange(i * certPackageDataLength, len)];
+            NSString *subData = [self hexStringFromData:tempData];
             NSDictionary *dataDic = @{
                                       @"header":@(4003),
                                       @"file_type":@(type),
-                                      @"file_size":@(certData.length),
-                                      @"current_packet_len":@(tempData.length),
-                                      @"data":[self hexStringFromData:tempData],
-                                      @"offset":@(i * 500),
+                                      @"file_size":@(2 * certData.length),
+                                      @"current_packet_len":@(subData.length),
+                                      @"data":subData,
+                                      @"offset":@(i * certPackageDataLength * 2),
                                       };
             NSString *jsonString = [MKSocketAdopter convertToJsonData:dataDic];
+            NSLog(@"+++++++++++++++++%@",dataDic);
             NSError *error = [self sendCertDataSuccess:jsonString];
             if (error) {
                 dispatch_async(dispatch_get_main_queue(), ^{

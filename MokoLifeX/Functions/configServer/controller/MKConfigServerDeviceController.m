@@ -196,7 +196,7 @@
     MKAddDeviceController *vc = [[MKAddDeviceController alloc] init];
     NSDictionary *params = [[MKAddDeviceCenter sharedInstance] fecthAddDeviceParams];
     [vc configAddDeviceController:params];
-    vc.configModel = serverModel;
+    vc.configModel = self.serverModel;
     [self.navigationController pushViewController:vc animated:YES];
 }
 

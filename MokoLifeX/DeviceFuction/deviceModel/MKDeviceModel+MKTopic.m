@@ -9,7 +9,7 @@
 #import "MKDeviceModel+MKTopic.h"
 
 //作为当前wifi是否是smartPlug的key，如果当前wifi的ssid前几位为smartPlugWifiSSIDKey，则认为当前已经连接smartPlug
-NSString *const smartPlugWifiSSIDKey = @"plug";
+NSString *const smartPlugWifiSSIDKey = @"MK";
 //作为当前wifi是否是smartSwich的key，如果当前wifi的ssid前几位为smartSwichWifiSSIDKey，则认为当前已经连接smartSwich
 NSString *const smartSwichWifiSSIDKey = @"WS";
 

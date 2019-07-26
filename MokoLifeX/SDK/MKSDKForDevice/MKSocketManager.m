@@ -8,8 +8,10 @@
 
 #import "MKSocketManager.h"
 #import <CocoaAsyncSocket/GCDAsyncSocket.h>
+
 #import "MKSocketBlockAdopter.h"
 #import "MKSocketAdopter.h"
+
 #import "MKSocketTaskOperation.h"
 
 //设备默认的ip地址
@@ -41,6 +43,8 @@ static NSTimeInterval const defaultCommandTime = 2.f;
  连接超时标记
  */
 @property (nonatomic, assign)BOOL connectTimeout;
+
+@property (nonatomic, strong)dispatch_queue_t certQueue;
 
 @end
 
@@ -217,21 +221,6 @@ static NSTimeInterval const defaultCommandTime = 2.f;
                 failedBlock:failedBlock];
 }
 
-/**
- 设置给插座的mqtt服务器信息。插座接收到此信息，并成功解析，待插座成功连接wifi网络后，插座会自动去连接手机指定的mqtt服务器
-
- @param host mqtt服务器主机host
- @param port mqtt服务器主机端口号，范围0~65535
- @param mode 连接方式 0：tcp,1:ssl
- @param qos mqqt服务质量
- @param keepalive plug跟mqtt服务器连接之后心跳包发送间隔，60~120，单位：s
- @param clean NO:表示创建一个持久会话，在客户端断开连接时，会话仍然保持并保存离线消息，直到会话超时注销。YES:表示创建一个新的临时会话，在客户端断开时，会话自动销毁。
- @param clientId plug作为客户端的id,mqtt服务器使用该id来区分不同的plug设备,如果该项为空，则plug默认会用mac地址作为clientID跟mqtt服务器通信。建议使用设备mac地址。长度0~32
- @param username plug连接mqtt服务器时候的用户名,长度1~32
- @param password plug连接mqtt服务器时候的密码,长度1~32
- @param sucBlock 成功回调
- @param failedBlock 失败回调
- */
 - (void)configMQTTServerHost:(NSString *)host
                         port:(NSInteger)port
                  connectMode:(mqttServerConnectMode)mode
@@ -243,7 +232,11 @@ static NSTimeInterval const defaultCommandTime = 2.f;
                     password:(NSString *)password
                     sucBlock:(void (^)(id returnData))sucBlock
                  failedBlock:(void (^)(NSError *error))failedBlock{
-    if (![MKSocketAdopter isValidatIP:host] && ![MKSocketAdopter isDomainName:host]) {
+    if (![MKSocketAdopter isValidatIP:host]) {
+        [MKSocketBlockAdopter operationParamsErrorWithMessage:@"Host error" block:failedBlock];
+        return;
+    }
+    if (host.length < 1 || host.length > 63) {
         [MKSocketBlockAdopter operationParamsErrorWithMessage:@"Host error" block:failedBlock];
         return;
     }
@@ -251,23 +244,22 @@ static NSTimeInterval const defaultCommandTime = 2.f;
         [MKSocketBlockAdopter operationParamsErrorWithMessage:@"Port effective range : 0~65535" block:failedBlock];
         return;
     }
-    if (keepalive < 60 || keepalive > 120) {
-        [MKSocketBlockAdopter operationParamsErrorWithMessage:@"Keep alive effective range : 0~65535" block:failedBlock];
+    if (keepalive < 10 || keepalive > 120) {
+        [MKSocketBlockAdopter operationParamsErrorWithMessage:@"Keep alive effective range : 10~120" block:failedBlock];
         return;
     }
-    if (clientId && clientId.length > 32) {
+    if (clientId && clientId.length > 23) {
         [MKSocketBlockAdopter operationParamsErrorWithMessage:@"Client id error" block:failedBlock];
         return;
     }
-    if (!username || username.length > 32) {
+    if (username.length > 128) {
         [MKSocketBlockAdopter operationParamsErrorWithMessage:@"User name error" block:failedBlock];
         return;
     }
-    if (!password || password.length > 32) {
+    if (password.length > 128) {
         [MKSocketBlockAdopter operationParamsErrorWithMessage:@"Password error" block:failedBlock];
         return;
     }
-    NSInteger connectMode = (mode == mqttServerConnectTCPMode ? 0 : 1);
     NSInteger qosNumber = 2;
     if (qos == mqttQosLevelAtMostOnce) {
         qosNumber = 0;
@@ -279,15 +271,83 @@ static NSTimeInterval const defaultCommandTime = 2.f;
                                  @"host":host,
                                  @"port":@(port),
                                  @"clientId":(clientId ? clientId : @""),
-                                 @"connect_mode":@(connectMode),
-                                 @"username":username,
-                                 @"password":password,
+                                 @"connect_mode":@(mode),
+                                 @"username":(!username ? @"" : username),
+                                 @"password":(!password ? @"" : password),
                                  @"keepalive":@(keepalive),
                                  @"qos":@(qosNumber),
                                  @"clean_session":(clean ? @(1) : @(0)),
                                  };
     NSString *jsonString = [MKSocketAdopter convertToJsonData:commandDic];
     [self addTaskWithTaskID:socketConfigMQTTServerOperation
+                 jsonString:jsonString
+                   sucBlock:sucBlock
+                failedBlock:failedBlock];
+}
+
+- (void)configCACertificate:(NSData *)certificate
+                   sucBlock:(void (^)(void))sucBlock
+                failedBlock:(void (^)(NSError *error))failedBlock {
+    if (!certificate || ![certificate isKindOfClass:NSData.class]) {
+        [MKSocketBlockAdopter operationParamsErrorWithMessage:@"Certificate cann't be empty." block:failedBlock];
+        return;
+    }
+    [self sendCertDataToDevice:certificate type:1 sucBlock:sucBlock failedBlock:failedBlock];
+}
+
+- (void)configClientCertificate:(NSData *)certificate
+                       sucBlock:(void (^)(void))sucBlock
+                    failedBlock:(void (^)(NSError *error))failedBlock {
+    if (!certificate || ![certificate isKindOfClass:NSData.class]) {
+        [MKSocketBlockAdopter operationParamsErrorWithMessage:@"Certificate cann't be empty." block:failedBlock];
+        return;
+    }
+    [self sendCertDataToDevice:certificate type:2 sucBlock:sucBlock failedBlock:failedBlock];
+}
+
+- (void)configClientKey:(NSData *)clientKey
+               sucBlock:(void (^)(void))sucBlock
+            failedBlock:(void (^)(NSError *error))failedBlock {
+    if (!clientKey || ![clientKey isKindOfClass:NSData.class]) {
+        [MKSocketBlockAdopter operationParamsErrorWithMessage:@"Client key cann't be empty." block:failedBlock];
+        return;
+    }
+    [self sendCertDataToDevice:clientKey type:3 sucBlock:sucBlock failedBlock:failedBlock];
+}
+
+- (void)configDeviceMQTTTopic:(NSString *)subscibeTopic
+                 publishTopic:(NSString *)publishTopic
+                     sucBlock:(void (^)(id returnData))sucBlock
+                  failedBlock:(void (^)(NSError *error))failedBlock {
+    if (!subscibeTopic || subscibeTopic.length < 1 || subscibeTopic.length > 128) {
+        [MKSocketBlockAdopter operationParamsErrorWithMessage:@"Subscibe topic error" block:failedBlock];
+        return;
+    }
+    if (!publishTopic || publishTopic.length < 1 || publishTopic.length > 128) {
+        [MKSocketBlockAdopter operationParamsErrorWithMessage:@"Publish topic error" block:failedBlock];
+        return;
+    }
+    NSDictionary *commandDic = @{
+                                 @"header":@(4004),
+                                 @"set_publish_topic":publishTopic,
+                                 @"set_subscibe_topic":(subscibeTopic),
+                                 };
+    NSString *jsonString = [MKSocketAdopter convertToJsonData:commandDic];
+    [self addTaskWithTaskID:socketConfigTopicOperation
+                 jsonString:jsonString
+                   sucBlock:sucBlock
+                failedBlock:failedBlock];
+}
+
+- (void)configEquipmentElectricalDefaultState:(mk_electricalDefaultState)state
+                                     sucBlock:(void (^)(id returnData))sucBlock
+                                  failedBlock:(void (^)(NSError *error))failedBlock {
+    NSDictionary *commandDic = @{
+                                 @"header":@(4005),
+                                 @"switch_status":@(state),
+                                 };
+    NSString *jsonString = [MKSocketAdopter convertToJsonData:commandDic];
+    [self addTaskWithTaskID:socketConfigEquipmentElectricalDefaultStateOperation
                  jsonString:jsonString
                    sucBlock:sucBlock
                 failedBlock:failedBlock];
@@ -322,7 +382,7 @@ static NSTimeInterval const defaultCommandTime = 2.f;
         wifi_security = 4;
     }
     NSDictionary *commandDic = @{
-                                 @"header":@(4003),
+                                 @"header":@(4006),
                                  @"wifi_ssid":ssid,
                                  @"wifi_pwd":((!password || password.length == 0) ? @"" : password),
                                  @"wifi_security":@(wifi_security),
@@ -432,7 +492,73 @@ static NSTimeInterval const defaultCommandTime = 2.f;
     dispatch_resume(self.connectTimer);
 }
 
+#pragma mark - cert
+- (void)sendCertDataToDevice:(NSData *)certData
+                        type:(NSInteger)type
+                    sucBlock:(void (^)(void))sucBlock
+                 failedBlock:(void (^)(NSError *error))failedBlock{
+    dispatch_async(self.certQueue, ^{
+        NSInteger totalPackages = (certData.length / 500) + 1;
+        for (NSInteger i = 0; i < totalPackages; i ++) {
+            //正常数据发送
+            NSInteger len = 500;
+            if (i == totalPackages - 1) {
+                len = certData.length % 500;
+            }
+            NSData *tempData = [certData subdataWithRange:NSMakeRange(i * 500, len)];
+            NSDictionary *dataDic = @{
+                                      @"header":@(4003),
+                                      @"file_type":@(type),
+                                      @"file_size":@(certData.length),
+                                      @"current_packet_len":@(tempData.length),
+                                      @"data":[self hexStringFromData:tempData],
+                                      @"offset":@(i * 500),
+                                      };
+            NSString *jsonString = [MKSocketAdopter convertToJsonData:dataDic];
+            NSError *error = [self sendCertDataSuccess:jsonString];
+            if (error) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    if (failedBlock) {
+                        failedBlock(error);
+                    }
+                });
+                return ;
+            }
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (sucBlock) {
+                sucBlock();
+            }
+        });
+    });
+}
 
+- (NSError *)sendCertDataSuccess:(NSString *)jsonString {
+    __block NSError *sendError = nil;
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+    [self addTaskWithTaskID:socketConfigDeviceCertOperation jsonString:jsonString sucBlock:^(id returnData) {
+        dispatch_semaphore_signal(semaphore);
+    } failedBlock:^(NSError *error) {
+        sendError = error;
+        dispatch_semaphore_signal(semaphore);
+    }];
+    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+    return sendError;
+}
+
+- (NSString *)hexStringFromData:(NSData *)sourceData{
+    Byte *bytes = (Byte *)[sourceData bytes];
+    //下面是Byte 转换为16进制。
+    NSString *hexStr=@"";
+    for(int i=0;i<[sourceData length];i++){
+        NSString *newHexStr = [NSString stringWithFormat:@"%x",bytes[i]&0xff];///16进制数
+        if([newHexStr length]==1)
+            hexStr = [NSString stringWithFormat:@"%@0%@",hexStr,newHexStr];
+        else
+            hexStr = [NSString stringWithFormat:@"%@%@",hexStr,newHexStr];
+    }
+    return hexStr;
+}
 
 #pragma mark - setter & getter
 - (NSOperationQueue *)operationQueue{
@@ -441,6 +567,13 @@ static NSTimeInterval const defaultCommandTime = 2.f;
         _operationQueue.maxConcurrentOperationCount = 1;
     }
     return _operationQueue;
+}
+
+- (dispatch_queue_t)certQueue {
+    if (!_certQueue) {
+        _certQueue = dispatch_queue_create("com.moko.socketCertQueue", 0);
+    }
+    return _certQueue;
 }
 
 @end

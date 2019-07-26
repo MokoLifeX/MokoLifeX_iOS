@@ -19,11 +19,6 @@
 @property (nonatomic, assign)MKSocketOperationID taskID;
 
 /**
- 是否结束当前线程的标志
- */
-@property (nonatomic, assign)BOOL complete;
-
-/**
  超过5s没有接收到新的数据，超时
  */
 @property (nonatomic, strong)dispatch_source_t receiveTimer;
@@ -133,9 +128,6 @@
     }
     //如果需要从外设拿总条数，则在拿到总条数之后，开启接受超时定时器
     dispatch_resume(self.receiveTimer);
-    do {
-        [[NSRunLoop currentRunLoop] runMode:NSRunLoopCommonModes beforeDate:[NSDate distantFuture]];
-    }while (NO == _complete);
 }
 
 - (void)finishOperation{
@@ -145,7 +137,6 @@
     [self willChangeValueForKey:@"isFinished"];
     _finished = YES;
     [self didChangeValueForKey:@"isFinished"];
-    _complete = YES;
 }
 
 - (void)communicationTimeout{

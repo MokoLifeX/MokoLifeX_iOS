@@ -34,6 +34,8 @@
 
 @property (nonatomic, assign)BOOL connectTimeout;
 
+@property (nonatomic, strong)MKSmartPlugConnectManager *connectManager;
+
 @end
 
 @implementation MKAddDeviceDataManager
@@ -193,7 +195,7 @@
     }
     [[MKHudManager share] showHUDWithTitle:@"Setting..." inView:wifiView isPenetration:NO];
     WS(weakSelf);
-    [[MKSmartPlugConnectManager sharedInstance] configDeviceWithWifiSSID:self.wifiSSID password:self.password sucBlock:^(NSDictionary *deviceInfo) {
+    [self.connectManager configDeviceWithWifiSSID:self.wifiSSID password:self.password serverModel:self.serverModel sucBlock:^(NSDictionary *deviceInfo) {
         [[MKHudManager share] hide];
         weakSelf.deviceDic = nil;
         weakSelf.deviceDic = [NSMutableDictionary dictionaryWithDictionary:deviceInfo];
@@ -343,6 +345,13 @@
         _viewList = [NSMutableArray arrayWithCapacity:3];
     }
     return _viewList;
+}
+
+- (MKSmartPlugConnectManager *)connectManager {
+    if (!_connectManager) {
+        _connectManager = [[MKSmartPlugConnectManager alloc] init];
+    }
+    return _connectManager;
 }
 
 @end

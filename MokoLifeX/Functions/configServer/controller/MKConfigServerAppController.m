@@ -153,11 +153,6 @@
         //存在参数错误
         return;
     }
-    if ((self.serverModel.connectMode == 1 || self.serverModel.connectMode == 2) && !ValidStr(self.serverModel.caFileName)) {
-        //单项验证，需要CA证书
-        [self.view showCentralToast:@"必须选择CA证书"];
-        return;
-    }
     if (self.serverModel.connectMode == 2 && !ValidStr(self.serverModel.clientP12CertName)) {
         //双向验证
         [self.view showCentralToast:@"必须选择客户端证书"];

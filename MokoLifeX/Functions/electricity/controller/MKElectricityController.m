@@ -25,8 +25,6 @@
 - (void)dealloc{
     NSLog(@"MKElectricityController销毁");
     [[NSNotificationCenter defaultCenter] removeObserver:self name:MKMQTTServerReceivedElectricityNotification object:nil];
-    //取消计电量主题
-    [[MKMQTTServerManager sharedInstance] unsubscriptions:@[[self.deviceModel subscribeTopicInfoWithType:deviceModelTopicDeviceType function:@"electricity_information"]]];
 }
 
 - (void)viewDidLoad {
@@ -43,8 +41,6 @@
                                    selector:@selector(receiveElectricityData:)
                                        name:MKMQTTServerReceivedElectricityNotification
                                      object:nil];
-    //订阅计电量主题
-    [[MKMQTTServerManager sharedInstance] subscriptions:@[[self.deviceModel subscribeTopicInfoWithType:deviceModelTopicDeviceType function:@"electricity_information"]]];
     // Do any additional setup after loading the view.
 }
 

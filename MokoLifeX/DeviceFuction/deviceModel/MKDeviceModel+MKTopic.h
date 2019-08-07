@@ -17,21 +17,4 @@
  */
 + (BOOL)currentWifiIsCorrect:(MKDeviceType)deviceType;
 
-/**
- 订阅的主题
- 
- @param topicType 主题类型，是app发布数据的主题还是设备发布数据的主题
- @param function 主题功能
- @return 设备功能/设备名称/型号/mac/topicType/function
- */
-- (NSString *)subscribeTopicInfoWithType:(deviceModelTopicType)topicType
-                                function:(NSString *)function;
-
-/**
- app可以订阅的主题
-
- @return topicList
- */
-- (NSArray <NSString *>*)allTopicList;
-
 @end

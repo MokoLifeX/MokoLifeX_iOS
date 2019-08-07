@@ -153,7 +153,7 @@
     [MKConfigServerAdopter configCellResignFirstResponderWithTable:self.tableView];
 }
 - (void)nextButtonPressed{
-    MKConfigServerModel *serverModel = [MKConfigServerAdopter currentServerModelWithDataList:self.dataList isApp:NO];
+    MKConfigServerModel *serverModel = [MKConfigServerAdopter currentServerModelWithDataList:self.dataList isApp:YES];
     BOOL paramCheck = [MKConfigServerAdopter checkConfigServerParams:serverModel target:self];
     if (!paramCheck) {
         //存在参数错误
@@ -207,7 +207,7 @@
                                              selector:@selector(configCellNeedHiddenKeyboard) name:configCellNeedHiddenKeyboardNotification
                                                object:nil];
     [self.dataList addObjectsFromArray:[MKConfigServerAdopter configTopCellWithConfigModel:self.serverModel
-                                                                                 tableView:self.tableView isApp:NO]];
+                                                                                 tableView:self.tableView isApp:YES]];
     MKConfigServerConnectModeCell *modelCell = [self.dataList lastObject];
     modelCell.delegate = self;
     [self.tableView reloadData];

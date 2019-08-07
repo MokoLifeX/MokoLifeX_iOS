@@ -195,7 +195,7 @@ static NSString *const MKConfigServerQosCellIdenty = @"MKConfigServerQosCellIden
 - (UILabel *)qosValueLabel{
     if (!_qosValueLabel) {
         _qosValueLabel = [self valueLabel];
-        _qosValueLabel.text = @"1";
+        _qosValueLabel.text = @"0";
     }
     return _qosValueLabel;
 }

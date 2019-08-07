@@ -15,7 +15,12 @@
                           topic:(NSString *)topic
                        sucBlock:(void (^)(void))sucBlock
                     failedBlock:(void (^)(NSError *error))failedBlock{
-    NSDictionary *dataDic = @{@"switch_state" : (isOn ? @"on" : @"off")};
+    NSDictionary *dataDic = @{
+                              @"msg_id":@(2001),
+                              @"data":@{
+                                        @"switch_state" : (isOn ? @"on" : @"off"),
+                                      }
+                              };
     [[MKMQTTServerManager sharedInstance] sendData:dataDic topic:topic sucBlock:sucBlock failedBlock:failedBlock];
 }
 
@@ -33,8 +38,11 @@
         return;
     }
     NSDictionary *dataDic = @{
-                              @"delay_hour":@(delay_hour),
-                              @"delay_minute":@(delay_minutes),
+                              @"msg_id":@(2002),
+                              @"data":@{
+                                      @"delay_hour":@(delay_hour),
+                                      @"delay_minute":@(delay_minutes),
+                                      }
                               };
     [[MKMQTTServerManager sharedInstance] sendData:dataDic topic:topic sucBlock:sucBlock failedBlock:failedBlock];
 }

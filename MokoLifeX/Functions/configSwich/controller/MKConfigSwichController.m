@@ -31,8 +31,6 @@
     [self.deviceModel cancel];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:MKMQTTServerReceivedSwitchStateNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:MKMQTTServerReceivedDelayTimeNotification object:nil];
-    //取消订阅倒计时主题
-    [[MKMQTTServerManager sharedInstance] unsubscriptions:@[[self.deviceModel subscribeTopicInfoWithType:deviceModelTopicDeviceType function:@"delay_time"]]];
 }
 
 - (void)viewDidLoad {
@@ -55,8 +53,6 @@
     }];
     [self getTableDatas];
     [self addNotifications];
-    //订阅倒计时主题
-    [[MKMQTTServerManager sharedInstance] subscriptions:@[[self.deviceModel subscribeTopicInfoWithType:deviceModelTopicDeviceType function:@"delay_time"]]];
     self.deviceModel.delegate = self;
     [self.deviceModel startStateMonitoringTimer];
     // Do any additional setup after loading the view.
@@ -126,9 +122,8 @@
     NSString *changeKey = [MKDeviceModel keyForSwitchStateWithIndex:index];
     NSString *changeState = (isOn ? @"on" : @"off");
     [dic setObject:changeState forKey:changeKey];
-    NSString *topic = [self.deviceModel subscribeTopicInfoWithType:deviceModelTopicAppType function:@"switch_state"];
     WS(weakSelf);
-    [[MKMQTTServerManager sharedInstance] sendData:dic topic:topic sucBlock:^{
+    [[MKMQTTServerManager sharedInstance] sendData:dic topic:self.deviceModel.subscribedTopic sucBlock:^{
         [[MKHudManager share] hide];
     } failedBlock:^(NSError *error) {
         [[MKHudManager share] hide];
@@ -195,10 +190,9 @@
 
 - (void)startCountdownWithIndex:(NSInteger)index hour:(NSString *)hour min:(NSString *)min{
     [[MKHudManager share] showHUDWithTitle:@"Setting..." inView:self.view isPenetration:NO];
-    NSString *function = [MKDeviceModel keyForDelayTimeWithIndex:index];
-    NSString *topic = [self.deviceModel subscribeTopicInfoWithType:deviceModelTopicAppType function:function];
+//    NSString *function = [MKDeviceModel keyForDelayTimeWithIndex:index];
     WS(weakSelf);
-    [MKMQTTServerInterface setSwichWithIndex:index delayHour:[hour integerValue] delayMin:[min integerValue] topic:topic sucBlock:^{
+    [MKMQTTServerInterface setSwichWithIndex:index delayHour:[hour integerValue] delayMin:[min integerValue] topic:self.deviceModel.subscribedTopic sucBlock:^{
         [[MKHudManager share] hide];
     } failedBlock:^(NSError *error) {
         [[MKHudManager share] hide];
@@ -278,9 +272,8 @@
         NSString *state = (allOn ? @"on" : @"off");
         [dic setObject:state forKey:[MKDeviceModel keyForSwitchStateWithIndex:i]];
     }
-    NSString *topic = [self.deviceModel subscribeTopicInfoWithType:deviceModelTopicAppType function:@"switch_state"];
     WS(weakSelf);
-    [[MKMQTTServerManager sharedInstance] sendData:dic topic:topic sucBlock:^{
+    [[MKMQTTServerManager sharedInstance] sendData:dic topic:self.deviceModel.subscribedTopic sucBlock:^{
         [[MKHudManager share] hide];
     } failedBlock:^(NSError *error) {
         [[MKHudManager share] hide];

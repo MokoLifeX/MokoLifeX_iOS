@@ -96,43 +96,45 @@ NSString *const MKMQTTServerReceivedUpdateResultNotification = @"MKMQTTServerRec
     if (!dataDic || dataDic.allValues.count == 0) {
         return;
     }
-    NSString *macAddress = keyList[3];
-    NSString *function = keyList[5];
-    NSMutableDictionary *tempDic = [NSMutableDictionary dictionaryWithDictionary:dataDic];
+    NSString *macAddress = keyList[1];
+    NSNumber *function = dataDic[@"msg_id"];
+    NSMutableDictionary *tempDic = [NSMutableDictionary dictionaryWithDictionary:dataDic[@"data"]];
     [tempDic setObject:macAddress forKey:@"mac"];
-    [tempDic setObject:function forKey:@"function"];
-    NSLog(@"接收到数据:%@",tempDic);
-    if ([function isEqualToString:@"switch_state"]) {
+    if (!function) {
+        [tempDic setObject:function forKey:@"function"];
+    }
+    NSLog(@"接收到数据:%@",dataDic);
+    if ([function integerValue] == 1001) {
         //开关状态
         [[NSNotificationCenter defaultCenter] postNotificationName:MKMQTTServerReceivedSwitchStateNotification
                                                             object:nil
                                                           userInfo:@{@"userInfo" : tempDic}];
         return;
     }
-    if ([function isEqualToString:@"delay_time"]) {
-        //倒计时
-        [[NSNotificationCenter defaultCenter] postNotificationName:MKMQTTServerReceivedDelayTimeNotification
-                                                            object:nil
-                                                          userInfo:@{@"userInfo" : tempDic}];
-        return;
-    }
-    if ([function isEqualToString:@"electricity_information"]) {
-        //电量信息
-        [[NSNotificationCenter defaultCenter] postNotificationName:MKMQTTServerReceivedElectricityNotification
-                                                            object:nil
-                                                          userInfo:@{@"userInfo" : tempDic}];
-        return;
-    }
-    if ([function isEqualToString:@"firmware_infor"]) {
+    if ([function integerValue] == 1002) {
         //固件信息
         [[NSNotificationCenter defaultCenter] postNotificationName:MKMQTTServerReceivedFirmwareInfoNotification
                                                             object:nil
                                                           userInfo:@{@"userInfo" : tempDic}];
         return;
     }
-    if ([function isEqualToString:@"ota_upgrade_state"]) {
+    if ([function integerValue] == 1003) {
+        //倒计时
+        [[NSNotificationCenter defaultCenter] postNotificationName:MKMQTTServerReceivedDelayTimeNotification
+                                                            object:nil
+                                                          userInfo:@{@"userInfo" : tempDic}];
+        return;
+    }
+    if ([function integerValue] == 1004) {
         //固件升级结果
         [[NSNotificationCenter defaultCenter] postNotificationName:MKMQTTServerReceivedUpdateResultNotification
+                                                            object:nil
+                                                          userInfo:@{@"userInfo" : tempDic}];
+        return;
+    }
+    if ([function integerValue] == 1006) {
+        //电量信息
+        [[NSNotificationCenter defaultCenter] postNotificationName:MKMQTTServerReceivedElectricityNotification
                                                             object:nil
                                                           userInfo:@{@"userInfo" : tempDic}];
         return;

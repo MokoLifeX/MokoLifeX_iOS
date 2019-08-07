@@ -35,8 +35,6 @@
 - (void)dealloc{
     NSLog(@"MKDeviceInformationController销毁");
     [[NSNotificationCenter defaultCenter] removeObserver:self name:MKMQTTServerReceivedFirmwareInfoNotification object:nil];
-    //取消订阅固件主题
-    [[MKMQTTServerManager sharedInstance] unsubscriptions:@[[self.deviceModel subscribeTopicInfoWithType:deviceModelTopicDeviceType function:@"firmware_infor"]]];
 }
 
 - (void)viewDidLoad {
@@ -54,8 +52,6 @@
                                        name:MKMQTTServerReceivedFirmwareInfoNotification
                                      object:nil];
     [self initReadTimer];
-    //订阅固件信息通知
-    [[MKMQTTServerManager sharedInstance] subscriptions:@[[self.deviceModel subscribeTopicInfoWithType:deviceModelTopicDeviceType function:@"firmware_infor"]]];
     // Do any additional setup after loading the view.
 }
 

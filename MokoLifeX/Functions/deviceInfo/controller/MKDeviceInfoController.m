@@ -40,9 +40,6 @@
 }
 
 #pragma mark - 父类方法
-- (NSString *)defaultTitle{
-    return @"More";
-}
 
 #pragma mark - UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -114,9 +111,8 @@
 
 - (void)readFirmwareInfo{
     [[MKHudManager share] showHUDWithTitle:@"Loading..." inView:self.view isPenetration:NO];
-    NSString *topic = [self.deviceModel subscribeTopicInfoWithType:deviceModelTopicAppType function:@"read_firmware_infor"];
     WS(weakSelf);
-    [MKMQTTServerInterface readDeviceFirmwareInformationWithTopic:topic sucBlock:^{
+    [MKMQTTServerInterface readDeviceFirmwareInformationWithTopic:self.deviceModel.subscribedTopic sucBlock:^{
         [[MKHudManager share] hide];
         MKDeviceInformationController *vc = [[MKDeviceInformationController alloc] init];
         MKDeviceModel *model = [[MKDeviceModel alloc] init];
@@ -164,13 +160,7 @@
 #pragma mark - interface
 - (void)updateFirmware{
     MKUpdateFirmwareController *vc = [[MKUpdateFirmwareController alloc] init];
-    NSString *topic = [self.deviceModel subscribeTopicInfoWithType:deviceModelTopicAppType function:@"upgrade"];
-    NSString *resultTopic = [self.deviceModel subscribeTopicInfoWithType:deviceModelTopicDeviceType function:@"ota_upgrade_state"];
-    vc.topicParam = @{
-                      updateTopic : topic,
-                      updateResultTopic : resultTopic,
-                      deviceMacAddress : self.deviceModel.device_mac,
-                      };
+    vc.deviceModel = self.deviceModel;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -192,6 +182,9 @@
 
 #pragma mark - ui
 - (void)loadSubViews{
+    self.titleLabel.text = @"More";
+    self.titleLabel.textColor = COLOR_WHITE_MACROS;
+    self.custom_naviBarColor = UIColorFromRGB(0x0188cc);
     [self.view addSubview:self.tableView];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(0);

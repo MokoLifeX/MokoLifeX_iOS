@@ -38,11 +38,7 @@
 #pragma mark - life circle
 - (void)dealloc{
     NSLog(@"MKDeviceListController销毁");
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:MKNetworkStatusChangedNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:MKMQTTServerReceivedSwitchStateNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:MKNeedReadDataFromLocalNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:MKMQTTSessionManagerStateChangedNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:MKNeedUpdateSwichWayNameNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)viewDidLoad {
@@ -136,9 +132,8 @@
             return;
         }
         [[MKHudManager share] showHUDWithTitle:@"Setting..." inView:self.view isPenetration:NO];
-        NSString *topic = [deviceModel subscribeTopicInfoWithType:deviceModelTopicAppType function:@"switch_state"];
         WS(weakSelf);
-        [MKMQTTServerInterface setSmartPlugSwitchState:isOn topic:topic sucBlock:^{
+        [MKMQTTServerInterface setSmartPlugSwitchState:isOn topic:deviceModel.subscribedTopic sucBlock:^{
             [[MKHudManager share] hide];
         } failedBlock:^(NSError *error) {
             [[MKHudManager share] hide];
@@ -198,9 +193,6 @@
     if (!ValidDict(dic) || self.dataList.count == 0) {
         return;
     }
-    /*
-     @{@"swich_way_nameDic" : dic, @"device_mac" : weakSelf.deviceModel.device_mac}
-     */
     @synchronized(self) {
         //需要执行的代码
         dispatch_async(dispatch_get_global_queue(0, 0), ^{
@@ -265,7 +257,7 @@
     }
     NSMutableArray *topicList = [NSMutableArray arrayWithCapacity:self.dataList.count];
     for (MKDeviceModel *deviceModel in self.dataList) {
-        [topicList addObject:[deviceModel subscribeTopicInfoWithType:deviceModelTopicDeviceType function:@"switch_state"]];
+        [topicList addObject:deviceModel.publishedTopic];
     }
     [[MKMQTTServerManager sharedInstance] subscriptions:topicList];
 }

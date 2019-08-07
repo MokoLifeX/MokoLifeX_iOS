@@ -135,14 +135,6 @@ static dispatch_once_t onceToken;
     MQTTSessionManager *sessionManager = [[MQTTSessionManager alloc] init];
     sessionManager.delegate = self;
     self.sessionManager = sessionManager;
-//    MQTTSSLSecurityPolicy *securityPolicy = nil;
-//    if (tls) {
-//        //需要tls
-//        securityPolicy = [MQTTSSLSecurityPolicy policyWithPinningMode:MQTTSSLPinningModeNone];
-//        securityPolicy.allowInvalidCertificates = YES;
-//        securityPolicy.validatesDomainName = NO;
-//        securityPolicy.validatesCertificateChain = NO;
-//    }
     [self.sessionManager connectTo:host
                               port:port
                                tls:tls

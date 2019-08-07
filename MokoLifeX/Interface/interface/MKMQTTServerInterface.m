@@ -11,30 +11,25 @@
 
 @implementation MKMQTTServerInterface
 
-+ (void)updateFirmware:(MKFirmwareUpdateHostType)hostType
-                  host:(NSString *)host
-                  port:(NSInteger)port
-             catalogue:(NSString *)catalogue
-                 topic:(NSString *)topic
-              sucBlock:(void (^)(void))sucBlock
-           failedBlock:(void (^)(NSError *error))failedBlock{
-    if (hostType == MKFirmwareUpdateHostTypeIP && ![host regularExpressions:isIPAddress]) {
-        [MKMQTTServerErrorBlockAdopter operationParamsErrorBlock:failedBlock];
-        return;
-    }
-    if (hostType == MKFirmwareUpdateHostTypeUrl && ![host regularExpressions:isUrl]) {
-        [MKMQTTServerErrorBlockAdopter operationParamsErrorBlock:failedBlock];
-        return;
-    }
-    if (port < 0 || port > 65535 || !catalogue) {
++ (void)updateFile:(MKUpdateFileType)fileType
+              host:(NSString *)host
+              port:(NSInteger)port
+         catalogue:(NSString *)catalogue
+             topic:(NSString *)topic
+          sucBlock:(void (^)(void))sucBlock
+       failedBlock:(void (^)(NSError *error))failedBlock {
+    if (port < 0 || port > 65535 || !catalogue || !host) {
         [MKMQTTServerErrorBlockAdopter operationParamsErrorBlock:failedBlock];
         return;
     }
     NSDictionary *dataDic = @{
-                              @"type":@(hostType),
-                              @"realm":host,
-                              @"port":@(port),
-                              @"catalogue":catalogue,
+                              @"msg_id":@(2004),
+                              @"data":@{
+                                      @"file_type":@(fileType),
+                                      @"domain_name":host,
+                                      @"port":@(port),
+                                      @"file_way":catalogue,
+                                      }
                               };
     [[MKMQTTServerManager sharedInstance] sendData:dataDic topic:topic sucBlock:sucBlock failedBlock:failedBlock];
 }
@@ -42,13 +37,13 @@
 + (void)resetDeviceWithTopic:(NSString *)topic
                     sucBlock:(void (^)(void))sucBlock
                  failedBlock:(void (^)(NSError *error))failedBlock{
-    [[MKMQTTServerManager sharedInstance] sendData:@{} topic:topic sucBlock:sucBlock failedBlock:failedBlock];
+    [[MKMQTTServerManager sharedInstance] sendData:@{@"msg_id":@(2003)} topic:topic sucBlock:sucBlock failedBlock:failedBlock];
 }
 
 + (void)readDeviceFirmwareInformationWithTopic:(NSString *)topic
                                       sucBlock:(void (^)(void))sucBlock
                                    failedBlock:(void (^)(NSError *error))failedBlock{
-    [[MKMQTTServerManager sharedInstance] sendData:@{} topic:topic sucBlock:sucBlock failedBlock:failedBlock];
+    [[MKMQTTServerManager sharedInstance] sendData:@{@"msg_id":@(2005)} topic:topic sucBlock:sucBlock failedBlock:failedBlock];
 }
 
 @end

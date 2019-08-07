@@ -60,9 +60,6 @@ static CGFloat const buttonViewHeight = 50.f;
 }
 
 #pragma mark - 父类方法
-- (NSString *)defaultTitle{
-    return @"Moko Life";
-}
 
 - (void)rightButtonMethod{
     MKDeviceInfoController *vc = [[MKDeviceInfoController alloc] init];
@@ -82,7 +79,7 @@ static CGFloat const buttonViewHeight = 50.f;
 #pragma mark - 通知处理
 - (void)switchStateNotification:(NSNotification *)note{
     NSDictionary *deviceDic = note.userInfo[@"userInfo"];
-    if (!ValidDict(deviceDic) || ![deviceDic[@"mac"] isEqualToString:self.deviceModel.device_mac]) {
+    if (!ValidDict(deviceDic) || ![deviceDic[@"mac"] isEqualToString:self.deviceModel.device_id]) {
         return;
     }
     [self.deviceModel resetTimerCounter];
@@ -94,7 +91,7 @@ static CGFloat const buttonViewHeight = 50.f;
 
 - (void)delayTimeNotification:(NSNotification *)note{
     NSDictionary *deviceDic = note.userInfo[@"userInfo"];
-    if (!ValidDict(deviceDic) || ![deviceDic[@"mac"] isEqualToString:self.deviceModel.device_mac]) {
+    if (!ValidDict(deviceDic) || ![deviceDic[@"mac"] isEqualToString:self.deviceModel.device_id]) {
         return;
     }
     [self.deviceModel resetTimerCounter];
@@ -214,6 +211,8 @@ static CGFloat const buttonViewHeight = 50.f;
 
 #pragma mark - config view
 - (void)loadSubViews{
+    self.defaultTitle = @"Moko Life";
+    self.titleLabel.textColor = COLOR_WHITE_MACROS;
     [self.rightButton setImage:LOADIMAGE(@"configPlugPage_moreIcon", @"png") forState:UIControlStateNormal];
     [self.view addSubview:self.switchButton];
     [self.view addSubview:self.stateLabel];

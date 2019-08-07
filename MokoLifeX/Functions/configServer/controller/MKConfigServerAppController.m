@@ -227,6 +227,7 @@
         _tableView = [[MKBaseTableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
         _tableView.delegate = self;
         _tableView.dataSource = self;
+        _tableView.backgroundColor = UIColorFromRGB(0xf2f2f2);
         
         _tableView.tableFooterView = [self tableFooter];
         _tableView.tableHeaderView = [self tableHeader];

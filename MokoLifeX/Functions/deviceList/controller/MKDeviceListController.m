@@ -114,15 +114,15 @@
 
 #pragma mark - MKDeviceModelDelegate
 - (void)deviceModelStateChanged:(MKDeviceModel *)deviceModel{
-    if (!deviceModel || !ValidStr(deviceModel.device_mac)) {
+    if (!deviceModel || !ValidStr(deviceModel.device_id)) {
         return;
     }
-    [self updateDeviceModelState:YES mac:deviceModel.device_mac stateDic:@{}];
+    [self updateDeviceModelState:YES mac:deviceModel.device_id stateDic:@{}];
 }
 
 #pragma mark - MKDeviceListCellDelegate
 - (void)deviceSwitchStateChanged:(MKDeviceModel *)deviceModel isOn:(BOOL)isOn{
-    if (!deviceModel || !ValidStr(deviceModel.device_mac)) {
+    if (!deviceModel || !ValidStr(deviceModel.device_id)) {
         return;
     }
     if (deviceModel.device_mode == MKDevice_plug) {
@@ -198,7 +198,7 @@
         dispatch_async(dispatch_get_global_queue(0, 0), ^{
             for (NSInteger i = 0; i < self.dataList.count; i ++) {
                 MKDeviceModel *model = self.dataList[i];
-                if ([model.device_mac isEqualToString:dic[@"device_mac"]] && model.device_mode == MKDevice_swich) {
+                if ([model.device_id isEqualToString:dic[@"device_id"]] && model.device_mode == MKDevice_swich) {
                     model.swich_way_nameDic = dic[@"swich_way_nameDic"];
                     break;
                 }
@@ -269,7 +269,7 @@
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
             for (NSInteger i = 0; i < self.dataList.count; i ++) {
                 MKDeviceModel *model = self.dataList[i];
-                if ([model.device_mac isEqualToString:mac]) {
+                if ([model.device_id isEqualToString:mac]) {
                     if (offline && model.device_mode == MKDevice_swich) {
                         model.swichState = MKSmartSwichOffline;
                     }else if (!offline && model.device_mode == MKDevice_swich){

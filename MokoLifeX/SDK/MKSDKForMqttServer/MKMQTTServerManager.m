@@ -252,7 +252,7 @@ static dispatch_once_t onceToken;
     }
     UInt16 msgid = [self.sessionManager sendData:[self dataWithJson:data] //要发送的消息体
                                            topic:topic //要往哪个topic发送消息
-                                             qos:MQTTQosLevelAtMostOnce //消息级别
+                                             qos:MQTTQosLevelAtLeastOnce //消息级别
                                           retain:false];
     if (msgid <= 0) {
         if (failedBlock) {

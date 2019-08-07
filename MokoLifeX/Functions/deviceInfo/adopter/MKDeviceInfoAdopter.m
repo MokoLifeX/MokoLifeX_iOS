@@ -38,7 +38,7 @@
 
 #pragma mark -
 + (void)resetDeviceWithModel:(MKDeviceModel *)deviceModel target:(UIViewController *)target{
-    if (!deviceModel || !ValidStr(deviceModel.device_mac)) {
+    if (!deviceModel || !ValidStr(deviceModel.device_id)) {
         return;
     }
     if (deviceModel.device_mode == MKDevice_plug && deviceModel.plugState == MKSmartPlugOffline) {
@@ -68,7 +68,7 @@
 + (void)deleteDeviceModel:(MKDeviceModel *)deviceModel target:(UIViewController *)target{
     [[MKHudManager share] showHUDWithTitle:@"Deleting..." inView:target.view isPenetration:NO];
     __weak __typeof(&*target)weakTarget = target;
-    [MKDeviceDataBaseManager deleteDeviceWithMacAddress:deviceModel.device_mac sucBlock:^{
+    [MKDeviceDataBaseManager deleteDeviceWithMacAddress:deviceModel.device_id sucBlock:^{
         [[MKHudManager share] hide];
         [[MKMQTTServerManager sharedInstance] unsubscriptions:@[deviceModel.publishedTopic]];
         [[NSNotificationCenter defaultCenter] postNotificationName:MKNeedReadDataFromLocalNotification object:nil];

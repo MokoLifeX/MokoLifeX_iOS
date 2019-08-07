@@ -43,21 +43,21 @@
 /**
  删除指定mac地址的设备
  
- @param device_mac mac 地址
+ @param device_id mac 地址
  @param sucBlock 成功回调
  @param failedBlock 失败回调
  */
-+ (void)deleteDeviceWithMacAddress:(NSString *)device_mac
++ (void)deleteDeviceWithMacAddress:(NSString *)device_id
                           sucBlock:(void (^)(void))sucBlock
                        failedBlock:(void (^)(NSError *error))failedBlock;
 /**
  根据mac地址查询localName
  
- @param device_mac mac地址
+ @param device_id mac地址
  @param sucBlock 成功回调
  @param failedBlock 失败回调
  */
-+ (void)selectLocalNameWithMacAddress:(NSString *)device_mac
++ (void)selectLocalNameWithMacAddress:(NSString *)device_id
                              sucBlock:(void (^)(NSString *localName))sucBlock
                           failedBlock:(void (^)(NSError *error))failedBlock;
 

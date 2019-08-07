@@ -98,8 +98,6 @@
         _tableView = [[MKBaseTableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
         _tableView.delegate = self;
         _tableView.dataSource = self;
-        
-        _tableView.backgroundColor = RGBCOLOR(239, 239, 239);
     }
     return _tableView;
 }

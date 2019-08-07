@@ -77,14 +77,16 @@
 #pragma mark - loadSubViews
 - (void)loadSubViews{
     [self.leftButton setHidden:YES];
-    self.titleLabel.text = @"Add Device";
+    self.custom_naviBarColor = UIColorFromRGB(0x0188cc);
+    self.titleLabel.textColor = COLOR_WHITE_MACROS;
+    self.defaultTitle = @"Add Device";
     [self.view addSubview:self.msgLabel];
     [self.view addSubview:self.textField];
     [self.view addSubview:self.doneButton];
     [self.msgLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(15.f);
         make.right.mas_equalTo(-15.f);
-        make.top.mas_equalTo(52.f);
+        make.top.mas_equalTo(52.f + defaultTopInset);
         make.height.mas_equalTo(MKFont(18.f).lineHeight);
     }];
     [self.textField mas_makeConstraints:^(MASConstraintMaker *make) {

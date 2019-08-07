@@ -57,7 +57,7 @@ NSString *const smartSwichWifiSSIDKey = @"WS";
             self.device_function,
             self.device_name,
             self.device_specifications,
-            self.device_mac,
+            self.device_id,
             typeIden,
             function];
 }

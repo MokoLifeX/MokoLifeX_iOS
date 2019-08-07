@@ -29,6 +29,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.titleLabel.text = @"Electricity Management";
+    self.titleLabel.textColor = COLOR_WHITE_MACROS;
+    self.custom_naviBarColor = UIColorFromRGB(0x0188cc);
     [self.view addSubview:self.tableView];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(0);
@@ -42,11 +45,6 @@
                                        name:MKMQTTServerReceivedElectricityNotification
                                      object:nil];
     // Do any additional setup after loading the view.
-}
-
-#pragma mark - 父类方法
-- (NSString *)defaultTitle{
-    return @"Electricity Management";
 }
 
 #pragma mark - UITableViewDelegate
@@ -68,7 +66,7 @@
 #pragma mark - Notification Event
 - (void)receiveElectricityData:(NSNotification *)note{
     NSDictionary *deviceDic = note.userInfo[@"userInfo"];
-    if (!ValidDict(deviceDic) || ![deviceDic[@"mac"] isEqualToString:self.deviceModel.device_mac]) {
+    if (!ValidDict(deviceDic) || ![deviceDic[@"mac"] isEqualToString:self.deviceModel.device_id]) {
         return;
     }
     if (ValidNum(deviceDic[@"current"])) {
@@ -113,6 +111,7 @@
 - (MKBaseTableView *)tableView{
     if (!_tableView) {
         _tableView = [[MKBaseTableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+        _tableView.backgroundColor = UIColorFromRGB(0xf2f2f2);
         
         _tableView.delegate = self;
         _tableView.dataSource = self;

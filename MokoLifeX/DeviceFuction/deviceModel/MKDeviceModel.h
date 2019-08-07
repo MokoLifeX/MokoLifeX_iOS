@@ -34,7 +34,7 @@
 /**
  设备id，plug的mac address
  */
-@property (nonatomic, copy)NSString *device_mac;
+@property (nonatomic, copy)NSString *device_id;
 
 /**
  规格，国标cn/美规us/英规bu/欧规eu

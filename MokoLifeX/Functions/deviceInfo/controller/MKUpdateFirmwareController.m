@@ -37,8 +37,8 @@ NSString *const deviceMacAddress = @"deviceMacAddress";
     self.navigationController.interactivePopGestureRecognizer.enabled = NO;
 }
 
-- (void)viewDidDisappear:(BOOL)animated{
-    [super viewDidDisappear:animated];
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
     self.navigationController.interactivePopGestureRecognizer.enabled = YES;
 }
 
@@ -123,7 +123,7 @@ NSString *const deviceMacAddress = @"deviceMacAddress";
 #pragma mark - note
 - (void)firmwareUpdateResult:(NSNotification *)note{
     NSDictionary *deviceDic = note.userInfo[@"userInfo"];
-    if (!ValidDict(deviceDic) || ![deviceDic[@"mac"] isEqualToString:self.deviceModel.device_mac]) {
+    if (!ValidDict(deviceDic) || ![deviceDic[@"mac"] isEqualToString:self.deviceModel.device_id]) {
         return;
     }
     //固件升级结果
@@ -150,6 +150,7 @@ NSString *const deviceMacAddress = @"deviceMacAddress";
 - (MKBaseTableView *)tableView{
     if (!_tableView) {
         _tableView = [[MKBaseTableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+        _tableView.backgroundColor = UIColorFromRGB(0xf2f2f2);
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.tableFooterView = [self tableFooter];

@@ -102,6 +102,7 @@
 - (MKBaseTableView *)tableView{
     if (!_tableView) {
         _tableView = [[MKBaseTableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+        _tableView.backgroundColor = UIColorFromRGB(0xf2f2f2);
         _tableView.delegate = self;
         _tableView.dataSource = self;
     }

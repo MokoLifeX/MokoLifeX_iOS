@@ -159,6 +159,11 @@
         //存在参数错误
         return;
     }
+    if (!ValidStr(serverModel.clientId) || serverModel.clientId.length > 23) {
+        //
+        [self.view showCentralToast:@"Client id error"];
+        return;
+    }
     if (self.serverModel.connectMode == 2) {
         //双向验证
         if (!ValidStr(self.serverModel.clientKeyName)) {
@@ -263,6 +268,7 @@
 - (MKBaseTableView *)tableView{
     if (!_tableView) {
         _tableView = [[MKBaseTableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+        _tableView.backgroundColor = UIColorFromRGB(0xf2f2f2);
         _tableView.delegate = self;
         _tableView.dataSource = self;
         

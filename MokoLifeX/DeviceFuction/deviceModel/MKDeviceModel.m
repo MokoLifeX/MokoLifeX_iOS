@@ -40,10 +40,12 @@
     self.device_icon = model.device_icon;
     self.device_name = model.device_name;
     self.local_name = model.local_name;
-    self.device_mac = model.device_mac;
+    self.device_id = model.device_id;
     self.device_specifications = model.device_specifications;
     self.device_function = model.device_function;
     self.device_type = model.device_type;
+    self.subscribedTopic = model.subscribedTopic;
+    self.publishedTopic = model.publishedTopic;
 }
 
 - (void)startStateMonitoringTimer{

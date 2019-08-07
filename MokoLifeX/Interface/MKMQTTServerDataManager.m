@@ -87,12 +87,9 @@ NSString *const MKMQTTServerReceivedUpdateResultNotification = @"MKMQTTServerRec
     if (keyList.count != 3) {
         return;
     }
-    NSString *dataString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    if (!dataString) {
-        return;
-    }
-    //    NSDictionary *dataDic = [NSString dictionaryWithJsonString:dataString];
-    NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+    NSString *receiveStr = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+    NSData * datas = [receiveStr dataUsingEncoding:NSUTF8StringEncoding];
+    NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:datas options:NSJSONReadingAllowFragments error:nil];
     if (!dataDic || dataDic.allValues.count == 0) {
         return;
     }
@@ -100,7 +97,7 @@ NSString *const MKMQTTServerReceivedUpdateResultNotification = @"MKMQTTServerRec
     NSNumber *function = dataDic[@"msg_id"];
     NSMutableDictionary *tempDic = [NSMutableDictionary dictionaryWithDictionary:dataDic[@"data"]];
     [tempDic setObject:macAddress forKey:@"mac"];
-    if (!function) {
+    if (function) {
         [tempDic setObject:function forKey:@"function"];
     }
     NSLog(@"接收到数据:%@",dataDic);
@@ -234,6 +231,23 @@ NSString *const MKMQTTServerReceivedUpdateResultNotification = @"MKMQTTServerRec
     MKConfigServerModel *model = [[MKConfigServerModel alloc] init];
     [self.configServerModel updateServerDataWithModel:model];
     [self synchronize];
+}
+
+#pragma mark - private method
+- (NSDictionary *)dictionaryWithJsonString:(NSString *)jsonString{
+    if (jsonString == nil) {
+        return nil;
+    }
+    NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *err;
+    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                        options:NSJSONReadingMutableContainers
+                                                          error:&err];
+    if(err){
+        NSLog(@"json解析失败：%@",err);
+        return nil;
+    }
+    return dic;
 }
 
 #pragma mark - setter & getter

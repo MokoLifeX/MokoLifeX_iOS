@@ -129,7 +129,7 @@
 - (void)getDeviceLocalName{
     [[MKHudManager share] showHUDWithTitle:@"Reading..." inView:self.view isPenetration:NO];
     WS(weakSelf);
-    [MKDeviceDataBaseManager selectLocalNameWithMacAddress:self.deviceModel.device_mac sucBlock:^(NSString *localName) {
+    [MKDeviceDataBaseManager selectLocalNameWithMacAddress:self.deviceModel.device_id sucBlock:^(NSString *localName) {
         [[MKHudManager share] hide];
         weakSelf.deviceModel.local_name = localName;
         [weakSelf loadDatas];
@@ -230,6 +230,7 @@
 - (MKBaseTableView *)tableView{
     if (!_tableView) {
         _tableView = [[MKBaseTableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+        _tableView.backgroundColor = UIColorFromRGB(0xf2f2f2);
         
         _tableView.delegate = self;
         _tableView.dataSource = self;

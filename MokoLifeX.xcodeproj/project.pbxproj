@@ -916,9 +916,9 @@
 		001792E022E59445001C0FFD /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				001792E322E59445001C0FFD /* MKAboutController.h */,
 				001792E122E59445001C0FFD /* MKAboutController.m */,
 				001792E222E59445001C0FFD /* MKDeviceInformationController.h */,
-				001792E322E59445001C0FFD /* MKAboutController.h */,
 				001792E422E59445001C0FFD /* MKDeviceInformationController.m */,
 			);
 			path = controller;

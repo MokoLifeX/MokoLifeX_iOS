@@ -212,8 +212,7 @@
 #pragma mark - private method
 - (void)connectMQTTServer{
     //开始连接mqtt服务器
-    MKDeviceModel *model = [MKDeviceModel modelWithJSON:self.deviceDic];
-    [[MKMQTTServerManager sharedInstance] subscriptions:@[[model subscribeTopicInfoWithType:deviceModelTopicDeviceType function:@"switch_state"]]];
+    [[MKMQTTServerManager sharedInstance] subscriptions:@[self.serverModel.publishedTopic]];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                    selector:@selector(receiveDeviceTopicData:)
                                        name:MKMQTTServerReceivedSwitchStateNotification
@@ -261,6 +260,8 @@
     MKDeviceModel *dataModel = [MKDeviceModel modelWithJSON:self.deviceDic];
     dataModel.device_mode = [MKAddDeviceCenter sharedInstance].deviceType;
     dataModel.local_name = self.deviceDic[@"device_name"];
+    dataModel.subscribedTopic = self.serverModel.subscribedTopic;
+    dataModel.publishedTopic = self.serverModel.publishedTopic;
     if ([MKAddDeviceCenter sharedInstance].deviceType == MKDevice_swich) {
         dataModel.swich_way_nameDic = @{
                                         @"switch_state_01":@"Switch1",

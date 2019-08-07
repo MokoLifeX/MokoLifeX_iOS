@@ -264,12 +264,18 @@ static NSTimeInterval const defaultCommandTime = 2.f;
     }else if (qos == mqttQosLevelAtLeastOnce){
         qosNumber = 1;
     }
+    NSInteger connectModel = 0;
+    if (mode == mqttServerConnectOneWaySSLMode) {
+        connectModel = 1;
+    }else if (mode == mqttServerConnectTwoWaySSLMode) {
+        connectModel = 3;
+    }
     NSDictionary *commandDic = @{
                                  @"header":@(4002),
                                  @"host":host,
                                  @"port":@(port),
                                  @"clientId":(clientId ? clientId : @""),
-                                 @"connect_mode":@(mode),
+                                 @"connect_mode":@(connectModel),
                                  @"username":(!username ? @"" : username),
                                  @"password":(!password ? @"" : password),
                                  @"keepalive":@(keepalive),
@@ -504,14 +510,14 @@ static NSTimeInterval const defaultCommandTime = 2.f;
                 len = certData.length % certPackageDataLength;
             }
             NSData *tempData = [certData subdataWithRange:NSMakeRange(i * certPackageDataLength, len)];
-            NSString *subData = [self hexStringFromData:tempData];
+            NSString *subData = tempData.utf8String;
             NSDictionary *dataDic = @{
                                       @"header":@(4003),
                                       @"file_type":@(type),
-                                      @"file_size":@(2 * certData.length),
+                                      @"file_size":@(certData.length),
                                       @"current_packet_len":@(subData.length),
                                       @"data":subData,
-                                      @"offset":@(i * certPackageDataLength * 2),
+                                      @"offset":@(i * certPackageDataLength),
                                       };
             NSString *jsonString = [MKSocketAdopter convertToJsonData:dataDic];
             NSLog(@"+++++++++++++++++%@",dataDic);
@@ -544,20 +550,6 @@ static NSTimeInterval const defaultCommandTime = 2.f;
     }];
     dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
     return sendError;
-}
-
-- (NSString *)hexStringFromData:(NSData *)sourceData{
-    Byte *bytes = (Byte *)[sourceData bytes];
-    //下面是Byte 转换为16进制。
-    NSString *hexStr=@"";
-    for(int i=0;i<[sourceData length];i++){
-        NSString *newHexStr = [NSString stringWithFormat:@"%x",bytes[i]&0xff];///16进制数
-        if([newHexStr length]==1)
-            hexStr = [NSString stringWithFormat:@"%@0%@",hexStr,newHexStr];
-        else
-            hexStr = [NSString stringWithFormat:@"%@%@",hexStr,newHexStr];
-    }
-    return hexStr;
 }
 
 #pragma mark - setter & getter

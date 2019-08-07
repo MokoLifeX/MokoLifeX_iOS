@@ -236,8 +236,10 @@
 - (void)loadTopicListData {
     MKConfigServerNormalCell *subTopicCell = [MKConfigServerNormalCell initCellWithTableView:self.tableView];
     subTopicCell.msg = @"Subscribed Topic";
+    subTopicCell.textField.text = self.serverModel.subscribedTopic;
     MKConfigServerNormalCell *publicTopicCell = [MKConfigServerNormalCell initCellWithTableView:self.tableView];
     publicTopicCell.msg = @"Published Topic";
+    publicTopicCell.textField.text = self.serverModel.publishedTopic;
     [self.topicList addObject:subTopicCell];
     [self.topicList addObject:publicTopicCell];
 }
@@ -296,6 +298,10 @@
 - (MKConfigServerModel *)serverModel{
     if (!_serverModel) {
         _serverModel = [[MKConfigServerModel alloc] init];
+        _serverModel.host = @"a1fhygr0xxahcm-ats.iot.us-west-2.amazonaws.com";
+        _serverModel.port = @"8883";
+        _serverModel.subscribedTopic = @"MK112/b4e62d320bf5/app_to_device";
+        _serverModel.publishedTopic = @"MK112/b4e62d320bf5/device_to_app";
     }
     return _serverModel;
 }

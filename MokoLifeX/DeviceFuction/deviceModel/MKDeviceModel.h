@@ -53,6 +53,16 @@
  */
 @property (nonatomic, copy)NSString *device_type;
 
+/**
+ 订阅主题
+ */
+@property (nonatomic, copy)NSString *subscribedTopic;
+
+/**
+ 发布主题
+ */
+@property (nonatomic, copy)NSString *publishedTopic;
+
 #pragma mark - 业务流程相关
 
 @property (nonatomic, weak)id <MKDeviceModelDelegate>delegate;

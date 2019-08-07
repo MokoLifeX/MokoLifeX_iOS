@@ -503,6 +503,7 @@
 		003FC9AB22E6E90100A4CA92 /* MKConfigServerDeviceController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKConfigServerDeviceController.h; sourceTree = "<group>"; };
 		003FC9AC22E6E90100A4CA92 /* MKConfigServerDeviceController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKConfigServerDeviceController.m; sourceTree = "<group>"; };
 		03B479583844709702BCF4E3 /* Pods-MokoLifeX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MokoLifeX.release.xcconfig"; path = "Target Support Files/Pods-MokoLifeX/Pods-MokoLifeX.release.xcconfig"; sourceTree = "<group>"; };
+		6AAB6B403ABF89767C501A2A /* Pods-MokoLifeX.adhoc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MokoLifeX.adhoc.xcconfig"; path = "Target Support Files/Pods-MokoLifeX/Pods-MokoLifeX.adhoc.xcconfig"; sourceTree = "<group>"; };
 		AD7E194C4B1C8A67233595BE /* Pods-MokoLifeX.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MokoLifeX.debug.xcconfig"; path = "Target Support Files/Pods-MokoLifeX/Pods-MokoLifeX.debug.xcconfig"; sourceTree = "<group>"; };
 		ADA696AD4B92D377516793E0 /* libPods-MokoLifeX.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MokoLifeX.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -718,8 +719,8 @@
 		0017929922E59445001C0FFD /* controller */ = {
 			isa = PBXGroup;
 			children = (
-				0017929A22E59445001C0FFD /* MKSaveDeviceNameController.m */,
 				0017929B22E59445001C0FFD /* MKSaveDeviceNameController.h */,
+				0017929A22E59445001C0FFD /* MKSaveDeviceNameController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -861,9 +862,9 @@
 		001792CB22E59445001C0FFD /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				001792CE22E59445001C0FFD /* MKUpdateFirmwareController.h */,
 				001792CC22E59445001C0FFD /* MKUpdateFirmwareController.m */,
 				001792CD22E59445001C0FFD /* MKDeviceInfoController.h */,
-				001792CE22E59445001C0FFD /* MKUpdateFirmwareController.h */,
 				001792CF22E59445001C0FFD /* MKDeviceInfoController.m */,
 			);
 			path = controller;
@@ -954,8 +955,8 @@
 		001792EC22E59445001C0FFD /* controller */ = {
 			isa = PBXGroup;
 			children = (
-				001792ED22E59445001C0FFD /* MKConfigSwichController.m */,
 				001792EE22E59445001C0FFD /* MKConfigSwichController.h */,
+				001792ED22E59445001C0FFD /* MKConfigSwichController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -1072,8 +1073,8 @@
 		0017931122E59445001C0FFD /* controller */ = {
 			isa = PBXGroup;
 			children = (
-				0017931222E59445001C0FFD /* MKNotBlinkAmberController.m */,
 				0017931322E59445001C0FFD /* MKNotBlinkAmberController.h */,
+				0017931222E59445001C0FFD /* MKNotBlinkAmberController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -1113,8 +1114,8 @@
 		0017931F22E59445001C0FFD /* controller */ = {
 			isa = PBXGroup;
 			children = (
-				0017932022E59445001C0FFD /* MKElectricityController.m */,
 				0017932122E59445001C0FFD /* MKElectricityController.h */,
+				0017932022E59445001C0FFD /* MKElectricityController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -1483,6 +1484,7 @@
 			children = (
 				AD7E194C4B1C8A67233595BE /* Pods-MokoLifeX.debug.xcconfig */,
 				03B479583844709702BCF4E3 /* Pods-MokoLifeX.release.xcconfig */,
+				6AAB6B403ABF89767C501A2A /* Pods-MokoLifeX.adhoc.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -1964,6 +1966,88 @@
 			};
 			name = Release;
 		};
+		002A693822F810BA0054DD62 /* adhoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = adhoc;
+		};
+		002A693922F810BA0054DD62 /* adhoc */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6AAB6B403ABF89767C501A2A /* Pods-MokoLifeX.adhoc.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = NO;
+				CODE_SIGN_ENTITLEMENTS = MokoLifeX/MokoLifeX.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = R558LEUW2T;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/MokoLifeX/PrefixHeader.pch";
+				INFOPLIST_FILE = MokoLifeX/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.moko.MokoLifeX;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = adhoc;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1971,6 +2055,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0017922B22E5592A001C0FFD /* Debug */,
+				002A693822F810BA0054DD62 /* adhoc */,
 				0017922C22E5592A001C0FFD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -1980,6 +2065,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0017922E22E5592A001C0FFD /* Debug */,
+				002A693922F810BA0054DD62 /* adhoc */,
 				0017922F22E5592A001C0FFD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;

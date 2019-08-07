@@ -84,7 +84,7 @@ NSString *const MKMQTTServerReceivedUpdateResultNotification = @"MKMQTTServerRec
         return;
     }
     NSArray *keyList = [topic componentsSeparatedByString:@"/"];
-    if (keyList.count != 6) {
+    if (keyList.count != 3) {
         return;
     }
     NSString *dataString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];

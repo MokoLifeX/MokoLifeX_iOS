@@ -34,6 +34,8 @@
 
 @property (nonatomic, strong)MKConfigServerModel *serverModel;
 
+@property (nonatomic, assign)BOOL needConnect;
+
 @end
 
 @implementation MKConfigServerAppController
@@ -46,6 +48,13 @@
     [super viewDidAppear:animated];
     self.view.shiftHeightAsDodgeViewForMLInputDodger = 50.f;
     [self.view registerAsDodgeViewForMLInputDodgerWithOriginalY:self.view.frame.origin.y];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    if (self.needConnect) {
+        [[MKMQTTServerDataManager sharedInstance] connectServer];
+    }
 }
 
 - (void)viewDidLoad {
@@ -169,7 +178,7 @@
     self.serverModel.userName = serverModel.userName;
     self.serverModel.password = serverModel.password;
     [[MKMQTTServerDataManager sharedInstance] saveServerConfigDataToLocal:self.serverModel];
-    [[MKMQTTServerDataManager sharedInstance] connectServer];
+    self.needConnect = YES;
     [self.navigationController popViewControllerAnimated:YES];
 }
 

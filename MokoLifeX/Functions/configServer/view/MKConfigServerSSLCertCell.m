@@ -113,8 +113,7 @@ static NSString *const MKConfigServerSSLCertCellIdenty = @"MKConfigServerSSLCert
 - (UIButton *)selectedButton {
     if (!_selectedButton) {
         _selectedButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        _selectedButton.backgroundColor = [UIColor redColor];
-        [_selectedButton setTitle:@"sel" forState:UIControlStateNormal];
+        [_selectedButton setImage:LOADIMAGE(@"mokoLife_config_certAddIcon", @"png") forState:UIControlStateNormal];
         [_selectedButton addTapAction:self selector:@selector(selectedButtonPressed)];
     }
     return _selectedButton;

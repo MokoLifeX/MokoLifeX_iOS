@@ -38,6 +38,11 @@ extern NSString *const MKMQTTServerReceivedFirmwareInfoNotification;
  */
 extern NSString *const MKMQTTServerReceivedUpdateResultNotification;
 
+/*
+ 接受到设备上电默认开关状态通知
+ */
+extern NSString *const MKMQTTServerReceivedDevicePowerOnStatusNotification;
+
 @class MKConfigServerModel;
 @interface MKMQTTServerDataManager : NSObject
 

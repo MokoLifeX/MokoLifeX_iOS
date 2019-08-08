@@ -19,6 +19,7 @@ NSString *const MKMQTTServerReceivedDelayTimeNotification = @"MKMQTTServerReceiv
 NSString *const MKMQTTServerReceivedElectricityNotification = @"MKMQTTServerReceivedElectricityNotification";
 NSString *const MKMQTTServerReceivedFirmwareInfoNotification = @"MKMQTTServerReceivedFirmwareInfoNotification";
 NSString *const MKMQTTServerReceivedUpdateResultNotification = @"MKMQTTServerReceivedUpdateResultNotification";
+NSString *const MKMQTTServerReceivedDevicePowerOnStatusNotification = @"MKMQTTServerReceivedDevicePowerOnStatusNotification";
 
 @interface MKMQTTServerDataManager()<MKMQTTServerManagerDelegate>
 
@@ -132,6 +133,13 @@ NSString *const MKMQTTServerReceivedUpdateResultNotification = @"MKMQTTServerRec
     if ([function integerValue] == 1006) {
         //电量信息
         [[NSNotificationCenter defaultCenter] postNotificationName:MKMQTTServerReceivedElectricityNotification
+                                                            object:nil
+                                                          userInfo:@{@"userInfo" : tempDic}];
+        return;
+    }
+    if ([function integerValue] == 1008) {
+        //读取插座上电默认开关状态
+        [[NSNotificationCenter defaultCenter] postNotificationName:MKMQTTServerReceivedDevicePowerOnStatusNotification
                                                             object:nil
                                                           userInfo:@{@"userInfo" : tempDic}];
         return;

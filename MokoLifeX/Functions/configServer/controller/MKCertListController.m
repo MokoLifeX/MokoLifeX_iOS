@@ -81,7 +81,7 @@
 - (void)loadSubViews {
     self.custom_naviBarColor = UIColorFromRGB(0x0188cc);
     self.titleLabel.textColor = COLOR_WHITE_MACROS;
-    self.defaultTitle = @"Cert Sel";
+    self.defaultTitle = @"File Select";
     [self.rightButton setHidden:YES];
     [self.view addSubview:self.tableView];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {

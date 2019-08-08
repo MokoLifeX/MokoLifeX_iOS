@@ -15,6 +15,12 @@ typedef NS_ENUM(NSInteger, MKUpdateFileType) {
     MKUpdateClientPrivateKey,
 };
 
+typedef NS_ENUM(NSInteger, MKDevicePowerOnStatus) {
+    MKDevicePowerOnStatusOff,
+    MKDevicePowerOnStatusOn,
+    MKDevicePowerOnStatusRevertLast,
+};
+
 @interface MKMQTTServerInterface : NSObject
 
 /**
@@ -58,5 +64,28 @@ typedef NS_ENUM(NSInteger, MKUpdateFileType) {
           sucBlock:(void (^)(void))sucBlock
        failedBlock:(void (^)(NSError *error))failedBlock;
 
+/**
+ When setting equipment electrical switch state by default
+
+ @param status status
+ @param topic topic
+ @param sucBlock Success callback
+ @param failedBlock Failed callback
+ */
++ (void)configDevicePowerOnStatus:(MKDevicePowerOnStatus)status
+                            topic:(NSString *)topic
+                         sucBlock:(void (^)(void))sucBlock
+                      failedBlock:(void (^)(NSError *error))failedBlock;
+
+/**
+ Read equipment electrical switch state by default
+
+ @param topic topic
+ @param sucBlock Success callback
+ @param failedBlock Failed callback
+ */
++ (void)readDevicePowerOnStatusWithTopic:(NSString *)topic
+                                sucBlock:(void (^)(void))sucBlock
+                             failedBlock:(void (^)(NSError *error))failedBlock;
 
 @end

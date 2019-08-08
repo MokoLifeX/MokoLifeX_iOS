@@ -46,4 +46,23 @@
     [[MKMQTTServerManager sharedInstance] sendData:@{@"msg_id":@(2005)} topic:topic sucBlock:sucBlock failedBlock:failedBlock];
 }
 
++ (void)configDevicePowerOnStatus:(MKDevicePowerOnStatus)status
+                            topic:(NSString *)topic
+                         sucBlock:(void (^)(void))sucBlock
+                      failedBlock:(void (^)(NSError *error))failedBlock {
+    NSDictionary *dataDic = @{
+                              @"msg_id":@(2006),
+                              @"data":@{
+                                      @"switch_state":@(status)
+                                      }
+                              };
+    [[MKMQTTServerManager sharedInstance] sendData:dataDic topic:topic sucBlock:sucBlock failedBlock:failedBlock];
+}
+
++ (void)readDevicePowerOnStatusWithTopic:(NSString *)topic
+                                sucBlock:(void (^)(void))sucBlock
+                             failedBlock:(void (^)(NSError *error))failedBlock {
+    [[MKMQTTServerManager sharedInstance] sendData:@{@"msg_id":@(2007)} topic:topic sucBlock:sucBlock failedBlock:failedBlock];
+}
+
 @end

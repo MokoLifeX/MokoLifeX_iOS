@@ -328,7 +328,10 @@
     [self.view addSubview:self.addDeviceView];
     [self.view addSubview:self.tableView];
     [self.loadingView mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.edges.mas_equalTo(self.titleLabel);
+        make.left.mas_equalTo(5.f);
+        make.right.mas_equalTo(-5.f);
+        make.top.mas_equalTo(0);
+        make.bottom.mas_equalTo(-5.f);
     }];
     [self.addDeviceView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(0);

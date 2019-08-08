@@ -44,13 +44,20 @@ static NSString *const MKConfigServerNormalCellIdenty = @"MKConfigServerNormalCe
 #pragma mark - 父类方法
 - (void)layoutSubviews{
     [super layoutSubviews];
-    [self.msgLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+    CGSize msgSize = [NSString sizeWithText:self.msgLabel.text
+                                    andFont:MKFont(15.f)
+                                 andMaxSize:CGSizeMake(MAXFLOAT, MKFont(15.f).lineHeight)];
+    CGFloat width = msgSize.width;
+    if (width < msgLabelWidth) {
+        width = msgLabelWidth;
+    }
+    [self.msgLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(15.f);
-        make.width.mas_equalTo(msgLabelWidth);
+        make.width.mas_equalTo(width);
         make.centerY.mas_equalTo(self.contentView.mas_centerY);
         make.height.mas_equalTo([MKConfigServerAdopter defaultMsgLabelHeight]);
     }];
-    [self.textField mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.textField mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.msgLabel.mas_right).mas_offset(6.f);
         make.right.mas_equalTo(-21.f);
         make.centerY.mas_equalTo(self.contentView.mas_centerY);
@@ -110,6 +117,7 @@ static NSString *const MKConfigServerNormalCellIdenty = @"MKConfigServerNormalCe
     _msg = nil;
     _msg = msg;
     self.msgLabel.text = (!ValidStr(_msg) ? @"" : _msg);
+    [self setNeedsLayout];
 }
 
 - (void)setSecureTextEntry:(BOOL)secureTextEntry{

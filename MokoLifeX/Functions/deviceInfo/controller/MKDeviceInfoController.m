@@ -101,6 +101,7 @@
             return;
         }
         MKModifyPowerOnStatusController *vc = [[MKModifyPowerOnStatusController alloc] init];
+        vc.deviceModel = self.deviceModel;
         [self.navigationController pushViewController:vc animated:YES];
         return;
     }

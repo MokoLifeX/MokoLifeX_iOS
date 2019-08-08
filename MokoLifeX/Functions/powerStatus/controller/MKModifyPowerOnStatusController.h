@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MKModifyPowerOnStatusController : MKBaseViewController
 
+@property (nonatomic, strong)MKDeviceModel *deviceModel;
+
 @end
 
 NS_ASSUME_NONNULL_END

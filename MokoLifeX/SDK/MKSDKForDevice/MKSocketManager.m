@@ -246,7 +246,7 @@ static NSTimeInterval const defaultCommandTime = 2.f;
         [MKSocketBlockAdopter operationParamsErrorWithMessage:@"Keep alive effective range : 10~120" block:failedBlock];
         return;
     }
-    if (clientId && clientId.length > 23) {
+    if (clientId && clientId.length > 64) {
         [MKSocketBlockAdopter operationParamsErrorWithMessage:@"Client id error" block:failedBlock];
         return;
     }

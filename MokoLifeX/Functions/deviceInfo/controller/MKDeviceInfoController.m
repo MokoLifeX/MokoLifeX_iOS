@@ -12,10 +12,13 @@
 #import "MKDeviceInfoModel.h"
 #import "MKModifyLocalNameView.h"
 #import "MKDeviceDataBaseManager.h"
+
+
 #import "MKDeviceInfoAdopter.h"
 #import "MKAboutController.h"
 #import "MKDeviceInformationController.h"
 #import "MKUpdateFirmwareController.h"
+#import "MKModifyPowerOnStatusController.h"
 
 @interface MKDeviceInfoController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -60,7 +63,7 @@
         }];
         return;
     }
-    if (indexPath.row == 3) {
+    if (indexPath.row == 4) {
         //关于
         MKAboutController *vc = [[MKAboutController alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
@@ -85,6 +88,20 @@
             return;
         }
         [self updateFirmware];
+        return;
+    }
+    if (indexPath.row == 3) {
+        //开关上电默认状态
+        if (self.deviceModel.device_mode == MKDevice_plug && self.deviceModel.plugState == MKSmartPlugOffline) {
+            [self.view showCentralToast:@"Device offline,please check."];
+            return;
+        }
+        if (self.deviceModel.device_mode == MKDevice_swich && self.deviceModel.swichState == MKSmartSwichOffline) {
+            [self.view showCentralToast:@"Device offline,please check."];
+            return;
+        }
+        MKModifyPowerOnStatusController *vc = [[MKModifyPowerOnStatusController alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
         return;
     }
 }
@@ -218,6 +235,10 @@
     MKDeviceInfoModel *firmwareModel = [[MKDeviceInfoModel alloc] init];
     firmwareModel.leftMsg = @"Check firmware update";
     [self.dataList addObject:firmwareModel];
+    
+    MKDeviceInfoModel *powerStatusModel = [[MKDeviceInfoModel alloc] init];
+    powerStatusModel.leftMsg = @"Modify power on status";
+    [self.dataList addObject:powerStatusModel];
     
     MKDeviceInfoModel *aboutModel = [[MKDeviceInfoModel alloc] init];
     aboutModel.leftMsg = @"About";

@@ -189,6 +189,8 @@
 		001794C822E5A12F001C0FFD /* electricityPowerIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0017947422E5A12F001C0FFD /* electricityPowerIcon@3x.png */; };
 		001794C922E5A12F001C0FFD /* electricityVoltageIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0017947522E5A12F001C0FFD /* electricityVoltageIcon@2x.png */; };
 		001794CA22E5A12F001C0FFD /* electricityVoltageIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0017947622E5A12F001C0FFD /* electricityVoltageIcon@3x.png */; };
+		001E950D22FBC47B007F19A9 /* MKModifyPowerOnStatusController.m in Sources */ = {isa = PBXBuildFile; fileRef = 001E950C22FBC47B007F19A9 /* MKModifyPowerOnStatusController.m */; };
+		001E951022FBC598007F19A9 /* MKUpdateFirmwareTypeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 001E950F22FBC598007F19A9 /* MKUpdateFirmwareTypeCell.m */; };
 		002C40B522E7FBEB00026DE6 /* MKConfigServerSSLCertCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 002C40B422E7FBEB00026DE6 /* MKConfigServerSSLCertCell.m */; };
 		002C40B922E7FE6000026DE6 /* MKConfigServerSSLCertModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 002C40B822E7FE6000026DE6 /* MKConfigServerSSLCertModel.m */; };
 		002C40BF22E8073600026DE6 /* MKConfigServerSSLCertFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 002C40BE22E8073600026DE6 /* MKConfigServerSSLCertFileManager.m */; };
@@ -490,6 +492,10 @@
 		0017947422E5A12F001C0FFD /* electricityPowerIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "electricityPowerIcon@3x.png"; sourceTree = "<group>"; };
 		0017947522E5A12F001C0FFD /* electricityVoltageIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "electricityVoltageIcon@2x.png"; sourceTree = "<group>"; };
 		0017947622E5A12F001C0FFD /* electricityVoltageIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "electricityVoltageIcon@3x.png"; sourceTree = "<group>"; };
+		001E950B22FBC47B007F19A9 /* MKModifyPowerOnStatusController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKModifyPowerOnStatusController.h; sourceTree = "<group>"; };
+		001E950C22FBC47B007F19A9 /* MKModifyPowerOnStatusController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKModifyPowerOnStatusController.m; sourceTree = "<group>"; };
+		001E950E22FBC598007F19A9 /* MKUpdateFirmwareTypeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKUpdateFirmwareTypeCell.h; sourceTree = "<group>"; };
+		001E950F22FBC598007F19A9 /* MKUpdateFirmwareTypeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKUpdateFirmwareTypeCell.m; sourceTree = "<group>"; };
 		002C40B322E7FBEB00026DE6 /* MKConfigServerSSLCertCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKConfigServerSSLCertCell.h; sourceTree = "<group>"; };
 		002C40B422E7FBEB00026DE6 /* MKConfigServerSSLCertCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKConfigServerSSLCertCell.m; sourceTree = "<group>"; };
 		002C40B722E7FE6000026DE6 /* MKConfigServerSSLCertModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKConfigServerSSLCertModel.h; sourceTree = "<group>"; };
@@ -693,6 +699,7 @@
 		0017929022E59445001C0FFD /* Functions */ = {
 			isa = PBXGroup;
 			children = (
+				001E950722FBC461007F19A9 /* powerStatus */,
 				0017929822E59445001C0FFD /* saveDevice */,
 				0017929C22E59445001C0FFD /* selectDeviceType */,
 				001792A622E59445001C0FFD /* deviceList */,
@@ -891,14 +898,16 @@
 		001792D622E59445001C0FFD /* view */ = {
 			isa = PBXGroup;
 			children = (
+				001792DB22E59445001C0FFD /* MKUpdateFirmwareCell.h */,
 				001792D722E59445001C0FFD /* MKUpdateFirmwareCell.m */,
 				001792D822E59445001C0FFD /* MKDeviceInfoCell.h */,
-				001792D922E59445001C0FFD /* MKUpdateFirmwareHostTypeCell.m */,
-				001792DA22E59445001C0FFD /* MKModifyLocalNameView.m */,
-				001792DB22E59445001C0FFD /* MKUpdateFirmwareCell.h */,
-				001792DC22E59445001C0FFD /* MKUpdateFirmwareHostTypeCell.h */,
 				001792DD22E59445001C0FFD /* MKDeviceInfoCell.m */,
 				001792DE22E59445001C0FFD /* MKModifyLocalNameView.h */,
+				001792DA22E59445001C0FFD /* MKModifyLocalNameView.m */,
+				001792DC22E59445001C0FFD /* MKUpdateFirmwareHostTypeCell.h */,
+				001792D922E59445001C0FFD /* MKUpdateFirmwareHostTypeCell.m */,
+				001E950E22FBC598007F19A9 /* MKUpdateFirmwareTypeCell.h */,
+				001E950F22FBC598007F19A9 /* MKUpdateFirmwareTypeCell.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1470,6 +1479,39 @@
 			path = electricity;
 			sourceTree = "<group>";
 		};
+		001E950722FBC461007F19A9 /* powerStatus */ = {
+			isa = PBXGroup;
+			children = (
+				001E950822FBC461007F19A9 /* controller */,
+				001E950922FBC461007F19A9 /* model */,
+				001E950A22FBC461007F19A9 /* view */,
+			);
+			path = powerStatus;
+			sourceTree = "<group>";
+		};
+		001E950822FBC461007F19A9 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				001E950B22FBC47B007F19A9 /* MKModifyPowerOnStatusController.h */,
+				001E950C22FBC47B007F19A9 /* MKModifyPowerOnStatusController.m */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		001E950922FBC461007F19A9 /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		001E950A22FBC461007F19A9 /* view */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
 		002C40B622E7FE5000026DE6 /* model */ = {
 			isa = PBXGroup;
 			children = (
@@ -1717,6 +1759,7 @@
 				0017941522E59B6B001C0FFD /* EasyLodingView.m in Sources */,
 				0017933522E59445001C0FFD /* MKConfigServerConnectModeCell.m in Sources */,
 				0017935122E59445001C0FFD /* MKConnectDeviceView.m in Sources */,
+				001E950D22FBC47B007F19A9 /* MKModifyPowerOnStatusController.m in Sources */,
 				0017935922E59445001C0FFD /* MKElectricityModel.m in Sources */,
 				0017934722E59445001C0FFD /* MKConfigSwichController.m in Sources */,
 				0017933B22E59445001C0FFD /* MKUpdateFirmwareController.m in Sources */,
@@ -1727,6 +1770,7 @@
 				002C40C222E808EE00026DE6 /* MKCertListController.m in Sources */,
 				0017935422E59445001C0FFD /* MKNotBlinkAmberModel.m in Sources */,
 				0017941122E59B6B001C0FFD /* EasyShowUtils.m in Sources */,
+				001E951022FBC598007F19A9 /* MKUpdateFirmwareTypeCell.m in Sources */,
 				001793C322E59B58001C0FFD /* MKDeviceDataBaseAdopter.m in Sources */,
 				0017928E22E59298001C0FFD /* MKDeviceModel+MKPlugAdd.m in Sources */,
 				0017941722E59B6B001C0FFD /* EasyLodingGlobalConfig.m in Sources */,

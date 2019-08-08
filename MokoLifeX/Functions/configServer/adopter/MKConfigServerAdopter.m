@@ -70,18 +70,12 @@
     [qosCell setParams:dic];
     [dataList addObject:qosCell];
     
-    if (isApp) {
-        //client id
-        MKConfigServerNormalCell *clientidCell = [MKConfigServerNormalCell initCellWithTableView:tableView];
-        clientidCell.msg = @"Client Id";
-        NSString *clientId = SafeStr(configModel.clientId);
-        if (!ValidStr(clientId)) {
-            //如果没有有效值，则默认用手机uuid
-            clientId = twlt_uuid_create();//设备唯一标识
-        }
-        [clientidCell setParams:clientId];
-        [dataList addObject:clientidCell];
-    }
+    //client id
+    MKConfigServerNormalCell *clientidCell = [MKConfigServerNormalCell initCellWithTableView:tableView];
+    clientidCell.msg = @"Client Id";
+    NSString *clientId = SafeStr(configModel.clientId);
+    [clientidCell setParams:clientId];
+    [dataList addObject:clientidCell];
     
     //connect mode
     MKConfigServerConnectModeCell *connectModeCell = [MKConfigServerConnectModeCell initCellWithTableView:tableView];
@@ -137,24 +131,15 @@
     if (ValidStr(qosDic[@"keepAlive"])) {
         serverModel.keepAlive = [NSString stringWithFormat:@"%ld",(long)[qosDic[@"keepAlive"] integerValue]];
     }
+    //client id
+    id <MKConfigServerCellProtocol>clientIdCell = dataList[5];
+    NSDictionary *clientIdDic = [clientIdCell configServerCellValue];
+    serverModel.clientId = clientIdDic[@"paramValue"];
     
-    if (isApp) {
-        //app
-        //client id
-        id <MKConfigServerCellProtocol>clientIdCell = dataList[5];
-        NSDictionary *clientIdDic = [clientIdCell configServerCellValue];
-        serverModel.clientId = clientIdDic[@"paramValue"];
-        
-        //connect mode
-        id <MKConfigServerCellProtocol>connectModeCell = dataList[6];
-        NSDictionary *connectModeDic = [connectModeCell configServerCellValue];
-        serverModel.connectMode = [connectModeDic[@"connectMode"] integerValue];
-    }else{
-        //connect mode
-        id <MKConfigServerCellProtocol>connectModeCell = dataList[5];
-        NSDictionary *connectModeDic = [connectModeCell configServerCellValue];
-        serverModel.connectMode = [connectModeDic[@"connectMode"] integerValue];
-    }
+    //connect mode
+    id <MKConfigServerCellProtocol>connectModeCell = dataList[6];
+    NSDictionary *connectModeDic = [connectModeCell configServerCellValue];
+    serverModel.connectMode = [connectModeDic[@"connectMode"] integerValue];
     
     return serverModel;
 }
@@ -246,15 +231,12 @@
         [target.view showCentralToast:@"Keep alive range : 10~120"];
         return NO;
     }
-    if ([target isKindOfClass:NSClassFromString(@"MKConfigServerAppController")]) {
-        //app，不能为空并且最大23个字符
-        if (!ValidStr(serverModel.clientId) || serverModel.clientId.length > 23) {
-            //client id错误
-            [target.view showCentralToast:@"Client id error"];
-            return NO;
-        }
+    //app，不能为空并且最大23个字符
+    if (!ValidStr(serverModel.clientId) || serverModel.clientId.length > 23) {
+        //client id错误
+        [target.view showCentralToast:@"Client id error"];
+        return NO;
     }
-    
     if (serverModel.userName.length > 128) {
         //user name错误
         [target.view showCentralToast:@"User name error"];

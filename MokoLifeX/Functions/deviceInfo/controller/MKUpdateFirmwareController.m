@@ -7,9 +7,11 @@
 //
 
 #import "MKUpdateFirmwareController.h"
+#import "MKBaseTableView.h"
+
 #import "MKUpdateFirmwareHostTypeCell.h"
 #import "MKUpdateFirmwareCell.h"
-#import "MKBaseTableView.h"
+#import "MKUpdateFirmwareTypeCell.h"
 
 NSString *const deviceMacAddress = @"deviceMacAddress";
 
@@ -70,7 +72,7 @@ NSString *const deviceMacAddress = @"deviceMacAddress";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 0) {
-        MKUpdateFirmwareHostTypeCell *cell = [MKUpdateFirmwareHostTypeCell initCellWithTable:tableView];
+        MKUpdateFirmwareTypeCell *cell = [MKUpdateFirmwareTypeCell initCellWithTableView:tableView];
         return cell;
     }
     MKUpdateFirmwareCell *cell = [MKUpdateFirmwareCell initCellWithTable:tableView];
@@ -105,10 +107,10 @@ NSString *const deviceMacAddress = @"deviceMacAddress";
         [self.view showCentralToast:@"Catalogue error"];
         return ;
     }
-//    MKUpdateFirmwareHostTypeCell *typeCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    MKUpdateFirmwareTypeCell *typeCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
     [[MKHudManager share] showHUDWithTitle:@"Updating..." inView:self.view isPenetration:NO];
     WS(weakSelf);//发送成功订阅升级结果主题
-    [MKMQTTServerInterface updateFile:MKUpdateFirmware host:host port:[port integerValue] catalogue:catalogue topic:self.deviceModel.subscribedTopic sucBlock:^{
+    [MKMQTTServerInterface updateFile:[self fileType:[typeCell currentFileType]] host:host port:[port integerValue] catalogue:catalogue topic:self.deviceModel.subscribedTopic sucBlock:^{
         //监听升级结果
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(firmwareUpdateResult:)
@@ -136,6 +138,20 @@ NSString *const deviceMacAddress = @"deviceMacAddress";
     }
     //升级失败
     [self.view showCentralToast:@"Update Failed!"];
+}
+
+#pragma mark - private method
+- (MKUpdateFileType)fileType:(updateFirmwareCellType)cellType {
+    switch (cellType) {
+        case update_firmware:
+            return MKUpdateFirmware;
+        case update_caCertification:
+            return MKUpdateCAFile;
+        case update_clientCertification:
+            return MKUpdateClientCertificate;
+        case update_clientKey:
+            return MKUpdateClientPrivateKey;
+    }
 }
 
 #pragma mark - loadDatas

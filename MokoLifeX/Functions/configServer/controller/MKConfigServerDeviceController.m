@@ -159,7 +159,7 @@
         //存在参数错误
         return;
     }
-    if (!ValidStr(serverModel.clientId) || serverModel.clientId.length > 23) {
+    if (!ValidStr(serverModel.clientId) || serverModel.clientId.length > 64) {
         //
         [self.view showCentralToast:@"Client id error"];
         return;

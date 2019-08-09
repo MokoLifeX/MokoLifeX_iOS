@@ -113,6 +113,11 @@
 }
 
 - (void)configCACerts {
+    if (self.configServerModel.connectMode == 0) {
+        //tcp不需要证书
+        [self configTopic];
+        return;
+    }
     NSString *document = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
     NSString *filePath = [document stringByAppendingPathComponent:self.configServerModel.caFileName];
     NSData *caData = [NSData dataWithContentsOfFile:filePath];
@@ -131,6 +136,11 @@
 }
 
 - (void)configClientCert {
+    if (self.configServerModel.connectMode == 1) {
+        //单项验证只需要CA证书
+        [self configTopic];
+        return;
+    }
     NSString *document = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
     NSString *filePath = [document stringByAppendingPathComponent:self.configServerModel.clientCertName];
     NSData *caData = [NSData dataWithContentsOfFile:filePath];

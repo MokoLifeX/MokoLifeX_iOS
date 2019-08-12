@@ -86,8 +86,8 @@ typedef NS_ENUM(NSInteger, mk_electricalDefaultState) {
  @param keepalive   heartbeat package time, the range is 10~120, and unitis °∞s°±
  @param clean       NO: means to create a persistent session, which remains and saves the offline message until the session expires when the client is disconnected.YES: means to create a new temporary session, which is automatically destroyed when the client disconnects.
  @param clientId    The MQTT server USES the plug as the clientID to distinguish between different plug devices, and if the item is empty, the plug will by default communicate with the MQTT server using the MAC address as the clientID.Device MAC addresses are recommended.length 0~64
- @param username    User name for plug connection to MQTT server, length 0~128
- @param password    Password for  plug connection to MQTT server, length 0~128
+ @param username    User name for plug connection to MQTT server, length 0~256
+ @param password    Password for  plug connection to MQTT server, length 0~256
  @param sucBlock    Success callback
  @param failedBlock Failed callback
  */

@@ -61,6 +61,28 @@
     // Do any additional setup after loading the view.
 }
 
+#pragma mark - super method
+- (void)rightButtonMethod{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Clear All Parameters"
+                                                                             message:@"Please confirm whether to clear all parameters"
+                                                                      preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel"
+                                                     style:UIAlertActionStyleCancel
+                                                   handler:^(UIAlertAction * _Nonnull action) {
+                                                       
+                                                   }];
+    WS(weakSelf);
+    UIAlertAction *confirm = [UIAlertAction actionWithTitle:@"Confirm"
+                                                      style:UIAlertActionStyleDefault
+                                                    handler:^(UIAlertAction *action) {
+                                                        [MKConfigServerAdopter clearAllConfigCellValuesWithTable:weakSelf.tableView];
+                                                    }];
+    
+    [alertController addAction:cancel];
+    [alertController addAction:confirm];
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
 #pragma mark - UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 1) {
@@ -255,6 +277,8 @@
     self.titleLabel.text = @"MQTT settings for Device";
     self.titleLabel.textColor = COLOR_WHITE_MACROS;
     self.custom_naviBarColor = UIColorFromRGB(0x0188cc);
+    [self.rightButton setTitle:@"Clear" forState:UIControlStateNormal];
+    [self.rightButton setTitleColor:COLOR_WHITE_MACROS forState:UIControlStateNormal];
     [self.view addSubview:self.tableView];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(0);

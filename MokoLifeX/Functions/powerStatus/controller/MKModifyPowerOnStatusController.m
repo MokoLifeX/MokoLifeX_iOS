@@ -211,7 +211,7 @@ static CGFloat const iconHeight = 13.f;
         }];
         UILabel *onLabel = [MKConfigServerAdopter configServerDefaultMsgLabel];
         onLabel.font = MKFont(12.f);
-        onLabel.text = @"Switch on";
+        onLabel.text = @"Switched on";
         [_onButton addSubview:onLabel];
         [onLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.onIcon.mas_right).mas_offset(3.f);

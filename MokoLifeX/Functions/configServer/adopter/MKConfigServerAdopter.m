@@ -171,37 +171,6 @@
 }
 
 /**
- 右上角clear按钮点击事件
- 
- @param confirmAction 确认
- @param cancelAction 取消
- */
-+ (void)clearAction:(void (^)(void))confirmAction cancelAction:(void (^)(void))cancelAction{
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Clear All Parameters"
-                                                                             message:@"Please confirm whether to clear all parameters"
-                                                                      preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel"
-                                                     style:UIAlertActionStyleCancel
-                                                   handler:^(UIAlertAction * _Nonnull action) {
-                                                       if (cancelAction) {
-                                                           cancelAction();
-                                                       }
-                                                   }];
-    
-    UIAlertAction *confirm = [UIAlertAction actionWithTitle:@"Confirm"
-                                                      style:UIAlertActionStyleDefault
-                                                    handler:^(UIAlertAction *action) {
-                                                        if (confirmAction) {
-                                                            confirmAction();
-                                                        }
-                                                    }];
-    
-    [alertController addAction:cancel];
-    [alertController addAction:confirm];
-    [kAppRootController presentViewController:alertController animated:YES completion:nil];
-}
-
-/**
  各项参数是否正确
 
  @param serverModel 当前配置的服务器参数
@@ -237,12 +206,12 @@
         [target.view showCentralToast:@"Client id error"];
         return NO;
     }
-    if (serverModel.userName.length > 128) {
+    if (serverModel.userName.length > 256) {
         //user name错误
         [target.view showCentralToast:@"User name error"];
         return NO;
     }
-    if (serverModel.password.length > 128) {
+    if (serverModel.password.length > 256) {
         //passwrod错误
         [target.view showCentralToast:@"Password error"];
         return NO;

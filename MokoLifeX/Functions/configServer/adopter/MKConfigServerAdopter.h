@@ -60,12 +60,4 @@ static NSString *const configCellNeedHiddenKeyboardNotification = @"configCellNe
 + (void)showQosPickViewWithCurrentData:(NSString *)currentData
                           confirmBlock:(void (^)(NSString *data, NSInteger selectedRow))confirmBlock;
 
-/**
- 右上角clear按钮点击事件
-
- @param confirmAction 确认
- @param cancelAction 取消
- */
-+ (void)clearAction:(void (^)(void))confirmAction cancelAction:(void (^)(void))cancelAction;
-
 @end

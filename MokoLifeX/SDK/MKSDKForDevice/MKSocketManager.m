@@ -250,11 +250,11 @@ static NSTimeInterval const defaultCommandTime = 2.f;
         [MKSocketBlockAdopter operationParamsErrorWithMessage:@"Client id error" block:failedBlock];
         return;
     }
-    if (username.length > 128) {
+    if (username.length > 256) {
         [MKSocketBlockAdopter operationParamsErrorWithMessage:@"User name error" block:failedBlock];
         return;
     }
-    if (password.length > 128) {
+    if (password.length > 256) {
         [MKSocketBlockAdopter operationParamsErrorWithMessage:@"Password error" block:failedBlock];
         return;
     }
@@ -501,6 +501,10 @@ static NSTimeInterval const defaultCommandTime = 2.f;
                         type:(NSInteger)type
                     sucBlock:(void (^)(void))sucBlock
                  failedBlock:(void (^)(NSError *error))failedBlock{
+    if (!certData || certData.length == 0) {
+        [MKSocketBlockAdopter operationParamsErrorBlock:failedBlock];
+        return;
+    }
     dispatch_async(self.certQueue, ^{
         NSInteger totalPackages = (certData.length / certPackageDataLength) + 1;
         for (NSInteger i = 0; i < totalPackages; i ++) {
@@ -511,6 +515,10 @@ static NSTimeInterval const defaultCommandTime = 2.f;
             }
             NSData *tempData = [certData subdataWithRange:NSMakeRange(i * certPackageDataLength, len)];
             NSString *subData = tempData.utf8String;
+            if (!subData || ![subData isKindOfClass:NSString.class]) {
+                [MKSocketBlockAdopter operationParamsErrorBlock:failedBlock];
+                return;
+            }
             NSDictionary *dataDic = @{
                                       @"header":@(4003),
                                       @"file_type":@(type),

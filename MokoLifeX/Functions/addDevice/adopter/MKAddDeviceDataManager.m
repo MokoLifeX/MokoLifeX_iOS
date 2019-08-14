@@ -117,7 +117,7 @@
     NSDictionary *deviceDic = note.userInfo[@"userInfo"];
     if (!ValidDict(deviceDic)
         || self.connectTimeout
-        || ![deviceDic[@"mac"] isEqualToString:self.deviceDic[@"device_id"]]) {
+        || ![deviceDic[@"deviceTopic"] isEqualToString:self.serverModel.publishedTopic]) {
         return;
     }
     [[NSNotificationCenter defaultCenter] removeObserver:self name:MKMQTTServerReceivedSwitchStateNotification object:nil];

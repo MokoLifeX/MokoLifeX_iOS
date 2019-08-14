@@ -80,7 +80,7 @@
         return;
     }
     NSDictionary *deviceDic = note.userInfo[@"userInfo"];
-    if (!ValidDict(deviceDic) || ![deviceDic[@"mac"] isEqualToString:self.deviceModel.device_id]) {
+    if (!ValidDict(deviceDic) || ![deviceDic[@"deviceTopic"] isEqualToString:self.deviceModel.publishedTopic]) {
         return;
     }
     if (self.readTimer) {

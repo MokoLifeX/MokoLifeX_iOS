@@ -114,10 +114,10 @@
 
 #pragma mark - MKDeviceModelDelegate
 - (void)deviceModelStateChanged:(MKDeviceModel *)deviceModel{
-    if (!deviceModel || !ValidStr(deviceModel.device_id)) {
+    if (!deviceModel) {
         return;
     }
-    [self updateDeviceModelState:YES mac:deviceModel.device_id stateDic:@{}];
+    [self updateDeviceModelState:YES stateDic:@{@"deviceTopic":SafeStr(deviceModel.publishedTopic)}];
 }
 
 #pragma mark - MKDeviceListCellDelegate
@@ -185,7 +185,7 @@
     if (!ValidDict(deviceDic) || self.dataList.count == 0) {
         return;
     }
-    [self updateDeviceModelState:NO mac:deviceDic[@"mac"] stateDic:deviceDic];
+    [self updateDeviceModelState:NO stateDic:deviceDic];
 }
 
 - (void)updateSwichWayNameNotification:(NSNotification *)note{
@@ -263,13 +263,13 @@
 }
 
 #pragma mark -
-- (void)updateDeviceModelState:(BOOL)offline mac:(NSString *)mac stateDic:(NSDictionary *)stateDic{
+- (void)updateDeviceModelState:(BOOL)offline stateDic:(NSDictionary *)stateDic{
     @synchronized(self) {
         //需要执行的代码
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
             for (NSInteger i = 0; i < self.dataList.count; i ++) {
                 MKDeviceModel *model = self.dataList[i];
-                if ([model.device_id isEqualToString:mac]) {
+                if ([model.publishedTopic isEqualToString:stateDic[@"deviceTopic"]]) {
                     if (offline && model.device_mode == MKDevice_swich) {
                         model.swichState = MKSmartSwichOffline;
                     }else if (!offline && model.device_mode == MKDevice_swich){

@@ -67,7 +67,7 @@ static CGFloat const iconHeight = 13.f;
 #pragma mark - note
 - (void)receiveStatusNotification:(NSNotification *)note {
     NSDictionary *deviceDic = note.userInfo[@"userInfo"];
-    if (!ValidDict(deviceDic) || ![deviceDic[@"mac"] isEqualToString:self.deviceModel.device_id]) {
+    if (!ValidDict(deviceDic) || ![deviceDic[@"deviceTopic"] isEqualToString:self.deviceModel.publishedTopic]) {
         return;
     }
     [[MKHudManager share] hide];

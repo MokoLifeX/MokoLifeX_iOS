@@ -79,7 +79,7 @@ static CGFloat const buttonViewHeight = 50.f;
 #pragma mark - 通知处理
 - (void)switchStateNotification:(NSNotification *)note{
     NSDictionary *deviceDic = note.userInfo[@"userInfo"];
-    if (!ValidDict(deviceDic) || ![deviceDic[@"mac"] isEqualToString:self.deviceModel.device_id]) {
+    if (!ValidDict(deviceDic) || ![deviceDic[@"deviceTopic"] isEqualToString:self.deviceModel.publishedTopic]) {
         return;
     }
     [self.deviceModel resetTimerCounter];
@@ -91,7 +91,7 @@ static CGFloat const buttonViewHeight = 50.f;
 
 - (void)delayTimeNotification:(NSNotification *)note{
     NSDictionary *deviceDic = note.userInfo[@"userInfo"];
-    if (!ValidDict(deviceDic) || ![deviceDic[@"mac"] isEqualToString:self.deviceModel.device_id]) {
+    if (!ValidDict(deviceDic) || ![deviceDic[@"deviceTopic"] isEqualToString:self.deviceModel.publishedTopic]) {
         return;
     }
     [self.deviceModel resetTimerCounter];

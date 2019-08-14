@@ -125,7 +125,7 @@ NSString *const deviceMacAddress = @"deviceMacAddress";
 #pragma mark - note
 - (void)firmwareUpdateResult:(NSNotification *)note{
     NSDictionary *deviceDic = note.userInfo[@"userInfo"];
-    if (!ValidDict(deviceDic) || ![deviceDic[@"mac"] isEqualToString:self.deviceModel.device_id]) {
+    if (!ValidDict(deviceDic) || ![deviceDic[@"deviceTopic"] isEqualToString:self.deviceModel.publishedTopic]) {
         return;
     }
     //固件升级结果

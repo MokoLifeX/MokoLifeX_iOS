@@ -84,20 +84,15 @@ NSString *const MKMQTTServerReceivedDevicePowerOnStatusNotification = @"MKMQTTSe
     if (!topic) {
         return;
     }
-    NSArray *keyList = [topic componentsSeparatedByString:@"/"];
-    if (keyList.count != 3) {
-        return;
-    }
     NSString *receiveStr = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
     NSData * datas = [receiveStr dataUsingEncoding:NSUTF8StringEncoding];
     NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:datas options:NSJSONReadingAllowFragments error:nil];
     if (!dataDic || dataDic.allValues.count == 0) {
         return;
     }
-    NSString *macAddress = keyList[1];
     NSNumber *function = dataDic[@"msg_id"];
     NSMutableDictionary *tempDic = [NSMutableDictionary dictionaryWithDictionary:dataDic[@"data"]];
-    [tempDic setObject:macAddress forKey:@"mac"];
+    [tempDic setObject:topic forKey:@"deviceTopic"];
     if (function) {
         [tempDic setObject:function forKey:@"function"];
     }

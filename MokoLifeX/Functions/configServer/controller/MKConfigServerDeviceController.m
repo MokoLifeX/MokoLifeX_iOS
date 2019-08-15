@@ -20,6 +20,8 @@
 #import "MKCertListController.h"
 #import "MKAddDeviceController.h"
 
+static NSString *const deviceHostConfigLocalKey = @"deviceHostConfigLocalKey";
+
 @interface MKConfigServerDeviceController ()<UITableViewDelegate, UITableViewDataSource, MKConnectModeCellDelegate, MKConfigServerSSLCertCellDelegate,MKCertSelectedDelegate>
 
 /**
@@ -220,6 +222,7 @@
     self.serverModel.subscribedTopic = subCell.textField.text;
     self.serverModel.publishedTopic = pubCell.textField.text;
     [MKAddDeviceCenter sharedInstance].serverModel = self.serverModel;
+    [[NSUserDefaults standardUserDefaults] setObject:SafeStr(self.serverModel.host) forKey:deviceHostConfigLocalKey];
     MKAddDeviceController *vc = [[MKAddDeviceController alloc] init];
     NSDictionary *params = [[MKAddDeviceCenter sharedInstance] fecthAddDeviceParams];
     [vc configAddDeviceController:params];
@@ -328,10 +331,8 @@
 - (MKConfigServerModel *)serverModel{
     if (!_serverModel) {
         _serverModel = [[MKConfigServerModel alloc] init];
-        _serverModel.host = @"a1fhygr0xxahcm-ats.iot.us-west-2.amazonaws.com";
-        _serverModel.port = @"8883";
-        _serverModel.subscribedTopic = @"MK112/b4e62d320bf5/app_to_device";
-        _serverModel.publishedTopic = @"MK112/b4e62d320bf5/device_to_app";
+        NSString *host = [[NSUserDefaults standardUserDefaults] objectForKey:deviceHostConfigLocalKey];
+        _serverModel.host = (ValidStr(host) ? host : @"");
     }
     return _serverModel;
 }

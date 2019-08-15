@@ -148,11 +148,14 @@
  右上角清除按钮点了之后，将所有cell上面的信息恢复成默认的
  */
 + (void)clearAllConfigCellValuesWithTable:(UITableView *)tableView{
-    for (NSInteger row = 0; row < [tableView numberOfRowsInSection:0]; row ++) {
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
-        id <MKConfigServerCellProtocol>cell = [tableView cellForRowAtIndexPath:indexPath];
-        if ([cell respondsToSelector:@selector(setToDefaultParameters)]) {
-            [cell setToDefaultParameters];
+    NSInteger sectionNumber = [tableView numberOfSections];
+    for (NSInteger i = 0; i < sectionNumber; i ++) {
+        for (NSInteger row = 0; row < [tableView numberOfRowsInSection:i]; row ++) {
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:i];
+            id <MKConfigServerCellProtocol>cell = [tableView cellForRowAtIndexPath:indexPath];
+            if ([cell respondsToSelector:@selector(setToDefaultParameters)]) {
+                [cell setToDefaultParameters];
+            }
         }
     }
 }

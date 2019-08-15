@@ -25,16 +25,15 @@
  */
 @property (nonatomic, strong)NSMutableArray *dataList;
 
-/**
- ssl相关cell
- */
-@property (nonatomic, strong)NSMutableArray *certDataList;
-
 @property (nonatomic, strong)MKBaseTableView *tableView;
 
 @property (nonatomic, strong)MKConfigServerModel *serverModel;
 
 @property (nonatomic, assign)BOOL needConnect;
+
+@property (nonatomic, strong)MKConfigServerSSLCertModel *caFileModel;
+
+@property (nonatomic, strong)MKConfigServerSSLCertModel *p12FileModel;
 
 @end
 
@@ -61,7 +60,6 @@
     [super viewDidLoad];
     [self loadSubViews];
     [self.serverModel updateServerDataWithModel:[MKMQTTServerDataManager sharedInstance].configServerModel];
-    [self loadCertDatas];
     [self processParams];
     // Do any additional setup after loading the view.
 }
@@ -113,10 +111,7 @@
         if (self.serverModel.connectMode == 0) {
             return 0;
         }
-        if (self.serverModel.connectMode == 1) {
-            return 1;
-        }
-        return 2;
+        return 1;
     }
     return 0;
 }
@@ -125,8 +120,12 @@
     if (indexPath.section == 0) {
         return self.dataList[indexPath.row];
     }
+    MKConfigServerSSLCertModel *dataModel = self.caFileModel;
+    if (self.serverModel.connectMode == 2) {
+        dataModel = self.p12FileModel;
+    }
     MKConfigServerSSLCertCell *cell = [MKConfigServerSSLCertCell initCellWithTableView:tableView];
-    cell.dataModel = self.certDataList[indexPath.row];
+    cell.dataModel = dataModel;
     cell.delegate = self;
     return cell;
 }
@@ -140,7 +139,7 @@
 #pragma mark - MKConfigServerSSLCertCellDelegate
 - (void)sslCertCellSelectedButtonPressed:(NSInteger)index {
     MKCertListController *vc = [[MKCertListController alloc] init];
-    if (index == 0) {
+    if (self.serverModel.connectMode == 1) {
         vc.pageType = mk_caCertSelPage;
     }else {
         vc.pageType = mk_clientP12CertPage;
@@ -163,10 +162,12 @@
     }else if (certType == mk_clientP12CertPage) {
         self.serverModel.clientP12CertName = certName;
     }
-    NSInteger index = (certType == mk_clientP12CertPage) ? 1 : 0;
-    MKConfigServerSSLCertModel *certModel = self.certDataList[index];
-    certModel.certName = certName;
-    [self.tableView reloadRow:index inSection:1 withRowAnimation:UITableViewRowAnimationNone];
+    if (certType == mk_clientP12CertPage) {
+        self.p12FileModel.certName = certName;
+    }else if (certType == mk_caCertSelPage) {
+        self.caFileModel.certName = certName;
+    }
+    [self.tableView reloadRow:0 inSection:1 withRowAnimation:UITableViewRowAnimationNone];
 }
 
 #pragma mark - event method
@@ -215,26 +216,6 @@
     MKConfigServerConnectModeCell *modelCell = [self.dataList lastObject];
     modelCell.delegate = self;
     [self.tableView reloadData];
-}
-
-- (void)loadCertDatas {
-    MKConfigServerSSLCertModel *caFileModel = [[MKConfigServerSSLCertModel alloc] init];
-    caFileModel.msgTitle = @"CA File:";
-    caFileModel.index = 0;
-    caFileModel.certName = self.serverModel.caFileName;
-    [self.certDataList addObject:caFileModel];
-    
-//    MKConfigServerSSLCertModel *clientKeyModel = [[MKConfigServerSSLCertModel alloc] init];
-//    clientKeyModel.msgTitle = @"Client Key:";
-//    clientKeyModel.index = 1;
-//    clientKeyModel.certName = self.serverModel.clientKeyName;
-//    [self.certDataList addObject:clientKeyModel];
-    
-    MKConfigServerSSLCertModel *clientCertModel = [[MKConfigServerSSLCertModel alloc] init];
-    clientCertModel.msgTitle = @"Client Certificate File:";
-    clientCertModel.index = 1;
-    clientCertModel.certName = self.serverModel.clientP12CertName;
-    [self.certDataList addObject:clientCertModel];
 }
 
 #pragma mark - UI
@@ -305,12 +286,22 @@
     return _dataList;
 }
 
-- (NSMutableArray *)certDataList {
-    if (!_certDataList) {
-        _certDataList = [NSMutableArray array];
+- (MKConfigServerSSLCertModel *)caFileModel {
+    if (!_caFileModel) {
+        _caFileModel = [[MKConfigServerSSLCertModel alloc] init];
+        _caFileModel.msgTitle = @"CA File:";
+        _caFileModel.certName = self.serverModel.caFileName;
     }
-    return _certDataList;
+    return _caFileModel;
 }
 
+- (MKConfigServerSSLCertModel *)p12FileModel {
+    if (!_p12FileModel) {
+        _p12FileModel = [[MKConfigServerSSLCertModel alloc] init];
+        _p12FileModel.msgTitle = @"Client Certificate File:";
+        _p12FileModel.certName = self.serverModel.clientP12CertName;
+    }
+    return _p12FileModel;
+}
 
 @end

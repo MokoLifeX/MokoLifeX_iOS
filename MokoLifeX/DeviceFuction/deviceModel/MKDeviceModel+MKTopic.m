@@ -86,4 +86,18 @@ NSString *const smartSwichWifiSSIDKey = @"WS";
     return [topicList copy];
 }
 
+- (NSString *)currentSubscribedTopic {
+    if (ValidStr([MKMQTTServerDataManager sharedInstance].configServerModel.publishedTopic)) {
+        return [MKMQTTServerDataManager sharedInstance].configServerModel.publishedTopic;
+    }
+    return self.subscribedTopic;
+}
+
+- (NSString *)currentPublishedTopic {
+    if (ValidStr([MKMQTTServerDataManager sharedInstance].configServerModel.subscribedTopic)) {
+        return [MKMQTTServerDataManager sharedInstance].configServerModel.subscribedTopic;
+    }
+    return self.publishedTopic;
+}
+
 @end

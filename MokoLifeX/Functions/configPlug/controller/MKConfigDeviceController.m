@@ -79,7 +79,7 @@ static CGFloat const buttonViewHeight = 50.f;
 #pragma mark - 通知处理
 - (void)switchStateNotification:(NSNotification *)note{
     NSDictionary *deviceDic = note.userInfo[@"userInfo"];
-    if (!ValidDict(deviceDic) || ![deviceDic[@"deviceTopic"] isEqualToString:self.deviceModel.publishedTopic]) {
+    if (!ValidDict(deviceDic) || ![deviceDic[@"id"] isEqualToString:self.deviceModel.mqttID]) {
         return;
     }
     [self.deviceModel resetTimerCounter];
@@ -91,7 +91,7 @@ static CGFloat const buttonViewHeight = 50.f;
 
 - (void)delayTimeNotification:(NSNotification *)note{
     NSDictionary *deviceDic = note.userInfo[@"userInfo"];
-    if (!ValidDict(deviceDic) || ![deviceDic[@"deviceTopic"] isEqualToString:self.deviceModel.publishedTopic]) {
+    if (!ValidDict(deviceDic) || ![deviceDic[@"id"] isEqualToString:self.deviceModel.mqttID]) {
         return;
     }
     [self.deviceModel resetTimerCounter];
@@ -114,7 +114,7 @@ static CGFloat const buttonViewHeight = 50.f;
     BOOL isOn = (self.deviceModel.plugState == MKSmartPlugOn);
     [[MKHudManager share] showHUDWithTitle:@"Setting..." inView:self.view isPenetration:NO];
     WS(weakSelf);
-    [MKMQTTServerInterface setSmartPlugSwitchState:!isOn topic:self.deviceModel.subscribedTopic sucBlock:^{
+    [MKMQTTServerInterface setSmartPlugSwitchState:!isOn topic:[self.deviceModel currentSubscribedTopic] mqttID:self.deviceModel.mqttID sucBlock:^{
         [[MKHudManager share] hide];
     } failedBlock:^(NSError *error) {
         [[MKHudManager share] hide];
@@ -177,7 +177,7 @@ static CGFloat const buttonViewHeight = 50.f;
 - (void)setDelay:(NSString *)hour delayMin:(NSString *)min{
     [[MKHudManager share] showHUDWithTitle:@"Setting..." inView:self.view isPenetration:NO];
     WS(weakSelf);
-    [MKMQTTServerInterface setPlugDelayHour:[hour integerValue] delayMin:[min integerValue] topic:self.deviceModel.subscribedTopic sucBlock:^{
+    [MKMQTTServerInterface setPlugDelayHour:[hour integerValue] delayMin:[min integerValue] topic:[self.deviceModel currentSubscribedTopic] mqttID:self.deviceModel.mqttID sucBlock:^{
         [[MKHudManager share] hide];
     } failedBlock:^(NSError *error) {
         [[MKHudManager share] hide];

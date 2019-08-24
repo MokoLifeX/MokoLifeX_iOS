@@ -178,4 +178,15 @@ typedef NS_ENUM(NSInteger, mk_electricalDefaultState) {
               sucBlock:(void (^)(id returnData))sucBlock
            failedBlock:(void (^)(NSError *error))failedBlock;
 
+/**
+ 配置设备MQTT通信唯一识别码，设备在提交到MQTT服务器时候的数据里面会返回该id，多个设备情况下，可以作为当前是哪个设备返回的数据的标示
+ 
+ @param mqttID mqttID,range 0~32
+ @param sucBlock 成功回调
+ @param failedBlock 失败回调
+ */
+- (void)configMQTTID:(NSString *)mqttID
+            sucBlock:(void (^)(id returnData))sucBlock
+         failedBlock:(void (^)(NSError *error))failedBlock;
+
 @end

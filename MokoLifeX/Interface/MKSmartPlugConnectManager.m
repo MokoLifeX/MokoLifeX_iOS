@@ -179,6 +179,17 @@
 - (void)configTopic {
     WS(weakSelf);
     [[MKSocketManager sharedInstance] configDeviceMQTTTopic:self.configServerModel.subscribedTopic publishTopic:self.configServerModel.publishedTopic sucBlock:^(id returnData) {
+        [weakSelf configMQTTID];
+    } failedBlock:^(NSError *error) {
+        if (weakSelf.connectFailedBlock) {
+            weakSelf.connectFailedBlock(error);
+        }
+    }];
+}
+
+- (void)configMQTTID {
+    WS(weakSelf);
+    [[MKSocketManager sharedInstance] configMQTTID:self.configServerModel.mqttID sucBlock:^(id returnData) {
         [weakSelf configWifiInfo];
     } failedBlock:^(NSError *error) {
         if (weakSelf.connectFailedBlock) {

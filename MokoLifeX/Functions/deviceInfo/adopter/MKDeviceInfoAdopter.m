@@ -56,7 +56,7 @@
     [[MKHudManager share] showHUDWithTitle:@"Reseting..." inView:target.view isPenetration:NO];
     __weak __typeof(&*target)weakTarget = target;
     WS(weakSelf);
-    [MKMQTTServerInterface resetDeviceWithTopic:deviceModel.subscribedTopic sucBlock:^{
+    [MKMQTTServerInterface resetDeviceWithTopic:[deviceModel currentSubscribedTopic] mqttID:deviceModel.mqttID sucBlock:^{
         [[MKHudManager share] hide];
         [weakSelf deleteDeviceModel:deviceModel target:weakTarget];
     } failedBlock:^(NSError *error) {

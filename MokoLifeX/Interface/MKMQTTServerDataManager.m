@@ -87,16 +87,16 @@ NSString *const MKMQTTServerReceivedDevicePowerOnStatusNotification = @"MKMQTTSe
     NSString *receiveStr = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
     NSData * datas = [receiveStr dataUsingEncoding:NSUTF8StringEncoding];
     NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:datas options:NSJSONReadingAllowFragments error:nil];
-    if (!dataDic || dataDic.allValues.count == 0) {
+    if (!dataDic || dataDic.allValues.count == 0 || !ValidStr(dataDic[@"id"]) || !ValidNum(dataDic[@"msg_id"])) {
         return;
     }
+    NSLog(@"接收到数据:%@",dataDic);
     NSNumber *function = dataDic[@"msg_id"];
     NSMutableDictionary *tempDic = [NSMutableDictionary dictionaryWithDictionary:dataDic[@"data"]];
     [tempDic setObject:topic forKey:@"deviceTopic"];
-    if (function) {
-        [tempDic setObject:function forKey:@"function"];
-    }
-    NSLog(@"接收到数据:%@",dataDic);
+    [tempDic setObject:function forKey:@"function"];
+    [tempDic setObject:dataDic[@"id"] forKey:@"id"];
+    NSLog(@"接收到数据:%@",tempDic);
     if ([function integerValue] == 1001) {
         //开关状态
         [[NSNotificationCenter defaultCenter] postNotificationName:MKMQTTServerReceivedSwitchStateNotification
@@ -186,6 +186,8 @@ NSString *const MKMQTTServerReceivedDevicePowerOnStatusNotification = @"MKMQTTSe
     [self.paramDic setObject:SafeStr(self.configServerModel.password) forKey:@"password"];
     [self.paramDic setObject:SafeStr(self.configServerModel.caFileName) forKey:@"caFileName"];
     [self.paramDic setObject:SafeStr(self.configServerModel.clientP12CertName) forKey:@"clientP12CertName"];
+    [self.paramDic setObject:SafeStr(self.configServerModel.publishedTopic) forKey:@"publishedTopic"];
+    [self.paramDic setObject:SafeStr(self.configServerModel.subscribedTopic) forKey:@"subscribedTopic"];
     
     [self.paramDic writeToFile:self.filePath atomically:NO];
 };

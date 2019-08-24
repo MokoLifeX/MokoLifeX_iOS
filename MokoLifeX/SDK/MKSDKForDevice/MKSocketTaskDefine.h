@@ -10,6 +10,7 @@ typedef NS_ENUM(NSInteger, MKSocketOperationID){
     socketConfigTopicOperation,                      //配置MQTT通信的主题
     socketConfigEquipmentElectricalDefaultStateOperation,//配置设备上电默认状态
     socketConfigDeviceCertOperation,                //配置设备证书
+    socketConfigDeviceMQTTIDOperation,              //配置设备的MQTT通信唯一标识符
 };
 
 @protocol MKSocketOperationProtocol <NSObject>

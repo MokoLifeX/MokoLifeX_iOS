@@ -15,11 +15,13 @@
  
  @param isOn           YES:ON£¨NO:OFF
  @param topic          Publish switch state topic
+ @param mqttID         mqttID
  @param sucBlock       Success callback
  @param failedBlock    Failed callback
  */
 + (void)setSmartPlugSwitchState:(BOOL)isOn
                           topic:(NSString *)topic
+                         mqttID:(NSString *)mqttID
                        sucBlock:(void (^)(void))sucBlock
                     failedBlock:(void (^)(NSError *error))failedBlock;
 /**
@@ -28,12 +30,14 @@
  @param delay_hour     Hour range:0~23
  @param delay_minutes  Minute range:0~59
  @param topic          Publish countdown topic
+ @param mqttID         mqttID
  @param sucBlock       Success callback
  @param failedBlock    Failed callback
  */
 + (void)setPlugDelayHour:(NSInteger)delay_hour
                 delayMin:(NSInteger)delay_minutes
                    topic:(NSString *)topic
+                  mqttID:(NSString *)mqttID
                 sucBlock:(void (^)(void))sucBlock
              failedBlock:(void (^)(NSError *error))failedBlock;
 

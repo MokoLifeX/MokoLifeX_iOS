@@ -177,7 +177,7 @@ static NSString *const deviceHostConfigLocalKey = @"deviceHostConfigLocalKey";
     [MKConfigServerAdopter configCellResignFirstResponderWithTable:self.tableView];
 }
 - (void)nextButtonPressed{
-    MKConfigServerModel *serverModel = [MKConfigServerAdopter currentServerModelWithDataList:self.dataList isApp:YES];
+    MKConfigServerModel *serverModel = [MKConfigServerAdopter currentServerModelWithDataList:self.dataList isApp:NO];
     BOOL paramCheck = [MKConfigServerAdopter checkConfigServerParams:serverModel target:self];
     if (!paramCheck) {
         //存在参数错误
@@ -186,6 +186,11 @@ static NSString *const deviceHostConfigLocalKey = @"deviceHostConfigLocalKey";
     if (!ValidStr(serverModel.clientId) || serverModel.clientId.length > 64) {
         //
         [self.view showCentralToast:@"Client id error"];
+        return;
+    }
+    if (!ValidStr(serverModel.mqttID) || serverModel.mqttID.length > 32) {
+        //
+        [self.view showCentralToast:@"Device id error"];
         return;
     }
     if (self.serverModel.connectMode == 2) {
@@ -208,6 +213,7 @@ static NSString *const deviceHostConfigLocalKey = @"deviceHostConfigLocalKey";
     self.serverModel.clientId = serverModel.clientId;
     self.serverModel.userName = serverModel.userName;
     self.serverModel.password = serverModel.password;
+    self.serverModel.mqttID = serverModel.mqttID;
     
     MKConfigServerNormalCell *subCell = self.topicList[0];
     if (!ValidStr(subCell.textField.text)) {
@@ -237,7 +243,7 @@ static NSString *const deviceHostConfigLocalKey = @"deviceHostConfigLocalKey";
                                              selector:@selector(configCellNeedHiddenKeyboard) name:configCellNeedHiddenKeyboardNotification
                                                object:nil];
     [self.dataList addObjectsFromArray:[MKConfigServerAdopter configTopCellWithConfigModel:self.serverModel
-                                                                                 tableView:self.tableView isApp:YES]];
+                                                                                 tableView:self.tableView isApp:NO]];
     MKConfigServerConnectModeCell *modelCell = [self.dataList lastObject];
     modelCell.delegate = self;
     [self.tableView reloadData];

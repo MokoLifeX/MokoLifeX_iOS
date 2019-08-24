@@ -117,7 +117,7 @@
     if (!deviceModel) {
         return;
     }
-    [self updateDeviceModelState:YES stateDic:@{@"deviceTopic":SafeStr(deviceModel.publishedTopic)}];
+    [self updateDeviceModelState:YES stateDic:@{@"id":SafeStr(deviceModel.mqttID)}];
 }
 
 #pragma mark - MKDeviceListCellDelegate
@@ -133,7 +133,7 @@
         }
         [[MKHudManager share] showHUDWithTitle:@"Setting..." inView:self.view isPenetration:NO];
         WS(weakSelf);
-        [MKMQTTServerInterface setSmartPlugSwitchState:isOn topic:deviceModel.subscribedTopic sucBlock:^{
+        [MKMQTTServerInterface setSmartPlugSwitchState:isOn topic:[deviceModel currentSubscribedTopic] mqttID:deviceModel.mqttID sucBlock:^{
             [[MKHudManager share] hide];
         } failedBlock:^(NSError *error) {
             [[MKHudManager share] hide];
@@ -257,7 +257,7 @@
     }
     NSMutableArray *topicList = [NSMutableArray arrayWithCapacity:self.dataList.count];
     for (MKDeviceModel *deviceModel in self.dataList) {
-        [topicList addObject:deviceModel.publishedTopic];
+        [topicList addObject:[deviceModel currentPublishedTopic]];
     }
     [[MKMQTTServerManager sharedInstance] subscriptions:topicList];
 }
@@ -269,7 +269,7 @@
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
             for (NSInteger i = 0; i < self.dataList.count; i ++) {
                 MKDeviceModel *model = self.dataList[i];
-                if ([model.publishedTopic isEqualToString:stateDic[@"deviceTopic"]]) {
+                if ([model.mqttID isEqualToString:stateDic[@"id"]]) {
                     if (offline && model.device_mode == MKDevice_swich) {
                         model.swichState = MKSmartSwichOffline;
                     }else if (!offline && model.device_mode == MKDevice_swich){

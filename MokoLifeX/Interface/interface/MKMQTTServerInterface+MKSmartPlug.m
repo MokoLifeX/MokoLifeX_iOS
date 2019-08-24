@@ -13,10 +13,12 @@
 
 + (void)setSmartPlugSwitchState:(BOOL)isOn
                           topic:(NSString *)topic
+                         mqttID:(NSString *)mqttID
                        sucBlock:(void (^)(void))sucBlock
                     failedBlock:(void (^)(NSError *error))failedBlock{
     NSDictionary *dataDic = @{
                               @"msg_id":@(2001),
+                              @"id":mqttID,
                               @"data":@{
                                         @"switch_state" : (isOn ? @"on" : @"off"),
                                       }
@@ -27,6 +29,7 @@
 + (void)setPlugDelayHour:(NSInteger)delay_hour
                 delayMin:(NSInteger)delay_minutes
                    topic:(NSString *)topic
+                  mqttID:(NSString *)mqttID
                 sucBlock:(void (^)(void))sucBlock
              failedBlock:(void (^)(NSError *error))failedBlock{
     if (delay_hour < 0 || delay_hour > 23) {
@@ -39,6 +42,7 @@
     }
     NSDictionary *dataDic = @{
                               @"msg_id":@(2002),
+                              @"id":mqttID,
                               @"data":@{
                                       @"delay_hour":@(delay_hour),
                                       @"delay_minute":@(delay_minutes),

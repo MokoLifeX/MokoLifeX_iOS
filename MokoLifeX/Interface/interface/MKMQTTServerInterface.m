@@ -16,6 +16,7 @@
               port:(NSInteger)port
          catalogue:(NSString *)catalogue
              topic:(NSString *)topic
+            mqttID:(NSString *)mqttID
           sucBlock:(void (^)(void))sucBlock
        failedBlock:(void (^)(NSError *error))failedBlock {
     if (port < 0 || port > 65535 || !catalogue || !host) {
@@ -24,6 +25,7 @@
     }
     NSDictionary *dataDic = @{
                               @"msg_id":@(2004),
+                              @"id":mqttID,
                               @"data":@{
                                       @"file_type":@(fileType),
                                       @"domain_name":host,
@@ -35,23 +37,33 @@
 }
 
 + (void)resetDeviceWithTopic:(NSString *)topic
+                      mqttID:(NSString *)mqttID
                     sucBlock:(void (^)(void))sucBlock
                  failedBlock:(void (^)(NSError *error))failedBlock{
-    [[MKMQTTServerManager sharedInstance] sendData:@{@"msg_id":@(2003)} topic:topic sucBlock:sucBlock failedBlock:failedBlock];
+    [[MKMQTTServerManager sharedInstance] sendData:@{@"msg_id":@(2003),@"id":mqttID}
+                                             topic:topic
+                                          sucBlock:sucBlock
+                                       failedBlock:failedBlock];
 }
 
 + (void)readDeviceFirmwareInformationWithTopic:(NSString *)topic
+                                        mqttID:(NSString *)mqttID
                                       sucBlock:(void (^)(void))sucBlock
                                    failedBlock:(void (^)(NSError *error))failedBlock{
-    [[MKMQTTServerManager sharedInstance] sendData:@{@"msg_id":@(2005)} topic:topic sucBlock:sucBlock failedBlock:failedBlock];
+    [[MKMQTTServerManager sharedInstance] sendData:@{@"msg_id":@(2005),@"id":mqttID}
+                                             topic:topic
+                                          sucBlock:sucBlock
+                                       failedBlock:failedBlock];
 }
 
 + (void)configDevicePowerOnStatus:(MKDevicePowerOnStatus)status
                             topic:(NSString *)topic
+                           mqttID:(NSString *)mqttID
                          sucBlock:(void (^)(void))sucBlock
                       failedBlock:(void (^)(NSError *error))failedBlock {
     NSDictionary *dataDic = @{
                               @"msg_id":@(2006),
+                              @"id":mqttID,
                               @"data":@{
                                       @"switch_state":@(status)
                                       }
@@ -60,9 +72,13 @@
 }
 
 + (void)readDevicePowerOnStatusWithTopic:(NSString *)topic
+                                  mqttID:(NSString *)mqttID
                                 sucBlock:(void (^)(void))sucBlock
                              failedBlock:(void (^)(NSError *error))failedBlock {
-    [[MKMQTTServerManager sharedInstance] sendData:@{@"msg_id":@(2007)} topic:topic sucBlock:sucBlock failedBlock:failedBlock];
+    [[MKMQTTServerManager sharedInstance] sendData:@{@"msg_id":@(2007),@"id":mqttID}
+                                             topic:topic
+                                          sucBlock:sucBlock
+                                       failedBlock:failedBlock];
 }
 
 @end

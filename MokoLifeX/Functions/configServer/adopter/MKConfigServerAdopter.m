@@ -77,6 +77,15 @@
     [clientidCell setParams:clientId];
     [dataList addObject:clientidCell];
     
+    if (!isApp) {
+        //设备端增加mqttID
+        MKConfigServerNormalCell *mqttidCell = [MKConfigServerNormalCell initCellWithTableView:tableView];
+        mqttidCell.msg = @"Device Id";
+        NSString *mqttid = SafeStr(configModel.mqttID);
+        [mqttidCell setParams:mqttid];
+        [dataList addObject:mqttidCell];
+    }
+    
     //connect mode
     MKConfigServerConnectModeCell *connectModeCell = [MKConfigServerConnectModeCell initCellWithTableView:tableView];
     [connectModeCell setParams:@(configModel.connectMode)];
@@ -136,10 +145,21 @@
     NSDictionary *clientIdDic = [clientIdCell configServerCellValue];
     serverModel.clientId = clientIdDic[@"paramValue"];
     
-    //connect mode
-    id <MKConfigServerCellProtocol>connectModeCell = dataList[6];
-    NSDictionary *connectModeDic = [connectModeCell configServerCellValue];
-    serverModel.connectMode = [connectModeDic[@"connectMode"] integerValue];
+    if (isApp) {
+        //connect mode
+        id <MKConfigServerCellProtocol>connectModeCell = dataList[6];
+        NSDictionary *connectModeDic = [connectModeCell configServerCellValue];
+        serverModel.connectMode = [connectModeDic[@"connectMode"] integerValue];
+    }else {
+        //mqtt id
+        id <MKConfigServerCellProtocol>mqttIdCell = dataList[6];
+        NSDictionary *mqttIdDic = [mqttIdCell configServerCellValue];
+        serverModel.mqttID = mqttIdDic[@"paramValue"];
+        //connect mode
+        id <MKConfigServerCellProtocol>connectModeCell = dataList[7];
+        NSDictionary *connectModeDic = [connectModeCell configServerCellValue];
+        serverModel.connectMode = [connectModeDic[@"connectMode"] integerValue];
+    }
     
     return serverModel;
 }

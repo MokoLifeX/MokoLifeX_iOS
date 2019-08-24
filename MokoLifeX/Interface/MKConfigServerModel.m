@@ -82,6 +82,9 @@
     if (ValidStr(dic[@"publishedTopic"])) {
         self.publishedTopic = dic[@"publishedTopic"];
     }
+    if (ValidStr(dic[@"mqttID"])) {
+        self.mqttID = dic[@"mqttID"];
+    }
 }
 
 - (void)updateServerDataWithModel:(MKConfigServerModel *)model{
@@ -103,6 +106,7 @@
     self.clientCertName = model.clientCertName;
     self.subscribedTopic = model.subscribedTopic;
     self.publishedTopic = model.publishedTopic;
+    self.mqttID = model.mqttID;
 }
 
 @end

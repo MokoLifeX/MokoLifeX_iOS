@@ -398,6 +398,24 @@ static NSTimeInterval const defaultCommandTime = 2.f;
                 failedBlock:failedBlock];
 }
 
+- (void)configMQTTID:(NSString *)mqttID
+            sucBlock:(void (^)(id returnData))sucBlock
+         failedBlock:(void (^)(NSError *error))failedBlock {
+    if (!mqttID || ![mqttID isKindOfClass:NSString.class] || mqttID.length < 1 || mqttID.length > 32) {
+        [MKSocketBlockAdopter operationParamsErrorWithMessage:@"MQTTID error" block:failedBlock];
+        return;
+    }
+    NSDictionary *commandDic = @{
+                                 @"header":@(4007),
+                                 @"id":mqttID,
+                                 };
+    NSString *jsonString = [MKSocketAdopter convertToJsonData:commandDic];
+    [self addTaskWithTaskID:socketConfigDeviceMQTTIDOperation
+                 jsonString:jsonString
+                   sucBlock:sucBlock
+                failedBlock:failedBlock];
+}
+
 #pragma mark - connect private method
 - (void)connectHost:(NSString *)host
                port:(NSInteger)port

@@ -11,12 +11,15 @@
 
 #import "MKConfigServerConnectModeCell.h"
 #import "MKConfigServerSSLCertCell.h"
+#import "MKConfigServerNormalCell.h"
 
 #import "MKConfigServerSSLCertModel.h"
 #import "MKConfigServerModel.h"
 #import "MKConfigServerCellProtocol.h"
 
 #import "MKCertListController.h"
+
+static NSString *const topicNoteMsg = @"Note:adfasdfsdfsdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasfdsadfsdfsdfsadf";
 
 @interface MKConfigServerAppController ()<UITableViewDelegate, UITableViewDataSource, MKConnectModeCellDelegate, MKConfigServerSSLCertCellDelegate,MKCertSelectedDelegate>
 
@@ -25,15 +28,21 @@
  */
 @property (nonatomic, strong)NSMutableArray *dataList;
 
+/**
+ ssl相关cell
+ */
+@property (nonatomic, strong)NSMutableArray *certDataList;
+
+/**
+ topic列表
+ */
+@property (nonatomic, strong)NSMutableArray *topicList;
+
 @property (nonatomic, strong)MKBaseTableView *tableView;
 
 @property (nonatomic, strong)MKConfigServerModel *serverModel;
 
 @property (nonatomic, assign)BOOL needConnect;
-
-@property (nonatomic, strong)MKConfigServerSSLCertModel *caFileModel;
-
-@property (nonatomic, strong)MKConfigServerSSLCertModel *p12FileModel;
 
 @end
 
@@ -60,6 +69,8 @@
     [super viewDidLoad];
     [self loadSubViews];
     [self.serverModel updateServerDataWithModel:[MKMQTTServerDataManager sharedInstance].configServerModel];
+    [self loadCertDatas];
+    [self loadTopicList];
     [self processParams];
     // Do any additional setup after loading the view.
 }
@@ -88,10 +99,10 @@
 
 #pragma mark - UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.section == 0) {
-        return 60.f;
+    if (indexPath.section == 1) {
+        return 40.f;
     }
-    return 40.f;
+    return 60.f;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -99,7 +110,37 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return 3;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if (section == 2) {
+        return ([self topicNoteMsgLabelHeight] + 10.f);
+    }
+    return 0.001;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    if (section == 2) {
+        UILabel *msgLabel = [[UILabel alloc] initWithFrame:CGRectMake(15.f,
+                                                                      5.f,
+                                                                      kScreenWidth - 2 * 15.f,
+                                                                      [self topicNoteMsgLabelHeight])];
+        msgLabel.font = MKFont(14.f);
+        msgLabel.textAlignment = NSTextAlignmentLeft;
+        msgLabel.textColor = DEFAULT_TEXT_COLOR;
+        msgLabel.numberOfLines = 0;
+        msgLabel.text = topicNoteMsg;
+        
+        UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, [self topicNoteMsgLabelHeight] + 10.f)];
+        [headerView addSubview:msgLabel];
+        headerView.backgroundColor = UIColorFromRGB(0xf2f2f2);
+        return headerView;
+    }
+    
+    UIView *tempView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 0.001)];
+    tempView.backgroundColor = UIColorFromRGB(0xf2f2f2);
+    return tempView;
 }
 
 #pragma mark - UITableViewDataSource
@@ -111,7 +152,13 @@
         if (self.serverModel.connectMode == 0) {
             return 0;
         }
-        return 1;
+        if (self.serverModel.connectMode == 1) {
+            return 1;
+        }
+        return 2;
+    }
+    if (section == 2) {
+        return self.topicList.count;
     }
     return 0;
 }
@@ -120,14 +167,14 @@
     if (indexPath.section == 0) {
         return self.dataList[indexPath.row];
     }
-    MKConfigServerSSLCertModel *dataModel = self.caFileModel;
-    if (self.serverModel.connectMode == 2) {
-        dataModel = self.p12FileModel;
+    if (indexPath.section == 1) {
+        MKConfigServerSSLCertCell *cell = [MKConfigServerSSLCertCell initCellWithTableView:tableView];
+        cell.dataModel = self.certDataList[indexPath.row];
+        cell.delegate = self;
+        return cell;
     }
-    MKConfigServerSSLCertCell *cell = [MKConfigServerSSLCertCell initCellWithTableView:tableView];
-    cell.dataModel = dataModel;
-    cell.delegate = self;
-    return cell;
+    //topic
+    return self.topicList[indexPath.row];
 }
 
 #pragma mark - MKConnectModeCellDelegate
@@ -139,7 +186,7 @@
 #pragma mark - MKConfigServerSSLCertCellDelegate
 - (void)sslCertCellSelectedButtonPressed:(NSInteger)index {
     MKCertListController *vc = [[MKCertListController alloc] init];
-    if (self.serverModel.connectMode == 1) {
+    if (index == 0) {
         vc.pageType = mk_caCertSelPage;
     }else {
         vc.pageType = mk_clientP12CertPage;
@@ -162,12 +209,10 @@
     }else if (certType == mk_clientP12CertPage) {
         self.serverModel.clientP12CertName = certName;
     }
-    if (certType == mk_clientP12CertPage) {
-        self.p12FileModel.certName = certName;
-    }else if (certType == mk_caCertSelPage) {
-        self.caFileModel.certName = certName;
-    }
-    [self.tableView reloadRow:0 inSection:1 withRowAnimation:UITableViewRowAnimationNone];
+    NSInteger index = (certType == mk_clientP12CertPage) ? 1 : 0;
+    MKConfigServerSSLCertModel *certModel = self.certDataList[index];
+    certModel.certName = certName;
+    [self.tableView reloadRow:index inSection:1 withRowAnimation:UITableViewRowAnimationNone];
 }
 
 #pragma mark - event method
@@ -190,6 +235,7 @@
         [self.view showCentralToast:@"必须选择客户端证书"];
         return;
     }
+    
     //保存参数到本地
     self.serverModel.host = serverModel.host;
     self.serverModel.port = serverModel.port;
@@ -200,6 +246,12 @@
     self.serverModel.clientId = serverModel.clientId;
     self.serverModel.userName = serverModel.userName;
     self.serverModel.password = serverModel.password;
+    
+    MKConfigServerNormalCell *subCell = self.topicList[0];
+    MKConfigServerNormalCell *pubCell = self.topicList[1];
+    self.serverModel.subscribedTopic = subCell.textField.text;
+    self.serverModel.publishedTopic = pubCell.textField.text;
+    
     [[MKMQTTServerDataManager sharedInstance] saveServerConfigDataToLocal:self.serverModel];
     self.needConnect = YES;
     [self.navigationController popViewControllerAnimated:YES];
@@ -216,6 +268,44 @@
     MKConfigServerConnectModeCell *modelCell = [self.dataList lastObject];
     modelCell.delegate = self;
     [self.tableView reloadData];
+}
+
+- (void)loadCertDatas {
+    MKConfigServerSSLCertModel *caFileModel = [[MKConfigServerSSLCertModel alloc] init];
+    caFileModel.msgTitle = @"CA File:";
+    caFileModel.index = 0;
+    caFileModel.certName = self.serverModel.caFileName;
+    [self.certDataList addObject:caFileModel];
+    
+    //    MKConfigServerSSLCertModel *clientKeyModel = [[MKConfigServerSSLCertModel alloc] init];
+    //    clientKeyModel.msgTitle = @"Client Key:";
+    //    clientKeyModel.index = 1;
+    //    clientKeyModel.certName = self.serverModel.clientKeyName;
+    //    [self.certDataList addObject:clientKeyModel];
+    
+    MKConfigServerSSLCertModel *clientCertModel = [[MKConfigServerSSLCertModel alloc] init];
+    clientCertModel.msgTitle = @"Client Certificate File:";
+    clientCertModel.index = 1;
+    clientCertModel.certName = self.serverModel.clientP12CertName;
+    [self.certDataList addObject:clientCertModel];
+}
+
+- (void)loadTopicList {
+    MKConfigServerNormalCell *subTopicCell = [MKConfigServerNormalCell initCellWithTableView:self.tableView];
+    subTopicCell.msg = @"Subscribed Topic";
+    subTopicCell.textField.text = self.serverModel.subscribedTopic;
+    MKConfigServerNormalCell *publicTopicCell = [MKConfigServerNormalCell initCellWithTableView:self.tableView];
+    publicTopicCell.msg = @"Published Topic";
+    publicTopicCell.textField.text = self.serverModel.publishedTopic;
+    [self.topicList addObject:subTopicCell];
+    [self.topicList addObject:publicTopicCell];
+}
+
+- (CGFloat)topicNoteMsgLabelHeight {
+    CGSize size = [NSString sizeWithText:topicNoteMsg
+                                 andFont:MKFont(14.f)
+                              andMaxSize:CGSizeMake(kScreenWidth - 2 * 15.f, MAXFLOAT)];
+    return size.height;
 }
 
 #pragma mark - UI
@@ -286,22 +376,18 @@
     return _dataList;
 }
 
-- (MKConfigServerSSLCertModel *)caFileModel {
-    if (!_caFileModel) {
-        _caFileModel = [[MKConfigServerSSLCertModel alloc] init];
-        _caFileModel.msgTitle = @"CA File:";
-        _caFileModel.certName = self.serverModel.caFileName;
+- (NSMutableArray *)certDataList {
+    if (!_certDataList) {
+        _certDataList = [NSMutableArray array];
     }
-    return _caFileModel;
+    return _certDataList;
 }
 
-- (MKConfigServerSSLCertModel *)p12FileModel {
-    if (!_p12FileModel) {
-        _p12FileModel = [[MKConfigServerSSLCertModel alloc] init];
-        _p12FileModel.msgTitle = @"Client Certificate File:";
-        _p12FileModel.certName = self.serverModel.clientP12CertName;
+- (NSMutableArray *)topicList {
+    if (!_topicList) {
+        _topicList = [NSMutableArray array];
     }
-    return _p12FileModel;
+    return _topicList;
 }
 
 @end

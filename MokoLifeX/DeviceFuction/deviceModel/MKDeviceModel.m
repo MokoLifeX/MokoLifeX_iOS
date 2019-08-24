@@ -46,6 +46,7 @@
     self.device_type = model.device_type;
     self.subscribedTopic = model.subscribedTopic;
     self.publishedTopic = model.publishedTopic;
+    self.mqttID = model.mqttID;
 }
 
 - (void)startStateMonitoringTimer{

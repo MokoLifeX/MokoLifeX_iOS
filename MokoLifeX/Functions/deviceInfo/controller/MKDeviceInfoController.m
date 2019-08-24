@@ -130,7 +130,7 @@
 - (void)readFirmwareInfo{
     [[MKHudManager share] showHUDWithTitle:@"Loading..." inView:self.view isPenetration:NO];
     WS(weakSelf);
-    [MKMQTTServerInterface readDeviceFirmwareInformationWithTopic:self.deviceModel.subscribedTopic sucBlock:^{
+    [MKMQTTServerInterface readDeviceFirmwareInformationWithTopic:[self.deviceModel currentSubscribedTopic] mqttID:self.deviceModel.mqttID sucBlock:^{
         [[MKHudManager share] hide];
         MKDeviceInformationController *vc = [[MKDeviceInformationController alloc] init];
         MKDeviceModel *model = [[MKDeviceModel alloc] init];

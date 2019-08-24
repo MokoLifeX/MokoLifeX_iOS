@@ -13,6 +13,11 @@ NS_ASSUME_NONNULL_BEGIN
 @interface MKConfigServerModel : NSObject
 
 /**
+ 设备跟MQTT通信时s唯一的通信ID
+ */
+@property (nonatomic, copy)NSString *mqttID;
+
+/**
  主机
  */
 @property (nonatomic, copy)NSString *host;

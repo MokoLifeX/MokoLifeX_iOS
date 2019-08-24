@@ -67,7 +67,7 @@ static CGFloat const iconHeight = 13.f;
 #pragma mark - note
 - (void)receiveStatusNotification:(NSNotification *)note {
     NSDictionary *deviceDic = note.userInfo[@"userInfo"];
-    if (!ValidDict(deviceDic) || ![deviceDic[@"deviceTopic"] isEqualToString:self.deviceModel.publishedTopic]) {
+    if (!ValidDict(deviceDic) || ![deviceDic[@"id"] isEqualToString:self.deviceModel.mqttID]) {
         return;
     }
     [[MKHudManager share] hide];
@@ -78,7 +78,7 @@ static CGFloat const iconHeight = 13.f;
 #pragma mark - interface
 - (void)configStatus:(NSInteger)current {
     [[MKHudManager share] showHUDWithTitle:@"Waiting..." inView:self.view isPenetration:NO];
-    [MKMQTTServerInterface configDevicePowerOnStatus:current topic:self.deviceModel.subscribedTopic sucBlock:^{
+    [MKMQTTServerInterface configDevicePowerOnStatus:current topic:[self.deviceModel currentSubscribedTopic] mqttID:self.deviceModel.mqttID sucBlock:^{
         [[MKHudManager share] hide];
         self.currentStatus = current;
         [self loadStatusIcon];
@@ -90,7 +90,7 @@ static CGFloat const iconHeight = 13.f;
 
 - (void)readStatus {
     [[MKHudManager share] showHUDWithTitle:@"Reading..." inView:self.view isPenetration:NO];
-    [MKMQTTServerInterface readDevicePowerOnStatusWithTopic:self.deviceModel.subscribedTopic sucBlock:^{
+    [MKMQTTServerInterface readDevicePowerOnStatusWithTopic:[self.deviceModel currentSubscribedTopic] mqttID:self.deviceModel.mqttID sucBlock:^{
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(receiveStatusNotification:)
                                                      name:MKMQTTServerReceivedDevicePowerOnStatusNotification

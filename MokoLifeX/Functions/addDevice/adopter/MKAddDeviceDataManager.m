@@ -117,7 +117,7 @@
     NSDictionary *deviceDic = note.userInfo[@"userInfo"];
     if (!ValidDict(deviceDic)
         || self.connectTimeout
-        || ![deviceDic[@"deviceTopic"] isEqualToString:self.serverModel.publishedTopic]) {
+        || ![deviceDic[@"id"] isEqualToString:self.serverModel.mqttID]) {
         return;
     }
     [[NSNotificationCenter defaultCenter] removeObserver:self name:MKMQTTServerReceivedSwitchStateNotification object:nil];
@@ -210,7 +210,13 @@
 #pragma mark - private method
 - (void)connectMQTTServer{
     //开始连接mqtt服务器
-    [[MKMQTTServerManager sharedInstance] subscriptions:@[self.serverModel.publishedTopic]];
+    NSString *subTopic = [MKMQTTServerDataManager sharedInstance].configServerModel.subscribedTopic;
+    if (ValidStr(subTopic)) {
+        //如果用户设置了app端的订阅topic，则直接订阅该topic
+        [[MKMQTTServerManager sharedInstance] subscriptions:@[subTopic]];
+    }else {
+        [[MKMQTTServerManager sharedInstance] subscriptions:@[self.serverModel.publishedTopic]];
+    }
     [[NSNotificationCenter defaultCenter] addObserver:self
                                    selector:@selector(receiveDeviceTopicData:)
                                        name:MKMQTTServerReceivedSwitchStateNotification
@@ -260,6 +266,7 @@
     dataModel.local_name = self.deviceDic[@"device_name"];
     dataModel.subscribedTopic = self.serverModel.subscribedTopic;
     dataModel.publishedTopic = self.serverModel.publishedTopic;
+    dataModel.mqttID = self.serverModel.mqttID;
     if ([MKAddDeviceCenter sharedInstance].deviceType == MKDevice_swich) {
         dataModel.swich_way_nameDic = @{
                                         @"switch_state_01":@"Switch1",

@@ -42,7 +42,7 @@ static char *const MKDeviceDataBaseOperationQueue = "MKDeviceDataBaseOperationQu
             return;
         }
         
-        BOOL resCreate = [db executeUpdate:@"CREATE TABLE IF NOT EXISTS deviceTable (device_mode text NOT NULL,device_id text NOT NULL,device_type text NOT NULL ,local_name text NOT NULL,device_name text NOT NULL, device_icon text NOT NULL, device_specifications text NOT NULL, device_function text NOT NULL,swich_way_nameDic text NOT NULL,subscribedTopic text NOT NULL,publishedTopic text NOT NULL);"];
+        BOOL resCreate = [db executeUpdate:@"CREATE TABLE IF NOT EXISTS deviceTable (device_mode text NOT NULL,device_id text NOT NULL,device_type text NOT NULL ,local_name text NOT NULL,device_name text NOT NULL, device_icon text NOT NULL, device_specifications text NOT NULL, device_function text NOT NULL,swich_way_nameDic text NOT NULL,subscribedTopic text NOT NULL,publishedTopic text NOT NULL,mqttID text NOT NULL);"];
         if (!resCreate) {
             [db close];
             [MKDeviceDataBaseAdopter operationInsertFailedBlock:failedBlock];
@@ -72,7 +72,7 @@ static char *const MKDeviceDataBaseOperationQueue = "MKDeviceDataBaseOperationQu
                 if (model.device_mode == MKDevice_swich && ValidDict(model.swich_way_nameDic)) {
                     swichListJsonString = [model.swich_way_nameDic jsonStringEncoded];
                 }
-                [db executeUpdate:@"UPDATE deviceTable SET device_mode = ?, device_type = ?, device_name = ? ,local_name = ?,device_icon = ? , device_specifications = ? ,device_function = ? ,swich_way_nameDic = ? ,subscribedTopic = ?,publishedTopic = ? WHERE device_id = ?",[NSString stringWithFormat:@"%ld",(long)model.device_mode], SafeStr(model.device_type),                         SafeStr(model.device_name),SafeStr(model.local_name),SafeStr(model.device_icon),SafeStr(model.device_specifications),SafeStr(model.device_function),swichListJsonString,SafeStr(model.subscribedTopic),SafeStr(model.publishedTopic),SafeStr(model.device_id)];
+                [db executeUpdate:@"UPDATE deviceTable SET device_mode = ?, device_type = ?, device_name = ? ,local_name = ?,device_icon = ? , device_specifications = ? ,device_function = ? ,swich_way_nameDic = ? ,subscribedTopic = ?,publishedTopic = ?,mqttID = ? WHERE device_id = ?",[NSString stringWithFormat:@"%ld",(long)model.device_mode], SafeStr(model.device_type),                         SafeStr(model.device_name),SafeStr(model.local_name),SafeStr(model.device_icon),SafeStr(model.device_specifications),SafeStr(model.device_function),swichListJsonString,SafeStr(model.subscribedTopic),SafeStr(model.publishedTopic),SafeStr(model.mqttID),SafeStr(model.device_id)];
             }else{
                 //不存在，插入设备
                 NSString *mode = [NSString stringWithFormat:@"%ld",(long)model.device_mode];
@@ -90,8 +90,8 @@ static char *const MKDeviceDataBaseOperationQueue = "MKDeviceDataBaseOperationQu
                 if (model.device_mode == MKDevice_swich && ValidDict(model.swich_way_nameDic)) {
                     swichListJsonString = [model.swich_way_nameDic jsonStringEncoded];
                 }
-                [db executeUpdate:@"INSERT INTO deviceTable (device_mode, device_id, device_type, local_name, device_name, device_icon, device_specifications, device_function, swich_way_nameDic, subscribedTopic, publishedTopic) VALUES (?,?,?,?,?,?,?,?,?,?,?);",mode
-                 ,SafeStr(model.device_id),SafeStr(model.device_type),SafeStr(model.local_name),SafeStr(model.device_name),SafeStr(model.device_icon),SafeStr(model.device_specifications),SafeStr(model.device_function),swichListJsonString,model.subscribedTopic,model.publishedTopic];
+                [db executeUpdate:@"INSERT INTO deviceTable (device_mode, device_id, device_type, local_name, device_name, device_icon, device_specifications, device_function, swich_way_nameDic, subscribedTopic, publishedTopic, mqttID) VALUES (?,?,?,?,?,?,?,?,?,?,?,?);",mode
+                 ,SafeStr(model.device_id),SafeStr(model.device_type),SafeStr(model.local_name),SafeStr(model.device_name),SafeStr(model.device_icon),SafeStr(model.device_specifications),SafeStr(model.device_function),SafeStr(swichListJsonString),SafeStr(model.subscribedTopic),SafeStr(model.publishedTopic),SafeStr(model.mqttID)];
             }
             
         }
@@ -133,6 +133,7 @@ static char *const MKDeviceDataBaseOperationQueue = "MKDeviceDataBaseOperationQu
             deviceModel.device_function = [result stringForColumn:@"device_function"];
             deviceModel.subscribedTopic = [result stringForColumn:@"subscribedTopic"];
             deviceModel.publishedTopic = [result stringForColumn:@"publishedTopic"];
+            deviceModel.mqttID = [result stringForColumn:@"mqttID"];
             if (deviceModel.device_mode == MKDevice_swich) {
                 NSString *nameDicString = [result stringForColumn:@"swich_way_nameDic"];
                 deviceModel.swich_way_nameDic = [nameDicString jsonValueDecoded];
@@ -183,7 +184,7 @@ static char *const MKDeviceDataBaseOperationQueue = "MKDeviceDataBaseOperationQu
         if (deviceModel.device_mode == MKDevice_swich && ValidDict(deviceModel.swich_way_nameDic)) {
             swichListJsonString = [deviceModel.swich_way_nameDic jsonStringEncoded];
         }
-        BOOL resUpdate = [db executeUpdate:@"UPDATE deviceTable SET device_mode = ?, device_type = ?, device_name = ? ,local_name = ?,device_icon = ? , device_specifications = ? ,device_function = ? ,swich_way_nameDic = ? , subscribedTopic = ?,publishedTopic = ? WHERE device_id = ?",[NSString stringWithFormat:@"%ld",(long)deviceModel.device_mode], SafeStr(deviceModel.device_type),                         SafeStr(deviceModel.device_name),SafeStr(deviceModel.local_name),SafeStr(deviceModel.device_icon),SafeStr(deviceModel.device_specifications),SafeStr(deviceModel.device_function),swichListJsonString,SafeStr(deviceModel.subscribedTopic),SafeStr(deviceModel.publishedTopic),SafeStr(deviceModel.device_id)];
+        BOOL resUpdate = [db executeUpdate:@"UPDATE deviceTable SET device_mode = ?, device_type = ?, device_name = ? ,local_name = ?,device_icon = ? , device_specifications = ? ,device_function = ? ,swich_way_nameDic = ? , subscribedTopic = ?,publishedTopic = ?,mqttID = ? WHERE device_id = ?",[NSString stringWithFormat:@"%ld",(long)deviceModel.device_mode], SafeStr(deviceModel.device_type),                         SafeStr(deviceModel.device_name),SafeStr(deviceModel.local_name),SafeStr(deviceModel.device_icon),SafeStr(deviceModel.device_specifications),SafeStr(deviceModel.device_function),SafeStr(swichListJsonString),SafeStr(deviceModel.subscribedTopic),SafeStr(deviceModel.publishedTopic),SafeStr(deviceModel.mqttID),SafeStr(deviceModel.device_id)];
         [db close];
         if (!resUpdate) {
             [MKDeviceDataBaseAdopter operationUpdateFailedBlock:failedBlock];

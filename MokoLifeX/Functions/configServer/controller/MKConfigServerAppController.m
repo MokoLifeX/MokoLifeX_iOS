@@ -195,6 +195,14 @@ static NSString *const topicNoteMsg = @"Note:adfasdfsdfsdfasdfasdfasdfasdfasdfas
     [self.navigationController pushViewController:vc animated:YES];
 }
 
+- (void)sslCertCellTextFieldValueChanged:(NSString *)certName index:(NSInteger)index{
+    if (index == 0) {
+        self.serverModel.caFileName = certName;
+    }else if (index == 1) {
+        self.serverModel.clientP12CertName = certName;
+    }
+}
+
 #pragma mark - MKCertSelectedDelegate
 - (void)mk_certSelectedMethod:(mk_certListPageType)certType certName:(NSString *)certName {
     if (certType == mk_caCertSelPage) {

@@ -14,6 +14,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)sslCertCellSelectedButtonPressed:(NSInteger)index;
 
+@optional
+- (void)sslCertCellTextFieldValueChanged:(NSString *)certName index:(NSInteger)index;
+
 @end
 
 @class MKConfigServerSSLCertModel;

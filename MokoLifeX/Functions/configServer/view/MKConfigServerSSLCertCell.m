@@ -81,6 +81,12 @@ static NSString *const MKConfigServerSSLCertCellIdenty = @"MKConfigServerSSLCert
     }
 }
 
+- (void)textFieldValueChanged {
+    if ([self.delegate respondsToSelector:@selector(sslCertCellTextFieldValueChanged:index:)]) {
+        [self.delegate sslCertCellTextFieldValueChanged:self.textField.text index:self.dataModel.index];
+    }
+}
+
 #pragma mark - public method
 - (void)setDataModel:(MKConfigServerSSLCertModel *)dataModel {
     _dataModel = nil;
@@ -106,6 +112,9 @@ static NSString *const MKConfigServerSSLCertCellIdenty = @"MKConfigServerSSLCert
     if (!_textField) {
         _textField = [MKCommonlyUIHelper configServerTextField];
         _textField.delegate = self;
+        [_textField addTarget:self
+                       action:@selector(textFieldValueChanged)
+             forControlEvents:UIControlEventEditingChanged];
     }
     return _textField;
 }

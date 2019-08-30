@@ -19,7 +19,7 @@
 
 #import "MKCertListController.h"
 
-static NSString *const topicNoteMsg = @"Note:adfasdfsdfsdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasfdsadfsdfsdfsadf";
+static NSString *const topicNoteMsg = @"Note：Input your  topic to communicate with the device or set the topic to empty.";
 
 @interface MKConfigServerAppController ()<UITableViewDelegate, UITableViewDataSource, MKConnectModeCellDelegate, MKConfigServerSSLCertCellDelegate,MKCertSelectedDelegate>
 

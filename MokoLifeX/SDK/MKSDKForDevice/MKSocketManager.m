@@ -524,7 +524,8 @@ static NSTimeInterval const defaultCommandTime = 2.f;
         return;
     }
     dispatch_async(self.certQueue, ^{
-        NSInteger totalPackages = (certData.length / certPackageDataLength) + 1;
+        NSInteger reminder = (certData.length % certPackageDataLength);
+        NSInteger totalPackages = (reminder ? ((certData.length / certPackageDataLength) + 1) : (certData.length / certPackageDataLength));
         for (NSInteger i = 0; i < totalPackages; i ++) {
             //正常数据发送
             NSInteger len = certPackageDataLength;

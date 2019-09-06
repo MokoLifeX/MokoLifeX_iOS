@@ -217,12 +217,20 @@ static NSString *const deviceHostConfigLocalKey = @"deviceHostConfigLocalKey";
     
     MKConfigServerNormalCell *subCell = self.topicList[0];
     if (!ValidStr(subCell.textField.text)) {
-        [self.view showCentralToast:@"必须设置客户端订阅主题"];
+        [self.view showCentralToast:@"You must set up the client subscribe to the topic!"];
+        return;
+    }
+    if (subCell.textField.text.length > 128) {
+        [self.view showCentralToast:@"Subscribe to the topic the maximum length is 128 bytes"];
         return;
     }
     MKConfigServerNormalCell *pubCell = self.topicList[1];
     if (!ValidStr(pubCell.textField.text)) {
-        [self.view showCentralToast:@"必须设置客户端发布主题"];
+        [self.view showCentralToast:@"You must set up the client publish to the topic!"];
+        return;
+    }
+    if (pubCell.textField.text.length > 128) {
+        [self.view showCentralToast:@"Publish to the topic the maximum length is 128 bytes"];
         return;
     }
     self.serverModel.subscribedTopic = subCell.textField.text;

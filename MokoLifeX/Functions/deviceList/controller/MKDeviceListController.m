@@ -321,7 +321,7 @@
 - (void)loadSubViews{
     [self.leftButton setImage:LOADIMAGE(@"mokoLife_menuIcon", @"png") forState:UIControlStateNormal];
     [self.rightButton setImage:LOADIMAGE(@"mokoLife_addIcon", @"png") forState:UIControlStateNormal];
-    self.titleLabel.text = @"Moko Life";
+    self.titleLabel.text = @"Moko LifeX";
     self.titleLabel.textColor = COLOR_WHITE_MACROS;
     self.custom_naviBarColor = UIColorFromRGB(0x0188cc);
     [self.titleLabel addSubview:self.loadingView];

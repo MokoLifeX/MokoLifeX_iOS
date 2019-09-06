@@ -206,6 +206,11 @@
         [target.view showCentralToast:@"Host error"];
         return NO;
     }
+    if (serverModel.host.length > 63 || serverModel.host.length < 0) {
+        //host校验错误
+        [target.view showCentralToast:@"Host error"];
+        return NO;
+    }
     if (!ValidStr(serverModel.port)) {
         [target.view showCentralToast:@"Port error"];
         return NO;
@@ -223,8 +228,8 @@
         [target.view showCentralToast:@"Keep alive range : 10~120"];
         return NO;
     }
-    //app，不能为空并且最大64个字符
-    if (!ValidStr(serverModel.clientId) || serverModel.clientId.length > 64) {
+    //app，最大64个字符
+    if (serverModel.clientId.length > 64) {
         //client id错误
         [target.view showCentralToast:@"Client id error"];
         return NO;

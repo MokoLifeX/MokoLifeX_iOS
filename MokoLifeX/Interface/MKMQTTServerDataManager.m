@@ -203,16 +203,23 @@ NSString *const MKMQTTServerReceivedDevicePowerOnStatusNotification = @"MKMQTTSe
     }
     MQTTSSLSecurityPolicy *securityPolicy = nil;
     NSArray *certList = nil;
+    NSString *document = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
     if (self.configServerModel.connectMode != 0) {
         //需要tls
-        securityPolicy = [MQTTSSLSecurityPolicy policyWithPinningMode:MQTTSSLPinningModeNone];
+        securityPolicy = [MQTTSSLSecurityPolicy policyWithPinningMode:MQTTSSLPinningModeCertificate];
         securityPolicy.allowInvalidCertificates = YES;
         securityPolicy.validatesDomainName = NO;
         securityPolicy.validatesCertificateChain = NO;
+        if (ValidStr(self.configServerModel.caFileName)) {
+            NSString *filePath = [document stringByAppendingPathComponent:self.configServerModel.caFileName];
+            NSData *clientCert = [NSData dataWithContentsOfFile:filePath];
+            if (ValidData(clientCert)) {
+                securityPolicy.pinnedCertificates = @[clientCert];
+            }
+        }
     }
     if (self.configServerModel.connectMode == 2) {
         //双向验证
-        NSString *document = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
         NSString *filePath = [document stringByAppendingPathComponent:self.configServerModel.clientP12CertName];
         certList = [MQTTSSLSecurityPolicyTransport clientCertsFromP12:filePath passphrase:@"123456"];
     }

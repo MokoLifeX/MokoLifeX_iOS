@@ -73,7 +73,7 @@ static CGFloat const centerIconHeight = 268.f;
         _msgLabel.textAlignment = NSTextAlignmentCenter;
         _msgLabel.textColor = UIColorFromRGB(0x0188cc);
         _msgLabel.font = MKFont(18.f);
-        _msgLabel.text = @"Start your moko life";
+        _msgLabel.text = @"Start your moko lifeX";
     }
     return _msgLabel;
 }

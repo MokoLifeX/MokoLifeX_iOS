@@ -201,6 +201,8 @@ static NSString *const topicNoteMsg = @"Note：Input your  topic to communicate 
     }else if (index == 1) {
         self.serverModel.clientP12CertName = certName;
     }
+    MKConfigServerSSLCertModel *caFileModel = self.certDataList[index];
+    caFileModel.certName = certName;
 }
 
 #pragma mark - MKCertSelectedDelegate

@@ -228,8 +228,8 @@
         [target.view showCentralToast:@"Keep alive range : 10~120"];
         return NO;
     }
-    //app，最大64个字符
-    if (serverModel.clientId.length > 64) {
+    //app，不能为空并且最大64个字符
+    if (!ValidStr(serverModel.clientId) || serverModel.clientId.length > 64) {
         //client id错误
         [target.view showCentralToast:@"Client id error"];
         return NO;

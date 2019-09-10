@@ -206,16 +206,18 @@ NSString *const MKMQTTServerReceivedDevicePowerOnStatusNotification = @"MKMQTTSe
     NSString *document = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
     if (self.configServerModel.connectMode != 0) {
         //需要tls
-        securityPolicy = [MQTTSSLSecurityPolicy policyWithPinningMode:MQTTSSLPinningModeCertificate];
-        securityPolicy.allowInvalidCertificates = YES;
-        securityPolicy.validatesDomainName = NO;
-        securityPolicy.validatesCertificateChain = NO;
         if (ValidStr(self.configServerModel.caFileName)) {
             NSString *filePath = [document stringByAppendingPathComponent:self.configServerModel.caFileName];
             NSData *clientCert = [NSData dataWithContentsOfFile:filePath];
             if (ValidData(clientCert)) {
+                securityPolicy = [MQTTSSLSecurityPolicy policyWithPinningMode:MQTTSSLPinningModeCertificate];
                 securityPolicy.pinnedCertificates = @[clientCert];
+            }else {
+                securityPolicy = [MQTTSSLSecurityPolicy policyWithPinningMode:MQTTSSLPinningModeNone];
             }
+            securityPolicy.allowInvalidCertificates = YES;
+            securityPolicy.validatesDomainName = NO;
+            securityPolicy.validatesCertificateChain = NO;
         }
     }
     if (self.configServerModel.connectMode == 2) {

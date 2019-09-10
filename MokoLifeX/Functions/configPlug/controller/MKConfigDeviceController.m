@@ -211,7 +211,7 @@ static CGFloat const buttonViewHeight = 50.f;
 
 #pragma mark - config view
 - (void)loadSubViews{
-    self.defaultTitle = @"Moko Life";
+    self.defaultTitle = @"Moko LifeX";
     self.titleLabel.textColor = COLOR_WHITE_MACROS;
     [self.rightButton setImage:LOADIMAGE(@"configPlugPage_moreIcon", @"png") forState:UIControlStateNormal];
     [self.view addSubview:self.switchButton];

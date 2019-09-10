@@ -60,7 +60,7 @@
 
 #pragma mark - 父类方法
 - (NSString *)defaultTitle{
-    return @"Moko Life";
+    return @"Moko LifeX";
 }
 
 - (void)rightButtonMethod{

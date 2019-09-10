@@ -54,7 +54,7 @@ static CGFloat const rightIconHeight = 15.f;
     }];
     [self.rightMsgLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.mas_equalTo(self.rightIcon.mas_left).mas_offset(-10.f);
-        make.width.mas_equalTo(100.f);
+        make.width.mas_equalTo(130.f);
         make.centerY.mas_equalTo(self.contentView.mas_centerY);
         make.height.mas_equalTo(MKFont(13.f).lineHeight);
     }];

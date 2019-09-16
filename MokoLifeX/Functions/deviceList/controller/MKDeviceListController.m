@@ -337,13 +337,13 @@
         make.left.mas_equalTo(0);
         make.right.mas_equalTo(0);
         make.top.mas_equalTo(defaultTopInset);
-        make.bottom.mas_equalTo(0);
+        make.bottom.mas_equalTo(-VirtualHomeHeight);
     }];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(0);
         make.right.mas_equalTo(0);
         make.top.mas_equalTo(defaultTopInset);
-        make.bottom.mas_equalTo(0);
+        make.bottom.mas_equalTo(-VirtualHomeHeight);
     }];
     [self.view sendSubviewToBack:self.addDeviceView];
 }

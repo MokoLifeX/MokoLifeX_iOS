@@ -940,8 +940,8 @@
 		001792E522E59445001C0FFD /* model */ = {
 			isa = PBXGroup;
 			children = (
-				001792E622E59445001C0FFD /* MKAboutModel.m */,
 				001792E722E59445001C0FFD /* MKAboutModel.h */,
+				001792E622E59445001C0FFD /* MKAboutModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";

@@ -74,11 +74,11 @@
     plugModel.leftIconName = @"selectDeviceType_plugIcon";
     [self.dataList addObject:plugModel];
     
-    MKSelectDeviceTypeModel *swichModel = [[MKSelectDeviceTypeModel alloc] init];
-    swichModel.msg = @"Wall Swich";
-    swichModel.leftIconName = @"selectDeviceType_swichIcon";
-    [self.dataList addObject:swichModel];
-    [self.tableView reloadData];
+//    MKSelectDeviceTypeModel *swichModel = [[MKSelectDeviceTypeModel alloc] init];
+//    swichModel.msg = @"Wall Swich";
+//    swichModel.leftIconName = @"selectDeviceType_swichIcon";
+//    [self.dataList addObject:swichModel];
+//    [self.tableView reloadData];
 }
 
 - (void)loadSubViews{

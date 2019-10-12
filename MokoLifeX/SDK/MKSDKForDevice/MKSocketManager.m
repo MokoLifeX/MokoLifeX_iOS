@@ -524,7 +524,8 @@ static NSTimeInterval const defaultCommandTime = 2.f;
         return;
     }
     dispatch_async(self.certQueue, ^{
-        NSInteger totalPackages = (certData.length / certPackageDataLength) + 1;
+        NSInteger reminder = (certData.length % certPackageDataLength);
+        NSInteger totalPackages = (reminder ? ((certData.length / certPackageDataLength) + 1) : (certData.length / certPackageDataLength));
         for (NSInteger i = 0; i < totalPackages; i ++) {
             //正常数据发送
             NSInteger len = certPackageDataLength;
@@ -532,7 +533,7 @@ static NSTimeInterval const defaultCommandTime = 2.f;
                 len = certData.length % certPackageDataLength;
             }
             NSData *tempData = [certData subdataWithRange:NSMakeRange(i * certPackageDataLength, len)];
-            NSString *subData = tempData.utf8String;
+            NSString *subData = [[NSString alloc] initWithData:tempData encoding:NSUTF8StringEncoding];
             if (!subData || ![subData isKindOfClass:NSString.class]) {
                 [MKSocketBlockAdopter operationParamsErrorBlock:failedBlock];
                 return;

@@ -100,9 +100,7 @@
             [self.view showCentralToast:@"Device offline,please check."];
             return;
         }
-        MKModifyPowerOnStatusController *vc = [[MKModifyPowerOnStatusController alloc] init];
-        vc.deviceModel = self.deviceModel;
-        [self.navigationController pushViewController:vc animated:YES];
+        [self readModifyPowerOnStatus];
         return;
     }
 }
@@ -140,6 +138,18 @@
     } failedBlock:^(NSError *error) {
         [[MKHudManager share] hide];
         [weakSelf.view showCentralToast:error.userInfo[@"errorInfo"]];
+    }];
+}
+
+- (void)readModifyPowerOnStatus {
+    [[MKHudManager share] showHUDWithTitle:@"Reading..." inView:self.view isPenetration:NO];
+    [MKMQTTServerInterface readDevicePowerOnStatusWithTopic:[self.deviceModel currentSubscribedTopic] mqttID:self.deviceModel.mqttID sucBlock:^{
+        MKModifyPowerOnStatusController *vc = [[MKModifyPowerOnStatusController alloc] init];
+        vc.deviceModel = self.deviceModel;
+        [self.navigationController pushViewController:vc animated:YES];
+    } failedBlock:^(NSError *error) {
+        [[MKHudManager share] hide];
+        [self.view showCentralToast:error.userInfo[@"errorInfo"]];
     }];
 }
 
@@ -234,7 +244,7 @@
     [self.dataList addObject:infoModel];
     
     MKDeviceInfoModel *firmwareModel = [[MKDeviceInfoModel alloc] init];
-    firmwareModel.leftMsg = @"Check firmware update";
+    firmwareModel.leftMsg = @"Check update";
     [self.dataList addObject:firmwareModel];
     
     MKDeviceInfoModel *powerStatusModel = [[MKDeviceInfoModel alloc] init];

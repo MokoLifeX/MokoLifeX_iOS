@@ -65,11 +65,15 @@ static CGFloat const kpickViewH = 300.f;
     return self.minList.count;
 }
 
-- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
-    if (component == 0) {
-        return self.hourList[row];
+- (nullable NSAttributedString *)pickerView:(UIPickerView *)pickerView attributedTitleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    NSString *titleString = @"";
+    if (component == 1) {
+        titleString = self.minList[row];
+    }else if (component == 0) {
+        titleString = self.hourList[row];
     }
-    return self.minList[row];
+    NSAttributedString *attributedString = [MKAttributedString getAttributedString:@[titleString] fonts:@[MKFont(15.f)] colors:@[DEFAULT_TEXT_COLOR]];
+    return attributedString;
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{

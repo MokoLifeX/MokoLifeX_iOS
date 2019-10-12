@@ -201,6 +201,8 @@ static NSString *const topicNoteMsg = @"Note：Input your  topic to communicate 
     }else if (index == 1) {
         self.serverModel.clientP12CertName = certName;
     }
+    MKConfigServerSSLCertModel *caFileModel = self.certDataList[index];
+    caFileModel.certName = certName;
 }
 
 #pragma mark - MKCertSelectedDelegate
@@ -257,6 +259,16 @@ static NSString *const topicNoteMsg = @"Note：Input your  topic to communicate 
     
     MKConfigServerNormalCell *subCell = self.topicList[0];
     MKConfigServerNormalCell *pubCell = self.topicList[1];
+    
+    if (subCell.textField.text.length > 128) {
+        [self.view showCentralToast:@"Subscribe to the topic the maximum length is 128 bytes"];
+        return;
+    }
+    if (pubCell.textField.text.length > 128) {
+        [self.view showCentralToast:@"Publish to the topic the maximum length is 128 bytes"];
+        return;
+    }
+    
     self.serverModel.subscribedTopic = subCell.textField.text;
     self.serverModel.publishedTopic = pubCell.textField.text;
     

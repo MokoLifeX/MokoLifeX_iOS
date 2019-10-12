@@ -206,6 +206,11 @@
         [target.view showCentralToast:@"Host error"];
         return NO;
     }
+    if (serverModel.host.length > 63 || serverModel.host.length < 0) {
+        //host校验错误
+        [target.view showCentralToast:@"Host error"];
+        return NO;
+    }
     if (!ValidStr(serverModel.port)) {
         [target.view showCentralToast:@"Port error"];
         return NO;

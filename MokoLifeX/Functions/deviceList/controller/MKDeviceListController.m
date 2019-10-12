@@ -32,6 +32,8 @@
 
 @property (nonatomic, strong)NSMutableArray *dataList;
 
+@property (nonatomic, strong)CLLocationManager *locationManager;
+
 @end
 
 @implementation MKDeviceListController
@@ -58,6 +60,12 @@
 }
 
 - (void)rightButtonMethod{
+    if ([kSystemVersionString floatValue] >= 13 && [CLLocationManager authorizationStatus] != kCLAuthorizationStatusAuthorizedAlways && [CLLocationManager authorizationStatus] != kCLAuthorizationStatusAuthorizedWhenInUse) {
+        //未授权位置信息
+        [self showAuthAlert];
+        return;
+    }
+    
     if (![[MKMQTTServerDataManager sharedInstance].configServerModel needParametersHasValue]) {
         //如果app的mqtt服务器信息没有，则去设置
         MKConfigServerAppController *vc = [[MKConfigServerAppController alloc] init];
@@ -68,6 +76,7 @@
     MKSelectDeviceTypeController *vc = [[MKSelectDeviceTypeController alloc] init];
     vc.isPrensent = YES;
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+    nav.modalPresentationStyle = UIModalPresentationFullScreen;
     [self.navigationController presentViewController:nav animated:YES completion:nil];
 }
 
@@ -317,11 +326,27 @@
                                      object:nil];
 }
 
+- (void)showAuthAlert {
+    NSString *msg = @"Please go to Settings-Privacy-Location Services to turn on location services permission.";
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Note"
+                                                                             message:msg
+                                                                      preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
+                                                           style:UIAlertActionStyleCancel
+                                                         handler:nil];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Confirm" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [MKAddDeviceCenter gotoSystemWifiPage];
+    }];
+    [alertController addAction:cancelAction];
+    [alertController addAction:okAction];
+    [kAppRootController presentViewController:alertController animated:YES completion:nil];
+}
+
 #pragma mark - loadSubViews
 - (void)loadSubViews{
     [self.leftButton setImage:LOADIMAGE(@"mokoLife_menuIcon", @"png") forState:UIControlStateNormal];
     [self.rightButton setImage:LOADIMAGE(@"mokoLife_addIcon", @"png") forState:UIControlStateNormal];
-    self.titleLabel.text = @"Moko Life";
+    self.titleLabel.text = @"Moko LifeX";
     self.titleLabel.textColor = COLOR_WHITE_MACROS;
     self.custom_naviBarColor = UIColorFromRGB(0x0188cc);
     [self.titleLabel addSubview:self.loadingView];
@@ -337,13 +362,13 @@
         make.left.mas_equalTo(0);
         make.right.mas_equalTo(0);
         make.top.mas_equalTo(defaultTopInset);
-        make.bottom.mas_equalTo(0);
+        make.bottom.mas_equalTo(-VirtualHomeHeight);
     }];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(0);
         make.right.mas_equalTo(0);
         make.top.mas_equalTo(defaultTopInset);
-        make.bottom.mas_equalTo(0);
+        make.bottom.mas_equalTo(-VirtualHomeHeight);
     }];
     [self.view sendSubviewToBack:self.addDeviceView];
 }
@@ -382,6 +407,13 @@
         _dataList = [NSMutableArray array];
     }
     return _dataList;
+}
+
+- (CLLocationManager *)locationManager {
+    if (!_locationManager) {
+        _locationManager = [[CLLocationManager alloc] init];
+    }
+    return _locationManager;
 }
 
 @end

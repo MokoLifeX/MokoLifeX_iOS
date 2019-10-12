@@ -27,12 +27,29 @@ static CGFloat const iconHeight = 13.f;
 
 @property (nonatomic, assign)NSInteger currentStatus;
 
+/**
+ 定时器，超过指定时间将会视为读取失败
+ */
+@property (nonatomic, strong)dispatch_source_t readTimer;
+
+/**
+ 超时标记
+ */
+@property (nonatomic, assign)BOOL readTimeout;
+
 @end
 
 @implementation MKModifyPowerOnStatusController
 
 - (void)dealloc {
     NSLog(@"MKModifyPowerOnStatusController销毁");
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    if (self.readTimer) {
+        dispatch_cancel(self.readTimer);
+    }
 }
 
 - (void)viewDidLoad {
@@ -90,15 +107,11 @@ static CGFloat const iconHeight = 13.f;
 
 - (void)readStatus {
     [[MKHudManager share] showHUDWithTitle:@"Reading..." inView:self.view isPenetration:NO];
-    [MKMQTTServerInterface readDevicePowerOnStatusWithTopic:[self.deviceModel currentSubscribedTopic] mqttID:self.deviceModel.mqttID sucBlock:^{
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(receiveStatusNotification:)
-                                                     name:MKMQTTServerReceivedDevicePowerOnStatusNotification
-                                                   object:nil];
-    } failedBlock:^(NSError *error) {
-        [[MKHudManager share] hide];
-        [self.view showCentralToast:error.userInfo[@"errorInfo"]];
-    }];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(receiveStatusNotification:)
+                                                 name:MKMQTTServerReceivedDevicePowerOnStatusNotification
+                                               object:nil];
+    [self initReadTimer];
 }
 
 #pragma mark - private method
@@ -121,6 +134,30 @@ static CGFloat const iconHeight = 13.f;
         self.revertIcon.image = LOADIMAGE(@"configServer_ConnectMode_selected", @"png");
         return;
     }
+}
+
+- (void)initReadTimer{
+    self.readTimer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER,
+                                            0,
+                                            0,
+                                            dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0));
+    //开始时间
+    dispatch_time_t start = dispatch_time(DISPATCH_TIME_NOW, 10.f * NSEC_PER_SEC);
+    //间隔时间
+    uint64_t interval = 10.f * NSEC_PER_SEC;
+    dispatch_source_set_timer(self.readTimer, start, interval, 0);
+    WS(weakSelf);
+    dispatch_source_set_event_handler(self.readTimer, ^{
+        weakSelf.readTimeout = YES;
+        dispatch_cancel(weakSelf.readTimer);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[MKHudManager share] hide];
+            [[NSNotificationCenter defaultCenter] removeObserver:self name:MKMQTTServerReceivedDevicePowerOnStatusNotification object:nil];
+            [weakSelf.view showCentralToast:@"Get data failed!"];
+            [weakSelf performSelector:@selector(leftButtonMethod) withObject:nil afterDelay:0.5f];
+        });
+    });
+    dispatch_resume(self.readTimer);
 }
 
 #pragma mark - UI

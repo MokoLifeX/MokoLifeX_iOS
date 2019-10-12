@@ -1062,13 +1062,13 @@
 		0017930822E59445001C0FFD /* view */ = {
 			isa = PBXGroup;
 			children = (
-				0017930922E59445001C0FFD /* MKConnectDeviceProgressView.h */,
 				0017930A22E59445001C0FFD /* MKConnectViewProtocol.h */,
-				0017930B22E59445001C0FFD /* MKConnectDeviceWifiView.m */,
-				0017930C22E59445001C0FFD /* MKConnectDeviceView.m */,
+				0017930922E59445001C0FFD /* MKConnectDeviceProgressView.h */,
 				0017930D22E59445001C0FFD /* MKConnectDeviceProgressView.m */,
-				0017930E22E59445001C0FFD /* MKConnectDeviceView.h */,
 				0017930F22E59445001C0FFD /* MKConnectDeviceWifiView.h */,
+				0017930B22E59445001C0FFD /* MKConnectDeviceWifiView.m */,
+				0017930E22E59445001C0FFD /* MKConnectDeviceView.h */,
+				0017930C22E59445001C0FFD /* MKConnectDeviceView.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1162,8 +1162,8 @@
 		0017935C22E5950A001C0FFD /* cell */ = {
 			isa = PBXGroup;
 			children = (
-				0017935D22E5950A001C0FFD /* MKBaseCell.m */,
 				0017935E22E5950A001C0FFD /* MKBaseCell.h */,
+				0017935D22E5950A001C0FFD /* MKBaseCell.m */,
 			);
 			path = cell;
 			sourceTree = "<group>";
@@ -1574,7 +1574,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = MK;
-				LastUpgradeCheck = 1020;
+				LastUpgradeCheck = 1100;
 				ORGANIZATIONNAME = MK;
 				TargetAttributes = {
 					0017921622E55928001C0FFD = {
@@ -1989,6 +1989,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.moko.MokoLifeX;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -2012,6 +2013,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.moko.MokoLifeX;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -2094,6 +2096,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.moko.MokoLifeX;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;

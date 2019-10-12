@@ -533,7 +533,7 @@ static NSTimeInterval const defaultCommandTime = 2.f;
                 len = certData.length % certPackageDataLength;
             }
             NSData *tempData = [certData subdataWithRange:NSMakeRange(i * certPackageDataLength, len)];
-            NSString *subData = tempData.utf8String;
+            NSString *subData = [[NSString alloc] initWithData:tempData encoding:NSUTF8StringEncoding];
             if (!subData || ![subData isKindOfClass:NSString.class]) {
                 [MKSocketBlockAdopter operationParamsErrorBlock:failedBlock];
                 return;

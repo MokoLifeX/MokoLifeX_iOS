@@ -46,7 +46,7 @@ NSString *const deviceMacAddress = @"deviceMacAddress";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.titleLabel.text = @"Check Firmware Update";
+    self.titleLabel.text = @"Check Update";
     self.titleLabel.textColor = COLOR_WHITE_MACROS;
     self.custom_naviBarColor = UIColorFromRGB(0x0188cc);
     [self.view addSubview:self.tableView];

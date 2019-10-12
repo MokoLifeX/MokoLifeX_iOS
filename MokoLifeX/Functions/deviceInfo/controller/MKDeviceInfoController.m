@@ -244,7 +244,7 @@
     [self.dataList addObject:infoModel];
     
     MKDeviceInfoModel *firmwareModel = [[MKDeviceInfoModel alloc] init];
-    firmwareModel.leftMsg = @"Check firmware update";
+    firmwareModel.leftMsg = @"Check update";
     [self.dataList addObject:firmwareModel];
     
     MKDeviceInfoModel *powerStatusModel = [[MKDeviceInfoModel alloc] init];

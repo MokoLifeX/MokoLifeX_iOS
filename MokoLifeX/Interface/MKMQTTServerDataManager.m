@@ -87,7 +87,10 @@ NSString *const MKMQTTServerReceivedDevicePowerOnStatusNotification = @"MKMQTTSe
     NSString *receiveStr = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
     NSData * datas = [receiveStr dataUsingEncoding:NSUTF8StringEncoding];
     NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:datas options:NSJSONReadingAllowFragments error:nil];
-    if (!dataDic || dataDic.allValues.count == 0 || !ValidStr(dataDic[@"id"]) || !ValidNum(dataDic[@"msg_id"])) {
+    if (!ValidDict(dataDic)) {
+        return;
+    }
+    if (!ValidStr(dataDic[@"id"]) || !ValidNum(dataDic[@"msg_id"])) {
         return;
     }
     NSLog(@"接收到数据:%@",dataDic);

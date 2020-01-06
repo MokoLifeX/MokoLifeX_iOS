@@ -263,7 +263,11 @@
 - (void)saveDeviceToLocal{
     MKDeviceModel *dataModel = [MKDeviceModel modelWithJSON:self.deviceDic];
     dataModel.device_mode = [MKAddDeviceCenter sharedInstance].deviceType;
-    dataModel.local_name = [NSString stringWithFormat:@"%@-%@",self.deviceDic[@"device_name"],self.deviceDic[@"device_id"]];
+    NSString *tempReg = self.deviceDic[@"device_id"];
+    if (tempReg.length > 4) {
+        tempReg = [tempReg substringWithRange:NSMakeRange(tempReg.length - 4, 4)];
+    }
+    dataModel.local_name = [NSString stringWithFormat:@"%@-%@",self.deviceDic[@"device_name"],tempReg];
     dataModel.subscribedTopic = self.serverModel.subscribedTopic;
     dataModel.publishedTopic = self.serverModel.publishedTopic;
     dataModel.mqttID = self.serverModel.mqttID;

@@ -20,6 +20,7 @@
 #import "MKConfigSwichController.h"
 #import "MKConfigServerAppController.h"
 #import "MKSelectDeviceTypeController.h"
+#import "MKAboutController.h"
 
 
 @interface MKDeviceListController ()<UITableViewDelegate, UITableViewDataSource, MKDeviceModelDelegate, MKDeviceListCellDelegate>
@@ -33,6 +34,8 @@
 @property (nonatomic, strong)NSMutableArray *dataList;
 
 @property (nonatomic, strong)CLLocationManager *locationManager;
+
+@property (nonatomic, strong)UIView *dataView;
 
 @end
 
@@ -60,24 +63,8 @@
 }
 
 - (void)rightButtonMethod{
-    if ([kSystemVersionString floatValue] >= 13 && [CLLocationManager authorizationStatus] != kCLAuthorizationStatusAuthorizedAlways && [CLLocationManager authorizationStatus] != kCLAuthorizationStatusAuthorizedWhenInUse) {
-        //未授权位置信息
-        [self showAuthAlert];
-        return;
-    }
-    
-    if (![[MKMQTTServerDataManager sharedInstance].configServerModel needParametersHasValue]) {
-        //如果app的mqtt服务器信息没有，则去设置
-        MKConfigServerAppController *vc = [[MKConfigServerAppController alloc] init];
-        [self.navigationController pushViewController:vc animated:YES];
-        return;
-    }
-    //如果都有了，则去添加设备
-    MKSelectDeviceTypeController *vc = [[MKSelectDeviceTypeController alloc] init];
-    vc.isPrensent = YES;
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
-    nav.modalPresentationStyle = UIModalPresentationFullScreen;
-    [self.navigationController presentViewController:nav animated:YES completion:nil];
+    MKAboutController *vc = [[MKAboutController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - UITableViewDelegate
@@ -216,6 +203,28 @@
     }
 }
 
+#pragma mark - event method
+- (void)addButtonPressed {
+    if ([kSystemVersionString floatValue] >= 13 && [CLLocationManager authorizationStatus] != kCLAuthorizationStatusAuthorizedAlways && [CLLocationManager authorizationStatus] != kCLAuthorizationStatusAuthorizedWhenInUse) {
+            //未授权位置信息
+            [self showAuthAlert];
+            return;
+        }
+    
+        if (![[MKMQTTServerDataManager sharedInstance].configServerModel needParametersHasValue]) {
+            //如果app的mqtt服务器信息没有，则去设置
+            MKConfigServerAppController *vc = [[MKConfigServerAppController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+            return;
+        }
+        //如果都有了，则去添加设备
+        MKSelectDeviceTypeController *vc = [[MKSelectDeviceTypeController alloc] init];
+        vc.isPrensent = YES;
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+        nav.modalPresentationStyle = UIModalPresentationFullScreen;
+        [self.navigationController presentViewController:nav animated:YES completion:nil];
+}
+
 #pragma mark - get device list
 - (void)getDeviceList{
     WS(weakSelf);
@@ -230,14 +239,14 @@
 - (void)processLocalDeviceDatas:(NSArray<MKDeviceModel *> *)deviceList{
     if (!ValidArray(deviceList)) {
         //如果本地没有，则加载添加设备页面，
-        [self.view sendSubviewToBack:self.tableView];
+        [self.view sendSubviewToBack:self.dataView];
         [self.view bringSubviewToFront:self.addDeviceView];
         [self reloadTableViewWithData:@[]];
         return;
     }
     //如果本地有设备，显示设备列表
     [self.view sendSubviewToBack:self.addDeviceView];
-    [self.view bringSubviewToFront:self.tableView];
+    [self.view bringSubviewToFront:self.dataView];
     [self reloadTableViewWithData:deviceList];
 }
 
@@ -345,13 +354,13 @@
 #pragma mark - loadSubViews
 - (void)loadSubViews{
     [self.leftButton setImage:LOADIMAGE(@"mokoLife_menuIcon", @"png") forState:UIControlStateNormal];
-    [self.rightButton setImage:LOADIMAGE(@"mokoLife_addIcon", @"png") forState:UIControlStateNormal];
+    [self.rightButton setImage:LOADIMAGE(@"scanRightAboutIcon", @"png") forState:UIControlStateNormal];
     self.titleLabel.text = @"Moko LifeX";
     self.titleLabel.textColor = COLOR_WHITE_MACROS;
     self.custom_naviBarColor = UIColorFromRGB(0x0188cc);
     [self.titleLabel addSubview:self.loadingView];
     [self.view addSubview:self.addDeviceView];
-    [self.view addSubview:self.tableView];
+    [self.view addSubview:self.dataView];
     [self.loadingView mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(5.f);
         make.right.mas_equalTo(-5.f);
@@ -364,7 +373,7 @@
         make.top.mas_equalTo(defaultTopInset);
         make.bottom.mas_equalTo(-VirtualHomeHeight);
     }];
-    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.dataView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(0);
         make.right.mas_equalTo(0);
         make.top.mas_equalTo(defaultTopInset);
@@ -377,9 +386,10 @@
 - (MKAddDeviceView *)addDeviceView{
     if (!_addDeviceView) {
         _addDeviceView = [[MKAddDeviceView alloc] init];
+        _addDeviceView.backgroundColor = COLOR_WHITE_MACROS;
         WS(weakSelf);
         _addDeviceView.addDeviceBlock = ^{
-            [weakSelf rightButtonMethod];
+            [weakSelf addButtonPressed];
         };
     }
     return _addDeviceView;
@@ -400,6 +410,33 @@
         _loadingView = [[UIView alloc] init];
     }
     return _loadingView;
+}
+
+- (UIView *)dataView {
+    if (!_dataView) {
+        _dataView = [[UIView alloc] init];
+        _dataView.backgroundColor = UIColorFromRGB(0xf2f2f2);
+        
+        [_dataView addSubview:self.tableView];
+        [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(0);
+            make.right.mas_equalTo(0);
+            make.top.mas_equalTo(0);
+            make.bottom.mas_equalTo(-100.f);
+        }];
+        
+        UIButton *addButton = [MKCommonlyUIHelper commonBottomButtonWithTitle:@"Add Devices"
+                                                                       target:self
+                                                                       action:@selector(addButtonPressed)];
+        [_dataView addSubview:addButton];
+        [addButton mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(58.f);
+            make.right.mas_equalTo(-58.f);
+            make.bottom.mas_equalTo(-30.f);
+            make.height.mas_equalTo(50.f);
+        }];
+    }
+    return _dataView;
 }
 
 - (NSMutableArray *)dataList{

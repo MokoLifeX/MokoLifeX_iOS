@@ -41,8 +41,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self loadSubViews];
-    if (ValidStr(self.deviceModel.device_name)) {
-        self.textField.text = self.deviceModel.device_name;
+    if (ValidStr(self.deviceModel.device_name) && ValidStr(self.deviceModel.device_id)) {
+        self.textField.text = [NSString stringWithFormat:@"%@-%@",self.deviceModel.device_name,self.deviceModel.device_id];
     }
     // Do any additional setup after loading the view.
 }

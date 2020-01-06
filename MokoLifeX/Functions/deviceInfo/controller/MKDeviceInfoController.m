@@ -63,12 +63,12 @@
         }];
         return;
     }
-    if (indexPath.row == 4) {
-        //关于
-        MKAboutController *vc = [[MKAboutController alloc] init];
-        [self.navigationController pushViewController:vc animated:YES];
-        return;
-    }
+//    if (indexPath.row == 4) {
+//        //关于
+//        MKAboutController *vc = [[MKAboutController alloc] init];
+//        [self.navigationController pushViewController:vc animated:YES];
+//        return;
+//    }
     if (![self canClickEnable]) {
         return;
     }
@@ -251,9 +251,9 @@
     powerStatusModel.leftMsg = @"Modify power on status";
     [self.dataList addObject:powerStatusModel];
     
-    MKDeviceInfoModel *aboutModel = [[MKDeviceInfoModel alloc] init];
-    aboutModel.leftMsg = @"About";
-    [self.dataList addObject:aboutModel];
+//    MKDeviceInfoModel *aboutModel = [[MKDeviceInfoModel alloc] init];
+//    aboutModel.leftMsg = @"About";
+//    [self.dataList addObject:aboutModel];
     
     [self.tableView reloadData];
 }

@@ -42,11 +42,7 @@
     [super viewDidLoad];
     [self loadSubViews];
     if (ValidStr(self.deviceModel.device_name) && ValidStr(self.deviceModel.device_id)) {
-        NSString *tempReg = self.deviceModel.device_id;
-        if (tempReg.length > 4) {
-            tempReg = [tempReg substringWithRange:NSMakeRange(tempReg.length - 4, 4)];
-        }
-        self.textField.text = [NSString stringWithFormat:@"%@-%@",self.deviceModel.device_name,tempReg];
+        self.textField.text = [NSString stringWithFormat:@"%@-%@",self.deviceModel.device_name,self.deviceModel.device_id];
     }
     // Do any additional setup after loading the view.
 }

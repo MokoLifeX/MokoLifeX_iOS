@@ -7,7 +7,6 @@
 //
 
 #import "MKConfigSwichController.h"
-#import "MKBaseTableView.h"
 #import "MKConfigSwichCell.h"
 #import "MKConfigSwichModel.h"
 #import "MKDeviceDataBaseManager.h"

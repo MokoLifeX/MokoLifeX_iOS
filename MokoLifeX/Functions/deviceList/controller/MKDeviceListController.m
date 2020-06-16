@@ -8,7 +8,6 @@
 
 #import "MKDeviceListController.h"
 #import "MKConfigServerModel.h"
-#import "MKBaseTableView.h"
 #import "MKDeviceListCell.h"
 #import "MKAddDeviceView.h"
 #import "EasyLodingView.h"
@@ -22,6 +21,7 @@
 #import "MKSelectDeviceTypeController.h"
 #import "MKAboutController.h"
 
+#import "MKNewConfigPlugController.h"
 
 @interface MKDeviceListController ()<UITableViewDelegate, UITableViewDataSource, MKDeviceModelDelegate, MKDeviceListCellDelegate>
 
@@ -63,8 +63,10 @@
 }
 
 - (void)rightButtonMethod{
-    MKAboutController *vc = [[MKAboutController alloc] init];
+    MKNewConfigPlugController *vc = [[MKNewConfigPlugController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
+//    MKAboutController *vc = [[MKAboutController alloc] init];
+//    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - UITableViewDelegate

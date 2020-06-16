@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		000AD46724974EB600AE0616 /* MKSettingPageCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 000AD46624974EB600AE0616 /* MKSettingPageCellModel.m */; };
+		000AD46A24974F4C00AE0616 /* MKSettingPageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 000AD46924974F4C00AE0616 /* MKSettingPageCell.m */; };
+		000AD46D24974FA700AE0616 /* MKSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 000AD46C24974FA700AE0616 /* MKSettingsController.m */; };
 		0017921C22E55928001C0FFD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0017921B22E55928001C0FFD /* AppDelegate.m */; };
 		0017922422E5592A001C0FFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0017922322E5592A001C0FFD /* Assets.xcassets */; };
 		0017922A22E5592A001C0FFD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0017922922E5592A001C0FFD /* main.m */; };
@@ -199,6 +202,11 @@
 		002C40C222E808EE00026DE6 /* MKCertListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 002C40C122E808EE00026DE6 /* MKCertListController.m */; };
 		003FC9AA22E6E8EA00A4CA92 /* MKConfigServerAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 003FC9A922E6E8EA00A4CA92 /* MKConfigServerAppController.m */; };
 		003FC9AD22E6E90100A4CA92 /* MKConfigServerDeviceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 003FC9AC22E6E90100A4CA92 /* MKConfigServerDeviceController.m */; };
+		004F87CC24989BD000BF12F7 /* MKColorSettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 004F87CB24989BD000BF12F7 /* MKColorSettingController.m */; };
+		004F87CF2498A42D00BF12F7 /* MKColorSettingPickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 004F87CE2498A42D00BF12F7 /* MKColorSettingPickView.m */; };
+		004F87D22498BF7500BF12F7 /* MKMeasuredPowerLEDModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 004F87D12498BF7500BF12F7 /* MKMeasuredPowerLEDModel.m */; };
+		004F87D52498C19E00BF12F7 /* MKMeasuredPowerLEDCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 004F87D42498C19E00BF12F7 /* MKMeasuredPowerLEDCell.m */; };
+		004F87D82498C5D200BF12F7 /* MKMeasuredPowerLEDColorModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 004F87D72498C5D200BF12F7 /* MKMeasuredPowerLEDColorModel.m */; };
 		005028A323C2D3E300FD50B6 /* about_telIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0050289923C2D3E200FD50B6 /* about_telIcon@2x.png */; };
 		005028A423C2D3E300FD50B6 /* about_telIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0050289A23C2D3E200FD50B6 /* about_telIcon@3x.png */; };
 		005028A523C2D3E300FD50B6 /* about_shouceIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0050289B23C2D3E200FD50B6 /* about_shouceIcon@2x.png */; };
@@ -214,10 +222,32 @@
 		005028B523C2D70600FD50B6 /* scanRightAboutIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 005028B323C2D70500FD50B6 /* scanRightAboutIcon@2x.png */; };
 		005028B623C2D70600FD50B6 /* scanRightAboutIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 005028B423C2D70500FD50B6 /* scanRightAboutIcon@3x.png */; };
 		005028B823C308EF00FD50B6 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 005028B723C308EF00FD50B6 /* Launch Screen.storyboard */; };
+		00E8A53F2497093B0089A32D /* MKNewConfigPlugController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E8A53E2497093B0089A32D /* MKNewConfigPlugController.m */; };
+		00E8A548249716230089A32D /* configPlugPage_energyOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00E8A540249716230089A32D /* configPlugPage_energyOff@2x.png */; };
+		00E8A549249716230089A32D /* configPlugPage_powerOff@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00E8A541249716230089A32D /* configPlugPage_powerOff@3x.png */; };
+		00E8A54A249716230089A32D /* configPlugPage_powerOn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00E8A542249716230089A32D /* configPlugPage_powerOn@2x.png */; };
+		00E8A54B249716230089A32D /* configPlugPage_energyOn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00E8A543249716230089A32D /* configPlugPage_energyOn@3x.png */; };
+		00E8A54C249716230089A32D /* configPlugPage_powerOn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00E8A544249716230089A32D /* configPlugPage_powerOn@3x.png */; };
+		00E8A54D249716230089A32D /* configPlugPage_energyOff@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00E8A545249716230089A32D /* configPlugPage_energyOff@3x.png */; };
+		00E8A54E249716230089A32D /* configPlugPage_energyOn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00E8A546249716230089A32D /* configPlugPage_energyOn@2x.png */; };
+		00E8A54F249716230089A32D /* configPlugPage_powerOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00E8A547249716230089A32D /* configPlugPage_powerOff@2x.png */; };
+		00E8A55324971C430089A32D /* NirKxMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E8A55124971C430089A32D /* NirKxMenu.m */; };
+		00E8A566249725A90089A32D /* MKEnergyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E8A557249725A90089A32D /* MKEnergyController.m */; };
+		00E8A567249725A90089A32D /* MKEnergyValueCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E8A55B249725A90089A32D /* MKEnergyValueCellModel.m */; };
+		00E8A569249725A90089A32D /* MKEnergyValueCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E8A55E249725A90089A32D /* MKEnergyValueCell.m */; };
+		00E8A56A249725A90089A32D /* MKEnergyDailyTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E8A55F249725A90089A32D /* MKEnergyDailyTableView.m */; };
+		00E8A56B249725A90089A32D /* MKEnergyMonthlyTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E8A561249725A90089A32D /* MKEnergyMonthlyTableView.m */; };
+		00E8A56C249725A90089A32D /* MKEnergyTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E8A565249725A90089A32D /* MKEnergyTableHeaderView.m */; };
 		F696B6C32DAE79E51CE24D9A /* libPods-MokoLifeX.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADA696AD4B92D377516793E0 /* libPods-MokoLifeX.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		000AD46524974EB500AE0616 /* MKSettingPageCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKSettingPageCellModel.h; sourceTree = "<group>"; };
+		000AD46624974EB600AE0616 /* MKSettingPageCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKSettingPageCellModel.m; sourceTree = "<group>"; };
+		000AD46824974F4C00AE0616 /* MKSettingPageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKSettingPageCell.h; sourceTree = "<group>"; };
+		000AD46924974F4C00AE0616 /* MKSettingPageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKSettingPageCell.m; sourceTree = "<group>"; };
+		000AD46B24974FA700AE0616 /* MKSettingsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKSettingsController.h; sourceTree = "<group>"; };
+		000AD46C24974FA700AE0616 /* MKSettingsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKSettingsController.m; sourceTree = "<group>"; };
 		0017921722E55928001C0FFD /* MokoLifeX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MokoLifeX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0017921A22E55928001C0FFD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0017921B22E55928001C0FFD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -527,6 +557,16 @@
 		003FC9A922E6E8EA00A4CA92 /* MKConfigServerAppController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKConfigServerAppController.m; sourceTree = "<group>"; };
 		003FC9AB22E6E90100A4CA92 /* MKConfigServerDeviceController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKConfigServerDeviceController.h; sourceTree = "<group>"; };
 		003FC9AC22E6E90100A4CA92 /* MKConfigServerDeviceController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKConfigServerDeviceController.m; sourceTree = "<group>"; };
+		004F87CA24989BD000BF12F7 /* MKColorSettingController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKColorSettingController.h; sourceTree = "<group>"; };
+		004F87CB24989BD000BF12F7 /* MKColorSettingController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKColorSettingController.m; sourceTree = "<group>"; };
+		004F87CD2498A42D00BF12F7 /* MKColorSettingPickView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKColorSettingPickView.h; sourceTree = "<group>"; };
+		004F87CE2498A42D00BF12F7 /* MKColorSettingPickView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKColorSettingPickView.m; sourceTree = "<group>"; };
+		004F87D02498BF7500BF12F7 /* MKMeasuredPowerLEDModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKMeasuredPowerLEDModel.h; sourceTree = "<group>"; };
+		004F87D12498BF7500BF12F7 /* MKMeasuredPowerLEDModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKMeasuredPowerLEDModel.m; sourceTree = "<group>"; };
+		004F87D32498C19E00BF12F7 /* MKMeasuredPowerLEDCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKMeasuredPowerLEDCell.h; sourceTree = "<group>"; };
+		004F87D42498C19E00BF12F7 /* MKMeasuredPowerLEDCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKMeasuredPowerLEDCell.m; sourceTree = "<group>"; };
+		004F87D62498C5D200BF12F7 /* MKMeasuredPowerLEDColorModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKMeasuredPowerLEDColorModel.h; sourceTree = "<group>"; };
+		004F87D72498C5D200BF12F7 /* MKMeasuredPowerLEDColorModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKMeasuredPowerLEDColorModel.m; sourceTree = "<group>"; };
 		0050289923C2D3E200FD50B6 /* about_telIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "about_telIcon@2x.png"; sourceTree = "<group>"; };
 		0050289A23C2D3E200FD50B6 /* about_telIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "about_telIcon@3x.png"; sourceTree = "<group>"; };
 		0050289B23C2D3E200FD50B6 /* about_shouceIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "about_shouceIcon@2x.png"; sourceTree = "<group>"; };
@@ -544,6 +584,30 @@
 		005028B323C2D70500FD50B6 /* scanRightAboutIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scanRightAboutIcon@2x.png"; sourceTree = "<group>"; };
 		005028B423C2D70500FD50B6 /* scanRightAboutIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scanRightAboutIcon@3x.png"; sourceTree = "<group>"; };
 		005028B723C308EF00FD50B6 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		00E8A53D2497093B0089A32D /* MKNewConfigPlugController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKNewConfigPlugController.h; sourceTree = "<group>"; };
+		00E8A53E2497093B0089A32D /* MKNewConfigPlugController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKNewConfigPlugController.m; sourceTree = "<group>"; };
+		00E8A540249716230089A32D /* configPlugPage_energyOff@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "configPlugPage_energyOff@2x.png"; sourceTree = "<group>"; };
+		00E8A541249716230089A32D /* configPlugPage_powerOff@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "configPlugPage_powerOff@3x.png"; sourceTree = "<group>"; };
+		00E8A542249716230089A32D /* configPlugPage_powerOn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "configPlugPage_powerOn@2x.png"; sourceTree = "<group>"; };
+		00E8A543249716230089A32D /* configPlugPage_energyOn@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "configPlugPage_energyOn@3x.png"; sourceTree = "<group>"; };
+		00E8A544249716230089A32D /* configPlugPage_powerOn@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "configPlugPage_powerOn@3x.png"; sourceTree = "<group>"; };
+		00E8A545249716230089A32D /* configPlugPage_energyOff@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "configPlugPage_energyOff@3x.png"; sourceTree = "<group>"; };
+		00E8A546249716230089A32D /* configPlugPage_energyOn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "configPlugPage_energyOn@2x.png"; sourceTree = "<group>"; };
+		00E8A547249716230089A32D /* configPlugPage_powerOff@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "configPlugPage_powerOff@2x.png"; sourceTree = "<group>"; };
+		00E8A55124971C430089A32D /* NirKxMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NirKxMenu.m; sourceTree = "<group>"; };
+		00E8A55224971C430089A32D /* NirKxMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NirKxMenu.h; sourceTree = "<group>"; };
+		00E8A556249725A90089A32D /* MKEnergyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKEnergyController.h; sourceTree = "<group>"; };
+		00E8A557249725A90089A32D /* MKEnergyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKEnergyController.m; sourceTree = "<group>"; };
+		00E8A559249725A90089A32D /* MKEnergyValueCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKEnergyValueCellModel.h; sourceTree = "<group>"; };
+		00E8A55B249725A90089A32D /* MKEnergyValueCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKEnergyValueCellModel.m; sourceTree = "<group>"; };
+		00E8A55E249725A90089A32D /* MKEnergyValueCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKEnergyValueCell.m; sourceTree = "<group>"; };
+		00E8A55F249725A90089A32D /* MKEnergyDailyTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKEnergyDailyTableView.m; sourceTree = "<group>"; };
+		00E8A560249725A90089A32D /* MKEnergyTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKEnergyTableHeaderView.h; sourceTree = "<group>"; };
+		00E8A561249725A90089A32D /* MKEnergyMonthlyTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKEnergyMonthlyTableView.m; sourceTree = "<group>"; };
+		00E8A562249725A90089A32D /* MKEnergyDailyTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKEnergyDailyTableView.h; sourceTree = "<group>"; };
+		00E8A563249725A90089A32D /* MKEnergyValueCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKEnergyValueCell.h; sourceTree = "<group>"; };
+		00E8A564249725A90089A32D /* MKEnergyMonthlyTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKEnergyMonthlyTableView.h; sourceTree = "<group>"; };
+		00E8A565249725A90089A32D /* MKEnergyTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKEnergyTableHeaderView.m; sourceTree = "<group>"; };
 		03B479583844709702BCF4E3 /* Pods-MokoLifeX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MokoLifeX.release.xcconfig"; path = "Target Support Files/Pods-MokoLifeX/Pods-MokoLifeX.release.xcconfig"; sourceTree = "<group>"; };
 		6AAB6B403ABF89767C501A2A /* Pods-MokoLifeX.adhoc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MokoLifeX.adhoc.xcconfig"; path = "Target Support Files/Pods-MokoLifeX/Pods-MokoLifeX.adhoc.xcconfig"; sourceTree = "<group>"; };
 		AD7E194C4B1C8A67233595BE /* Pods-MokoLifeX.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MokoLifeX.debug.xcconfig"; path = "Target Support Files/Pods-MokoLifeX/Pods-MokoLifeX.debug.xcconfig"; sourceTree = "<group>"; };
@@ -562,6 +626,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		000AD46124974DAB00AE0616 /* settings */ = {
+			isa = PBXGroup;
+			children = (
+				000AD46224974DAB00AE0616 /* controller */,
+				000AD46324974DAB00AE0616 /* model */,
+				000AD46424974DAB00AE0616 /* view */,
+			);
+			path = settings;
+			sourceTree = "<group>";
+		};
+		000AD46224974DAB00AE0616 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				000AD46B24974FA700AE0616 /* MKSettingsController.h */,
+				000AD46C24974FA700AE0616 /* MKSettingsController.m */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		000AD46324974DAB00AE0616 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				000AD46524974EB500AE0616 /* MKSettingPageCellModel.h */,
+				000AD46624974EB600AE0616 /* MKSettingPageCellModel.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		000AD46424974DAB00AE0616 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				000AD46824974F4C00AE0616 /* MKSettingPageCell.h */,
+				000AD46924974F4C00AE0616 /* MKSettingPageCell.m */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
 		0017920E22E55928001C0FFD = {
 			isa = PBXGroup;
 			children = (
@@ -681,6 +782,7 @@
 		0017927522E58F04001C0FFD /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				00E8A55024971C430089A32D /* NirKxMenu */,
 				001793BD22E59B58001C0FFD /* DataBaseManager */,
 				0017939A22E5965E001C0FFD /* SFHFKeychainUtils */,
 				0017927622E58F04001C0FFD /* NetworkManager */,
@@ -736,6 +838,10 @@
 		0017929022E59445001C0FFD /* Functions */ = {
 			isa = PBXGroup;
 			children = (
+				004F87C624989AE700BF12F7 /* colorSettingPage */,
+				000AD46124974DAB00AE0616 /* settings */,
+				00E8A554249725A90089A32D /* energyPage */,
+				00E8A539249708D50089A32D /* mk115Config */,
 				001E950722FBC461007F19A9 /* powerStatus */,
 				0017929822E59445001C0FFD /* saveDevice */,
 				0017929C22E59445001C0FFD /* selectDeviceType */,
@@ -1060,9 +1166,9 @@
 		001792FC22E59445001C0FFD /* view */ = {
 			isa = PBXGroup;
 			children = (
+				001792FF22E59445001C0FFD /* MKConfigDeviceTimePickerView.h */,
 				001792FD22E59445001C0FFD /* MKConfigDeviceTimePickerView.m */,
 				001792FE22E59445001C0FFD /* MKConfigDeviceButtonView.h */,
-				001792FF22E59445001C0FFD /* MKConfigDeviceTimePickerView.h */,
 				0017930022E59445001C0FFD /* MKConfigDeviceButtonView.m */,
 			);
 			path = view;
@@ -1459,6 +1565,14 @@
 		0017944422E5A12F001C0FFD /* configDevice */ = {
 			isa = PBXGroup;
 			children = (
+				00E8A540249716230089A32D /* configPlugPage_energyOff@2x.png */,
+				00E8A545249716230089A32D /* configPlugPage_energyOff@3x.png */,
+				00E8A546249716230089A32D /* configPlugPage_energyOn@2x.png */,
+				00E8A543249716230089A32D /* configPlugPage_energyOn@3x.png */,
+				00E8A547249716230089A32D /* configPlugPage_powerOff@2x.png */,
+				00E8A541249716230089A32D /* configPlugPage_powerOff@3x.png */,
+				00E8A542249716230089A32D /* configPlugPage_powerOn@2x.png */,
+				00E8A544249716230089A32D /* configPlugPage_powerOn@3x.png */,
 				0017944522E5A12F001C0FFD /* configPlugPage_scheduleOff@3x.png */,
 				0017944622E5A12F001C0FFD /* configPlugPage_switchButtonOff@3x.png */,
 				0017944722E5A12F001C0FFD /* configPlugPage_TimerOn@3x.png */,
@@ -1567,6 +1681,47 @@
 			path = model;
 			sourceTree = "<group>";
 		};
+		004F87C624989AE700BF12F7 /* colorSettingPage */ = {
+			isa = PBXGroup;
+			children = (
+				004F87C724989AE700BF12F7 /* controller */,
+				004F87C824989AE700BF12F7 /* model */,
+				004F87C924989AE700BF12F7 /* view */,
+			);
+			path = colorSettingPage;
+			sourceTree = "<group>";
+		};
+		004F87C724989AE700BF12F7 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				004F87CA24989BD000BF12F7 /* MKColorSettingController.h */,
+				004F87CB24989BD000BF12F7 /* MKColorSettingController.m */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		004F87C824989AE700BF12F7 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				004F87D02498BF7500BF12F7 /* MKMeasuredPowerLEDModel.h */,
+				004F87D12498BF7500BF12F7 /* MKMeasuredPowerLEDModel.m */,
+				004F87D62498C5D200BF12F7 /* MKMeasuredPowerLEDColorModel.h */,
+				004F87D72498C5D200BF12F7 /* MKMeasuredPowerLEDColorModel.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		004F87C924989AE700BF12F7 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				004F87CD2498A42D00BF12F7 /* MKColorSettingPickView.h */,
+				004F87CE2498A42D00BF12F7 /* MKColorSettingPickView.m */,
+				004F87D32498C19E00BF12F7 /* MKMeasuredPowerLEDCell.h */,
+				004F87D42498C19E00BF12F7 /* MKMeasuredPowerLEDCell.m */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
 		0050289823C2D3E200FD50B6 /* aboutPage */ = {
 			isa = PBXGroup;
 			children = (
@@ -1582,6 +1737,91 @@
 				005028A223C2D3E300FD50B6 /* aboutIcon@3x.png */,
 			);
 			path = aboutPage;
+			sourceTree = "<group>";
+		};
+		00E8A539249708D50089A32D /* mk115Config */ = {
+			isa = PBXGroup;
+			children = (
+				00E8A53A249708D50089A32D /* controller */,
+				00E8A53B249708D50089A32D /* model */,
+				00E8A53C249708D50089A32D /* view */,
+			);
+			path = mk115Config;
+			sourceTree = "<group>";
+		};
+		00E8A53A249708D50089A32D /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				00E8A53D2497093B0089A32D /* MKNewConfigPlugController.h */,
+				00E8A53E2497093B0089A32D /* MKNewConfigPlugController.m */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		00E8A53B249708D50089A32D /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		00E8A53C249708D50089A32D /* view */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		00E8A55024971C430089A32D /* NirKxMenu */ = {
+			isa = PBXGroup;
+			children = (
+				00E8A55224971C430089A32D /* NirKxMenu.h */,
+				00E8A55124971C430089A32D /* NirKxMenu.m */,
+			);
+			path = NirKxMenu;
+			sourceTree = "<group>";
+		};
+		00E8A554249725A90089A32D /* energyPage */ = {
+			isa = PBXGroup;
+			children = (
+				00E8A555249725A90089A32D /* controller */,
+				00E8A558249725A90089A32D /* model */,
+				00E8A55D249725A90089A32D /* view */,
+			);
+			path = energyPage;
+			sourceTree = "<group>";
+		};
+		00E8A555249725A90089A32D /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				00E8A556249725A90089A32D /* MKEnergyController.h */,
+				00E8A557249725A90089A32D /* MKEnergyController.m */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		00E8A558249725A90089A32D /* model */ = {
+			isa = PBXGroup;
+			children = (
+				00E8A559249725A90089A32D /* MKEnergyValueCellModel.h */,
+				00E8A55B249725A90089A32D /* MKEnergyValueCellModel.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		00E8A55D249725A90089A32D /* view */ = {
+			isa = PBXGroup;
+			children = (
+				00E8A560249725A90089A32D /* MKEnergyTableHeaderView.h */,
+				00E8A565249725A90089A32D /* MKEnergyTableHeaderView.m */,
+				00E8A563249725A90089A32D /* MKEnergyValueCell.h */,
+				00E8A55E249725A90089A32D /* MKEnergyValueCell.m */,
+				00E8A562249725A90089A32D /* MKEnergyDailyTableView.h */,
+				00E8A55F249725A90089A32D /* MKEnergyDailyTableView.m */,
+				00E8A564249725A90089A32D /* MKEnergyMonthlyTableView.h */,
+				00E8A561249725A90089A32D /* MKEnergyMonthlyTableView.m */,
+			);
+			path = view;
 			sourceTree = "<group>";
 		};
 		4CAD503117DE52C17C522768 /* Pods */ = {
@@ -1669,8 +1909,10 @@
 			files = (
 				005028AC23C2D3E300FD50B6 /* aboutIcon@3x.png in Resources */,
 				001794B822E5A12F001C0FFD /* addDevice_centerSwichGif@2x.gif in Resources */,
+				00E8A549249716230089A32D /* configPlugPage_powerOff@3x.png in Resources */,
 				001794B122E5A12F001C0FFD /* notBlinkAmberStep1_rightIcon@3x.png in Resources */,
 				005028B523C2D70600FD50B6 /* scanRightAboutIcon@2x.png in Resources */,
+				00E8A54B249716230089A32D /* configPlugPage_energyOn@3x.png in Resources */,
 				0017948722E5A12F001C0FFD /* selectDeviceType_swichIcon@2x.png in Resources */,
 				001E951322FBF68B007F19A9 /* mokoLife_config_certAddIcon@2x.png in Resources */,
 				001794A022E5A12F001C0FFD /* configPlugPage_scheduleOff@2x.png in Resources */,
@@ -1678,8 +1920,10 @@
 				0017949222E5A12F001C0FFD /* configSwichAllOff@3x.png in Resources */,
 				0017948E22E5A12F001C0FFD /* configServer_starIcon@3x.png in Resources */,
 				0017948B22E5A12F001C0FFD /* configServer_ConnectMode_normal@3x.png in Resources */,
+				00E8A54C249716230089A32D /* configPlugPage_powerOn@3x.png in Resources */,
 				0017949C22E5A12F001C0FFD /* configPlugPage_switchButtonOff@3x.png in Resources */,
 				0017948222E5A12F001C0FFD /* mokoLife_centerIcon@3x.png in Resources */,
+				00E8A548249716230089A32D /* configPlugPage_energyOff@2x.png in Resources */,
 				0017949622E5A12F001C0FFD /* configSwichAllOn@3x.png in Resources */,
 				001794A122E5A12F001C0FFD /* configPlugPage_scheduleOn@3x.png in Resources */,
 				005028A723C2D3E300FD50B6 /* about_addIcon@2x.png in Resources */,
@@ -1687,6 +1931,7 @@
 				005028A923C2D3E300FD50B6 /* aboutIcon@2x.png in Resources */,
 				001794A522E5A12F001C0FFD /* configPlugPage_statisticsOn@3x.png in Resources */,
 				001794BE22E5A12F001C0FFD /* connectAlertWifiSettingsIcon_plug@3x.png in Resources */,
+				00E8A54A249716230089A32D /* configPlugPage_powerOn@2x.png in Resources */,
 				0017947A22E5A12F001C0FFD /* navigation_back_button@2x.png in Resources */,
 				001E951422FBF68B007F19A9 /* mokoLife_config_certAddIcon@3x.png in Resources */,
 				005028AB23C2D3E300FD50B6 /* about_faxIcon@3x.png in Resources */,
@@ -1695,6 +1940,7 @@
 				0017949D22E5A12F001C0FFD /* configPlugPage_TimerOn@3x.png in Resources */,
 				0017948622E5A12F001C0FFD /* selectDeviceType_plugIcon@3x.png in Resources */,
 				001794AA22E5A12F001C0FFD /* configPlugPage_moreIcon@2x.png in Resources */,
+				00E8A54F249716230089A32D /* configPlugPage_powerOff@2x.png in Resources */,
 				0017949022E5A12F001C0FFD /* configServer_ConnectMode_selected@2x.png in Resources */,
 				0017947F22E5A12F001C0FFD /* deviceList_switchStateOffIcon@2x.png in Resources */,
 				001794B622E5A12F001C0FFD /* device_plug_icon@3x.png in Resources */,
@@ -1706,6 +1952,7 @@
 				0017947722E5A12F001C0FFD /* MKSmartPlugRightNextIcon@2x.png in Resources */,
 				0017949322E5A12F001C0FFD /* configSwichAllOff@2x.png in Resources */,
 				005028B823C308EF00FD50B6 /* Launch Screen.storyboard in Resources */,
+				00E8A54E249716230089A32D /* configPlugPage_energyOn@2x.png in Resources */,
 				0017949922E5A12F001C0FFD /* swich_state_on@2x.png in Resources */,
 				001794A322E5A12F001C0FFD /* configPlugPage_switchButtonOn@3x.png in Resources */,
 				0017949F22E5A12F001C0FFD /* configPlugPage_switchButtonOff@2x.png in Resources */,
@@ -1764,6 +2011,7 @@
 				005028B623C2D70600FD50B6 /* scanRightAboutIcon@3x.png in Resources */,
 				001794BF22E5A12F001C0FFD /* addDevice_centerPlugGif@2x.gif in Resources */,
 				0017947822E5A12F001C0FFD /* MKSmartPlugRightNextIcon@3x.png in Resources */,
+				00E8A54D249716230089A32D /* configPlugPage_energyOff@3x.png in Resources */,
 				001794A922E5A12F001C0FFD /* configPlugPage_statisticsOff@3x.png in Resources */,
 				0017949722E5A12F001C0FFD /* swich_state_on@3x.png in Resources */,
 				001794A422E5A12F001C0FFD /* configPlugPage_TimerOff@2x.png in Resources */,
@@ -1821,11 +2069,13 @@
 			files = (
 				0017940A22E59B6B001C0FFD /* EasyEmptyTypes.m in Sources */,
 				0017925722E56B5C001C0FFD /* MKMQTTServerInterface.m in Sources */,
+				004F87CF2498A42D00BF12F7 /* MKColorSettingPickView.m in Sources */,
 				0017933822E59445001C0FFD /* MKConfigServerQosCell.m in Sources */,
 				0017932B22E59445001C0FFD /* MKSelectDeviceTypeController.m in Sources */,
 				0017940822E59B6B001C0FFD /* EasyEmptyPart.m in Sources */,
 				0017924B22E56B53001C0FFD /* MKSmartPlugConnectManager.m in Sources */,
 				0017940722E59B6B001C0FFD /* EasyEmptyView.m in Sources */,
+				00E8A56A249725A90089A32D /* MKEnergyDailyTableView.m in Sources */,
 				0017940E22E59B6B001C0FFD /* EasyAlertConfig.m in Sources */,
 				0017925822E56B5C001C0FFD /* MKMQTTServerInterface+MKSmartSwich.m in Sources */,
 				0017934E22E59445001C0FFD /* MKAddDeviceController.m in Sources */,
@@ -1853,6 +2103,7 @@
 				001793C322E59B58001C0FFD /* MKDeviceDataBaseAdopter.m in Sources */,
 				0017928E22E59298001C0FFD /* MKDeviceModel+MKPlugAdd.m in Sources */,
 				0017941722E59B6B001C0FFD /* EasyLodingGlobalConfig.m in Sources */,
+				00E8A53F2497093B0089A32D /* MKNewConfigPlugController.m in Sources */,
 				0017922A22E5592A001C0FFD /* main.m in Sources */,
 				0017941222E59B6B001C0FFD /* EasyShowLabel.m in Sources */,
 				0017933322E59445001C0FFD /* MKConfigServerAdopter.m in Sources */,
@@ -1867,13 +2118,16 @@
 				0017933122E59445001C0FFD /* MKAddDeviceView.m in Sources */,
 				0017928F22E59298001C0FFD /* MKAddDeviceCenter.m in Sources */,
 				0017940122E59B6B001C0FFD /* EasyTextConfig.m in Sources */,
+				004F87CC24989BD000BF12F7 /* MKColorSettingController.m in Sources */,
 				0017935A22E59445001C0FFD /* MKElectricityCell.m in Sources */,
 				0017932A22E59445001C0FFD /* MKSaveDeviceNameController.m in Sources */,
+				00E8A566249725A90089A32D /* MKEnergyController.m in Sources */,
 				0017935222E59445001C0FFD /* MKConnectDeviceProgressView.m in Sources */,
 				0017934122E59445001C0FFD /* MKModifyLocalNameView.m in Sources */,
 				0017934B22E59445001C0FFD /* MKConfigDeviceButtonModel.m in Sources */,
 				0017940322E59B6B001C0FFD /* EasyTextGlobalConfig.m in Sources */,
 				0017926C22E56B7C001C0FFD /* MKSocketManager.m in Sources */,
+				000AD46D24974FA700AE0616 /* MKSettingsController.m in Sources */,
 				0017928C22E59298001C0FFD /* MKDeviceModel.m in Sources */,
 				0017933922E59445001C0FFD /* MKConfigServerPortCell.m in Sources */,
 				003FC9AA22E6E8EA00A4CA92 /* MKConfigServerAppController.m in Sources */,
@@ -1882,6 +2136,7 @@
 				0017935022E59445001C0FFD /* MKConnectDeviceWifiView.m in Sources */,
 				0017934322E59445001C0FFD /* MKAboutController.m in Sources */,
 				0017927222E56BC4001C0FFD /* MKConfigServerModel.m in Sources */,
+				004F87D52498C19E00BF12F7 /* MKMeasuredPowerLEDCell.m in Sources */,
 				0017926B22E56B7C001C0FFD /* MKMQTTServerManager.m in Sources */,
 				0017934C22E59445001C0FFD /* MKConfigDeviceTimePickerView.m in Sources */,
 				0017940622E59B6B001C0FFD /* EasyEmptyConfig.m in Sources */,
@@ -1890,14 +2145,18 @@
 				0017934622E59445001C0FFD /* MKAboutCell.m in Sources */,
 				0017932C22E59445001C0FFD /* MKSelectDeviceTypeModel.m in Sources */,
 				0017926D22E56B7C001C0FFD /* MKSocketBlockAdopter.m in Sources */,
+				00E8A55324971C430089A32D /* NirKxMenu.m in Sources */,
 				0017927922E58F04001C0FFD /* MKNetworkManager.m in Sources */,
 				0017940D22E59B6B001C0FFD /* EasyAlertView.m in Sources */,
+				000AD46A24974F4C00AE0616 /* MKSettingPageCell.m in Sources */,
 				0017934422E59445001C0FFD /* MKDeviceInformationController.m in Sources */,
+				004F87D22498BF7500BF12F7 /* MKMeasuredPowerLEDModel.m in Sources */,
 				001793BA22E5965E001C0FFD /* SFHFKeychainUtils.m in Sources */,
 				0017934222E59445001C0FFD /* MKDeviceInfoCell.m in Sources */,
 				0017940B22E59B6B001C0FFD /* EasyAlertTypes.m in Sources */,
 				0017925622E56B5C001C0FFD /* MKMQTTServerInterface+MKSmartPlug.m in Sources */,
 				0017935F22E5950B001C0FFD /* MKBaseCell.m in Sources */,
+				00E8A569249725A90089A32D /* MKEnergyValueCell.m in Sources */,
 				0017934A22E59445001C0FFD /* MKConfigDeviceController.m in Sources */,
 				0017932D22E59445001C0FFD /* MKSelectDeviceTypeCell.m in Sources */,
 				0017941822E59B6B001C0FFD /* MKConnectAlertView.m in Sources */,
@@ -1911,16 +2170,21 @@
 				0017934822E59445001C0FFD /* MKConfigSwichModel.m in Sources */,
 				002C40BF22E8073600026DE6 /* MKConfigServerSSLCertFileManager.m in Sources */,
 				0017940922E59B6B001C0FFD /* EasyEmptyGlobalConfig.m in Sources */,
+				00E8A56C249725A90089A32D /* MKEnergyTableHeaderView.m in Sources */,
+				00E8A567249725A90089A32D /* MKEnergyValueCellModel.m in Sources */,
 				0017933022E59445001C0FFD /* MKDeviceListCell.m in Sources */,
 				0017924C22E56B53001C0FFD /* MKMQTTServerDataManager.m in Sources */,
+				00E8A56B249725A90089A32D /* MKEnergyMonthlyTableView.m in Sources */,
 				0017940022E59B6B001C0FFD /* MKCommonlyUIHelper.m in Sources */,
 				005028B223C2D42C00FD50B6 /* MKAboutCellModel.m in Sources */,
 				0017928B22E59298001C0FFD /* MKDeviceModel+MKTopic.m in Sources */,
 				0017934F22E59445001C0FFD /* MKAddDeviceDataManager.m in Sources */,
 				0017926E22E56B7C001C0FFD /* MKSocketTaskOperation.m in Sources */,
+				000AD46724974EB600AE0616 /* MKSettingPageCellModel.m in Sources */,
 				0017934522E59445001C0FFD /* MKAboutModel.m in Sources */,
 				0017934922E59445001C0FFD /* MKConfigSwichCell.m in Sources */,
 				0017921C22E55928001C0FFD /* AppDelegate.m in Sources */,
+				004F87D82498C5D200BF12F7 /* MKMeasuredPowerLEDColorModel.m in Sources */,
 				0017933A22E59445001C0FFD /* MKConfigServerHostCell.m in Sources */,
 				001793C222E59B58001C0FFD /* MKDeviceDataBaseManager.m in Sources */,
 				0017934022E59445001C0FFD /* MKUpdateFirmwareHostTypeCell.m in Sources */,

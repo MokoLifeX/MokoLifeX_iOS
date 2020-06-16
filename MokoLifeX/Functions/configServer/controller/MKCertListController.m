@@ -8,7 +8,6 @@
 
 #import "MKCertListController.h"
 #import "MKConfigServerSSLCertFileManager.h"
-#import "MKBaseTableView.h"
 
 @interface MKCertListController ()<UITableViewDelegate, UITableViewDataSource>
 

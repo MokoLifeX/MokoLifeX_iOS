@@ -7,7 +7,6 @@
 //
 
 #import "MKAboutController.h"
-#import "MKBaseTableView.h"
 #import "MKAboutPageCell.h"
 #import "MKAboutCellModel.h"
 

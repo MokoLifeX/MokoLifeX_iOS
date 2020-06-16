@@ -11,7 +11,6 @@
 #import "MKNotBlinkAmberModel.h"
 #import "MKNotBlinkRedModel.h"
 #import "MKNotBlinkRedCell.h"
-#import "MKBaseTableView.h"
 
 @interface MKNotBlinkAmberController ()<UITableViewDelegate, UITableViewDataSource>
 

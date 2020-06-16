@@ -7,7 +7,6 @@
 //
 
 #import "MKSelectDeviceTypeController.h"
-#import "MKBaseTableView.h"
 #import "MKSelectDeviceTypeCell.h"
 #import "MKSelectDeviceTypeModel.h"
 

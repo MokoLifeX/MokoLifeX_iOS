@@ -7,7 +7,6 @@
 //
 
 #import "MKElectricityController.h"
-#import "MKBaseTableView.h"
 #import "MKElectricityCell.h"
 #import "MKElectricityModel.h"
 

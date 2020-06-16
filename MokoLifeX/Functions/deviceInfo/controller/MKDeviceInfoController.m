@@ -7,7 +7,6 @@
 //
 
 #import "MKDeviceInfoController.h"
-#import "MKBaseTableView.h"
 #import "MKDeviceInfoCell.h"
 #import "MKDeviceInfoModel.h"
 #import "MKModifyLocalNameView.h"

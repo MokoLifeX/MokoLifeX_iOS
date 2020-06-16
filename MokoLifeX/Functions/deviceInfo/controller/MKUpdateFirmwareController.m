@@ -7,7 +7,6 @@
 //
 
 #import "MKUpdateFirmwareController.h"
-#import "MKBaseTableView.h"
 
 #import "MKUpdateFirmwareHostTypeCell.h"
 #import "MKUpdateFirmwareCell.h"

@@ -20,6 +20,10 @@ NSString *const MKMQTTServerReceivedElectricityNotification = @"MKMQTTServerRece
 NSString *const MKMQTTServerReceivedFirmwareInfoNotification = @"MKMQTTServerReceivedFirmwareInfoNotification";
 NSString *const MKMQTTServerReceivedUpdateResultNotification = @"MKMQTTServerReceivedUpdateResultNotification";
 NSString *const MKMQTTServerReceivedDevicePowerOnStatusNotification = @"MKMQTTServerReceivedDevicePowerOnStatusNotification";
+NSString *const MKMQTTServerReceivedOverloadNotification = @"MKMQTTServerReceivedOverloadNotification";
+NSString *const MKMQTTServerReceivedPowerReportPeriodNotification = @"MKMQTTServerReceivedPowerReportPeriodNotification";
+NSString *const MKMQTTServerReceivedEnergyReportPeriodNotification = @"MKMQTTServerReceivedEnergyReportPeriodNotification";
+NSString *const MKMQTTServerReceivedStorageParametersNotification = @"MKMQTTServerReceivedStorageParametersNotification";
 
 @interface MKMQTTServerDataManager()<MKMQTTServerManagerDelegate>
 
@@ -128,6 +132,13 @@ NSString *const MKMQTTServerReceivedDevicePowerOnStatusNotification = @"MKMQTTSe
                                                           userInfo:@{@"userInfo" : tempDic}];
         return;
     }
+    if ([function integerValue] == 1005) {
+        //载保护状态以及过载值
+        [[NSNotificationCenter defaultCenter] postNotificationName:MKMQTTServerReceivedOverloadNotification
+                                                            object:nil
+                                                          userInfo:@{@"userInfo" : tempDic}];
+        return;
+    }
     if ([function integerValue] == 1006) {
         //电量信息
         [[NSNotificationCenter defaultCenter] postNotificationName:MKMQTTServerReceivedElectricityNotification
@@ -138,6 +149,27 @@ NSString *const MKMQTTServerReceivedDevicePowerOnStatusNotification = @"MKMQTTSe
     if ([function integerValue] == 1008) {
         //读取插座上电默认开关状态
         [[NSNotificationCenter defaultCenter] postNotificationName:MKMQTTServerReceivedDevicePowerOnStatusNotification
+                                                            object:nil
+                                                          userInfo:@{@"userInfo" : tempDic}];
+        return;
+    }
+    if ([function integerValue] == 1012) {
+        //电量信息上报间隔
+        [[NSNotificationCenter defaultCenter] postNotificationName:MKMQTTServerReceivedPowerReportPeriodNotification
+                                                            object:nil
+                                                          userInfo:@{@"userInfo" : tempDic}];
+        return;
+    }
+    if ([function integerValue] == 1019) {
+        //电能上报间隔
+        [[NSNotificationCenter defaultCenter] postNotificationName:MKMQTTServerReceivedEnergyReportPeriodNotification
+                                                            object:nil
+                                                          userInfo:@{@"userInfo" : tempDic}];
+        return;
+    }
+    if ([function integerValue] == 1013) {
+        //累计电能存储参数
+        [[NSNotificationCenter defaultCenter] postNotificationName:MKMQTTServerReceivedStorageParametersNotification
                                                             object:nil
                                                           userInfo:@{@"userInfo" : tempDic}];
         return;

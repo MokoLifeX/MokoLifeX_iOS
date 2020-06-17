@@ -17,6 +17,8 @@
 
 #import "NirKxMenu.h"
 
+#import "MKDeviceDataBaseManager.h"
+
 static CGFloat const switchButtonWidth = 200.f;
 static CGFloat const switchButtonHeight = 200.f;
 static CGFloat const buttonViewWidth = 50.f;
@@ -54,6 +56,11 @@ static CGFloat const buttonViewHeight = 50.f;
     [[NSNotificationCenter defaultCenter] removeObserver:self name:MKMQTTServerReceivedDelayTimeNotification object:nil];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self readDeviceName];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self loadSubViews];
@@ -71,7 +78,7 @@ static CGFloat const buttonViewHeight = 50.f;
                                          target:self
                                          action:@selector(moreItemMethod)];
     KxMenuItem *settingsItem = [KxMenuItem menuItem:@"Settings"
-                                              image:nil
+                                              image:[UIImage imageWithColor:[UIColor redColor]]
                                              target:self
                                              action:@selector(settingsItemMethod)];
     
@@ -112,7 +119,10 @@ static CGFloat const buttonViewHeight = 50.f;
         (self.deviceModel.plugState == MKSmartPlugOn ? onMenuBackgroundColor : offMenuBackgroundColor)//菜单的底色
     };
     
-    [KxMenu showMenuInView:self.view fromRect:CGRectMake(kScreenWidth - 62.f, 8, 50.f, 60.f) menuItems:@[moreItem,settingsItem] withOptions:configuration];
+    [KxMenu showMenuInView:self.view
+                  fromRect:CGRectMake(kScreenWidth - 62.f, 8, 50.f, 60.f)
+                 menuItems:@[moreItem,settingsItem]
+               withOptions:configuration];
 }
 
 #pragma mark - MKDeviceModelDelegate
@@ -261,12 +271,12 @@ static CGFloat const buttonViewHeight = 50.f;
 }
 
 - (BOOL)canClickEnable{
-    if (self.deviceModel.plugState == MKSmartPlugOffline) {
-        [self.view showCentralToast:@"Device offline,please check."];
-        return NO;
-    }
     if ([MKMQTTServerManager sharedInstance].managerState != MKMQTTSessionManagerStateConnected) {
         [self.view showCentralToast:@"Network error,please check."];
+        return NO;
+    }
+    if (self.deviceModel.plugState == MKSmartPlugOffline) {
+        [self.view showCentralToast:@"Device offline,please check."];
         return NO;
     }
     return YES;
@@ -274,7 +284,6 @@ static CGFloat const buttonViewHeight = 50.f;
 
 #pragma mark - config view
 - (void)loadSubViews{
-    self.defaultTitle = @"Moko LifeX";
     self.custom_naviBarColor = UIColorFromRGB(0x0188cc);
     self.titleLabel.textColor = COLOR_WHITE_MACROS;
     [self.rightButton setImage:LOADIMAGE(@"configPlugPage_moreIcon", @"png") forState:UIControlStateNormal];
@@ -369,6 +378,18 @@ static CGFloat const buttonViewHeight = 50.f;
     MKConfigDeviceButtonModel *energyModel = [[MKConfigDeviceButtonModel alloc] init];
     energyModel.msg = @"Energy";
     [self.dataList addObject:energyModel];
+}
+
+- (void)readDeviceName {
+    [[MKHudManager share] showHUDWithTitle:@"Reading..." inView:self.view isPenetration:NO];
+    [MKDeviceDataBaseManager selectLocalNameWithMacAddress:self.deviceModel.device_id sucBlock:^(NSString *localName) {
+        [[MKHudManager share] hide];
+        self.dataModel.local_name = localName;
+        self.defaultTitle = localName;
+    } failedBlock:^(NSError *error) {
+        [[MKHudManager share] hide];
+        self.defaultTitle = @"";
+    }];
 }
 
 #pragma mark - setter & getter

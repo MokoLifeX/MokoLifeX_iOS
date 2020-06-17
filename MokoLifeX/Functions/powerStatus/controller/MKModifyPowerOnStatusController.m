@@ -83,10 +83,14 @@ static CGFloat const iconHeight = 13.f;
 
 #pragma mark - note
 - (void)receiveStatusNotification:(NSNotification *)note {
+    if (self.readTimeout) {
+        return;
+    }
     NSDictionary *deviceDic = note.userInfo[@"userInfo"];
     if (!ValidDict(deviceDic) || ![deviceDic[@"id"] isEqualToString:self.deviceModel.mqttID]) {
         return;
     }
+    dispatch_cancel(self.readTimer);
     [[MKHudManager share] hide];
     self.currentStatus = [deviceDic[@"switch_state"] integerValue];
     [self loadStatusIcon];

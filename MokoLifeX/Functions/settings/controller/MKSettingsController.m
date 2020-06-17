@@ -13,6 +13,7 @@
 #import "MKSettingPageCellModel.h"
 
 #import "MKColorSettingController.h"
+#import "MKEPParamsSettingController.h"
 
 @interface MKSettingsController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -46,6 +47,17 @@
         [self.navigationController pushViewController:vc animated:YES];
         return;
     }
+    if (indexPath.row == self.dataList.count - 1) {
+        //最后一个是清空计电量
+        return;
+    }
+    MKEPParamsSettingController *vc = [[MKEPParamsSettingController alloc] init];
+    vc.configType = indexPath.row - 1;
+    MKDeviceModel *model = [[MKDeviceModel alloc] init];
+    [model updatePropertyWithModel:self.deviceModel];
+    model.plugState = self.deviceModel.plugState;
+    vc.deviceModel = model;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - UITableViewDataSource
@@ -66,24 +78,20 @@
     [self.dataList addObject:ledSettingModel];
     
     MKSettingPageCellModel *overloadModel = [[MKSettingPageCellModel alloc] init];
-    overloadModel.leftMsg = @"Overload value (W)";
+    overloadModel.leftMsg = @"Overload value";
     [self.dataList addObject:overloadModel];
     
     MKSettingPageCellModel *powerReportModel = [[MKSettingPageCellModel alloc] init];
-    powerReportModel.leftMsg = @"Power report period(s)";
+    powerReportModel.leftMsg = @"Power report period";
     [self.dataList addObject:powerReportModel];
     
     MKSettingPageCellModel *powerChangeModel = [[MKSettingPageCellModel alloc] init];
-    powerChangeModel.leftMsg = @"Power change notification(%)";
+    powerChangeModel.leftMsg = @"Energy report period";
     [self.dataList addObject:powerChangeModel];
     
     MKSettingPageCellModel *energyStorageModel = [[MKSettingPageCellModel alloc] init];
-    energyStorageModel.leftMsg = @"Energy storage period(min)";
+    energyStorageModel.leftMsg = @"Energy storage parameters";
     [self.dataList addObject:energyStorageModel];
-    
-    MKSettingPageCellModel *energyReportModel = [[MKSettingPageCellModel alloc] init];
-    energyReportModel.leftMsg = @"Energy report period(min)";
-    [self.dataList addObject:energyReportModel];
     
     MKSettingPageCellModel *energyConModel = [[MKSettingPageCellModel alloc] init];
     energyConModel.leftMsg = @"Energy consumption(KWh)";

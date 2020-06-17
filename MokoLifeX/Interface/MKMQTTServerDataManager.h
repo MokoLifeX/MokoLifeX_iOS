@@ -39,9 +39,29 @@ extern NSString *const MKMQTTServerReceivedFirmwareInfoNotification;
 extern NSString *const MKMQTTServerReceivedUpdateResultNotification;
 
 /*
+接收到设备过载保护通知
+*/
+extern NSString *const MKMQTTServerReceivedOverloadNotification;
+
+/*
  接受到设备上电默认开关状态通知
  */
 extern NSString *const MKMQTTServerReceivedDevicePowerOnStatusNotification;
+
+/*
+接受到设备电量信息上报间隔通知
+*/
+extern NSString *const MKMQTTServerReceivedPowerReportPeriodNotification;
+
+/*
+接受到设备电能信息上报间隔通知
+*/
+extern NSString *const MKMQTTServerReceivedEnergyReportPeriodNotification;
+
+/*
+接受到设备累计电能存储参数通知
+*/
+extern NSString *const MKMQTTServerReceivedStorageParametersNotification;
 
 @class MKConfigServerModel;
 @interface MKMQTTServerDataManager : NSObject

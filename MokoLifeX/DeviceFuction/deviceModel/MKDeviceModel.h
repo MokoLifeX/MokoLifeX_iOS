@@ -52,9 +52,7 @@
 @property (nonatomic, copy)NSString *device_function;
 
 /**
- 设备类型，
- 1、智能插座:现在分为带计电量和不带两种
- 2、智能面板:一路开关、两路开关、三路开关
+ MK102和MK112用于区分插座中差异，取值“0”：不带计电量功能；“1”：带计电量功能，MK112和MK114不做区分。MK115带计电量type为2
  */
 @property (nonatomic, copy)NSString *device_type;
 

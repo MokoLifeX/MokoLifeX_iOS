@@ -63,10 +63,8 @@
 }
 
 - (void)rightButtonMethod{
-    MKNewConfigPlugController *vc = [[MKNewConfigPlugController alloc] init];
+    MKAboutController *vc = [[MKAboutController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
-//    MKAboutController *vc = [[MKAboutController alloc] init];
-//    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - UITableViewDelegate
@@ -77,10 +75,17 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     MKDeviceModel *dataModel = self.dataList[indexPath.row];
     if (dataModel.device_mode == MKDevice_plug) {
-        MKConfigDeviceController *vc = [[MKConfigDeviceController alloc]init];
         MKDeviceModel *model = [[MKDeviceModel alloc] init];
         [model updatePropertyWithModel:dataModel];
         model.plugState = dataModel.plugState;
+        if ([dataModel.device_type integerValue] == 2) {
+            //MK115
+            MKNewConfigPlugController *vc = [[MKNewConfigPlugController alloc] init];
+            vc.dataModel = model;
+            [self.navigationController pushViewController:vc animated:YES];
+            return;
+        }
+        MKConfigDeviceController *vc = [[MKConfigDeviceController alloc]init];
         vc.dataModel = model;
         [self.navigationController pushViewController:vc animated:YES];
         return;

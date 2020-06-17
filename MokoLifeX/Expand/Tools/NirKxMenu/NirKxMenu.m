@@ -439,7 +439,7 @@ typedef enum {
     
     const CGFloat titleWidth = maxItemWidth - titleX - kMarginX *2;
     
-    UIImage *selectedImage = [KxMenuView selectedImage:(CGSize){maxItemWidth, maxItemHeight + 2}];
+//    UIImage *selectedImage = [KxMenuView selectedImage:(CGSize){maxItemWidth, maxItemHeight + 2}];
     //配置：分隔线是与内容等宽还是与菜单等宽
     int insets = 0;
     
@@ -487,7 +487,7 @@ typedef enum {
                        action:@selector(performAction:)
              forControlEvents:UIControlEventTouchUpInside];
             
-            [button setBackgroundImage:selectedImage forState:UIControlStateHighlighted];
+//            [button setBackgroundImage:selectedImage forState:UIControlStateHighlighted];
             
             [itemView addSubview:button];
         }

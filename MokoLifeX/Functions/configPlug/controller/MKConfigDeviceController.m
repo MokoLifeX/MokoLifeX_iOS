@@ -198,12 +198,12 @@ static CGFloat const buttonViewHeight = 50.f;
 }
 
 - (BOOL)canClickEnable{
-    if (self.deviceModel.plugState == MKSmartPlugOffline) {
-        [self.view showCentralToast:@"Device offline,please check."];
-        return NO;
-    }
     if ([MKMQTTServerManager sharedInstance].managerState != MKMQTTSessionManagerStateConnected) {
         [self.view showCentralToast:@"Network error,please check."];
+        return NO;
+    }
+    if (self.deviceModel.plugState == MKSmartPlugOffline) {
+        [self.view showCentralToast:@"Device offline,please check."];
         return NO;
     }
     return YES;

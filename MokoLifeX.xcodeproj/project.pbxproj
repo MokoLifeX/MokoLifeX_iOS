@@ -222,6 +222,8 @@
 		005028B523C2D70600FD50B6 /* scanRightAboutIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 005028B323C2D70500FD50B6 /* scanRightAboutIcon@2x.png */; };
 		005028B623C2D70600FD50B6 /* scanRightAboutIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 005028B423C2D70500FD50B6 /* scanRightAboutIcon@3x.png */; };
 		005028B823C308EF00FD50B6 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 005028B723C308EF00FD50B6 /* Launch Screen.storyboard */; };
+		005D4A6C2499C924003C2B36 /* MKEPParamsSettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 005D4A6B2499C924003C2B36 /* MKEPParamsSettingController.m */; };
+		005D4A6F2499FB99003C2B36 /* MKMQTTServerInterface+MK115Add.m in Sources */ = {isa = PBXBuildFile; fileRef = 005D4A6E2499FB99003C2B36 /* MKMQTTServerInterface+MK115Add.m */; };
 		00E8A53F2497093B0089A32D /* MKNewConfigPlugController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E8A53E2497093B0089A32D /* MKNewConfigPlugController.m */; };
 		00E8A548249716230089A32D /* configPlugPage_energyOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00E8A540249716230089A32D /* configPlugPage_energyOff@2x.png */; };
 		00E8A549249716230089A32D /* configPlugPage_powerOff@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00E8A541249716230089A32D /* configPlugPage_powerOff@3x.png */; };
@@ -584,6 +586,10 @@
 		005028B323C2D70500FD50B6 /* scanRightAboutIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scanRightAboutIcon@2x.png"; sourceTree = "<group>"; };
 		005028B423C2D70500FD50B6 /* scanRightAboutIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scanRightAboutIcon@3x.png"; sourceTree = "<group>"; };
 		005028B723C308EF00FD50B6 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		005D4A6A2499C924003C2B36 /* MKEPParamsSettingController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKEPParamsSettingController.h; sourceTree = "<group>"; };
+		005D4A6B2499C924003C2B36 /* MKEPParamsSettingController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKEPParamsSettingController.m; sourceTree = "<group>"; };
+		005D4A6D2499FB99003C2B36 /* MKMQTTServerInterface+MK115Add.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MKMQTTServerInterface+MK115Add.h"; sourceTree = "<group>"; };
+		005D4A6E2499FB99003C2B36 /* MKMQTTServerInterface+MK115Add.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MKMQTTServerInterface+MK115Add.m"; sourceTree = "<group>"; };
 		00E8A53D2497093B0089A32D /* MKNewConfigPlugController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKNewConfigPlugController.h; sourceTree = "<group>"; };
 		00E8A53E2497093B0089A32D /* MKNewConfigPlugController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKNewConfigPlugController.m; sourceTree = "<group>"; };
 		00E8A540249716230089A32D /* configPlugPage_energyOff@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "configPlugPage_energyOff@2x.png"; sourceTree = "<group>"; };
@@ -641,6 +647,8 @@
 			children = (
 				000AD46B24974FA700AE0616 /* MKSettingsController.h */,
 				000AD46C24974FA700AE0616 /* MKSettingsController.m */,
+				005D4A6A2499C924003C2B36 /* MKEPParamsSettingController.h */,
+				005D4A6B2499C924003C2B36 /* MKEPParamsSettingController.m */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -728,6 +736,8 @@
 				0017925122E56B5C001C0FFD /* MKMQTTServerInterface+MKSmartSwich.m */,
 				0017925022E56B5C001C0FFD /* MKMQTTServerErrorBlockAdopter.h */,
 				0017925222E56B5C001C0FFD /* MKMQTTServerErrorBlockAdopter.m */,
+				005D4A6D2499FB99003C2B36 /* MKMQTTServerInterface+MK115Add.h */,
+				005D4A6E2499FB99003C2B36 /* MKMQTTServerInterface+MK115Add.m */,
 			);
 			path = interface;
 			sourceTree = "<group>";
@@ -2086,6 +2096,7 @@
 				0017933C22E59445001C0FFD /* MKDeviceInfoController.m in Sources */,
 				0017941522E59B6B001C0FFD /* EasyLodingView.m in Sources */,
 				0017933522E59445001C0FFD /* MKConfigServerConnectModeCell.m in Sources */,
+				005D4A6C2499C924003C2B36 /* MKEPParamsSettingController.m in Sources */,
 				0017935122E59445001C0FFD /* MKConnectDeviceView.m in Sources */,
 				001E950D22FBC47B007F19A9 /* MKModifyPowerOnStatusController.m in Sources */,
 				0017935922E59445001C0FFD /* MKElectricityModel.m in Sources */,
@@ -2156,6 +2167,7 @@
 				0017940B22E59B6B001C0FFD /* EasyAlertTypes.m in Sources */,
 				0017925622E56B5C001C0FFD /* MKMQTTServerInterface+MKSmartPlug.m in Sources */,
 				0017935F22E5950B001C0FFD /* MKBaseCell.m in Sources */,
+				005D4A6F2499FB99003C2B36 /* MKMQTTServerInterface+MK115Add.m in Sources */,
 				00E8A569249725A90089A32D /* MKEnergyValueCell.m in Sources */,
 				0017934A22E59445001C0FFD /* MKConfigDeviceController.m in Sources */,
 				0017932D22E59445001C0FFD /* MKSelectDeviceTypeCell.m in Sources */,

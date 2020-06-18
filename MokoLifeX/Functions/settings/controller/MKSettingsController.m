@@ -44,6 +44,10 @@
     if (indexPath.row == 0) {
         //led color
         MKColorSettingController *vc = [[MKColorSettingController alloc] init];
+        MKDeviceModel *model = [[MKDeviceModel alloc] init];
+        [model updatePropertyWithModel:self.deviceModel];
+        model.plugState = self.deviceModel.plugState;
+        vc.deviceModel = model;
         [self.navigationController pushViewController:vc animated:YES];
         return;
     }

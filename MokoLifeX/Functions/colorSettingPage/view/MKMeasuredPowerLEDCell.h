@@ -11,9 +11,18 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @class MKMeasuredPowerLEDModel;
+
+@protocol MKMeasuredPowerLEDCellDelegate <NSObject>
+
+- (void)measuredPowerLEDColorChanged:(NSString *)text row:(NSInteger)row;
+
+@end
+
 @interface MKMeasuredPowerLEDCell : UITableViewCell
 
 @property (nonatomic, strong)MKMeasuredPowerLEDModel *dataModel;
+
+@property (nonatomic, weak)id <MKMeasuredPowerLEDCellDelegate>delegate;
 
 + (MKMeasuredPowerLEDCell *)initCellWithTableView:(UITableView *)tableView;
 

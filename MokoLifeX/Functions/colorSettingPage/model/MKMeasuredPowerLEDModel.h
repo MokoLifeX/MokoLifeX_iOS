@@ -18,6 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy)NSString *textValue;
 
+@property (nonatomic, assign)NSInteger row;
+
 @end
 
 NS_ASSUME_NONNULL_END

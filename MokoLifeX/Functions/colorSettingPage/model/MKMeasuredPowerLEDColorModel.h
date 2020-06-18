@@ -10,19 +10,19 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MKMeasuredPowerLEDColorModel : NSObject
+@interface MKMeasuredPowerLEDColorModel : NSObject<mk_ledColorConfigProtocol>
 
-@property (nonatomic, copy)NSString *b_color;
+@property (nonatomic, assign)NSInteger b_color;
 
-@property (nonatomic, copy)NSString *g_color;
+@property (nonatomic, assign)NSInteger g_color;
 
-@property (nonatomic, copy)NSString *y_color;
+@property (nonatomic, assign)NSInteger y_color;
 
-@property (nonatomic, copy)NSString *o_color;
+@property (nonatomic, assign)NSInteger o_color;
 
-@property (nonatomic, copy)NSString *r_color;
+@property (nonatomic, assign)NSInteger r_color;
 
-@property (nonatomic, copy)NSString *p_color;
+@property (nonatomic, assign)NSInteger p_color;
 
 @end
 

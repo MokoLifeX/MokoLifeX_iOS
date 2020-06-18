@@ -63,6 +63,11 @@ extern NSString *const MKMQTTServerReceivedEnergyReportPeriodNotification;
 */
 extern NSString *const MKMQTTServerReceivedStorageParametersNotification;
 
+/*
+接受到功率指示灯颜色通知
+*/
+extern NSString *const MKMQTTServerReceivedLEDColorNotification;
+
 @class MKConfigServerModel;
 @interface MKMQTTServerDataManager : NSObject
 

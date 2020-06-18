@@ -39,7 +39,6 @@ static CGFloat const pickViewRowHeight = 44.f;
     if (self = [super initWithFrame:frame]) {
         [self addSubview:self.msgLabel];
         [self addSubview:self.pickerView];
-        [self loadPickViewDatas];
     }
     return self;
 }
@@ -53,7 +52,7 @@ static CGFloat const pickViewRowHeight = 44.f;
         make.height.mas_equalTo(MKFont(15.f).lineHeight);
     }];
     [self.pickerView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.mas_equalTo(180.f);
+        make.width.mas_equalTo(260.f);
         make.centerX.mas_equalTo(self.mas_centerX);
         make.top.mas_equalTo(self.msgLabel.mas_bottom).mas_offset(15.f);
         make.bottom.mas_equalTo(-15.f);
@@ -123,6 +122,22 @@ static CGFloat const pickViewRowHeight = 44.f;
     if ([self.delegate respondsToSelector:@selector(colorSettingPickViewTypeChanged:)]) {
         [self.delegate colorSettingPickViewTypeChanged:model.colorType];
     }
+}
+
+#pragma mark - public
+- (void)updateColorType:(mk_ledColorType)colorType {
+    [self loadPickViewDatas];
+    [self.pickerView reloadAllComponents];
+    self.currentColorType = colorType;
+    NSInteger selectedRow = 0;
+    for (NSInteger i = 0; i < self.dataList.count; i ++) {
+        MKColorPickerModel *model = self.dataList[i];
+        if (model.colorType == colorType) {
+            selectedRow = i;
+            break;
+        }
+    }
+    [self.pickerView selectRow:selectedRow inComponent:0 animated:YES];
 }
 
 #pragma mark - private method

@@ -54,6 +54,13 @@
     }];
 }
 
+#pragma mark - event method
+- (void)textFieldValueChanged {
+    if ([self.delegate respondsToSelector:@selector(measuredPowerLEDColorChanged:row:)]) {
+        [self.delegate measuredPowerLEDColorChanged:self.textField.text row:self.dataModel.row];
+    }
+}
+
 #pragma mark - setter
 - (void)setDataModel:(MKMeasuredPowerLEDModel *)dataModel {
     _dataModel = nil;
@@ -87,6 +94,9 @@
         _textField.layer.borderColor = CUTTING_LINE_COLOR.CGColor;
         _textField.layer.borderWidth = CUTTING_LINE_HEIGHT;
         _textField.layer.cornerRadius = 5.f;
+        [_textField addTarget:self
+                       action:@selector(textFieldValueChanged)
+             forControlEvents:UIControlEventEditingChanged];
     }
     return _textField;
 }

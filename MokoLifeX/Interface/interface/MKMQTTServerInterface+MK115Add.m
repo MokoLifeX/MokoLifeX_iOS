@@ -142,4 +142,82 @@
                                        failedBlock:failedBlock];
 }
 
++ (void)readLEDColorWithTopic:(NSString *)topic
+                       mqttID:(NSString *)mqttID
+                     sucBlock:(void (^)(void))sucBlock
+                  failedBlock:(void (^)(NSError *error))failedBlock {
+    [[MKMQTTServerManager sharedInstance] sendData:@{@"msg_id":@(2008),@"id":mqttID}
+                                             topic:topic
+                                          sucBlock:sucBlock
+                                       failedBlock:failedBlock];
+}
+
++ (void)setLEDColor:(mk_ledColorType)colorType
+      colorProtocol:(nullable id <mk_ledColorConfigProtocol>)protocol
+              topic:(NSString *)topic
+             mqttID:(NSString *)mqttID
+           sucBlock:(void (^)(void))sucBlock
+        failedBlock:(void (^)(NSError *error))failedBlock {
+    if (![self checkLEDColorParams:colorType colorProtocol:protocol]) {
+        [MKMQTTServerErrorBlockAdopter operationParamsErrorBlock:failedBlock];
+        return;
+    }
+    NSDictionary *dataDic = @{
+                              @"msg_id":@(2010),
+                              @"id":mqttID,
+                              @"data":[self loadColorDataDic:colorType colorProtocol:protocol],
+                              };
+    [[MKMQTTServerManager sharedInstance] sendData:dataDic
+                                             topic:topic
+                                          sucBlock:sucBlock
+                                       failedBlock:failedBlock];
+}
+
+#pragma mark - Private method
++ (BOOL)checkLEDColorParams:(mk_ledColorType)colorType
+              colorProtocol:(nullable id <mk_ledColorConfigProtocol>)protocol {
+    if (colorType == mk_ledColorTransitionSmoothly || colorType == mk_ledColorTransitionDirectly) {
+        if (!protocol || ![protocol conformsToProtocol:@protocol(mk_ledColorConfigProtocol)]) {
+            return NO;
+        }
+        if (protocol.b_color < 1 || protocol.b_color > 2595) {
+            return NO;
+        }
+        if (protocol.g_color <= protocol.b_color || protocol.g_color > 2596) {
+            return NO;
+        }
+        if (protocol.y_color <= protocol.g_color || protocol.y_color > 2597) {
+            return NO;
+        }
+        if (protocol.o_color <= protocol.y_color || protocol.o_color > 2598) {
+            return NO;
+        }
+        if (protocol.r_color <= protocol.o_color || protocol.r_color > 2599) {
+            return NO;
+        }
+        if (protocol.p_color <= protocol.r_color || protocol.p_color > 2600) {
+            return NO;
+        }
+    }
+    return YES;
+}
+
++ (NSDictionary *)loadColorDataDic:(mk_ledColorType)colorType
+                     colorProtocol:(nullable id <mk_ledColorConfigProtocol>)protocol {
+    if (colorType == mk_ledColorTransitionSmoothly || colorType == mk_ledColorTransitionDirectly) {
+        return @{
+            @"led_state":@(colorType),
+            @"blue":@(protocol.b_color),
+            @"green":@(protocol.g_color),
+            @"yellow":@(protocol.y_color),
+            @"orange":@(protocol.o_color),
+            @"red":@(protocol.r_color),
+            @"purple":@(protocol.p_color),
+        };
+    }
+    return @{
+        @"led_state":@(colorType),
+    };
+}
+
 @end

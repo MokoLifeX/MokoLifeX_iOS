@@ -10,6 +10,47 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef NS_ENUM(NSInteger, mk_ledColorType) {
+    mk_ledColorTransitionSmoothly,
+    mk_ledColorTransitionDirectly,
+    mk_ledColorWhite,
+    mk_ledColorRed,
+    mk_ledColorGreen,
+    mk_ledColorBlue,
+    mk_ledColorOrange,
+    mk_ledColorCyan,
+    mk_ledColorPurple,
+    mk_ledColorDisable,
+};
+
+@protocol mk_ledColorConfigProtocol <NSObject>
+
+/// Blue..
+/// 0 <  b_color < 2596.
+@property (nonatomic, assign)NSInteger b_color;
+
+/// Green
+/// b_color < g_color < 2597.
+@property (nonatomic, assign)NSInteger g_color;
+
+/// Yellow
+/// g_color < y_color < 2598.
+@property (nonatomic, assign)NSInteger y_color;
+
+/// Orange
+/// y_color < o_color < 2599.
+@property (nonatomic, assign)NSInteger o_color;
+
+/// Red
+/// o_color < r_color < 2600.
+@property (nonatomic, assign)NSInteger r_color;
+
+/// Purple
+/// r_color < p_color <= 2600.
+@property (nonatomic, assign)NSInteger p_color;
+
+@end
+
 @interface MKMQTTServerInterface (MK115Add)
 
 #pragma mark - Read
@@ -103,6 +144,30 @@ NS_ASSUME_NONNULL_BEGIN
                             mqttID:(NSString *)mqttID
                           sucBlock:(void (^)(void))sucBlock
                        failedBlock:(void (^)(NSError *error))failedBlock;
+
+/// Read the indicator status and power indicator range when the socket switch is turned on.
+/// @param topic topic
+/// @param mqttID mqttID
+/// @param sucBlock Success callback
+/// @param failedBlock Failed callback
++ (void)readLEDColorWithTopic:(NSString *)topic
+                       mqttID:(NSString *)mqttID
+                     sucBlock:(void (^)(void))sucBlock
+                  failedBlock:(void (^)(NSError *error))failedBlock;
+
+/// Set the indicator status and power indicator range when the socket switch is turned on.
+/// @param colorType colorType
+/// @param protocol mk_ledColorConfigProtocol,Note: When colorType is one of mk_ledColorTransitionSmoothly and mk_ledColorTransitionDirectly, it cannot be empty, other types are not checked.
+/// @param topic topic
+/// @param mqttID mqttID
+/// @param sucBlock Success callback
+/// @param failedBlock Failed callback
++ (void)setLEDColor:(mk_ledColorType)colorType
+      colorProtocol:(nullable id <mk_ledColorConfigProtocol>)protocol
+              topic:(NSString *)topic
+             mqttID:(NSString *)mqttID
+           sucBlock:(void (^)(void))sucBlock
+        failedBlock:(void (^)(NSError *error))failedBlock;
 
 @end
 

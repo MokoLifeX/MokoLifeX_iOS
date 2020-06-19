@@ -10,6 +10,4 @@
 
 @interface MKElectricityController : MKBaseViewController
 
-@property (nonatomic, strong)MKDeviceModel *deviceModel;
-
 @end

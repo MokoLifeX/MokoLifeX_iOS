@@ -13,6 +13,8 @@
 
 #import "MKDeviceInfoController.h"
 
+#import "MKEnergyDataModel.h"
+
 @interface MKEnergyController ()
 
 @property (nonatomic, strong)UIView *segment;
@@ -26,6 +28,8 @@
 @property (nonatomic, strong)MKEnergyMonthlyTableView *monthTable;
 
 @property (nonatomic, strong)MKEnergyDailyTableView *dailyTable;
+
+@property (nonatomic, strong)MKEnergyDataModel *energyDataModel;
 
 @end
 
@@ -48,14 +52,10 @@
 
 #pragma mark - super method
 - (void)leftButtonMethod {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"MKPopToRootViewControllerNotification" object:nil];
 }
 
 - (void)rightButtonMethod {
-    MKDeviceInfoController *vc = [[MKDeviceInfoController alloc] init];
-    self.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:vc animated:YES];
-    self.hidesBottomBarWhenPushed = NO;
+    
 }
 
 #pragma mark - event emthod
@@ -84,18 +84,19 @@
 
 #pragma mark - read data
 - (void)readEnergyDatas {
-//    [[MKHudManager share] showHUDWithTitle:@"Reading..." inView:self.view isPenetration:NO];
-//    WS(weakSelf);
-//    [self.dataModel startReadEnergyDatasWithScuBlock:^(NSArray * _Nonnull dailyList, NSArray * _Nonnull monthlyList, NSString * _Nonnull pulseConstant) {
-//        [[MKHudManager share] hide];
-//        __strong typeof(self) sself = weakSelf;
-//        [sself.dailyTable updateEnergyDatas:dailyList pulseConstant:pulseConstant];
-//        [sself.monthTable updateEnergyDatas:monthlyList pulseConstant:pulseConstant];
-//    } failedBlock:^(NSError * _Nonnull error) {
-//        [[MKHudManager share] hide];
-//        __strong typeof(self) sself = weakSelf;
-//        [sself.view showCentralToast:error.userInfo[@"errorInfo"]];
-//    }];
+    [[MKHudManager share] showHUDWithTitle:@"Reading..." inView:self.view isPenetration:NO];
+    WS(weakSelf);
+    [self.energyDataModel startReadEnergyDatasWithScuBlock:^(NSArray * _Nonnull dailyList, NSArray * _Nonnull monthlyList, NSString * _Nonnull pulseConstant, NSString * _Nonnull totalEnergy) {
+        [[MKHudManager share] hide];
+        __strong typeof(self) sself = weakSelf;
+        [sself.dailyTable updateEnergyDatas:dailyList pulseConstant:pulseConstant];
+        [sself.monthTable updateEnergyDatas:monthlyList pulseConstant:pulseConstant];
+    } failedBlock:^(NSError * _Nonnull error) {
+        [[MKHudManager share] hide];
+        __strong typeof(self) sself = weakSelf;
+        [sself.view showCentralToast:error.userInfo[@"errorInfo"]];
+        [sself performSelector:@selector(leftButtonMethod) withObject:nil afterDelay:0.5f];
+    }];
 }
 
 #pragma mark - private method
@@ -116,7 +117,6 @@
 - (void)loadSubViews {
     self.titleLabel.textColor = COLOR_WHITE_MACROS;
     self.custom_naviBarColor = UIColorFromRGB(0x0188cc);
-    [self.rightButton setImage:LOADIMAGE(@"detailIcon", @"png") forState:UIControlStateNormal];
     self.view.backgroundColor = COLOR_WHITE_MACROS;
     [self.view addSubview:self.segment];
     [self.segment mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -183,6 +183,13 @@
         _dailyTable = [[MKEnergyDailyTableView alloc] init];
     }
     return _dailyTable;
+}
+
+- (MKEnergyDataModel *)energyDataModel {
+    if (!_energyDataModel) {
+        _energyDataModel = [[MKEnergyDataModel alloc] init];
+    }
+    return _energyDataModel;
 }
 
 - (UIButton *)monthlyButton {

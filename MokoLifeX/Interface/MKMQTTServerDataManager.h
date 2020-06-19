@@ -68,6 +68,31 @@ extern NSString *const MKMQTTServerReceivedStorageParametersNotification;
 */
 extern NSString *const MKMQTTServerReceivedLEDColorNotification;
 
+/*
+接受到历史每天累计电能通知
+*/
+extern NSString *const MKMQTTServerReceivedHistoricalEnergyNotification;
+
+/*
+ 接收到当天时间段累计电能通知
+ */
+extern NSString *const MKMQTTServerReceivedEnergyDataOfTodayNotification;
+
+/*
+ 接收到脉冲常数通知
+ */
+extern NSString *const MKMQTTServerReceivedPulseConstantNotification;
+
+/*
+ 接收到总累计电能通知
+ */
+extern NSString *const MKMQTTServerReceivedTotalEnergyNotification;
+
+/*
+ 接收到当前电能数据通知
+ */
+extern NSString *const MKMQTTServerReceivedCurrentEnergyNotification;
+
 @class MKConfigServerModel;
 @interface MKMQTTServerDataManager : NSObject
 

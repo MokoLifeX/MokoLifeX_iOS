@@ -129,7 +129,7 @@ MKMeasuredPowerLEDCellDelegate>
         MKMeasuredPowerLEDModel *pModel = self.dataList[5];
         colorModel.p_color = [pModel.textValue integerValue];
         [[MKHudManager share] showHUDWithTitle:@"Setting..." inView:self.view isPenetration:NO];
-        [MKMQTTServerInterface setLEDColor:self.currentColorType colorProtocol:colorModel topic:[self.deviceModel currentSubscribedTopic] mqttID:self.deviceModel.mqttID sucBlock:^{
+        [MKMQTTServerInterface setLEDColor:self.currentColorType colorProtocol:colorModel topic:MKDeviceModelManager.shared.subTopic mqttID:MKDeviceModelManager.shared.mqttID sucBlock:^{
             [[MKHudManager share] hide];
             [self.view showCentralToast:@"Success"];
         } failedBlock:^(NSError * _Nonnull error) {
@@ -139,7 +139,7 @@ MKMeasuredPowerLEDCellDelegate>
         return;
     }
     [[MKHudManager share] showHUDWithTitle:@"Setting..." inView:self.view isPenetration:NO];
-    [MKMQTTServerInterface setLEDColor:self.currentColorType colorProtocol:nil topic:[self.deviceModel currentSubscribedTopic] mqttID:self.deviceModel.mqttID sucBlock:^{
+    [MKMQTTServerInterface setLEDColor:self.currentColorType colorProtocol:nil topic:MKDeviceModelManager.shared.subTopic mqttID:MKDeviceModelManager.shared.mqttID sucBlock:^{
         [[MKHudManager share] hide];
         [self.view showCentralToast:@"Success"];
     } failedBlock:^(NSError * _Nonnull error) {
@@ -154,7 +154,7 @@ MKMeasuredPowerLEDCellDelegate>
         return;
     }
     NSDictionary *deviceDic = note.userInfo[@"userInfo"];
-    if (!ValidDict(deviceDic) || ![deviceDic[@"id"] isEqualToString:self.deviceModel.mqttID]) {
+    if (!ValidDict(deviceDic) || ![deviceDic[@"id"] isEqualToString:MKDeviceModelManager.shared.mqttID]) {
         return;
     }
     [[MKHudManager share] hide];
@@ -177,7 +177,7 @@ MKMeasuredPowerLEDCellDelegate>
 #pragma mark - private method
 - (void)readColorDatas {
     [[MKHudManager share] showHUDWithTitle:@"Reading..." inView:self.view isPenetration:NO];
-    [MKMQTTServerInterface readLEDColorWithTopic:[self.deviceModel currentSubscribedTopic] mqttID:self.deviceModel.mqttID sucBlock:^{
+    [MKMQTTServerInterface readLEDColorWithTopic:MKDeviceModelManager.shared.subTopic mqttID:MKDeviceModelManager.shared.mqttID sucBlock:^{
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(receiveMQTTServerDatas:)
                                                      name:MKMQTTServerReceivedLEDColorNotification

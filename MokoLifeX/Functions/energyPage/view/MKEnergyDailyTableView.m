@@ -35,7 +35,10 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         [self addSubview:self.dailyTableView];
-        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(receiveCurrentEnergyNotification:)
+                                                     name:MKMQTTServerReceivedCurrentEnergyNotification
+                                                   object:nil];
     }
     return self;
 }
@@ -68,6 +71,7 @@
 
 #pragma mark - note
 - (void)receiveCurrentEnergyNotification:(NSNotification *)note {
+    NSDictionary *energyDic = [self parseCurrentEnergyDatas:note.userInfo];
     NSString *hour = note.userInfo[@"date"][@"hour"];
     if (self.dailyList.count == 0) {
         //没有直接添加
@@ -182,6 +186,43 @@
     [dateFormat setDateFormat:@"yyyy-MM-dd"];
     NSString *date = [dateFormat stringFromDate:[NSDate date]];
     return date;
+}
+
+- (NSDictionary *)parseCurrentEnergyDatas:(NSDictionary *)energyDic {
+    NSString *dateInfo = energyDic[@"timestamp"];
+    NSArray *timeList = [dateInfo componentsSeparatedByString:@" "];
+    NSArray *dateList = [timeList[0] componentsSeparatedByString:@"-"];
+    NSArray *hourList = [timeList[0] componentsSeparatedByString:@":"];
+    NSString *year = dateList[0];
+    NSString *month = dateList[1];
+    if (month.length == 1) {
+        month = [@"0" stringByAppendingString:month];
+    }
+    NSString *day = dateList[2];
+    if (day.length == 1) {
+        day = [@"0" stringByAppendingString:day];
+    }
+    NSString *hour = hourList[0];
+    if (hour.length == 1) {
+        hour = [@"0" stringByAppendingString:hour];
+    }
+    NSDictionary *dateDic = @{
+        @"year":year,
+        @"month":month,
+        @"day":day,
+        @"hour":hour,
+    };
+    NSString *totalValue = [NSString stringWithFormat:@"%ld",(long)[energyDic[@"all_energy"] integerValue]];
+    NSString *monthlyValue = [NSString stringWithFormat:@"%ld",(long)[energyDic[@"thirty_day_energy"] integerValue]];
+    NSString *currentDayValue = [NSString stringWithFormat:@"%ld",(long)[energyDic[@"today_energy"] integerValue]];
+    NSString *currentHourValue = [NSString stringWithFormat:@"%ld",(long)[energyDic[@"current_hour_energy"] integerValue]];
+    return @{
+        @"date":dateDic,
+        @"totalValue":totalValue,
+        @"monthlyValue":monthlyValue,
+        @"currentDayValue":currentDayValue,
+        @"currentHourValue":currentHourValue,
+    };
 }
 
 @end

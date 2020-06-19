@@ -12,8 +12,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MKEnergyController : MKBaseViewController
 
-@property (nonatomic, strong)MKDeviceModel *dataModel;
-
 @end
 
 NS_ASSUME_NONNULL_END

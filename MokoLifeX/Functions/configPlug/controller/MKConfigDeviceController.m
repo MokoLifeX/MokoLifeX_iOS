@@ -18,7 +18,7 @@ static CGFloat const switchButtonHeight = 200.f;
 static CGFloat const buttonViewWidth = 50.f;
 static CGFloat const buttonViewHeight = 50.f;
 
-@interface MKConfigDeviceController ()<MKDeviceModelDelegate>
+@interface MKConfigDeviceController ()<MKDeviceModelDelegate, MKDeviceModelManagerDelegate>
 
 @property (nonatomic, strong)UIImageView *switchButton;
 
@@ -36,8 +36,6 @@ static CGFloat const buttonViewHeight = 50.f;
 
 @property (nonatomic, strong)NSMutableArray *dataList;
 
-@property (nonatomic, strong)MKDeviceModel *deviceModel;
-
 @end
 
 @implementation MKConfigDeviceController
@@ -45,9 +43,8 @@ static CGFloat const buttonViewHeight = 50.f;
 #pragma mark - life circle
 - (void)dealloc{
     NSLog(@"MKConfigDeviceController销毁");
-    [self.deviceModel cancel];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:MKMQTTServerReceivedSwitchStateNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:MKMQTTServerReceivedDelayTimeNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [MKDeviceModelManager.shared clearManagementModel];
 }
 
 - (void)viewDidLoad {
@@ -56,6 +53,7 @@ static CGFloat const buttonViewHeight = 50.f;
     [self loadDataList];
     [self configView];
     [self addNotifications];
+    MKDeviceModelManager.shared.delegate = self;
     // Do any additional setup after loading the view.
 }
 
@@ -63,38 +61,23 @@ static CGFloat const buttonViewHeight = 50.f;
 
 - (void)rightButtonMethod{
     MKDeviceInfoController *vc = [[MKDeviceInfoController alloc] init];
-    MKDeviceModel *model = [[MKDeviceModel alloc] init];
-    [model updatePropertyWithModel:self.deviceModel];
-    model.plugState = self.deviceModel.plugState;
-    vc.deviceModel = model;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
-#pragma mark - MKDeviceModelDelegate
-- (void)deviceModelStateChanged:(MKDeviceModel *)deviceModel{
-    self.deviceModel.plugState = MKSmartPlugOffline;
-    [self configView];
-}
-
-#pragma mark - 通知处理
-- (void)switchStateNotification:(NSNotification *)note{
-    NSDictionary *deviceDic = note.userInfo[@"userInfo"];
-    if (!ValidDict(deviceDic) || ![deviceDic[@"id"] isEqualToString:self.deviceModel.mqttID]) {
-        return;
-    }
-    [self.deviceModel resetTimerCounter];
-    BOOL status = ([deviceDic[@"switch_state"] isEqualToString:@"on"]);
-    self.deviceModel.plugState = (status ? MKSmartPlugOn : MKSmartPlugOff);
+#pragma mark - MKDeviceModelManagerDelegate
+- (void)currentDeviceModelStateChanged:(MKSmartPlugState)plugState {
     [self configView];
     [self.delayTimeLabel setHidden:YES];
 }
 
+#pragma mark - 通知处理
+
 - (void)delayTimeNotification:(NSNotification *)note{
     NSDictionary *deviceDic = note.userInfo[@"userInfo"];
-    if (!ValidDict(deviceDic) || ![deviceDic[@"id"] isEqualToString:self.deviceModel.mqttID]) {
+    if (!ValidDict(deviceDic) || ![deviceDic[@"id"] isEqualToString:MKDeviceModelManager.shared.deviceModel.mqttID]) {
         return;
     }
-    [self.deviceModel resetTimerCounter];
+    [MKDeviceModelManager.shared.deviceModel resetTimerCounter];
     NSString *timeMsg = [NSString stringWithFormat:@"%@:%@:%@",
                          deviceDic[@"delay_hour"],
                          deviceDic[@"delay_minute"],
@@ -103,7 +86,7 @@ static CGFloat const buttonViewHeight = 50.f;
     [self.delayTimeLabel setHidden:[timeMsg isEqualToString:@"0:0:0"]];
     NSString *stateMsg = [NSString stringWithFormat:@"%@ after %@", deviceDic[@"switch_state"], timeMsg];
     self.delayTimeLabel.text = stateMsg;
-    self.delayTimeLabel.textColor = (self.deviceModel.plugState == MKSmartPlugOn) ? UIColorFromRGB(0x0188cc) : UIColorFromRGB(0x808080);
+    self.delayTimeLabel.textColor = (MKDeviceModelManager.shared.deviceModel.plugState == MKSmartPlugOn) ? UIColorFromRGB(0x0188cc) : UIColorFromRGB(0x808080);
 }
 
 #pragma mark - event method
@@ -111,10 +94,10 @@ static CGFloat const buttonViewHeight = 50.f;
     if (![self canClickEnable]) {
         return;
     }
-    BOOL isOn = (self.deviceModel.plugState == MKSmartPlugOn);
+    BOOL isOn = (MKDeviceModelManager.shared.deviceModel.plugState == MKSmartPlugOn);
     [[MKHudManager share] showHUDWithTitle:@"Setting..." inView:self.view isPenetration:NO];
     WS(weakSelf);
-    [MKMQTTServerInterface setSmartPlugSwitchState:!isOn topic:[self.deviceModel currentSubscribedTopic] mqttID:self.deviceModel.mqttID sucBlock:^{
+    [MKMQTTServerInterface setSmartPlugSwitchState:!isOn topic:MKDeviceModelManager.shared.subTopic mqttID:MKDeviceModelManager.shared.deviceModel.mqttID sucBlock:^{
         [[MKHudManager share] hide];
     } failedBlock:^(NSError *error) {
         [[MKHudManager share] hide];
@@ -133,7 +116,7 @@ static CGFloat const buttonViewHeight = 50.f;
     if (![self canClickEnable]) {
         return;
     }
-    BOOL isOn = (self.deviceModel.plugState == MKSmartPlugOn);
+    BOOL isOn = (MKDeviceModelManager.shared.deviceModel.plugState == MKSmartPlugOn);
     MKConfigDeviceTimeModel *timeModel = [[MKConfigDeviceTimeModel alloc] init];
     timeModel.hour = @"0";
     timeModel.minutes = @"0";
@@ -147,7 +130,7 @@ static CGFloat const buttonViewHeight = 50.f;
 }
 
 - (void)statisticsButtonPressed{
-    if (![self.deviceModel.device_type isEqualToString:@"1"]) {
+    if (![MKDeviceModelManager.shared.deviceModel.device_type isEqualToString:@"1"]) {
         [self.view showCentralToast:@"The device does not have this function."];
         return;
     }
@@ -155,29 +138,14 @@ static CGFloat const buttonViewHeight = 50.f;
         return;
     }
     MKElectricityController *vc = [[MKElectricityController alloc] init];
-    MKDeviceModel *model = [[MKDeviceModel alloc] init];
-    [model updatePropertyWithModel:self.deviceModel];
-    vc.deviceModel = model;
     [self.navigationController pushViewController:vc animated:YES];
-}
-
-#pragma mark - public method
-- (void)setDataModel:(MKDeviceModel *)dataModel{
-    _dataModel = nil;
-    _dataModel = dataModel;
-    if (!_dataModel) {
-        return;
-    }
-    [self.deviceModel updatePropertyWithModel:_dataModel];
-    self.deviceModel.plugState = _dataModel.plugState;
-    [self.deviceModel startStateMonitoringTimer];
 }
 
 #pragma mark - setting
 - (void)setDelay:(NSString *)hour delayMin:(NSString *)min{
     [[MKHudManager share] showHUDWithTitle:@"Setting..." inView:self.view isPenetration:NO];
     WS(weakSelf);
-    [MKMQTTServerInterface setPlugDelayHour:[hour integerValue] delayMin:[min integerValue] topic:[self.deviceModel currentSubscribedTopic] mqttID:self.deviceModel.mqttID sucBlock:^{
+    [MKMQTTServerInterface setPlugDelayHour:[hour integerValue] delayMin:[min integerValue] topic:MKDeviceModelManager.shared.subTopic mqttID:MKDeviceModelManager.shared.deviceModel.mqttID sucBlock:^{
         [[MKHudManager share] hide];
     } failedBlock:^(NSError *error) {
         [[MKHudManager share] hide];
@@ -187,10 +155,6 @@ static CGFloat const buttonViewHeight = 50.f;
 
 #pragma mark - private method
 - (void)addNotifications{
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                   selector:@selector(switchStateNotification:)
-                                       name:MKMQTTServerReceivedSwitchStateNotification
-                                     object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                    selector:@selector(delayTimeNotification:)
                                        name:MKMQTTServerReceivedDelayTimeNotification
@@ -202,7 +166,7 @@ static CGFloat const buttonViewHeight = 50.f;
         [self.view showCentralToast:@"Network error,please check."];
         return NO;
     }
-    if (self.deviceModel.plugState == MKSmartPlugOffline) {
+    if (MKDeviceModelManager.shared.deviceModel.plugState == MKSmartPlugOffline) {
         [self.view showCentralToast:@"Device offline,please check."];
         return NO;
     }
@@ -262,36 +226,36 @@ static CGFloat const buttonViewHeight = 50.f;
 }
 
 - (void)configView{
-    self.custom_naviBarColor = (self.deviceModel.plugState == MKSmartPlugOn) ? UIColorFromRGB(0x0188cc) : UIColorFromRGB(0x303a4b);
-    [self.view setBackgroundColor:((self.deviceModel.plugState == MKSmartPlugOn) ? UIColorFromRGB(0xf2f2f2) : UIColorFromRGB(0x303a4b))];
-    NSString *switchIcon = ((self.deviceModel.plugState == MKSmartPlugOn) ? @"configPlugPage_switchButtonOn" : @"configPlugPage_switchButtonOff");
+    self.custom_naviBarColor = (MKDeviceModelManager.shared.deviceModel.plugState == MKSmartPlugOn) ? UIColorFromRGB(0x0188cc) : UIColorFromRGB(0x303a4b);
+    [self.view setBackgroundColor:((MKDeviceModelManager.shared.deviceModel.plugState == MKSmartPlugOn) ? UIColorFromRGB(0xf2f2f2) : UIColorFromRGB(0x303a4b))];
+    NSString *switchIcon = ((MKDeviceModelManager.shared.deviceModel.plugState == MKSmartPlugOn) ? @"configPlugPage_switchButtonOn" : @"configPlugPage_switchButtonOff");
     self.switchButton.image = LOADIMAGE(switchIcon, @"png");
-    self.stateLabel.textColor = ((self.deviceModel.plugState == MKSmartPlugOn) ? UIColorFromRGB(0x0188cc) : UIColorFromRGB(0x808080));
+    self.stateLabel.textColor = ((MKDeviceModelManager.shared.deviceModel.plugState == MKSmartPlugOn) ? UIColorFromRGB(0x0188cc) : UIColorFromRGB(0x808080));
     NSString *textMsg = @"Socket is off";
-    if (self.deviceModel.plugState == MKSmartPlugOffline) {
+    if (MKDeviceModelManager.shared.deviceModel.plugState == MKSmartPlugOffline) {
         textMsg = @"Socket is offline";
-    }else if (self.deviceModel.plugState == MKSmartPlugOn){
+    }else if (MKDeviceModelManager.shared.deviceModel.plugState == MKSmartPlugOn){
         textMsg = @"Socket is on";
     }
     self.stateLabel.text = textMsg;
     
-    if (self.deviceModel.plugState == MKSmartPlugOffline) {
+    if (MKDeviceModelManager.shared.deviceModel.plugState == MKSmartPlugOffline) {
         [self.delayTimeLabel setHidden:YES];
     }
     
     MKConfigDeviceButtonModel *scheduleModel = self.dataList[0];
-    scheduleModel.iconName = ((self.deviceModel.plugState == MKSmartPlugOn) ? @"configPlugPage_scheduleOn" : @"configPlugPage_scheduleOff");
-    scheduleModel.isOn = (self.deviceModel.plugState == MKSmartPlugOn);
+    scheduleModel.iconName = ((MKDeviceModelManager.shared.deviceModel.plugState == MKSmartPlugOn) ? @"configPlugPage_scheduleOn" : @"configPlugPage_scheduleOff");
+    scheduleModel.isOn = (MKDeviceModelManager.shared.deviceModel.plugState == MKSmartPlugOn);
     self.scheduleButton.dataModel = scheduleModel;
     
     MKConfigDeviceButtonModel *timerModel = self.dataList[1];
-    timerModel.iconName = ((self.deviceModel.plugState == MKSmartPlugOn) ? @"configPlugPage_TimerOn" : @"configPlugPage_TimerOff");
-    timerModel.isOn = (self.deviceModel.plugState == MKSmartPlugOn);
+    timerModel.iconName = ((MKDeviceModelManager.shared.deviceModel.plugState == MKSmartPlugOn) ? @"configPlugPage_TimerOn" : @"configPlugPage_TimerOff");
+    timerModel.isOn = (MKDeviceModelManager.shared.deviceModel.plugState == MKSmartPlugOn);
     self.timerButton.dataModel = timerModel;
     
     MKConfigDeviceButtonModel *statisticsModel = self.dataList[2];
-    statisticsModel.iconName = ((self.deviceModel.plugState == MKSmartPlugOn) ? @"configPlugPage_statisticsOn" : @"configPlugPage_statisticsOff");
-    statisticsModel.isOn = (self.deviceModel.plugState == MKSmartPlugOn);
+    statisticsModel.iconName = ((MKDeviceModelManager.shared.deviceModel.plugState == MKSmartPlugOn) ? @"configPlugPage_statisticsOn" : @"configPlugPage_statisticsOff");
+    statisticsModel.isOn = (MKDeviceModelManager.shared.deviceModel.plugState == MKSmartPlugOn);
     self.statisticsButton.dataModel = statisticsModel;
 }
 
@@ -375,14 +339,6 @@ static CGFloat const buttonViewHeight = 50.f;
         _dataList = [NSMutableArray arrayWithCapacity:3];
     }
     return _dataList;
-}
-
-- (MKDeviceModel *)deviceModel{
-    if (!_deviceModel) {
-        _deviceModel = [[MKDeviceModel alloc] init];
-        _deviceModel.delegate = self;
-    }
-    return _deviceModel;
 }
 
 @end

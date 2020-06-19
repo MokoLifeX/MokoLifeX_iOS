@@ -87,7 +87,7 @@ static CGFloat const iconHeight = 13.f;
         return;
     }
     NSDictionary *deviceDic = note.userInfo[@"userInfo"];
-    if (!ValidDict(deviceDic) || ![deviceDic[@"id"] isEqualToString:self.deviceModel.mqttID]) {
+    if (!ValidDict(deviceDic) || ![deviceDic[@"id"] isEqualToString:MKDeviceModelManager.shared.mqttID]) {
         return;
     }
     dispatch_cancel(self.readTimer);
@@ -99,7 +99,7 @@ static CGFloat const iconHeight = 13.f;
 #pragma mark - interface
 - (void)configStatus:(NSInteger)current {
     [[MKHudManager share] showHUDWithTitle:@"Waiting..." inView:self.view isPenetration:NO];
-    [MKMQTTServerInterface configDevicePowerOnStatus:current topic:[self.deviceModel currentSubscribedTopic] mqttID:self.deviceModel.mqttID sucBlock:^{
+    [MKMQTTServerInterface configDevicePowerOnStatus:current topic:MKDeviceModelManager.shared.subTopic mqttID:MKDeviceModelManager.shared.mqttID sucBlock:^{
         [[MKHudManager share] hide];
         self.currentStatus = current;
         [self loadStatusIcon];

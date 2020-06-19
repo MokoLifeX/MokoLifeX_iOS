@@ -78,7 +78,7 @@
         return;
     }
     NSDictionary *deviceDic = note.userInfo[@"userInfo"];
-    if (!ValidDict(deviceDic) || ![deviceDic[@"id"] isEqualToString:self.deviceModel.mqttID]) {
+    if (!ValidDict(deviceDic) || ![deviceDic[@"id"] isEqualToString:MKDeviceModelManager.shared.mqttID]) {
         return;
     }
     [[MKHudManager share] hide];
@@ -159,7 +159,7 @@
 
 - (void)readOverloadData {
     [[MKHudManager share] showHUDWithTitle:@"Reading..." inView:self.view isPenetration:NO];
-    [MKMQTTServerInterface readOverloadValueWithTopic:[self.deviceModel currentSubscribedTopic] mqttID:self.deviceModel.mqttID sucBlock:^{
+    [MKMQTTServerInterface readOverloadValueWithTopic:MKDeviceModelManager.shared.subTopic mqttID:MKDeviceModelManager.shared.mqttID sucBlock:^{
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(receiveMQTTServerDatas:)
                                                      name:MKMQTTServerReceivedOverloadNotification
@@ -178,7 +178,7 @@
         return;
     }
     [[MKHudManager share] showHUDWithTitle:@"Setting..." inView:self.view isPenetration:NO];
-    [MKMQTTServerInterface setOverloadValue:[self.textField1.text integerValue] topic:[self.deviceModel currentSubscribedTopic] mqttID:self.deviceModel.mqttID sucBlock:^{
+    [MKMQTTServerInterface setOverloadValue:[self.textField1.text integerValue] topic:MKDeviceModelManager.shared.subTopic mqttID:MKDeviceModelManager.shared.mqttID sucBlock:^{
         [[MKHudManager share] hide];
         [self.view showCentralToast:@"Success"];
     } failedBlock:^(NSError * _Nonnull error) {
@@ -189,7 +189,7 @@
 
 - (void)readPowerReportPeriod {
     [[MKHudManager share] showHUDWithTitle:@"Reading..." inView:self.view isPenetration:NO];
-    [MKMQTTServerInterface readPowerReportPeriodWithTopic:[self.deviceModel currentSubscribedTopic] mqttID:self.deviceModel.mqttID sucBlock:^{
+    [MKMQTTServerInterface readPowerReportPeriodWithTopic:MKDeviceModelManager.shared.subTopic mqttID:MKDeviceModelManager.shared.mqttID sucBlock:^{
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(receiveMQTTServerDatas:)
                                                      name:MKMQTTServerReceivedPowerReportPeriodNotification
@@ -208,7 +208,7 @@
         return;
     }
     [[MKHudManager share] showHUDWithTitle:@"Setting..." inView:self.view isPenetration:NO];
-    [MKMQTTServerInterface setPowerReportPeriod:[self.textField1.text integerValue] topic:[self.deviceModel currentSubscribedTopic] mqttID:self.deviceModel.mqttID sucBlock:^{
+    [MKMQTTServerInterface setPowerReportPeriod:[self.textField1.text integerValue] topic:MKDeviceModelManager.shared.subTopic mqttID:MKDeviceModelManager.shared.mqttID sucBlock:^{
         [[MKHudManager share] hide];
         [self.view showCentralToast:@"Success"];
     } failedBlock:^(NSError * _Nonnull error) {
@@ -219,7 +219,7 @@
 
 - (void)readEnergyReportPeriod {
     [[MKHudManager share] showHUDWithTitle:@"Reading..." inView:self.view isPenetration:NO];
-    [MKMQTTServerInterface readEnergyReportPeriodWithTopic:[self.deviceModel currentSubscribedTopic] mqttID:self.deviceModel.mqttID sucBlock:^{
+    [MKMQTTServerInterface readEnergyReportPeriodWithTopic:MKDeviceModelManager.shared.subTopic mqttID:MKDeviceModelManager.shared.mqttID sucBlock:^{
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(receiveMQTTServerDatas:)
                                                      name:MKMQTTServerReceivedEnergyReportPeriodNotification
@@ -238,7 +238,7 @@
         return;
     }
     [[MKHudManager share] showHUDWithTitle:@"Setting..." inView:self.view isPenetration:NO];
-    [MKMQTTServerInterface setEnergyReportPeriod:[self.textField1.text integerValue] topic:[self.deviceModel currentSubscribedTopic] mqttID:self.deviceModel.mqttID sucBlock:^{
+    [MKMQTTServerInterface setEnergyReportPeriod:[self.textField1.text integerValue] topic:MKDeviceModelManager.shared.subTopic mqttID:MKDeviceModelManager.shared.mqttID sucBlock:^{
         [[MKHudManager share] hide];
         [self.view showCentralToast:@"Success"];
     } failedBlock:^(NSError * _Nonnull error) {
@@ -249,7 +249,7 @@
 
 - (void)readEnergyStorageParameters {
     [[MKHudManager share] showHUDWithTitle:@"Reading..." inView:self.view isPenetration:NO];
-    [MKMQTTServerInterface readEnergyStorageParametersWithTopic:[self.deviceModel currentSubscribedTopic] mqttID:self.deviceModel.mqttID sucBlock:^{
+    [MKMQTTServerInterface readEnergyStorageParametersWithTopic:MKDeviceModelManager.shared.subTopic mqttID:MKDeviceModelManager.shared.mqttID sucBlock:^{
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(receiveMQTTServerDatas:)
                                                      name:MKMQTTServerReceivedStorageParametersNotification
@@ -268,7 +268,7 @@
         return;
     }
     [[MKHudManager share] showHUDWithTitle:@"Setting..." inView:self.view isPenetration:NO];
-    [MKMQTTServerInterface setEnergyStorageParameters:[self.textField1.text integerValue] energyValue:[self.textField2.text integerValue] topic:[self.deviceModel currentSubscribedTopic] mqttID:self.deviceModel.mqttID sucBlock:^{
+    [MKMQTTServerInterface setEnergyStorageParameters:[self.textField1.text integerValue] energyValue:[self.textField2.text integerValue] topic:MKDeviceModelManager.shared.subTopic mqttID:MKDeviceModelManager.shared.mqttID sucBlock:^{
         [[MKHudManager share] hide];
         [self.view showCentralToast:@"Success"];
     } failedBlock:^(NSError * _Nonnull error) {

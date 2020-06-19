@@ -169,6 +169,46 @@ typedef NS_ENUM(NSInteger, mk_ledColorType) {
            sucBlock:(void (^)(void))sucBlock
         failedBlock:(void (^)(NSError *error))failedBlock;
 
+/// Read pulse constant.
+/// @param topic topic
+/// @param mqttID mqttID
+/// @param sucBlock Success callback
+/// @param failedBlock Failed callback
++ (void)readPulseConstantWithTopic:(NSString *)topic
+                            mqttID:(NSString *)mqttID
+                          sucBlock:(void (^)(void))sucBlock
+                       failedBlock:(void (^)(NSError *error))failedBlock;
+
+/// Read hourly data for the day.
+/// @param topic topic
+/// @param mqttID mqttID
+/// @param sucBlock Success callback
+/// @param failedBlock Failed callback
++ (void)readEnergyDataOfTodayWithTopic:(NSString *)topic
+                                mqttID:(NSString *)mqttID
+                              sucBlock:(void (^)(void))sucBlock
+                           failedBlock:(void (^)(NSError *error))failedBlock;
+
+/// Read historical accumulated energy, up to 30 days of data
+/// @param topic topic
+/// @param mqttID mqttID
+/// @param sucBlock Success callback
+/// @param failedBlock Failed callback
++ (void)readHistoricalEnergyWithTopic:(NSString *)topic
+                               mqttID:(NSString *)mqttID
+                             sucBlock:(void (^)(void))sucBlock
+                          failedBlock:(void (^)(NSError *error))failedBlock;
+
+/// Read the total accumulated energy.
+/// @param topic topic
+/// @param mqttID mqttID
+/// @param sucBlock Success callback
+/// @param failedBlock Failed callback
++ (void)readTotalEnergyWithTopic:(NSString *)topic
+                          mqttID:(NSString *)mqttID
+                        sucBlock:(void (^)(void))sucBlock
+                     failedBlock:(void (^)(NSError *error))failedBlock;
+
 @end
 
 NS_ASSUME_NONNULL_END

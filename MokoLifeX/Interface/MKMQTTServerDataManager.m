@@ -25,6 +25,11 @@ NSString *const MKMQTTServerReceivedPowerReportPeriodNotification = @"MKMQTTServ
 NSString *const MKMQTTServerReceivedEnergyReportPeriodNotification = @"MKMQTTServerReceivedEnergyReportPeriodNotification";
 NSString *const MKMQTTServerReceivedStorageParametersNotification = @"MKMQTTServerReceivedStorageParametersNotification";
 NSString *const MKMQTTServerReceivedLEDColorNotification = @"MKMQTTServerReceivedLEDColorNotification";
+NSString *const MKMQTTServerReceivedHistoricalEnergyNotification = @"MKMQTTServerReceivedHistoricalEnergyNotification";
+NSString *const MKMQTTServerReceivedEnergyDataOfTodayNotification = @"MKMQTTServerReceivedEnergyDataOfTodayNotification";
+NSString *const MKMQTTServerReceivedPulseConstantNotification = @"MKMQTTServerReceivedPulseConstantNotification";
+NSString *const MKMQTTServerReceivedTotalEnergyNotification = @"MKMQTTServerReceivedTotalEnergyNotification";
+NSString *const MKMQTTServerReceivedCurrentEnergyNotification = @"MKMQTTServerReceivedCurrentEnergyNotification";
 
 @interface MKMQTTServerDataManager()<MKMQTTServerManagerDelegate>
 
@@ -271,13 +276,33 @@ NSString *const MKMQTTServerReceivedLEDColorNotification = @"MKMQTTServerReceive
         //电量信息上报间隔
         return MKMQTTServerReceivedPowerReportPeriodNotification;
     }
-    if (function == 1019) {
-        //电能上报间隔
-        return MKMQTTServerReceivedEnergyReportPeriodNotification;
-    }
     if (function == 1013) {
         //累计电能存储参数
         return MKMQTTServerReceivedStorageParametersNotification;
+    }
+    if (function == 1014) {
+        //累计电能
+        return MKMQTTServerReceivedHistoricalEnergyNotification;
+    }
+    if (function == 1015) {
+        //今天电能
+        return MKMQTTServerReceivedEnergyDataOfTodayNotification;
+    }
+    if (function == 1016) {
+        //脉冲常数
+        return MKMQTTServerReceivedPulseConstantNotification;
+    }
+    if (function == 1017) {
+        //总累计电能
+        return MKMQTTServerReceivedTotalEnergyNotification;
+    }
+    if (function == 1018) {
+        //当前电能数据
+        return MKMQTTServerReceivedCurrentEnergyNotification;
+    }
+    if (function == 1019) {
+        //电能上报间隔
+        return MKMQTTServerReceivedEnergyReportPeriodNotification;
     }
     return @"";
 }

@@ -21,8 +21,6 @@ typedef NS_ENUM(NSInteger, mk_epParamsType) {
 
 @property (nonatomic, assign)mk_epParamsType configType;
 
-@property (nonatomic, strong)MKDeviceModel *deviceModel;
-
 @end
 
 NS_ASSUME_NONNULL_END

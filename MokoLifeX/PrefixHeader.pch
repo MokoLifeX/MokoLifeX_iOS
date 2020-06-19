@@ -23,3 +23,4 @@
 #import "MKMqttServerIntefaces.h"
 #import "MKCommonlyUIHelper.h"
 #import "MKConfigServerAdopter.h"
+#import "MKDeviceModelManager.h"

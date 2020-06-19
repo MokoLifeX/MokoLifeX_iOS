@@ -12,6 +12,4 @@ extern NSString *const deviceMacAddress;
 
 @interface MKUpdateFirmwareController : MKBaseViewController
 
-@property (nonatomic, strong)MKDeviceModel *deviceModel;
-
 @end

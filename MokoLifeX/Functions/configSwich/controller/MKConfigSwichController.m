@@ -28,8 +28,8 @@
 - (void)dealloc{
     NSLog(@"MKConfigSwichController销毁");
     [self.deviceModel cancel];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:MKMQTTServerReceivedSwitchStateNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:MKMQTTServerReceivedDelayTimeNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [MKDeviceModelManager.shared clearManagementModel];
 }
 
 - (void)viewDidLoad {
@@ -64,11 +64,6 @@
 
 - (void)rightButtonMethod{
     MKDeviceInfoController *vc = [[MKDeviceInfoController alloc] init];
-    MKDeviceModel *model = [[MKDeviceModel alloc] init];
-    [model updatePropertyWithModel:self.deviceModel];
-    model.swich_way_nameDic = self.deviceModel.swich_way_nameDic;
-    model.swichState = self.deviceModel.swichState;
-    vc.deviceModel = model;
     [self.navigationController pushViewController:vc animated:YES];
 }
 

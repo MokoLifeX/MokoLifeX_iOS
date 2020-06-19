@@ -23,7 +23,7 @@
 #pragma mark - life circle
 - (void)dealloc{
     NSLog(@"MKElectricityController销毁");
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:MKMQTTServerReceivedElectricityNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)viewDidLoad {
@@ -65,7 +65,7 @@
 #pragma mark - Notification Event
 - (void)receiveElectricityData:(NSNotification *)note{
     NSDictionary *deviceDic = note.userInfo[@"userInfo"];
-    if (!ValidDict(deviceDic) || ![deviceDic[@"id"] isEqualToString:self.deviceModel.mqttID]) {
+    if (!ValidDict(deviceDic) || ![deviceDic[@"id"] isEqualToString:MKDeviceModelManager.shared.mqttID]) {
         return;
     }
     if (ValidNum(deviceDic[@"current"])) {

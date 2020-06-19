@@ -34,7 +34,10 @@
 
 - (instancetype)init {
     if (self = [super init]) {
-        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(receiveCurrentEnergyNotification:)
+                                                     name:MKMQTTServerReceivedCurrentEnergyNotification
+                                                   object:nil];
     }
     return self;
 }

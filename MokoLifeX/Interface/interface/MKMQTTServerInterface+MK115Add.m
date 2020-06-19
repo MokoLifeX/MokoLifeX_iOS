@@ -173,6 +173,46 @@
                                        failedBlock:failedBlock];
 }
 
++ (void)readPulseConstantWithTopic:(NSString *)topic
+                            mqttID:(NSString *)mqttID
+                          sucBlock:(void (^)(void))sucBlock
+                       failedBlock:(void (^)(NSError *error))failedBlock {
+    [[MKMQTTServerManager sharedInstance] sendData:@{@"msg_id":@(2020),@"id":mqttID}
+                                             topic:topic
+                                          sucBlock:sucBlock
+                                       failedBlock:failedBlock];
+}
+
++ (void)readEnergyDataOfTodayWithTopic:(NSString *)topic
+                                mqttID:(NSString *)mqttID
+                              sucBlock:(void (^)(void))sucBlock
+                           failedBlock:(void (^)(NSError *error))failedBlock {
+    [[MKMQTTServerManager sharedInstance] sendData:@{@"msg_id":@(2019),@"id":mqttID}
+                                             topic:topic
+                                          sucBlock:sucBlock
+                                       failedBlock:failedBlock];
+}
+
++ (void)readHistoricalEnergyWithTopic:(NSString *)topic
+                               mqttID:(NSString *)mqttID
+                             sucBlock:(void (^)(void))sucBlock
+                          failedBlock:(void (^)(NSError *error))failedBlock {
+    [[MKMQTTServerManager sharedInstance] sendData:@{@"msg_id":@(2018),@"id":mqttID}
+                                             topic:topic
+                                          sucBlock:sucBlock
+                                       failedBlock:failedBlock];
+}
+
++ (void)readTotalEnergyWithTopic:(NSString *)topic
+                          mqttID:(NSString *)mqttID
+                        sucBlock:(void (^)(void))sucBlock
+                     failedBlock:(void (^)(NSError *error))failedBlock {
+    [[MKMQTTServerManager sharedInstance] sendData:@{@"msg_id":@(2021),@"id":mqttID}
+                                             topic:topic
+                                          sucBlock:sucBlock
+                                       failedBlock:failedBlock];
+}
+
 #pragma mark - Private method
 + (BOOL)checkLEDColorParams:(mk_ledColorType)colorType
               colorProtocol:(nullable id <mk_ledColorConfigProtocol>)protocol {

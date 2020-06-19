@@ -65,7 +65,7 @@
 #pragma mark - Notification Event
 - (void)receiveElectricityData:(NSNotification *)note{
     NSDictionary *deviceDic = note.userInfo[@"userInfo"];
-    if (!ValidDict(deviceDic) || ![deviceDic[@"id"] isEqualToString:MKDeviceModelManager.shared.mqttID]) {
+    if (!ValidDict(deviceDic) || ![deviceDic[@"id"] isEqualToString:MKDeviceModelManager.shared.deviceModel.mqttID]) {
         return;
     }
     if (ValidNum(deviceDic[@"current"])) {

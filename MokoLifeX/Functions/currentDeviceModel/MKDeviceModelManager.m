@@ -45,9 +45,11 @@ static MKDeviceModelManager *manager = nil;
 }
 
 - (void)clearManagementModel {
+    if (self.deviceModel) {
+        [self.deviceModel removeObserverBlocksForKeyPath:@"plugState"];
+    }
     self.deviceModel = nil;
     self.delegate = nil;
-    [self.deviceModel removeObserverBlocksForKeyPath:@"plugState"];
 }
 
 - (NSString *)subTopic {
@@ -55,12 +57,6 @@ static MKDeviceModelManager *manager = nil;
         return @"";
     }
     return [self.deviceModel currentSubscribedTopic];
-}
-- (NSString *)mqttID {
-    if (!self.deviceModel) {
-        return @"";
-    }
-    return self.deviceModel.mqttID;
 }
 
 @end

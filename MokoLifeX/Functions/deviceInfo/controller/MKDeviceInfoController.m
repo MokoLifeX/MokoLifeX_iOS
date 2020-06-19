@@ -127,7 +127,7 @@
 - (void)readFirmwareInfo{
     [[MKHudManager share] showHUDWithTitle:@"Loading..." inView:self.view isPenetration:NO];
     WS(weakSelf);
-    [MKMQTTServerInterface readDeviceFirmwareInformationWithTopic:MKDeviceModelManager.shared.subTopic mqttID:MKDeviceModelManager.shared.mqttID sucBlock:^{
+    [MKMQTTServerInterface readDeviceFirmwareInformationWithTopic:MKDeviceModelManager.shared.subTopic mqttID:MKDeviceModelManager.shared.deviceModel.mqttID sucBlock:^{
         [[MKHudManager share] hide];
         MKDeviceInformationController *vc = [[MKDeviceInformationController alloc] init];
         [weakSelf.navigationController pushViewController:vc animated:YES];
@@ -139,7 +139,7 @@
 
 - (void)readModifyPowerOnStatus {
     [[MKHudManager share] showHUDWithTitle:@"Reading..." inView:self.view isPenetration:NO];
-    [MKMQTTServerInterface readDevicePowerOnStatusWithTopic:MKDeviceModelManager.shared.subTopic mqttID:MKDeviceModelManager.shared.mqttID sucBlock:^{
+    [MKMQTTServerInterface readDevicePowerOnStatusWithTopic:MKDeviceModelManager.shared.subTopic mqttID:MKDeviceModelManager.shared.deviceModel.mqttID sucBlock:^{
         MKModifyPowerOnStatusController *vc = [[MKModifyPowerOnStatusController alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
     } failedBlock:^(NSError *error) {

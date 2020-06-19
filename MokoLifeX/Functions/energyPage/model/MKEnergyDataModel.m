@@ -48,7 +48,7 @@
         return;
     }
     NSDictionary *deviceDic = note.userInfo[@"userInfo"];
-    if (!ValidDict(deviceDic) || ![deviceDic[@"id"] isEqualToString:MKDeviceModelManager.shared.mqttID]) {
+    if (!ValidDict(deviceDic) || ![deviceDic[@"id"] isEqualToString:MKDeviceModelManager.shared.deviceModel.mqttID]) {
         return;
     }
     
@@ -132,7 +132,7 @@
 #pragma mark - interface
 - (BOOL)readPulseConstant {
     __block BOOL success = NO;
-    [MKMQTTServerInterface readPulseConstantWithTopic:MKDeviceModelManager.shared.subTopic mqttID:MKDeviceModelManager.shared.mqttID sucBlock:^{
+    [MKMQTTServerInterface readPulseConstantWithTopic:MKDeviceModelManager.shared.subTopic mqttID:MKDeviceModelManager.shared.deviceModel.mqttID sucBlock:^{
         success = YES;
         dispatch_semaphore_signal(self.semaphore);
     } failedBlock:^(NSError * _Nonnull error) {
@@ -144,7 +144,7 @@
 
 - (BOOL)readMonthlyList {
     __block BOOL success = NO;
-    [MKMQTTServerInterface readHistoricalEnergyWithTopic:MKDeviceModelManager.shared.subTopic mqttID:MKDeviceModelManager.shared.mqttID sucBlock:^{
+    [MKMQTTServerInterface readHistoricalEnergyWithTopic:MKDeviceModelManager.shared.subTopic mqttID:MKDeviceModelManager.shared.deviceModel.mqttID sucBlock:^{
         success = YES;
         dispatch_semaphore_signal(self.semaphore);
     } failedBlock:^(NSError * _Nonnull error) {
@@ -156,7 +156,7 @@
 
 - (BOOL)readDailyList {
     __block BOOL success = NO;
-    [MKMQTTServerInterface readEnergyDataOfTodayWithTopic:MKDeviceModelManager.shared.subTopic mqttID:MKDeviceModelManager.shared.mqttID sucBlock:^{
+    [MKMQTTServerInterface readEnergyDataOfTodayWithTopic:MKDeviceModelManager.shared.subTopic mqttID:MKDeviceModelManager.shared.deviceModel.mqttID sucBlock:^{
         success = YES;
         dispatch_semaphore_signal(self.semaphore);
     } failedBlock:^(NSError * _Nonnull error) {
@@ -168,7 +168,7 @@
 
 - (BOOL)readTotalEnergy {
     __block BOOL success = NO;
-    [MKMQTTServerInterface readTotalEnergyWithTopic:MKDeviceModelManager.shared.subTopic mqttID:MKDeviceModelManager.shared.mqttID sucBlock:^{
+    [MKMQTTServerInterface readTotalEnergyWithTopic:MKDeviceModelManager.shared.subTopic mqttID:MKDeviceModelManager.shared.deviceModel.mqttID sucBlock:^{
         success = YES;
         dispatch_semaphore_signal(self.semaphore);
     } failedBlock:^(NSError * _Nonnull error) {

@@ -27,7 +27,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)managementDeviceModel:(MKDeviceModel *)deviceModel;
 - (void)clearManagementModel;
 - (NSString *)subTopic;
-- (NSString *)mqttID;
 
 @end
 

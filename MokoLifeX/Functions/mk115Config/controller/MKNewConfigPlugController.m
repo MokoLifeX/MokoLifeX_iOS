@@ -83,7 +83,12 @@ static CGFloat const buttonViewHeight = 50.f;
     [self loadSubViews];
     [self loadDataList];
     [self configView];
-    [self readOverloadStatus];
+    if (MKDeviceModelManager.shared.deviceModel.plugState != MKSmartPlugOffline) {
+        //离线状态进来不处理
+        [self readOverloadStatus];
+    }else {
+        [self addNotifications];
+    }
     MKDeviceModelManager.shared.delegate = self;
     // Do any additional setup after loading the view.
 }
@@ -127,7 +132,7 @@ static CGFloat const buttonViewHeight = 50.f;
         9,//指示箭头大小
         7,//MenuItem左右边距
         9,//MenuItem上下边距
-        25,//MenuItemImage与MenuItemTitle的间距
+        7,//MenuItemImage与MenuItemTitle的间距
         6.5,//菜单圆角半径
         NO,//是否添加覆盖在原View上的半透明遮罩
         NO,//是否添加菜单阴影
@@ -179,9 +184,20 @@ static CGFloat const buttonViewHeight = 50.f;
     if (self.readTimer) {
         dispatch_cancel(self.readTimer);
     }
+    self.readTimeout = NO;
     [MKDeviceModelManager.shared.deviceModel resetTimerCounter];
     self.isOverload = ([deviceDic[@"overload_state"] integerValue] == 1);
     [self configView];
+}
+
+- (void)deviceLoadStatusChanged:(NSNotification *)note {
+    NSDictionary *deviceDic = note.userInfo[@"userInfo"];
+    if (!ValidDict(deviceDic) || ![deviceDic[@"id"] isEqualToString:MKDeviceModelManager.shared.deviceModel.mqttID]) {
+        return;
+    }
+    if ([deviceDic[@"load"] integerValue] == 1) {
+        [self.view showCentralToast:@"Load Insertion"];
+    }
 }
 
 #pragma mark - event method
@@ -267,6 +283,10 @@ static CGFloat const buttonViewHeight = 50.f;
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(deviceOverloadStatusChanged:)
                                                  name:MKMQTTServerReceivedOverloadNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(deviceLoadStatusChanged:)
+                                                 name:MKMQTTServerLoadStatusChangedNotification
                                                object:nil];
 }
 
@@ -454,6 +474,11 @@ static CGFloat const buttonViewHeight = 50.f;
         [[MKHudManager share] hide];
         [self.view showCentralToast:error.userInfo[@"errorInfo"]];
         [self performSelector:@selector(leftButtonMethod) withObject:nil afterDelay:0.5f];
+    }];
+    [MKMQTTServerInterface setDeviceDate:[NSDate date] topic:MKDeviceModelManager.shared.subTopic mqttID:MKDeviceModelManager.shared.deviceModel.mqttID sucBlock:^{
+        
+    } failedBlock:^(NSError * _Nonnull error) {
+        
     }];
 }
 

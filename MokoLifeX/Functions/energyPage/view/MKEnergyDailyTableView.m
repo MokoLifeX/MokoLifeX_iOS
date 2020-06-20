@@ -72,12 +72,12 @@
 #pragma mark - note
 - (void)receiveCurrentEnergyNotification:(NSNotification *)note {
     NSDictionary *energyDic = [self parseCurrentEnergyDatas:note.userInfo];
-    NSString *hour = note.userInfo[@"date"][@"hour"];
+    NSString *hour = energyDic[@"date"][@"hour"];
     if (self.dailyList.count == 0) {
         //没有直接添加
         MKEnergyValueCellModel *newModel = [[MKEnergyValueCellModel alloc] init];
         newModel.timeValue = hour;
-        newModel.energyValue = note.userInfo[@"currentHourValue"];
+        newModel.energyValue = energyDic[@"currentHourValue"];
         [self.dailyList addObject:newModel];
     }else {
         BOOL contain = NO;
@@ -85,7 +85,7 @@
             MKEnergyValueCellModel *model = self.dailyList[i];
             if ([model.timeValue isEqualToString:hour]) {
                 //存在，替换
-                model.energyValue = note.userInfo[@"currentHourValue"];
+                model.energyValue = energyDic[@"currentHourValue"];
                 contain = YES;
                 break;
             }
@@ -94,12 +94,12 @@
             //没有，添加
             MKEnergyValueCellModel *newModel = [[MKEnergyValueCellModel alloc] init];
             newModel.timeValue = hour;
-            newModel.energyValue = note.userInfo[@"currentHourValue"];
+            newModel.energyValue = energyDic[@"currentHourValue"];
             [self.dailyList insertObject:newModel atIndex:0];
         }
     }
     [self.dailyTableView reloadData];
-    [self reloadHeaderViewWithEnergy:[note.userInfo[@"currentDayValue"] floatValue]];
+    [self reloadHeaderViewWithEnergy:[energyDic[@"currentDayValue"] floatValue]];
 }
 
 #pragma mark - public method

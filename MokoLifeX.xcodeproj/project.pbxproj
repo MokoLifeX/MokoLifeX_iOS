@@ -207,6 +207,7 @@
 		004F87D22498BF7500BF12F7 /* MKMeasuredPowerLEDModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 004F87D12498BF7500BF12F7 /* MKMeasuredPowerLEDModel.m */; };
 		004F87D52498C19E00BF12F7 /* MKMeasuredPowerLEDCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 004F87D42498C19E00BF12F7 /* MKMeasuredPowerLEDCell.m */; };
 		004F87D82498C5D200BF12F7 /* MKMeasuredPowerLEDColorModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 004F87D72498C5D200BF12F7 /* MKMeasuredPowerLEDColorModel.m */; };
+		004F9D08249C6E2B0058CE2F /* MKBaseTimerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 004F9D07249C6E2B0058CE2F /* MKBaseTimerController.m */; };
 		005028A323C2D3E300FD50B6 /* about_telIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0050289923C2D3E200FD50B6 /* about_telIcon@2x.png */; };
 		005028A423C2D3E300FD50B6 /* about_telIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0050289A23C2D3E200FD50B6 /* about_telIcon@3x.png */; };
 		005028A523C2D3E300FD50B6 /* about_shouceIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0050289B23C2D3E200FD50B6 /* about_shouceIcon@2x.png */; };
@@ -571,6 +572,8 @@
 		004F87D42498C19E00BF12F7 /* MKMeasuredPowerLEDCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKMeasuredPowerLEDCell.m; sourceTree = "<group>"; };
 		004F87D62498C5D200BF12F7 /* MKMeasuredPowerLEDColorModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKMeasuredPowerLEDColorModel.h; sourceTree = "<group>"; };
 		004F87D72498C5D200BF12F7 /* MKMeasuredPowerLEDColorModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKMeasuredPowerLEDColorModel.m; sourceTree = "<group>"; };
+		004F9D06249C6E2B0058CE2F /* MKBaseTimerController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKBaseTimerController.h; sourceTree = "<group>"; };
+		004F9D07249C6E2B0058CE2F /* MKBaseTimerController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKBaseTimerController.m; sourceTree = "<group>"; };
 		0050289923C2D3E200FD50B6 /* about_telIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "about_telIcon@2x.png"; sourceTree = "<group>"; };
 		0050289A23C2D3E200FD50B6 /* about_telIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "about_telIcon@3x.png"; sourceTree = "<group>"; };
 		0050289B23C2D3E200FD50B6 /* about_shouceIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "about_shouceIcon@2x.png"; sourceTree = "<group>"; };
@@ -1314,6 +1317,7 @@
 		0017935B22E5950A001C0FFD /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				004F9D05249C6E1A0058CE2F /* controller */,
 				0017935C22E5950A001C0FFD /* cell */,
 			);
 			path = Base;
@@ -1737,6 +1741,15 @@
 				004F87D42498C19E00BF12F7 /* MKMeasuredPowerLEDCell.m */,
 			);
 			path = view;
+			sourceTree = "<group>";
+		};
+		004F9D05249C6E1A0058CE2F /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				004F9D06249C6E2B0058CE2F /* MKBaseTimerController.h */,
+				004F9D07249C6E2B0058CE2F /* MKBaseTimerController.m */,
+			);
+			path = controller;
 			sourceTree = "<group>";
 		};
 		0050289823C2D3E200FD50B6 /* aboutPage */ = {
@@ -2201,6 +2214,7 @@
 				001793BB22E5965E001C0FFD /* twlt_uuid_util.m in Sources */,
 				0017934822E59445001C0FFD /* MKConfigSwichModel.m in Sources */,
 				002C40BF22E8073600026DE6 /* MKConfigServerSSLCertFileManager.m in Sources */,
+				004F9D08249C6E2B0058CE2F /* MKBaseTimerController.m in Sources */,
 				0017940922E59B6B001C0FFD /* EasyEmptyGlobalConfig.m in Sources */,
 				00E8A56C249725A90089A32D /* MKEnergyTableHeaderView.m in Sources */,
 				00E8A567249725A90089A32D /* MKEnergyValueCellModel.m in Sources */,

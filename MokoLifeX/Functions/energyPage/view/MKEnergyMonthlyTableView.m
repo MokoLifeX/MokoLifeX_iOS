@@ -77,13 +77,14 @@
 
 #pragma mark - note
 - (void)receiveCurrentEnergyNotification:(NSNotification *)note {
-    NSString *currentDate = [NSString stringWithFormat:@"%@-%@-%@",note.userInfo[@"date"][@"year"],note.userInfo[@"date"][@"month"],note.userInfo[@"date"][@"day"]];
+    NSDictionary *energyDic = [self parseCurrentEnergyDatas:note.userInfo];
+    NSString *currentDate = [NSString stringWithFormat:@"%@-%@-%@",energyDic[@"date"][@"year"],energyDic[@"date"][@"month"],energyDic[@"date"][@"day"]];
     if (self.monthlyList.count == 0) {
         //没有数据直接添加
         MKEnergyValueCellModel *newModel = [[MKEnergyValueCellModel alloc] init];
-        newModel.timeValue = [NSString stringWithFormat:@"%@-%@",note.userInfo[@"date"][@"month"],note.userInfo[@"date"][@"day"]];
+        newModel.timeValue = [NSString stringWithFormat:@"%@-%@",energyDic[@"date"][@"month"],energyDic[@"date"][@"day"]];
         newModel.dateValue = currentDate;
-        newModel.energyValue = note.userInfo[@"currentDayValue"];
+        newModel.energyValue = energyDic[@"currentDayValue"];
         [self.monthlyList addObject:newModel];
     }else {
         BOOL contain = NO;
@@ -91,7 +92,7 @@
             MKEnergyValueCellModel *model = self.monthlyList[i];
             if ([currentDate isEqualToString:model.dateValue]) {
                 //存在就替换
-                model.energyValue = note.userInfo[@"currentDayValue"];
+                model.energyValue = energyDic[@"currentDayValue"];
                 contain = YES;
                 break;
             }
@@ -99,15 +100,15 @@
         if (!contain) {
             //不存在就插入
             MKEnergyValueCellModel *newModel = [[MKEnergyValueCellModel alloc] init];
-            newModel.timeValue = [NSString stringWithFormat:@"%@-%@",note.userInfo[@"date"][@"month"],note.userInfo[@"date"][@"day"]];
+            newModel.timeValue = [NSString stringWithFormat:@"%@-%@",energyDic[@"date"][@"month"],energyDic[@"date"][@"day"]];
             newModel.dateValue = currentDate;
-            newModel.energyValue = note.userInfo[@"currentDayValue"];
+            newModel.energyValue = energyDic[@"currentDayValue"];
             [self.monthlyList insertObject:newModel atIndex:0];
         }
     }
     
     [self.monthlyTableView reloadData];
-    [self reloadHeaderDateInfoWithEnergy:[note.userInfo[@"monthlyValue"] floatValue]];
+    [self reloadHeaderDateInfoWithEnergy:[energyDic[@"monthlyValue"] floatValue]];
 }
 
 #pragma mark - public method
@@ -187,6 +188,43 @@
         _monthlyHeaderModel.timeMsg = @"Date";
     }
     return _monthlyHeaderModel;
+}
+
+- (NSDictionary *)parseCurrentEnergyDatas:(NSDictionary *)energyDic {
+    NSString *dateInfo = energyDic[@"timestamp"];
+    NSArray *timeList = [dateInfo componentsSeparatedByString:@" "];
+    NSArray *dateList = [timeList[0] componentsSeparatedByString:@"-"];
+    NSArray *hourList = [timeList[0] componentsSeparatedByString:@":"];
+    NSString *year = dateList[0];
+    NSString *month = dateList[1];
+    if (month.length == 1) {
+        month = [@"0" stringByAppendingString:month];
+    }
+    NSString *day = dateList[2];
+    if (day.length == 1) {
+        day = [@"0" stringByAppendingString:day];
+    }
+    NSString *hour = hourList[0];
+    if (hour.length == 1) {
+        hour = [@"0" stringByAppendingString:hour];
+    }
+    NSDictionary *dateDic = @{
+        @"year":year,
+        @"month":month,
+        @"day":day,
+        @"hour":hour,
+    };
+    NSString *totalValue = [NSString stringWithFormat:@"%ld",(long)[energyDic[@"all_energy"] integerValue]];
+    NSString *monthlyValue = [NSString stringWithFormat:@"%ld",(long)[energyDic[@"thirty_day_energy"] integerValue]];
+    NSString *currentDayValue = [NSString stringWithFormat:@"%ld",(long)[energyDic[@"today_energy"] integerValue]];
+    NSString *currentHourValue = [NSString stringWithFormat:@"%ld",(long)[energyDic[@"current_hour_energy"] integerValue]];
+    return @{
+        @"date":dateDic,
+        @"totalValue":totalValue,
+        @"monthlyValue":monthlyValue,
+        @"currentDayValue":currentDayValue,
+        @"currentHourValue":currentHourValue,
+    };
 }
 
 @end

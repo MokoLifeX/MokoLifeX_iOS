@@ -213,6 +213,37 @@
                                        failedBlock:failedBlock];
 }
 
++ (void)resetAccumulatedEnergyWithTopic:(NSString *)topic
+                                 mqttID:(NSString *)mqttID
+                               sucBlock:(void (^)(void))sucBlock
+                            failedBlock:(void (^)(NSError *error))failedBlock {
+    [[MKMQTTServerManager sharedInstance] sendData:@{@"msg_id":@(2023),@"id":mqttID}
+                                             topic:topic
+                                          sucBlock:sucBlock
+                                       failedBlock:failedBlock];
+}
+
++ (void)setDeviceDate:(NSDate *)date
+                topic:(NSString *)topic
+               mqttID:(NSString *)mqttID
+             sucBlock:(void (^)(void))sucBlock
+          failedBlock:(void (^)(NSError *error))failedBlock {
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSString *dateString = [dateFormat stringFromDate:date];
+    NSDictionary *dataDic = @{
+                              @"msg_id":@(2022),
+                              @"id":mqttID,
+                              @"data":@{
+                                      @"timestamp": dateString,
+                                    }
+                              };
+    [[MKMQTTServerManager sharedInstance] sendData:dataDic
+                                             topic:topic
+                                          sucBlock:sucBlock
+                                       failedBlock:failedBlock];
+}
+
 #pragma mark - Private method
 + (BOOL)checkLEDColorParams:(mk_ledColorType)colorType
               colorProtocol:(nullable id <mk_ledColorConfigProtocol>)protocol {

@@ -93,6 +93,11 @@ extern NSString *const MKMQTTServerReceivedTotalEnergyNotification;
  */
 extern NSString *const MKMQTTServerReceivedCurrentEnergyNotification;
 
+/*
+接收到当前有负载接入或者移除通知
+*/
+extern NSString *const MKMQTTServerLoadStatusChangedNotification;
+
 @class MKConfigServerModel;
 @interface MKMQTTServerDataManager : NSObject
 

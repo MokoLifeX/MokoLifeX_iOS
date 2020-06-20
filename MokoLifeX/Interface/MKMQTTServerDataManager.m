@@ -30,6 +30,7 @@ NSString *const MKMQTTServerReceivedEnergyDataOfTodayNotification = @"MKMQTTServ
 NSString *const MKMQTTServerReceivedPulseConstantNotification = @"MKMQTTServerReceivedPulseConstantNotification";
 NSString *const MKMQTTServerReceivedTotalEnergyNotification = @"MKMQTTServerReceivedTotalEnergyNotification";
 NSString *const MKMQTTServerReceivedCurrentEnergyNotification = @"MKMQTTServerReceivedCurrentEnergyNotification";
+NSString *const MKMQTTServerLoadStatusChangedNotification = @"MKMQTTServerLoadStatusChangedNotification";
 
 @interface MKMQTTServerDataManager()<MKMQTTServerManagerDelegate>
 
@@ -271,6 +272,10 @@ NSString *const MKMQTTServerReceivedCurrentEnergyNotification = @"MKMQTTServerRe
     if (function == 1009) {
         //功率指示灯颜色
         return MKMQTTServerReceivedLEDColorNotification;
+    }
+    if (function == 1011) {
+        //有负载接入
+        return MKMQTTServerLoadStatusChangedNotification;
     }
     if (function == 1012) {
         //电量信息上报间隔

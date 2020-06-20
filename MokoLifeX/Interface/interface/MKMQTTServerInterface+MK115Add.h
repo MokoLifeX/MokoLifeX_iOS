@@ -209,6 +209,28 @@ typedef NS_ENUM(NSInteger, mk_ledColorType) {
                         sucBlock:(void (^)(void))sucBlock
                      failedBlock:(void (^)(NSError *error))failedBlock;
 
+/// Reset energy consumption.
+/// @param topic topic
+/// @param mqttID mqttID
+/// @param sucBlock Success callback
+/// @param failedBlock Failed callback
++ (void)resetAccumulatedEnergyWithTopic:(NSString *)topic
+                                 mqttID:(NSString *)mqttID
+                               sucBlock:(void (^)(void))sucBlock
+                            failedBlock:(void (^)(NSError *error))failedBlock;
+
+/// Synchronize device time.
+/// @param date date,formatter:yyyy-MM-dd HH:mm:ss
+/// @param topic topic
+/// @param mqttID mqttID
+/// @param sucBlock Success callback
+/// @param failedBlock Failed callback
++ (void)setDeviceDate:(NSDate *)date
+                topic:(NSString *)topic
+               mqttID:(NSString *)mqttID
+             sucBlock:(void (^)(void))sucBlock
+          failedBlock:(void (^)(NSError *error))failedBlock;
+
 @end
 
 NS_ASSUME_NONNULL_END

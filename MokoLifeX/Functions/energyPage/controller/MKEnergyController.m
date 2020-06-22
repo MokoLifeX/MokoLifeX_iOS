@@ -50,14 +50,6 @@
                                                object:nil];
 }
 
-#pragma mark - super method
-- (void)leftButtonMethod {
-}
-
-- (void)rightButtonMethod {
-    
-}
-
 #pragma mark - event emthod
 - (void)dailyButtonPressed {
     if (self.selectedIndex == 0) {

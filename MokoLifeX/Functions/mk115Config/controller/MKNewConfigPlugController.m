@@ -55,6 +55,9 @@ static CGFloat const buttonViewHeight = 50.f;
 /// 是否过载
 @property (nonatomic, assign)BOOL isOverload;
 
+/// 过载值
+@property (nonatomic, copy)NSString *overloadValue;
+
 @end
 
 @implementation MKNewConfigPlugController
@@ -187,6 +190,7 @@ static CGFloat const buttonViewHeight = 50.f;
     self.readTimeout = NO;
     [MKDeviceModelManager.shared.deviceModel resetTimerCounter];
     self.isOverload = ([deviceDic[@"overload_state"] integerValue] == 1);
+    self.overloadValue = [NSString stringWithFormat:@"%ld",(long)[deviceDic[@"overload_value"] integerValue]];
     [self configView];
 }
 
@@ -324,7 +328,7 @@ static CGFloat const buttonViewHeight = 50.f;
         make.left.mas_equalTo(20.f);
         make.right.mas_equalTo(-20.f);
         make.top.mas_equalTo(self.switchButton.mas_bottom).mas_offset(45.f);
-        make.height.mas_equalTo(MKFont(15.f).lineHeight);
+        make.height.mas_equalTo(3 * MKFont(15.f).lineHeight);
     }];
     [self.delayTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(20.f);
@@ -399,7 +403,7 @@ static CGFloat const buttonViewHeight = 50.f;
     [self.view setBackgroundColor:UIColorFromRGB(0x303a4b)];
     self.switchButton.image = LOADIMAGE(@"configPlugPage_switchButtonOff", @"png");
     self.stateLabel.textColor = UIColorFromRGB(0x808080);
-    self.stateLabel.text = @"Socket is overload";
+    self.stateLabel.text = [NSString stringWithFormat:@"Socket is overload,overload value %@W",self.overloadValue];
     [self.delayTimeLabel setHidden:YES];
     
     MKConfigDeviceButtonModel *timerModel = self.dataList[0];
@@ -498,6 +502,7 @@ static CGFloat const buttonViewHeight = 50.f;
         _stateLabel.textAlignment = NSTextAlignmentCenter;
         _stateLabel.font = MKFont(15.f);
         _stateLabel.text = @"Socket is on";
+        _stateLabel.numberOfLines = 0;
     }
     return _stateLabel;
 }

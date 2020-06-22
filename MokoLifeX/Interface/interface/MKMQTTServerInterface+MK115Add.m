@@ -251,22 +251,22 @@
         if (!protocol || ![protocol conformsToProtocol:@protocol(mk_ledColorConfigProtocol)]) {
             return NO;
         }
-        if (protocol.b_color < 1 || protocol.b_color > 2595) {
+        if (protocol.b_color < 1 || protocol.b_color >= 2525) {
             return NO;
         }
-        if (protocol.g_color <= protocol.b_color || protocol.g_color > 2596) {
+        if (protocol.g_color <= protocol.b_color || protocol.g_color >= 2526) {
             return NO;
         }
-        if (protocol.y_color <= protocol.g_color || protocol.y_color > 2597) {
+        if (protocol.y_color <= protocol.g_color || protocol.y_color >= 2527) {
             return NO;
         }
-        if (protocol.o_color <= protocol.y_color || protocol.o_color > 2598) {
+        if (protocol.o_color <= protocol.y_color || protocol.o_color >= 2528) {
             return NO;
         }
-        if (protocol.r_color <= protocol.o_color || protocol.r_color > 2599) {
+        if (protocol.r_color <= protocol.o_color || protocol.r_color >= 2529) {
             return NO;
         }
-        if (protocol.p_color <= protocol.r_color || protocol.p_color > 2600) {
+        if (protocol.p_color <= protocol.r_color || protocol.p_color >= 2530) {
             return NO;
         }
     }

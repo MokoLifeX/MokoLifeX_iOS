@@ -185,12 +185,12 @@
 
 - (void)resetEnergyConsumptionMethod {
     [[MKHudManager share] showHUDWithTitle:@"Setting..." inView:self.view isPenetration:NO];
-    [MKMQTTServerInterface resetDeviceWithTopic:MKDeviceModelManager.shared.subTopic mqttID:MKDeviceModelManager.shared.deviceModel.mqttID sucBlock:^{
+    [MKMQTTServerInterface resetAccumulatedEnergyWithTopic:MKDeviceModelManager.shared.subTopic mqttID:MKDeviceModelManager.shared.deviceModel.mqttID sucBlock:^{
         [[MKHudManager share] hide];
         [self.view showCentralToast:@"Success"];
         self.totalEnergy = @"0";
         [self reloadTotalEnergyCellData];
-    } failedBlock:^(NSError *error) {
+    } failedBlock:^(NSError * _Nonnull error) {
         [[MKHudManager share] hide];
         [self.view showCentralToast:error.userInfo[@"errorInfo"]];
     }];

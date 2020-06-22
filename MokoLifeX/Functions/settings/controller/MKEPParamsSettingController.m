@@ -296,7 +296,7 @@
         make.top.mas_equalTo(msgLabel1.mas_bottom).mas_offset(30.f);
         make.height.mas_equalTo(35.f);
     }];
-    UILabel *msgLabel2 = [self loadMsgLabel:@"Energy accumulated interval(min)"];
+    UILabel *msgLabel2 = [self loadMsgLabel:@"Power change notification(%)"];
     [self.view addSubview:msgLabel2];
     [msgLabel2 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(15.f);

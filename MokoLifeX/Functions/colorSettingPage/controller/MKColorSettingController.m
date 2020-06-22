@@ -128,6 +128,32 @@ MKMeasuredPowerLEDCellDelegate>
         colorModel.r_color = [rModel.textValue integerValue];
         MKMeasuredPowerLEDModel *pModel = self.dataList[5];
         colorModel.p_color = [pModel.textValue integerValue];
+        
+        if (colorModel.b_color < 1 || colorModel.b_color >= 2525) {
+            [self.view showCentralToast:@"Param1 Error"];
+            return;
+        }
+        if (colorModel.g_color <= colorModel.b_color || colorModel.g_color >= 2526) {
+            [self.view showCentralToast:@"Param2 Error"];
+            return;
+        }
+        if (colorModel.y_color <= colorModel.g_color || colorModel.y_color >= 2527) {
+            [self.view showCentralToast:@"Param3 Error"];
+            return;
+        }
+        if (colorModel.o_color <= colorModel.y_color || colorModel.o_color >= 2528) {
+            [self.view showCentralToast:@"Param4 Error"];
+            return;
+        }
+        if (colorModel.r_color <= colorModel.o_color || colorModel.r_color >= 2529) {
+            [self.view showCentralToast:@"Param5 Error"];
+            return;
+        }
+        if (colorModel.p_color <= colorModel.r_color || colorModel.p_color >= 2530) {
+            [self.view showCentralToast:@"Param6 Error"];
+            return;
+        }
+        
         [[MKHudManager share] showHUDWithTitle:@"Setting..." inView:self.view isPenetration:NO];
         [MKMQTTServerInterface setLEDColor:self.currentColorType colorProtocol:colorModel topic:MKDeviceModelManager.shared.subTopic mqttID:MKDeviceModelManager.shared.deviceModel.mqttID sucBlock:^{
             [[MKHudManager share] hide];

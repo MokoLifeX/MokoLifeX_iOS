@@ -77,7 +77,7 @@
 
 #pragma mark - note
 - (void)receiveCurrentEnergyNotification:(NSNotification *)note {
-    NSDictionary *energyDic = [self parseCurrentEnergyDatas:note.userInfo];
+    NSDictionary *energyDic = [self parseCurrentEnergyDatas:note.userInfo[@"userInfo"]];
     NSString *currentDate = [NSString stringWithFormat:@"%@-%@-%@",energyDic[@"date"][@"year"],energyDic[@"date"][@"month"],energyDic[@"date"][@"day"]];
     if (self.monthlyList.count == 0) {
         //没有数据直接添加
@@ -114,7 +114,7 @@
 #pragma mark - public method
 - (void)updateEnergyDatas:(NSArray *)energyList pulseConstant:(NSString *)pulseConstant {
     self.pulseConstant = [pulseConstant floatValue];
-    if (self.pulseConstant == 0 || energyList.count == 0) {
+    if (energyList.count == 0) {
         return;
     }
     [self.monthlyList removeAllObjects];
@@ -144,7 +144,7 @@
 
 #pragma mark - private method
 - (void)reloadHeaderDateInfoWithEnergy:(float)energy {
-    self.monthlyHeaderModel.energyValue = [NSString stringWithFormat:@"%.2f",energy / self.pulseConstant];
+    self.monthlyHeaderModel.energyValue = (self.pulseConstant == 0 ? @"0" : [NSString stringWithFormat:@"%.2f",energy / self.pulseConstant]);
     if (self.monthlyList.count == 0) {
         return;
     }
@@ -184,7 +184,7 @@
 - (MKEnergyTableHeaderViewModel *)monthlyHeaderModel {
     if (!_monthlyHeaderModel) {
         _monthlyHeaderModel = [[MKEnergyTableHeaderViewModel alloc] init];
-        _monthlyHeaderModel.energyValue = @"1";
+        _monthlyHeaderModel.energyValue = @"0";
         _monthlyHeaderModel.timeMsg = @"Date";
     }
     return _monthlyHeaderModel;
@@ -194,7 +194,7 @@
     NSString *dateInfo = energyDic[@"timestamp"];
     NSArray *timeList = [dateInfo componentsSeparatedByString:@" "];
     NSArray *dateList = [timeList[0] componentsSeparatedByString:@"-"];
-    NSArray *hourList = [timeList[0] componentsSeparatedByString:@":"];
+    NSArray *hourList = [timeList[1] componentsSeparatedByString:@":"];
     NSString *year = dateList[0];
     NSString *month = dateList[1];
     if (month.length == 1) {

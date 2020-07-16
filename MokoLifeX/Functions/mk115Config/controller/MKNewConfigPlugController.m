@@ -211,6 +211,9 @@ static CGFloat const buttonViewHeight = 50.f;
 }
 
 - (void)settingsItemMethod {
+    if (![self canClickEnable]) {
+        return;
+    }
     MKSettingsController *vc = [[MKSettingsController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
 }

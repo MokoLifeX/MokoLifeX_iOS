@@ -142,15 +142,15 @@ static CGFloat const pickViewRowHeight = 44.f;
 
 #pragma mark - private method
 - (void)loadPickViewDatas {
-    MKColorPickerModel *transitionSmoothlyModel = [[MKColorPickerModel alloc] init];
-    transitionSmoothlyModel.colorMsg = @"Color transition smoothly";
-    transitionSmoothlyModel.colorType = mk_ledColorTransitionSmoothly;
-    [self.dataList addObject:transitionSmoothlyModel];
-    
     MKColorPickerModel *transitionDirectlyModel = [[MKColorPickerModel alloc] init];
     transitionDirectlyModel.colorMsg = @"Color transition directly";
     transitionDirectlyModel.colorType = mk_ledColorTransitionDirectly;
     [self.dataList addObject:transitionDirectlyModel];
+    
+    MKColorPickerModel *transitionSmoothlyModel = [[MKColorPickerModel alloc] init];
+    transitionSmoothlyModel.colorMsg = @"Color transition smoothly";
+    transitionSmoothlyModel.colorType = mk_ledColorTransitionSmoothly;
+    [self.dataList addObject:transitionSmoothlyModel];
     
     MKColorPickerModel *whiteModel = [[MKColorPickerModel alloc] init];
     whiteModel.colorMsg = @"White";

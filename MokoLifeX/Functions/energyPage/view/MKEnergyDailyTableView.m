@@ -71,7 +71,7 @@
 
 #pragma mark - note
 - (void)receiveCurrentEnergyNotification:(NSNotification *)note {
-    NSDictionary *energyDic = [self parseCurrentEnergyDatas:note.userInfo];
+    NSDictionary *energyDic = [self parseCurrentEnergyDatas:note.userInfo[@"userInfo"]];
     NSString *hour = energyDic[@"date"][@"hour"];
     if (self.dailyList.count == 0) {
         //没有直接添加
@@ -106,7 +106,7 @@
 
 - (void)updateEnergyDatas:(NSArray *)energyList pulseConstant:(NSString *)pulseConstant {
     self.pulseConstant = [pulseConstant floatValue];
-    if (self.pulseConstant == 0 || energyList.count == 0) {
+    if (energyList.count == 0) {
         return;
     }
     [self.dailyList removeAllObjects];
@@ -134,7 +134,7 @@
 
 #pragma mark - private method
 - (void)reloadHeaderViewWithEnergy:(float)energy {
-    self.dailyHeaderModel.energyValue = [NSString stringWithFormat:@"%.2f",energy / self.pulseConstant];
+    self.dailyHeaderModel.energyValue = (self.pulseConstant == 0 ? @"0" : [NSString stringWithFormat:@"%.2f",energy / self.pulseConstant]);
     NSString *date = [self fetchCurrentDate];
     NSString *tempHour = @"00";
     if (self.dailyList.count > 0) {
@@ -192,7 +192,7 @@
     NSString *dateInfo = energyDic[@"timestamp"];
     NSArray *timeList = [dateInfo componentsSeparatedByString:@" "];
     NSArray *dateList = [timeList[0] componentsSeparatedByString:@"-"];
-    NSArray *hourList = [timeList[0] componentsSeparatedByString:@":"];
+    NSArray *hourList = [timeList[1] componentsSeparatedByString:@":"];
     NSString *year = dateList[0];
     NSString *month = dateList[1];
     if (month.length == 1) {

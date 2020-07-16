@@ -11,8 +11,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 typedef NS_ENUM(NSInteger, mk_ledColorType) {
-    mk_ledColorTransitionSmoothly,
     mk_ledColorTransitionDirectly,
+    mk_ledColorTransitionSmoothly,
     mk_ledColorWhite,
     mk_ledColorRed,
     mk_ledColorGreen,

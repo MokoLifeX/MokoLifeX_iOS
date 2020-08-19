@@ -231,11 +231,12 @@
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     NSString *dateString = [dateFormat stringFromDate:date];
+    NSArray *dateList = [dateString componentsSeparatedByString:@" "];
     NSDictionary *dataDic = @{
                               @"msg_id":@(2022),
                               @"id":mqttID,
                               @"data":@{
-                                      @"timestamp": dateString,
+                                      @"timestamp": [NSString stringWithFormat:@"%@&%@",dateList[0],dateList[1]],
                                     }
                               };
     [[MKMQTTServerManager sharedInstance] sendData:dataDic

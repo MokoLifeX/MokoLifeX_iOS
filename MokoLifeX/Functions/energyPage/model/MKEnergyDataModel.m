@@ -55,7 +55,7 @@
     if ([deviceDic[@"function"] integerValue] == 1014) {
         //累计电能
         self.dataCount ++;
-        NSArray *dateList = [deviceDic[@"timestamp"] componentsSeparatedByString:@" "];
+        NSArray *dateList = [deviceDic[@"timestamp"] componentsSeparatedByString:@"&"];
         self.monthlyList = [self parseMonthList:dateList[0] dataList:deviceDic[@"result"]];
         [self hasSuccess];
         return;

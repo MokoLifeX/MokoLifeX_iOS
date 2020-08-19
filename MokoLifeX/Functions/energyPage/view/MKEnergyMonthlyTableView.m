@@ -192,7 +192,7 @@
 
 - (NSDictionary *)parseCurrentEnergyDatas:(NSDictionary *)energyDic {
     NSString *dateInfo = energyDic[@"timestamp"];
-    NSArray *timeList = [dateInfo componentsSeparatedByString:@" "];
+    NSArray *timeList = [dateInfo componentsSeparatedByString:@"&"];
     NSArray *dateList = [timeList[0] componentsSeparatedByString:@"-"];
     NSArray *hourList = [timeList[1] componentsSeparatedByString:@":"];
     NSString *year = dateList[0];

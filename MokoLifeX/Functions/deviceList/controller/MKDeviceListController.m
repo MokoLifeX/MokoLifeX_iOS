@@ -81,6 +81,10 @@
     if (dataModel.device_mode == MKDevice_plug) {
         if ([dataModel.device_type integerValue] == 2) {
             //MK115
+            if (dataModel.plugState == MKSmartPlugOffline) {
+                [self.view showCentralToast:@"Device offline,please check."];
+                return;
+            }
             MKNewConfigPlugController *vc = [[MKNewConfigPlugController alloc] init];
             [self.navigationController pushViewController:vc animated:YES];
             return;

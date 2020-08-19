@@ -73,17 +73,44 @@
 - (void)receiveCurrentEnergyNotification:(NSNotification *)note {
     NSDictionary *energyDic = [self parseCurrentEnergyDatas:note.userInfo[@"userInfo"]];
     NSString *hour = energyDic[@"date"][@"hour"];
+    NSString *minutes = energyDic[@"date"][@"minutes"];
+    NSString *seconds = energyDic[@"date"][@"seconds"];
+    //如果发过来的时间是XX:00:00,这个电能值是XX上一个小时的值
+    BOOL isLastOn = ([minutes isEqualToString:@"00"] && [seconds isEqualToString:@"00"]);
     if (self.dailyList.count == 0) {
         //没有直接添加
         MKEnergyValueCellModel *newModel = [[MKEnergyValueCellModel alloc] init];
-        newModel.timeValue = hour;
+        if (isLastOn) {
+            NSInteger tempHour = [hour integerValue] - 1;
+            if (tempHour < 0) {
+                tempHour = 0;
+            }
+            NSString *tempHourString = [NSString stringWithFormat:@"%ld",(long)tempHour];
+            if (tempHourString.length == 1) {
+                tempHourString = [@"0" stringByAppendingString:tempHourString];
+            }
+            newModel.timeValue = tempHourString;
+        }else {
+            newModel.timeValue = hour;
+        }
         newModel.energyValue = energyDic[@"currentHourValue"];
         [self.dailyList addObject:newModel];
     }else {
+        NSString *keyHour = hour;
+        if (isLastOn) {
+            NSInteger tempHour = [hour integerValue] - 1;
+            if (tempHour < 0) {
+                tempHour = 0;
+            }
+            keyHour = [NSString stringWithFormat:@"%ld",(long)tempHour];
+            if (keyHour.length == 1) {
+                keyHour = [@"0" stringByAppendingString:keyHour];
+            }
+        }
         BOOL contain = NO;
         for (NSInteger i = 0; i < self.dailyList.count; i ++) {
             MKEnergyValueCellModel *model = self.dailyList[i];
-            if ([model.timeValue isEqualToString:hour]) {
+            if ([model.timeValue isEqualToString:keyHour]) {
                 //存在，替换
                 model.energyValue = energyDic[@"currentHourValue"];
                 contain = YES;
@@ -93,7 +120,7 @@
         if (!contain) {
             //没有，添加
             MKEnergyValueCellModel *newModel = [[MKEnergyValueCellModel alloc] init];
-            newModel.timeValue = hour;
+            newModel.timeValue = keyHour;
             newModel.energyValue = energyDic[@"currentHourValue"];
             [self.dailyList insertObject:newModel atIndex:0];
         }
@@ -190,7 +217,7 @@
 
 - (NSDictionary *)parseCurrentEnergyDatas:(NSDictionary *)energyDic {
     NSString *dateInfo = energyDic[@"timestamp"];
-    NSArray *timeList = [dateInfo componentsSeparatedByString:@" "];
+    NSArray *timeList = [dateInfo componentsSeparatedByString:@"&"];
     NSArray *dateList = [timeList[0] componentsSeparatedByString:@"-"];
     NSArray *hourList = [timeList[1] componentsSeparatedByString:@":"];
     NSString *year = dateList[0];
@@ -206,11 +233,21 @@
     if (hour.length == 1) {
         hour = [@"0" stringByAppendingString:hour];
     }
+    NSString *minutes = hourList[1];
+    if (minutes.length == 1) {
+        minutes = [@"0" stringByAppendingString:minutes];
+    }
+    NSString *seconds = hourList[2];
+    if (seconds.length == 1) {
+        seconds = [@"0" stringByAppendingString:seconds];
+    }
     NSDictionary *dateDic = @{
         @"year":year,
         @"month":month,
         @"day":day,
         @"hour":hour,
+        @"minutes":minutes,
+        @"seconds":seconds
     };
     NSString *totalValue = [NSString stringWithFormat:@"%ld",(long)[energyDic[@"all_energy"] integerValue]];
     NSString *monthlyValue = [NSString stringWithFormat:@"%ld",(long)[energyDic[@"thirty_day_energy"] integerValue]];

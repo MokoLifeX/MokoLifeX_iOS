@@ -137,7 +137,7 @@
         make.left.mas_equalTo(0);
         make.right.mas_equalTo(0);
         make.top.mas_equalTo(self.segment.mas_bottom);
-        make.bottom.mas_equalTo(-VirtualHomeHeight - 49.f);
+        make.bottom.mas_equalTo(-VirtualHomeHeight);
     }];
     [self.dailyTable mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(self.monthTable);

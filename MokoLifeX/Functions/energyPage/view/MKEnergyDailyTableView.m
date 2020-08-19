@@ -71,7 +71,11 @@
 
 #pragma mark - note
 - (void)receiveCurrentEnergyNotification:(NSNotification *)note {
-    NSDictionary *energyDic = [self parseCurrentEnergyDatas:note.userInfo[@"userInfo"]];
+    NSDictionary *userInfo = note.userInfo[@"userInfo"];
+    if (!ValidDict(userInfo) || ![userInfo[@"id"] isEqualToString:MKDeviceModelManager.shared.deviceModel.mqttID]) {
+        return;
+    }
+    NSDictionary *energyDic = [self parseCurrentEnergyDatas:userInfo];
     NSString *hour = energyDic[@"date"][@"hour"];
     NSString *minutes = energyDic[@"date"][@"minutes"];
     NSString *seconds = energyDic[@"date"][@"seconds"];

@@ -77,7 +77,11 @@
 
 #pragma mark - note
 - (void)receiveCurrentEnergyNotification:(NSNotification *)note {
-    NSDictionary *energyDic = [self parseCurrentEnergyDatas:note.userInfo[@"userInfo"]];
+    NSDictionary *userInfo = note.userInfo[@"userInfo"];
+    if (!ValidDict(userInfo) || ![userInfo[@"id"] isEqualToString:MKDeviceModelManager.shared.deviceModel.mqttID]) {
+        return;
+    }
+    NSDictionary *energyDic = [self parseCurrentEnergyDatas:userInfo];
     NSString *currentDate = [NSString stringWithFormat:@"%@-%@-%@",energyDic[@"date"][@"year"],energyDic[@"date"][@"month"],energyDic[@"date"][@"day"]];
     if (self.monthlyList.count == 0) {
         //没有数据直接添加

@@ -306,7 +306,11 @@
                     }else if (offline && model.device_mode == MKDevice_plug){
                         model.plugState = MKSmartPlugOffline;
                     }else if (!offline && model.device_mode == MKDevice_plug){
-                        MKSmartPlugState state = ([stateDic[@"switch_state"] isEqualToString:@"on"] ? MKSmartPlugOn : MKSmartPlugOff);
+                        NSString *switchState = stateDic[@"switch_state"];
+                        MKSmartPlugState state = MKSmartPlugOff;
+                        if (ValidStr(switchState) && [switchState isEqualToString:@"on"]) {
+                            state = MKSmartPlugOn;
+                        }
                         model.plugState = state;
                     }
                     [model resetTimerCounter];
@@ -329,7 +333,7 @@
                                      object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                    selector:@selector(receiveSwitchStateData:)
-                                       name:MKMQTTServerReceivedSwitchStateNotification
+                                       name:MKMQTTServerReceivedDeviceOnlineNotification
                                      object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                    selector:@selector(getDeviceList)

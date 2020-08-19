@@ -14,6 +14,8 @@
 
 NSString *const MKMQTTSessionManagerStateChangedNotification = @"MKMQTTSessionManagerStateChangedNotification";
 
+NSString *const MKMQTTServerReceivedDeviceOnlineNotification = @"MKMQTTServerReceivedDeviceOnlineNotification";
+
 NSString *const MKMQTTServerReceivedSwitchStateNotification = @"MKMQTTServerReceivedSwitchStateNotification";
 NSString *const MKMQTTServerReceivedDelayTimeNotification = @"MKMQTTServerReceivedDelayTimeNotification";
 NSString *const MKMQTTServerReceivedElectricityNotification = @"MKMQTTServerReceivedElectricityNotification";
@@ -113,6 +115,11 @@ NSString *const MKMQTTServerLoadStatusChangedNotification = @"MKMQTTServerLoadSt
     NSLog(@"接收到数据:%@",tempDic);
     NSString *notificationName = [self fetchNotificationNameWithFunction:[function integerValue]];
     [[NSNotificationCenter defaultCenter] postNotificationName:notificationName
+                                                        object:nil
+                                                      userInfo:@{@"userInfo" : tempDic}];
+    BOOL isSwitchNote = [notificationName isEqualToString:MKMQTTServerReceivedSwitchStateNotification];
+    [tempDic setObject:@(isSwitchNote) forKey:@"isSwitchNote"];
+    [[NSNotificationCenter defaultCenter] postNotificationName:MKMQTTServerReceivedDeviceOnlineNotification
                                                         object:nil
                                                       userInfo:@{@"userInfo" : tempDic}];
 }

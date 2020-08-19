@@ -14,6 +14,11 @@
 extern NSString *const MKMQTTSessionManagerStateChangedNotification;
 
 /*
+任何一条开关的通知都可以认为设备在线
+*/
+extern NSString *const MKMQTTServerReceivedDeviceOnlineNotification;
+
+/*
  接收到开关状态的通知
  */
 extern NSString *const MKMQTTServerReceivedSwitchStateNotification;

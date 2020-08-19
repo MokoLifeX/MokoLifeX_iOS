@@ -34,6 +34,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.defaultTitle = @"Moko LifeX";
     [self.rightButton setImage:LOADIMAGE(@"configPlugPage_moreIcon", @"png") forState:UIControlStateNormal];
     UIView *footView = [self footerView];
     [self.view addSubview:footView];
@@ -58,9 +59,6 @@
 }
 
 #pragma mark - 父类方法
-- (NSString *)defaultTitle{
-    return @"Moko LifeX";
-}
 
 - (void)rightButtonMethod{
     MKDeviceInfoController *vc = [[MKDeviceInfoController alloc] init];

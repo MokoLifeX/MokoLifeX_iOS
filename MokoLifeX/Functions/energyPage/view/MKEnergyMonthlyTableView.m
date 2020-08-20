@@ -149,13 +149,13 @@
 #pragma mark - private method
 - (void)reloadHeaderDateInfoWithEnergy:(float)energy {
     self.monthlyHeaderModel.energyValue = (self.pulseConstant == 0 ? @"0" : [NSString stringWithFormat:@"%.2f",energy / self.pulseConstant]);
-    if (self.monthlyList.count == 0) {
-        return;
-    }
-    MKEnergyValueCellModel *startModel = self.monthlyList.firstObject;
-    MKEnergyValueCellModel *endModel = self.monthlyList.lastObject;
-    self.monthlyHeaderModel.dateMsg = [NSString stringWithFormat:@"%@ to %@",endModel.dateValue,startModel.dateValue];
-    [self.monthlyHeader setViewModel:self.monthlyHeaderModel];
+//    if (self.monthlyList.count == 0) {
+//        return;
+//    }
+//    MKEnergyValueCellModel *startModel = self.monthlyList.firstObject;
+//    MKEnergyValueCellModel *endModel = self.monthlyList.lastObject;
+//    self.monthlyHeaderModel.dateMsg = [NSString stringWithFormat:@"%@ to %@",endModel.dateValue,startModel.dateValue];
+//    [self.monthlyHeader setViewModel:self.monthlyHeaderModel];
 }
 
 #pragma mark - getter
@@ -190,6 +190,7 @@
         _monthlyHeaderModel = [[MKEnergyTableHeaderViewModel alloc] init];
         _monthlyHeaderModel.energyValue = @"0";
         _monthlyHeaderModel.timeMsg = @"Date";
+        _monthlyHeaderModel.dateMsg = [self fetchHeaderModelDate];
     }
     return _monthlyHeaderModel;
 }
@@ -229,6 +230,17 @@
         @"currentDayValue":currentDayValue,
         @"currentHourValue":currentHourValue,
     };
+}
+
+- (NSString *)fetchHeaderModelDate {
+    NSDate *date = [NSDate date];
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"yyyy-MM-dd"];
+    NSString *endDateString = [dateFormat stringFromDate:date];
+    NSInteger second = 24 * 60 * 60;
+    NSDate *lastDate = [date initWithTimeIntervalSinceNow:(-29 * second)];
+    NSString *startDateString = [dateFormat stringFromDate:lastDate];
+    return [NSString stringWithFormat:@"%@ to %@",startDateString,endDateString];
 }
 
 @end

@@ -84,7 +84,13 @@
         return;
     }
     MKEPParamsSettingController *vc = [[MKEPParamsSettingController alloc] init];
-    vc.configType = indexPath.row - 1;
+    if (indexPath.row == 1) {
+        vc.configType = mk_epParamsType_overload;
+    }else if (indexPath.row == 2) {
+        vc.configType = mk_epParamsType_powerReportPeriod;
+    }else if (indexPath.row == 3) {
+        vc.configType = mk_epParamsType_energyInterval;
+    }
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -209,9 +215,9 @@
     powerReportModel.leftMsg = @"Power report period";
     [self.dataList addObject:powerReportModel];
     
-    MKSettingPageCellModel *powerChangeModel = [[MKSettingPageCellModel alloc] init];
-    powerChangeModel.leftMsg = @"Energy report period";
-    [self.dataList addObject:powerChangeModel];
+//    MKSettingPageCellModel *powerChangeModel = [[MKSettingPageCellModel alloc] init];
+//    powerChangeModel.leftMsg = @"Energy report period";
+//    [self.dataList addObject:powerChangeModel];
     
     MKSettingPageCellModel *energyStorageModel = [[MKSettingPageCellModel alloc] init];
     energyStorageModel.leftMsg = @"Energy storage parameters";

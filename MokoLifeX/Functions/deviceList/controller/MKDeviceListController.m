@@ -306,12 +306,16 @@
                     }else if (offline && model.device_mode == MKDevice_plug){
                         model.plugState = MKSmartPlugOffline;
                     }else if (!offline && model.device_mode == MKDevice_plug){
-                        NSString *switchState = stateDic[@"switch_state"];
-                        MKSmartPlugState state = MKSmartPlugOff;
-                        if (ValidStr(switchState) && [switchState isEqualToString:@"on"]) {
-                            state = MKSmartPlugOn;
+                        BOOL isSwitchNote = [stateDic[@"isSwitchNote"] boolValue];
+                        if (isSwitchNote || (!isSwitchNote && model.plugState == MKSmartPlugOffline)) {
+                            //对于计电量其他的信息，只是当前设备离线的情况下置成在线灯状态关闭，如果设备未离线则不处理
+                            NSString *switchState = stateDic[@"switch_state"];
+                            MKSmartPlugState state = MKSmartPlugOff;
+                            if (ValidStr(switchState) && [switchState isEqualToString:@"on"]) {
+                                state = MKSmartPlugOn;
+                            }
+                            model.plugState = state;
                         }
-                        model.plugState = state;
                     }
                     [model resetTimerCounter];
                     dispatch_async(dispatch_get_main_queue(), ^{

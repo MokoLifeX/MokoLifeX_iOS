@@ -273,7 +273,7 @@ MKMeasuredPowerLEDCellDelegate>
     
     MKMeasuredPowerLEDModel *pModel = [[MKMeasuredPowerLEDModel alloc] init];
     pModel.msg = @"Measured power for purple LED(W)";
-    pModel.placeholder = @"2530";
+    pModel.placeholder = @"2500";
     pModel.row = 5;
     [self.dataList addObject:pModel];
 }

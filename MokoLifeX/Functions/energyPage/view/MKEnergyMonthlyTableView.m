@@ -149,6 +149,7 @@
 #pragma mark - private method
 - (void)reloadHeaderDateInfoWithEnergy:(float)energy {
     self.monthlyHeaderModel.energyValue = (self.pulseConstant == 0 ? @"0" : [NSString stringWithFormat:@"%.2f",energy / self.pulseConstant]);
+    [self.monthlyHeader setViewModel:self.monthlyHeaderModel];
 //    if (self.monthlyList.count == 0) {
 //        return;
 //    }

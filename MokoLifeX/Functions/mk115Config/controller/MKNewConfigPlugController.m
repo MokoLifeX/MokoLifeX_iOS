@@ -153,6 +153,7 @@ static CGFloat const buttonViewHeight = 50.f;
 
 #pragma mark - MKDeviceModelManagerDelegate
 - (void)currentDeviceModelStateChanged:(MKSmartPlugState)plugState {
+    self.isOverload = MKDeviceModelManager.shared.deviceModel.isOverload;
     [self configView];
     [self.delayTimeLabel setHidden:YES];
 }

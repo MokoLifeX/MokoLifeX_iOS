@@ -225,6 +225,7 @@
 		005028B823C308EF00FD50B6 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 005028B723C308EF00FD50B6 /* Launch Screen.storyboard */; };
 		005D4A6C2499C924003C2B36 /* MKEPParamsSettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 005D4A6B2499C924003C2B36 /* MKEPParamsSettingController.m */; };
 		005D4A6F2499FB99003C2B36 /* MKMQTTServerInterface+MK115Add.m in Sources */ = {isa = PBXBuildFile; fileRef = 005D4A6E2499FB99003C2B36 /* MKMQTTServerInterface+MK115Add.m */; };
+		005D75AE24EF60E700E94F94 /* MKDeviceModel+MK115Add.m in Sources */ = {isa = PBXBuildFile; fileRef = 005D75AD24EF60E700E94F94 /* MKDeviceModel+MK115Add.m */; };
 		005F35D3249B599F00B5B896 /* MKEnergyDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 005F35D1249B599E00B5B896 /* MKEnergyDataModel.m */; };
 		005F35D7249B6E2800B5B896 /* MKDeviceModelManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 005F35D6249B6E2800B5B896 /* MKDeviceModelManager.m */; };
 		00E8A53F2497093B0089A32D /* MKNewConfigPlugController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E8A53E2497093B0089A32D /* MKNewConfigPlugController.m */; };
@@ -595,6 +596,8 @@
 		005D4A6B2499C924003C2B36 /* MKEPParamsSettingController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MKEPParamsSettingController.m; sourceTree = "<group>"; };
 		005D4A6D2499FB99003C2B36 /* MKMQTTServerInterface+MK115Add.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MKMQTTServerInterface+MK115Add.h"; sourceTree = "<group>"; };
 		005D4A6E2499FB99003C2B36 /* MKMQTTServerInterface+MK115Add.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MKMQTTServerInterface+MK115Add.m"; sourceTree = "<group>"; };
+		005D75AC24EF60E700E94F94 /* MKDeviceModel+MK115Add.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MKDeviceModel+MK115Add.h"; sourceTree = "<group>"; };
+		005D75AD24EF60E700E94F94 /* MKDeviceModel+MK115Add.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MKDeviceModel+MK115Add.m"; sourceTree = "<group>"; };
 		005F35D1249B599E00B5B896 /* MKEnergyDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKEnergyDataModel.m; sourceTree = "<group>"; };
 		005F35D2249B599E00B5B896 /* MKEnergyDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKEnergyDataModel.h; sourceTree = "<group>"; };
 		005F35D5249B6E2800B5B896 /* MKDeviceModelManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKDeviceModelManager.h; sourceTree = "<group>"; };
@@ -840,6 +843,8 @@
 				0017927F22E59298001C0FFD /* MKDeviceNormalDefines.h */,
 				0017928122E59298001C0FFD /* MKDeviceModel+MKPlugAdd.h */,
 				0017928622E59298001C0FFD /* MKDeviceModel+MKPlugAdd.m */,
+				005D75AC24EF60E700E94F94 /* MKDeviceModel+MK115Add.h */,
+				005D75AD24EF60E700E94F94 /* MKDeviceModel+MK115Add.m */,
 			);
 			path = deviceModel;
 			sourceTree = "<group>";
@@ -2118,6 +2123,7 @@
 				0017940722E59B6B001C0FFD /* EasyEmptyView.m in Sources */,
 				00E8A56A249725A90089A32D /* MKEnergyDailyTableView.m in Sources */,
 				0017940E22E59B6B001C0FFD /* EasyAlertConfig.m in Sources */,
+				005D75AE24EF60E700E94F94 /* MKDeviceModel+MK115Add.m in Sources */,
 				0017925822E56B5C001C0FFD /* MKMQTTServerInterface+MKSmartSwich.m in Sources */,
 				0017934E22E59445001C0FFD /* MKAddDeviceController.m in Sources */,
 				003FC9AD22E6E90100A4CA92 /* MKConfigServerDeviceController.m in Sources */,

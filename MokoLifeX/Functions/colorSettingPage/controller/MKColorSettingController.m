@@ -243,37 +243,37 @@ MKMeasuredPowerLEDCellDelegate>
 - (void)loadTableDatas {
     MKMeasuredPowerLEDModel *bModel = [[MKMeasuredPowerLEDModel alloc] init];
     bModel.msg = @"Measured power for blue LED(W)";
-    bModel.placeholder = @"100";
+    bModel.placeholder = @"";
     bModel.row = 0;
     [self.dataList addObject:bModel];
     
     MKMeasuredPowerLEDModel *gModel = [[MKMeasuredPowerLEDModel alloc] init];
     gModel.msg = @"Measured power for green LED(W)";
-    gModel.placeholder = @"300";
+    gModel.placeholder = @"";
     gModel.row = 1;
     [self.dataList addObject:gModel];
     
     MKMeasuredPowerLEDModel *yModel = [[MKMeasuredPowerLEDModel alloc] init];
     yModel.msg = @"Measured power for yellow LED(W)";
-    yModel.placeholder = @"500";
+    yModel.placeholder = @"";
     yModel.row = 2;
     [self.dataList addObject:yModel];
     
     MKMeasuredPowerLEDModel *oModel = [[MKMeasuredPowerLEDModel alloc] init];
     oModel.msg = @"Measured power for orange LED(W)";
-    oModel.placeholder = @"1000";
+    oModel.placeholder = @"";
     oModel.row = 3;
     [self.dataList addObject:oModel];
     
     MKMeasuredPowerLEDModel *rModel = [[MKMeasuredPowerLEDModel alloc] init];
     rModel.msg = @"Measured power for red LED(W)";
-    rModel.placeholder = @"1800";
+    rModel.placeholder = @"";
     rModel.row = 4;
     [self.dataList addObject:rModel];
     
     MKMeasuredPowerLEDModel *pModel = [[MKMeasuredPowerLEDModel alloc] init];
     pModel.msg = @"Measured power for purple LED(W)";
-    pModel.placeholder = @"2500";
+    pModel.placeholder = @"";
     pModel.row = 5;
     [self.dataList addObject:pModel];
 }

@@ -78,7 +78,6 @@
 		0017935822E59445001C0FFD /* MKElectricityController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0017932022E59445001C0FFD /* MKElectricityController.m */; };
 		0017935922E59445001C0FFD /* MKElectricityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0017932422E59445001C0FFD /* MKElectricityModel.m */; };
 		0017935A22E59445001C0FFD /* MKElectricityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0017932722E59445001C0FFD /* MKElectricityCell.m */; };
-		0017935F22E5950B001C0FFD /* MKBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0017935D22E5950A001C0FFD /* MKBaseCell.m */; };
 		001793BA22E5965E001C0FFD /* SFHFKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 0017939B22E5965E001C0FFD /* SFHFKeychainUtils.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		001793BB22E5965E001C0FFD /* twlt_uuid_util.m in Sources */ = {isa = PBXBuildFile; fileRef = 0017939C22E5965E001C0FFD /* twlt_uuid_util.m */; };
 		001793C222E59B58001C0FFD /* MKDeviceDataBaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 001793BE22E59B58001C0FFD /* MKDeviceDataBaseManager.m */; };
@@ -244,7 +243,7 @@
 		00E8A56A249725A90089A32D /* MKEnergyDailyTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E8A55F249725A90089A32D /* MKEnergyDailyTableView.m */; };
 		00E8A56B249725A90089A32D /* MKEnergyMonthlyTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E8A561249725A90089A32D /* MKEnergyMonthlyTableView.m */; };
 		00E8A56C249725A90089A32D /* MKEnergyTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E8A565249725A90089A32D /* MKEnergyTableHeaderView.m */; };
-		F696B6C32DAE79E51CE24D9A /* libPods-MokoLifeX.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADA696AD4B92D377516793E0 /* libPods-MokoLifeX.a */; };
+		19C59908578B3923272060E0 /* Pods_MokoLifeX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B066ED7F0366AAED54D15B88 /* Pods_MokoLifeX.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -399,8 +398,6 @@
 		0017932422E59445001C0FFD /* MKElectricityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKElectricityModel.m; sourceTree = "<group>"; };
 		0017932622E59445001C0FFD /* MKElectricityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKElectricityCell.h; sourceTree = "<group>"; };
 		0017932722E59445001C0FFD /* MKElectricityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKElectricityCell.m; sourceTree = "<group>"; };
-		0017935D22E5950A001C0FFD /* MKBaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKBaseCell.m; sourceTree = "<group>"; };
-		0017935E22E5950A001C0FFD /* MKBaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKBaseCell.h; sourceTree = "<group>"; };
 		0017936122E5957F001C0FFD /* MKMokoLifeXNormalDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MKMokoLifeXNormalDefines.h; sourceTree = "<group>"; };
 		0017939B22E5965E001C0FFD /* SFHFKeychainUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFHFKeychainUtils.m; sourceTree = "<group>"; };
 		0017939C22E5965E001C0FFD /* twlt_uuid_util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = twlt_uuid_util.m; sourceTree = "<group>"; };
@@ -629,7 +626,7 @@
 		03B479583844709702BCF4E3 /* Pods-MokoLifeX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MokoLifeX.release.xcconfig"; path = "Target Support Files/Pods-MokoLifeX/Pods-MokoLifeX.release.xcconfig"; sourceTree = "<group>"; };
 		6AAB6B403ABF89767C501A2A /* Pods-MokoLifeX.adhoc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MokoLifeX.adhoc.xcconfig"; path = "Target Support Files/Pods-MokoLifeX/Pods-MokoLifeX.adhoc.xcconfig"; sourceTree = "<group>"; };
 		AD7E194C4B1C8A67233595BE /* Pods-MokoLifeX.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MokoLifeX.debug.xcconfig"; path = "Target Support Files/Pods-MokoLifeX/Pods-MokoLifeX.debug.xcconfig"; sourceTree = "<group>"; };
-		ADA696AD4B92D377516793E0 /* libPods-MokoLifeX.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MokoLifeX.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B066ED7F0366AAED54D15B88 /* Pods_MokoLifeX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MokoLifeX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -637,7 +634,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F696B6C32DAE79E51CE24D9A /* libPods-MokoLifeX.a in Frameworks */,
+				19C59908578B3923272060E0 /* Pods_MokoLifeX.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1323,18 +1320,8 @@
 			isa = PBXGroup;
 			children = (
 				004F9D05249C6E1A0058CE2F /* controller */,
-				0017935C22E5950A001C0FFD /* cell */,
 			);
 			path = Base;
-			sourceTree = "<group>";
-		};
-		0017935C22E5950A001C0FFD /* cell */ = {
-			isa = PBXGroup;
-			children = (
-				0017935E22E5950A001C0FFD /* MKBaseCell.h */,
-				0017935D22E5950A001C0FFD /* MKBaseCell.m */,
-			);
-			path = cell;
 			sourceTree = "<group>";
 		};
 		0017936022E59565001C0FFD /* Defines */ = {
@@ -1883,7 +1870,7 @@
 		802608E1AE7A78255BC8C356 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				ADA696AD4B92D377516793E0 /* libPods-MokoLifeX.a */,
+				B066ED7F0366AAED54D15B88 /* Pods_MokoLifeX.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1899,7 +1886,7 @@
 				0017921322E55928001C0FFD /* Sources */,
 				0017921422E55928001C0FFD /* Frameworks */,
 				0017921522E55928001C0FFD /* Resources */,
-				C1F5A4D915DDA5B2369E4D82 /* [CP] Copy Pods Resources */,
+				FB0A22D4E4779259A3A44EFC /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1917,7 +1904,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = MK;
-				LastUpgradeCheck = 1100;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = MK;
 				TargetAttributes = {
 					0017921622E55928001C0FFD = {
@@ -2089,21 +2076,21 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C1F5A4D915DDA5B2369E4D82 /* [CP] Copy Pods Resources */ = {
+		FB0A22D4E4779259A3A44EFC /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MokoLifeX/Pods-MokoLifeX-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-MokoLifeX/Pods-MokoLifeX-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MokoLifeX/Pods-MokoLifeX-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-MokoLifeX/Pods-MokoLifeX-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MokoLifeX/Pods-MokoLifeX-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MokoLifeX/Pods-MokoLifeX-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -2205,7 +2192,6 @@
 				0017934222E59445001C0FFD /* MKDeviceInfoCell.m in Sources */,
 				0017940B22E59B6B001C0FFD /* EasyAlertTypes.m in Sources */,
 				0017925622E56B5C001C0FFD /* MKMQTTServerInterface+MKSmartPlug.m in Sources */,
-				0017935F22E5950B001C0FFD /* MKBaseCell.m in Sources */,
 				005D4A6F2499FB99003C2B36 /* MKMQTTServerInterface+MK115Add.m in Sources */,
 				00E8A569249725A90089A32D /* MKEnergyValueCell.m in Sources */,
 				0017934A22E59445001C0FFD /* MKConfigDeviceController.m in Sources */,
@@ -2274,6 +2260,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -2333,6 +2320,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -2369,16 +2357,16 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = NO;
 				CODE_SIGN_ENTITLEMENTS = MokoLifeX/MokoLifeX.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2020082101;
+				CURRENT_PROJECT_VERSION = 2020111101;
 				DEVELOPMENT_TEAM = R558LEUW2T;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MokoLifeX/PrefixHeader.pch";
 				INFOPLIST_FILE = MokoLifeX/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.6;
+				MARKETING_VERSION = 1.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.moko.MokoLifeX;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -2394,16 +2382,16 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = NO;
 				CODE_SIGN_ENTITLEMENTS = MokoLifeX/MokoLifeX.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2020082101;
+				CURRENT_PROJECT_VERSION = 2020111101;
 				DEVELOPMENT_TEAM = R558LEUW2T;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MokoLifeX/PrefixHeader.pch";
 				INFOPLIST_FILE = MokoLifeX/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.6;
+				MARKETING_VERSION = 1.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.moko.MokoLifeX;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -2436,6 +2424,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -2478,16 +2467,16 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = NO;
 				CODE_SIGN_ENTITLEMENTS = MokoLifeX/MokoLifeX.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2020082101;
+				CURRENT_PROJECT_VERSION = 2020111101;
 				DEVELOPMENT_TEAM = R558LEUW2T;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MokoLifeX/PrefixHeader.pch";
 				INFOPLIST_FILE = MokoLifeX/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.6;
+				MARKETING_VERSION = 1.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.moko.MokoLifeX;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;

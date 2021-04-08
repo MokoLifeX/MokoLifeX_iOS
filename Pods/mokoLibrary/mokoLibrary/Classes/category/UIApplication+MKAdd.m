@@ -11,14 +11,9 @@
 @implementation UIApplication (MKAdd)
 
 + (void)skipToHome{
-    if (@available(iOS 10.0, *)) {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]
-                                           options:@{}
-                                 completionHandler:nil];
-        return;
-    }
-    //低于10
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]
+                                       options:@{}
+                             completionHandler:nil];
 }
 
 + (BOOL)applicationInstall:(NSString *)appKey{

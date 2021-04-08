@@ -124,3 +124,11 @@ if (strcmp(dispatch_queue_get_label(DISPATCH_CURRENT_QUEUE_LABEL), dispatch_queu
 
 //图片的宏定义,注意该方法只对取mainBundle下面的图片有效，如果是自建的bundle，则该方法取不到。
 #define LOADIMAGE(file,ext) [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@%@",file,(iPhone6Plus || iPhoneX || iPhoneMax) ? @"@3x" : @"@2x"] ofType:ext]]
+
+#define LOADICON(bundleClassName,imageName) \
+({\
+NSBundle *bundle = [NSBundle bundleForClass:NSClassFromString(bundleClassName)];\
+NSString *bundlePath = [bundle pathForResource:@"mokoLibrary" ofType:@"bundle"];\
+UIImage *image = [UIImage imageWithContentsOfFile:[bundlePath stringByAppendingPathComponent:imageName]];\
+(image);\
+})\

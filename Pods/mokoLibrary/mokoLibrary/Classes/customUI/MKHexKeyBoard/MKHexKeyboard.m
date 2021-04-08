@@ -172,10 +172,7 @@ static CGFloat const buttonSpace_X = 20.f;
     delBtn.frame = CGRectMake(buttonSpace_X, 5 * buttonHeight + 6 * buttonSpace, buttonWidth, buttonHeight);
     [delBtn setBackgroundColor:UIColorFromRGB(0x999999)];
     
-    NSBundle *bundle = [NSBundle bundleForClass:NSClassFromString(@"MKHexKeyboard")];
-    NSString *bundlePath = [bundle pathForResource:@"mokoLibrary" ofType:@"bundle"];
-    UIImage *delBtnIcon = [UIImage imageWithContentsOfFile:[bundlePath stringByAppendingPathComponent:@"keyboardDelIcon.png"]];
-    [delBtn setImage:delBtnIcon
+    [delBtn setImage:LOADICON(@"MKHexKeyboard", @"keyboardDelIcon.png")
             forState:UIControlStateNormal];
     [delBtn addTarget:self action:@selector(deleteButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     [self.bottomView addSubview:delBtn];

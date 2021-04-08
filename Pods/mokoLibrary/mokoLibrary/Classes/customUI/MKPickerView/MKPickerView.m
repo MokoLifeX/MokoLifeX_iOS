@@ -7,6 +7,7 @@
 
 #import "MKPickerView.h"
 #import "MKMacroDefines.h"
+#import "MKAttributedString.h"
 
 static NSTimeInterval const animationDuration = .3f;
 static CGFloat const kDatePickerH = 270;
@@ -58,6 +59,12 @@ static CGFloat const pickViewRowHeight = 30;
 // returns the # of rows in each component..
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
     return self.dataList.count;
+}
+
+- (nullable NSAttributedString *)pickerView:(UIPickerView *)pickerView attributedTitleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    NSString *titleString = self.dataList[row];
+    NSAttributedString *attributedString = [MKAttributedString getAttributedString:@[titleString] fonts:@[MKFont(15.f)] colors:@[DEFAULT_TEXT_COLOR]];
+    return attributedString;
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{

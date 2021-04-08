@@ -50,10 +50,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    if (@available(iOS 11.0, *)) {
-    } else {
-        self.automaticallyAdjustsScrollViewInsets = NO;
-    }
     [self setupNavigationParams];
 }
 
@@ -175,9 +171,7 @@
     if (!_leftButton) {
         _leftButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0f, 2.0f, 40.0f, 40.0f)];
         
-        NSBundle *bundle = [NSBundle bundleForClass:NSClassFromString(@"MKBaseViewController")];
-        NSString *bundlePath = [bundle pathForResource:@"mokoLibrary" ofType:@"bundle"];
-        [_leftButton setImage:[UIImage imageWithContentsOfFile:[bundlePath stringByAppendingPathComponent:@"navigation_back_button_white.png"]]
+        [_leftButton setImage:LOADICON(@"MKBaseViewController", @"navigation_back_button_white.png")
                      forState:UIControlStateNormal];
         [_leftButton setContentHorizontalAlignment:UIControlContentHorizontalAlignmentLeft];
         [_leftButton.titleLabel setFont:MKFont(16)];

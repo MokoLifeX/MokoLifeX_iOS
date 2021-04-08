@@ -254,13 +254,8 @@ static char kWRBackgroundImageKey;
 // set _UIBarBackground alpha (_UIBarBackground subviews alpha <= _UIBarBackground alpha)
 - (void)wr_setBackgroundAlpha:(CGFloat)alpha {
     UIView *barBackgroundView = self.subviews.firstObject;
-    if (@available(iOS 11.0, *))
-    {   // sometimes we can't change _UIBarBackground alpha
-        for (UIView *view in barBackgroundView.subviews) {
-            view.alpha = alpha;
-        }
-    } else {
-        barBackgroundView.alpha = alpha;
+    for (UIView *view in barBackgroundView.subviews) {
+        view.alpha = alpha;
     }
 }
 
@@ -555,22 +550,10 @@ static int wrPushDisplayCount = 0;
     __weak typeof (self) weakSelf = self;
     id<UIViewControllerTransitionCoordinator> coor = [self.topViewController transitionCoordinator];
     if ([coor initiallyInteractive] == YES) {
-        NSString *sysVersion = [[UIDevice currentDevice] systemVersion];
-        if ([sysVersion floatValue] >= 10) {
-            if (@available(iOS 10.0, *)) {
-                [coor notifyWhenInteractionChangesUsingBlock:^(id<UIViewControllerTransitionCoordinatorContext>  _Nonnull context) {
-                    __strong typeof (self) pThis = weakSelf;
-                    [pThis dealInteractionChanges:context];
-                }];
-            } else {
-                // Fallback on earlier versions
-            }
-        } else {
-            [coor notifyWhenInteractionEndsUsingBlock:^(id<UIViewControllerTransitionCoordinatorContext>  _Nonnull context) {
-                __strong typeof (self) pThis = weakSelf;
-                [pThis dealInteractionChanges:context];
-            }];
-        }
+        [coor notifyWhenInteractionChangesUsingBlock:^(id<UIViewControllerTransitionCoordinatorContext>  _Nonnull context) {
+            __strong typeof (self) pThis = weakSelf;
+            [pThis dealInteractionChanges:context];
+        }];
         return YES;
     }
     

@@ -126,11 +126,7 @@ static char Refresh_Key, ScrollView_Key, Block_Key, MarginTop_Key, Animation_Key
         return;
     }
     
-    if (@available(iOS 11.0, *)) {
-        scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-    } else {
-        // Fallback on earlier versions
-    }
+    scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     
     self.refreshBlock = block;
     self.extenScrollView = scrollView;
@@ -401,17 +397,10 @@ static char Refresh_Key, ScrollView_Key, Block_Key, MarginTop_Key, Animation_Key
      */
     __weak typeof(self) weakSelf = self;
     if (self.extenScrollView.isDragging) {
-        //iOS10 以上
-        if (@available(iOS 10, *)) {
-            [NSTimer scheduledTimerWithTimeInterval:0.2 repeats:YES block:^(NSTimer * _Nonnull timer) {
-                [weakSelf endRefresh];
-                [timer invalidate];
-            }];
-            
-            //iOS10 以下
-        } else {
-            [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(timerCall:) userInfo:nil repeats:YES];
-        }
+        [NSTimer scheduledTimerWithTimeInterval:0.2 repeats:YES block:^(NSTimer * _Nonnull timer) {
+            [weakSelf endRefresh];
+            [timer invalidate];
+        }];
         
         return;
     }

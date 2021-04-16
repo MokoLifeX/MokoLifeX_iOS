@@ -7,7 +7,6 @@
 //
 
 #import "MKElectricityController.h"
-#import "MKBaseTableView.h"
 #import "MKElectricityCell.h"
 #import "MKElectricityModel.h"
 
@@ -24,7 +23,7 @@
 #pragma mark - life circle
 - (void)dealloc{
     NSLog(@"MKElectricityController销毁");
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:MKMQTTServerReceivedElectricityNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)viewDidLoad {
@@ -66,7 +65,7 @@
 #pragma mark - Notification Event
 - (void)receiveElectricityData:(NSNotification *)note{
     NSDictionary *deviceDic = note.userInfo[@"userInfo"];
-    if (!ValidDict(deviceDic) || ![deviceDic[@"id"] isEqualToString:self.deviceModel.mqttID]) {
+    if (!ValidDict(deviceDic) || ![deviceDic[@"id"] isEqualToString:MKDeviceModelManager.shared.deviceModel.mqttID]) {
         return;
     }
     if (ValidNum(deviceDic[@"current"])) {

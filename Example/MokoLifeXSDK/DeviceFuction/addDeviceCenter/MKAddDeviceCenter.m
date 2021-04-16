@@ -62,7 +62,7 @@ static MKAddDeviceCenter *center = nil;
         return;
     }
     //低于10
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString] options:@{} completionHandler:nil];
 }
 
 - (NSDictionary *)fecthAddDeviceParams{

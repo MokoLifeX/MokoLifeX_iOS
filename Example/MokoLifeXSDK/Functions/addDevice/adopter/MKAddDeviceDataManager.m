@@ -120,7 +120,7 @@
         || ![deviceDic[@"id"] isEqualToString:self.serverModel.mqttID]) {
         return;
     }
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:MKMQTTServerReceivedSwitchStateNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:MKMQTTServerReceivedDeviceOnlineNotification object:nil];
     //当前设备已经连上mqtt服务器了
     if (self.receiveTimer) {
         dispatch_cancel(self.receiveTimer);
@@ -162,7 +162,7 @@
 - (void)connectProgressWithCompleteBlock:(void (^)(NSError *error, BOOL success, MKDeviceModel *deviceModel))completeBlock{
     self.completeBlock = nil;
     self.completeBlock = completeBlock;
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:MKMQTTServerReceivedSwitchStateNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:MKMQTTServerReceivedDeviceOnlineNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                    selector:@selector(networkStatusChanged)
                                        name:UIApplicationDidBecomeActiveNotification
@@ -219,7 +219,7 @@
     }
     [[NSNotificationCenter defaultCenter] addObserver:self
                                    selector:@selector(receiveDeviceTopicData:)
-                                       name:MKMQTTServerReceivedSwitchStateNotification
+                                       name:MKMQTTServerReceivedDeviceOnlineNotification
                                      object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidBecomeActiveNotification object:nil];
     [self startConnectTimer];
@@ -256,14 +256,14 @@
         if (self.completeBlock) {
             self.completeBlock(error, NO, nil);
         }
-        [[NSNotificationCenter defaultCenter] removeObserver:self name:MKMQTTServerReceivedSwitchStateNotification object:nil];
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:MKMQTTServerReceivedDeviceOnlineNotification object:nil];
     });
 }
 
 - (void)saveDeviceToLocal{
     MKDeviceModel *dataModel = [MKDeviceModel modelWithJSON:self.deviceDic];
     dataModel.device_mode = [MKAddDeviceCenter sharedInstance].deviceType;
-    dataModel.local_name = self.deviceDic[@"device_name"];
+    dataModel.local_name = [NSString stringWithFormat:@"%@-%@",self.deviceDic[@"device_name"],self.deviceDic[@"device_id"]];
     dataModel.subscribedTopic = self.serverModel.subscribedTopic;
     dataModel.publishedTopic = self.serverModel.publishedTopic;
     dataModel.mqttID = self.serverModel.mqttID;

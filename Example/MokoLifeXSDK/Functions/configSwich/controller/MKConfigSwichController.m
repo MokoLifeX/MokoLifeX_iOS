@@ -7,7 +7,6 @@
 //
 
 #import "MKConfigSwichController.h"
-#import "MKBaseTableView.h"
 #import "MKConfigSwichCell.h"
 #import "MKConfigSwichModel.h"
 #import "MKDeviceDataBaseManager.h"
@@ -29,12 +28,13 @@
 - (void)dealloc{
     NSLog(@"MKConfigSwichController销毁");
     [self.deviceModel cancel];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:MKMQTTServerReceivedSwitchStateNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:MKMQTTServerReceivedDelayTimeNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [MKDeviceModelManager.shared clearManagementModel];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.defaultTitle = @"Moko LifeX";
     [self.rightButton setImage:LOADIMAGE(@"configPlugPage_moreIcon", @"png") forState:UIControlStateNormal];
     UIView *footView = [self footerView];
     [self.view addSubview:footView];
@@ -59,17 +59,9 @@
 }
 
 #pragma mark - 父类方法
-- (NSString *)defaultTitle{
-    return @"Moko LifeX";
-}
 
 - (void)rightButtonMethod{
     MKDeviceInfoController *vc = [[MKDeviceInfoController alloc] init];
-    MKDeviceModel *model = [[MKDeviceModel alloc] init];
-    [model updatePropertyWithModel:self.deviceModel];
-    model.swich_way_nameDic = self.deviceModel.swich_way_nameDic;
-    model.swichState = self.deviceModel.swichState;
-    vc.deviceModel = model;
     [self.navigationController pushViewController:vc animated:YES];
 }
 

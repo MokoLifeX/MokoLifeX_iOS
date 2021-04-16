@@ -14,12 +14,25 @@
 
 NSString *const MKMQTTSessionManagerStateChangedNotification = @"MKMQTTSessionManagerStateChangedNotification";
 
+NSString *const MKMQTTServerReceivedDeviceOnlineNotification = @"MKMQTTServerReceivedDeviceOnlineNotification";
+
 NSString *const MKMQTTServerReceivedSwitchStateNotification = @"MKMQTTServerReceivedSwitchStateNotification";
 NSString *const MKMQTTServerReceivedDelayTimeNotification = @"MKMQTTServerReceivedDelayTimeNotification";
 NSString *const MKMQTTServerReceivedElectricityNotification = @"MKMQTTServerReceivedElectricityNotification";
 NSString *const MKMQTTServerReceivedFirmwareInfoNotification = @"MKMQTTServerReceivedFirmwareInfoNotification";
 NSString *const MKMQTTServerReceivedUpdateResultNotification = @"MKMQTTServerReceivedUpdateResultNotification";
 NSString *const MKMQTTServerReceivedDevicePowerOnStatusNotification = @"MKMQTTServerReceivedDevicePowerOnStatusNotification";
+NSString *const MKMQTTServerReceivedOverloadNotification = @"MKMQTTServerReceivedOverloadNotification";
+NSString *const MKMQTTServerReceivedPowerReportPeriodNotification = @"MKMQTTServerReceivedPowerReportPeriodNotification";
+NSString *const MKMQTTServerReceivedEnergyReportPeriodNotification = @"MKMQTTServerReceivedEnergyReportPeriodNotification";
+NSString *const MKMQTTServerReceivedStorageParametersNotification = @"MKMQTTServerReceivedStorageParametersNotification";
+NSString *const MKMQTTServerReceivedLEDColorNotification = @"MKMQTTServerReceivedLEDColorNotification";
+NSString *const MKMQTTServerReceivedHistoricalEnergyNotification = @"MKMQTTServerReceivedHistoricalEnergyNotification";
+NSString *const MKMQTTServerReceivedEnergyDataOfTodayNotification = @"MKMQTTServerReceivedEnergyDataOfTodayNotification";
+NSString *const MKMQTTServerReceivedPulseConstantNotification = @"MKMQTTServerReceivedPulseConstantNotification";
+NSString *const MKMQTTServerReceivedTotalEnergyNotification = @"MKMQTTServerReceivedTotalEnergyNotification";
+NSString *const MKMQTTServerReceivedCurrentEnergyNotification = @"MKMQTTServerReceivedCurrentEnergyNotification";
+NSString *const MKMQTTServerLoadStatusChangedNotification = @"MKMQTTServerLoadStatusChangedNotification";
 
 @interface MKMQTTServerDataManager()<MKMQTTServerManagerDelegate>
 
@@ -87,7 +100,10 @@ NSString *const MKMQTTServerReceivedDevicePowerOnStatusNotification = @"MKMQTTSe
     NSString *receiveStr = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
     NSData * datas = [receiveStr dataUsingEncoding:NSUTF8StringEncoding];
     NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:datas options:NSJSONReadingAllowFragments error:nil];
-    if (!dataDic || dataDic.allValues.count == 0 || !ValidStr(dataDic[@"id"]) || !ValidNum(dataDic[@"msg_id"])) {
+    if (!ValidDict(dataDic)) {
+        return;
+    }
+    if (!ValidStr(dataDic[@"id"]) || !ValidNum(dataDic[@"msg_id"])) {
         return;
     }
     NSLog(@"接收到数据:%@",dataDic);
@@ -97,48 +113,15 @@ NSString *const MKMQTTServerReceivedDevicePowerOnStatusNotification = @"MKMQTTSe
     [tempDic setObject:function forKey:@"function"];
     [tempDic setObject:dataDic[@"id"] forKey:@"id"];
     NSLog(@"接收到数据:%@",tempDic);
-    if ([function integerValue] == 1001) {
-        //开关状态
-        [[NSNotificationCenter defaultCenter] postNotificationName:MKMQTTServerReceivedSwitchStateNotification
-                                                            object:nil
-                                                          userInfo:@{@"userInfo" : tempDic}];
-        return;
-    }
-    if ([function integerValue] == 1002) {
-        //固件信息
-        [[NSNotificationCenter defaultCenter] postNotificationName:MKMQTTServerReceivedFirmwareInfoNotification
-                                                            object:nil
-                                                          userInfo:@{@"userInfo" : tempDic}];
-        return;
-    }
-    if ([function integerValue] == 1003) {
-        //倒计时
-        [[NSNotificationCenter defaultCenter] postNotificationName:MKMQTTServerReceivedDelayTimeNotification
-                                                            object:nil
-                                                          userInfo:@{@"userInfo" : tempDic}];
-        return;
-    }
-    if ([function integerValue] == 1004) {
-        //固件升级结果
-        [[NSNotificationCenter defaultCenter] postNotificationName:MKMQTTServerReceivedUpdateResultNotification
-                                                            object:nil
-                                                          userInfo:@{@"userInfo" : tempDic}];
-        return;
-    }
-    if ([function integerValue] == 1006) {
-        //电量信息
-        [[NSNotificationCenter defaultCenter] postNotificationName:MKMQTTServerReceivedElectricityNotification
-                                                            object:nil
-                                                          userInfo:@{@"userInfo" : tempDic}];
-        return;
-    }
-    if ([function integerValue] == 1008) {
-        //读取插座上电默认开关状态
-        [[NSNotificationCenter defaultCenter] postNotificationName:MKMQTTServerReceivedDevicePowerOnStatusNotification
-                                                            object:nil
-                                                          userInfo:@{@"userInfo" : tempDic}];
-        return;
-    }
+    NSString *notificationName = [self fetchNotificationNameWithFunction:[function integerValue]];
+    [[NSNotificationCenter defaultCenter] postNotificationName:notificationName
+                                                        object:nil
+                                                      userInfo:@{@"userInfo" : tempDic}];
+    BOOL isSwitchNote = [notificationName isEqualToString:MKMQTTServerReceivedSwitchStateNotification];
+    [tempDic setObject:@(isSwitchNote) forKey:@"isSwitchNote"];
+    [[NSNotificationCenter defaultCenter] postNotificationName:MKMQTTServerReceivedDeviceOnlineNotification
+                                                        object:nil
+                                                      userInfo:@{@"userInfo" : tempDic}];
 }
 
 #pragma mark - event method
@@ -262,6 +245,78 @@ NSString *const MKMQTTServerReceivedDevicePowerOnStatusNotification = @"MKMQTTSe
         return nil;
     }
     return dic;
+}
+
+- (NSString *)fetchNotificationNameWithFunction:(NSInteger)function {
+    if (function == 1001) {
+        //开关状态
+        return MKMQTTServerReceivedSwitchStateNotification;
+    }
+    if (function == 1002) {
+        //固件信息
+        return MKMQTTServerReceivedFirmwareInfoNotification;
+    }
+    if (function == 1003) {
+        //倒计时
+        return MKMQTTServerReceivedDelayTimeNotification;
+    }
+    if (function == 1004) {
+        //固件升级结果
+        return MKMQTTServerReceivedUpdateResultNotification;
+    }
+    if (function == 1005) {
+        //载保护状态以及过载值
+        return MKMQTTServerReceivedOverloadNotification;
+    }
+    if (function == 1006) {
+        //电量信息
+        return MKMQTTServerReceivedElectricityNotification;
+    }
+    if (function == 1008) {
+        //读取插座上电默认开关状态
+        return MKMQTTServerReceivedDevicePowerOnStatusNotification;
+    }
+    if (function == 1009) {
+        //功率指示灯颜色
+        return MKMQTTServerReceivedLEDColorNotification;
+    }
+    if (function == 1011) {
+        //有负载接入
+        return MKMQTTServerLoadStatusChangedNotification;
+    }
+    if (function == 1012) {
+        //电量信息上报间隔
+        return MKMQTTServerReceivedPowerReportPeriodNotification;
+    }
+    if (function == 1013) {
+        //累计电能存储参数
+        return MKMQTTServerReceivedStorageParametersNotification;
+    }
+    if (function == 1014) {
+        //累计电能
+        return MKMQTTServerReceivedHistoricalEnergyNotification;
+    }
+    if (function == 1015) {
+        //今天电能
+        return MKMQTTServerReceivedEnergyDataOfTodayNotification;
+    }
+    if (function == 1016) {
+        //脉冲常数
+        return MKMQTTServerReceivedPulseConstantNotification;
+    }
+    if (function == 1017) {
+        //总累计电能
+        return MKMQTTServerReceivedTotalEnergyNotification;
+    }
+    if (function == 1018) {
+        //当前电能数据
+        return MKMQTTServerReceivedCurrentEnergyNotification;
+    }
+    if (function == 1019) {
+        //电能上报间隔
+        return MKMQTTServerReceivedEnergyReportPeriodNotification;
+    }
+    return @"";
 }
 
 #pragma mark - setter & getter

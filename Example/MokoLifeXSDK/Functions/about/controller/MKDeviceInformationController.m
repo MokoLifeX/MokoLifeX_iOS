@@ -7,7 +7,6 @@
 //
 
 #import "MKDeviceInformationController.h"
-#import "MKBaseTableView.h"
 #import "MKAboutCell.h"
 #import "MKAboutModel.h"
 
@@ -80,7 +79,7 @@
         return;
     }
     NSDictionary *deviceDic = note.userInfo[@"userInfo"];
-    if (!ValidDict(deviceDic) || ![deviceDic[@"id"] isEqualToString:self.deviceModel.mqttID]) {
+    if (!ValidDict(deviceDic) || ![deviceDic[@"id"] isEqualToString:MKDeviceModelManager.shared.deviceModel.mqttID]) {
         return;
     }
     if (self.readTimer) {
@@ -123,10 +122,10 @@
     companyModel.rightMsg = infoDic[@"company_name"];
     [self.dataList addObject:companyModel];
     
-    MKAboutModel *dateModel = [[MKAboutModel alloc] init];
-    dateModel.leftMsg = @"Date of Manufacture";
-    dateModel.rightMsg = infoDic[@"production_date"];
-    [self.dataList addObject:dateModel];
+//    MKAboutModel *dateModel = [[MKAboutModel alloc] init];
+//    dateModel.leftMsg = @"Date of Manufacture";
+//    dateModel.rightMsg = infoDic[@"production_date"];
+//    [self.dataList addObject:dateModel];
     
     MKAboutModel *nameModel = [[MKAboutModel alloc] init];
     nameModel.leftMsg = @"Product Model";

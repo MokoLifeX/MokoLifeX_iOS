@@ -12,7 +12,7 @@
 
 #import "MKBaseModule.h"
 #import "MKAttributedString.h"
-
+#import "MKBaseTableView.h"
 
 #import "MKMQTTServerManager.h"
 #import "MKSocketManager.h"
@@ -23,3 +23,4 @@
 #import "MKMqttServerIntefaces.h"
 #import "MKCommonlyUIHelper.h"
 #import "MKConfigServerAdopter.h"
+#import "MKDeviceModelManager.h"

@@ -7,7 +7,6 @@
 //
 
 #import "MKDeviceInfoController.h"
-#import "MKBaseTableView.h"
 #import "MKDeviceInfoCell.h"
 #import "MKDeviceInfoModel.h"
 #import "MKModifyLocalNameView.h"
@@ -54,7 +53,7 @@
         //修改名称
         MKModifyLocalNameView *view = [[MKModifyLocalNameView alloc] init];
         WS(weakSelf);
-        [view showConnectAlertViewTitle:@"Modify Device Name" text:self.deviceModel.local_name block:^(BOOL empty, NSString *name) {
+        [view showConnectAlertViewTitle:@"Modify Device Name" text:MKDeviceModelManager.shared.deviceModel.local_name block:^(BOOL empty, NSString *name) {
             if (empty) {
                 [view showCentralToast:@"Device name can't be blank."];
                 return ;
@@ -63,12 +62,12 @@
         }];
         return;
     }
-    if (indexPath.row == 4) {
-        //关于
-        MKAboutController *vc = [[MKAboutController alloc] init];
-        [self.navigationController pushViewController:vc animated:YES];
-        return;
-    }
+//    if (indexPath.row == 4) {
+//        //关于
+//        MKAboutController *vc = [[MKAboutController alloc] init];
+//        [self.navigationController pushViewController:vc animated:YES];
+//        return;
+//    }
     if (![self canClickEnable]) {
         return;
     }
@@ -79,11 +78,11 @@
     }
     if (indexPath.row == 2) {
         //固件升级
-        if (self.deviceModel.device_mode == MKDevice_plug && self.deviceModel.plugState == MKSmartPlugOffline) {
+        if (MKDeviceModelManager.shared.deviceModel.device_mode == MKDevice_plug && MKDeviceModelManager.shared.deviceModel.plugState == MKSmartPlugOffline) {
             [self.view showCentralToast:@"Device offline,please check."];
             return;
         }
-        if (self.deviceModel.device_mode == MKDevice_swich && self.deviceModel.swichState == MKSmartSwichOffline) {
+        if (MKDeviceModelManager.shared.deviceModel.device_mode == MKDevice_swich && MKDeviceModelManager.shared.deviceModel.swichState == MKSmartSwichOffline) {
             [self.view showCentralToast:@"Device offline,please check."];
             return;
         }
@@ -92,11 +91,11 @@
     }
     if (indexPath.row == 3) {
         //开关上电默认状态
-        if (self.deviceModel.device_mode == MKDevice_plug && self.deviceModel.plugState == MKSmartPlugOffline) {
+        if (MKDeviceModelManager.shared.deviceModel.device_mode == MKDevice_plug && MKDeviceModelManager.shared.deviceModel.plugState == MKSmartPlugOffline) {
             [self.view showCentralToast:@"Device offline,please check."];
             return;
         }
-        if (self.deviceModel.device_mode == MKDevice_swich && self.deviceModel.swichState == MKSmartSwichOffline) {
+        if (MKDeviceModelManager.shared.deviceModel.device_mode == MKDevice_swich && MKDeviceModelManager.shared.deviceModel.swichState == MKSmartSwichOffline) {
             [self.view showCentralToast:@"Device offline,please check."];
             return;
         }
@@ -118,22 +117,19 @@
 
 #pragma mark - event method
 - (void)removeButtonPressed{
-    [MKDeviceInfoAdopter deleteDeviceWithModel:self.deviceModel target:self reset:NO];
+    [MKDeviceInfoAdopter deleteDeviceWithModel:MKDeviceModelManager.shared.deviceModel target:self reset:NO];
 }
 
 - (void)resetButtonPressed{
-    [MKDeviceInfoAdopter deleteDeviceWithModel:self.deviceModel target:self reset:YES];
+    [MKDeviceInfoAdopter deleteDeviceWithModel:MKDeviceModelManager.shared.deviceModel target:self reset:YES];
 }
 
 - (void)readFirmwareInfo{
     [[MKHudManager share] showHUDWithTitle:@"Loading..." inView:self.view isPenetration:NO];
     WS(weakSelf);
-    [MKMQTTServerInterface readDeviceFirmwareInformationWithTopic:[self.deviceModel currentSubscribedTopic] mqttID:self.deviceModel.mqttID sucBlock:^{
+    [MKMQTTServerInterface readDeviceFirmwareInformationWithTopic:MKDeviceModelManager.shared.subTopic mqttID:MKDeviceModelManager.shared.deviceModel.mqttID sucBlock:^{
         [[MKHudManager share] hide];
         MKDeviceInformationController *vc = [[MKDeviceInformationController alloc] init];
-        MKDeviceModel *model = [[MKDeviceModel alloc] init];
-        [model updatePropertyWithModel:weakSelf.deviceModel];
-        vc.deviceModel = model;
         [weakSelf.navigationController pushViewController:vc animated:YES];
     } failedBlock:^(NSError *error) {
         [[MKHudManager share] hide];
@@ -143,9 +139,8 @@
 
 - (void)readModifyPowerOnStatus {
     [[MKHudManager share] showHUDWithTitle:@"Reading..." inView:self.view isPenetration:NO];
-    [MKMQTTServerInterface readDevicePowerOnStatusWithTopic:[self.deviceModel currentSubscribedTopic] mqttID:self.deviceModel.mqttID sucBlock:^{
+    [MKMQTTServerInterface readDevicePowerOnStatusWithTopic:MKDeviceModelManager.shared.subTopic mqttID:MKDeviceModelManager.shared.deviceModel.mqttID sucBlock:^{
         MKModifyPowerOnStatusController *vc = [[MKModifyPowerOnStatusController alloc] init];
-        vc.deviceModel = self.deviceModel;
         [self.navigationController pushViewController:vc animated:YES];
     } failedBlock:^(NSError *error) {
         [[MKHudManager share] hide];
@@ -157,9 +152,9 @@
 - (void)getDeviceLocalName{
     [[MKHudManager share] showHUDWithTitle:@"Reading..." inView:self.view isPenetration:NO];
     WS(weakSelf);
-    [MKDeviceDataBaseManager selectLocalNameWithMacAddress:self.deviceModel.device_id sucBlock:^(NSString *localName) {
+    [MKDeviceDataBaseManager selectLocalNameWithMacAddress:MKDeviceModelManager.shared.deviceModel.device_id sucBlock:^(NSString *localName) {
         [[MKHudManager share] hide];
-        weakSelf.deviceModel.local_name = localName;
+        MKDeviceModelManager.shared.deviceModel.local_name = localName;
         [weakSelf loadDatas];
     } failedBlock:^(NSError *error) {
         [[MKHudManager share] hide];
@@ -170,9 +165,9 @@
 - (void)updateDeviceLocalName:(NSString *)localName{
     [[MKHudManager share] showHUDWithTitle:@"Setting" inView:self.view isPenetration:NO];
     MKDeviceModel *model = [[MKDeviceModel alloc] init];
-    [model updatePropertyWithModel:self.deviceModel];
-    if (self.deviceModel.device_mode == MKDevice_swich) {
-        model.swich_way_nameDic = self.deviceModel.swich_way_nameDic;
+    [model updatePropertyWithModel:MKDeviceModelManager.shared.deviceModel];
+    if (MKDeviceModelManager.shared.deviceModel.device_mode == MKDevice_swich) {
+        model.swich_way_nameDic = MKDeviceModelManager.shared.deviceModel.swich_way_nameDic;
     }
     model.local_name = localName;
     WS(weakSelf);
@@ -188,16 +183,15 @@
 #pragma mark - interface
 - (void)updateFirmware{
     MKUpdateFirmwareController *vc = [[MKUpdateFirmwareController alloc] init];
-    vc.deviceModel = self.deviceModel;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (BOOL)canClickEnable{
-    if (self.deviceModel.device_mode == MKDevice_plug && self.deviceModel.plugState == MKSmartPlugOffline) {
+    if (MKDeviceModelManager.shared.deviceModel.device_mode == MKDevice_plug && MKDeviceModelManager.shared.deviceModel.plugState == MKSmartPlugOffline) {
         [self.view showCentralToast:@"Device offline,please check."];
         return NO;
     }
-    if (self.deviceModel.device_mode == MKDevice_swich && self.deviceModel.swichState == MKSmartSwichOffline) {
+    if (MKDeviceModelManager.shared.deviceModel.device_mode == MKDevice_swich && MKDeviceModelManager.shared.deviceModel.swichState == MKSmartSwichOffline) {
         [self.view showCentralToast:@"Device offline,please check."];
         return NO;
     }
@@ -223,7 +217,7 @@
 }
 
 - (void)modifyNameSuccess:(NSString *)localName{
-    self.deviceModel.local_name = localName;
+    MKDeviceModelManager.shared.deviceModel.local_name = localName;
     MKDeviceInfoModel *nameModel = self.dataList[0];
     nameModel.rightMsg = localName;
     [UIView performWithoutAnimation:^{
@@ -236,7 +230,7 @@
 - (void)loadDatas{
     MKDeviceInfoModel *nameModel = [[MKDeviceInfoModel alloc] init];
     nameModel.leftMsg = @"Modify device name";
-    nameModel.rightMsg = self.deviceModel.local_name;
+    nameModel.rightMsg = MKDeviceModelManager.shared.deviceModel.local_name;
     [self.dataList addObject:nameModel];
     
     MKDeviceInfoModel *infoModel = [[MKDeviceInfoModel alloc] init];
@@ -244,16 +238,16 @@
     [self.dataList addObject:infoModel];
     
     MKDeviceInfoModel *firmwareModel = [[MKDeviceInfoModel alloc] init];
-    firmwareModel.leftMsg = @"Check firmware update";
+    firmwareModel.leftMsg = @"Check update";
     [self.dataList addObject:firmwareModel];
     
     MKDeviceInfoModel *powerStatusModel = [[MKDeviceInfoModel alloc] init];
     powerStatusModel.leftMsg = @"Modify power on status";
     [self.dataList addObject:powerStatusModel];
     
-    MKDeviceInfoModel *aboutModel = [[MKDeviceInfoModel alloc] init];
-    aboutModel.leftMsg = @"About";
-    [self.dataList addObject:aboutModel];
+//    MKDeviceInfoModel *aboutModel = [[MKDeviceInfoModel alloc] init];
+//    aboutModel.leftMsg = @"About";
+//    [self.dataList addObject:aboutModel];
     
     [self.tableView reloadData];
 }

@@ -7,7 +7,6 @@
 //
 
 #import "MKConfigServerDeviceController.h"
-#import "MKBaseTableView.h"
 
 #import "MKConfigServerConnectModeCell.h"
 #import "MKConfigServerSSLCertCell.h"

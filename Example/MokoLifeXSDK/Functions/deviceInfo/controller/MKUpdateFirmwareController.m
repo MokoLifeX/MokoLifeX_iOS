@@ -7,7 +7,6 @@
 //
 
 #import "MKUpdateFirmwareController.h"
-#import "MKBaseTableView.h"
 
 #import "MKUpdateFirmwareHostTypeCell.h"
 #import "MKUpdateFirmwareCell.h"
@@ -46,7 +45,7 @@ NSString *const deviceMacAddress = @"deviceMacAddress";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.titleLabel.text = @"Check Firmware Update";
+    self.titleLabel.text = @"Check Update";
     self.titleLabel.textColor = COLOR_WHITE_MACROS;
     self.custom_naviBarColor = UIColorFromRGB(0x0188cc);
     [self.view addSubview:self.tableView];
@@ -110,7 +109,7 @@ NSString *const deviceMacAddress = @"deviceMacAddress";
     MKUpdateFirmwareTypeCell *typeCell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
     [[MKHudManager share] showHUDWithTitle:@"Updating..." inView:self.view isPenetration:NO];
     WS(weakSelf);//发送成功订阅升级结果主题
-    [MKMQTTServerInterface updateFile:[self fileType:[typeCell currentFileType]] host:host port:[port integerValue] catalogue:catalogue topic:[self.deviceModel currentSubscribedTopic] mqttID:self.deviceModel.mqttID sucBlock:^{
+    [MKMQTTServerInterface updateFile:[self fileType:[typeCell currentFileType]] host:host port:[port integerValue] catalogue:catalogue topic:MKDeviceModelManager.shared.subTopic mqttID:MKDeviceModelManager.shared.deviceModel.mqttID sucBlock:^{
         //监听升级结果
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(firmwareUpdateResult:)
@@ -125,7 +124,7 @@ NSString *const deviceMacAddress = @"deviceMacAddress";
 #pragma mark - note
 - (void)firmwareUpdateResult:(NSNotification *)note{
     NSDictionary *deviceDic = note.userInfo[@"userInfo"];
-    if (!ValidDict(deviceDic) || ![deviceDic[@"id"] isEqualToString:self.deviceModel.mqttID]) {
+    if (!ValidDict(deviceDic) || ![deviceDic[@"id"] isEqualToString:MKDeviceModelManager.shared.deviceModel.mqttID]) {
         return;
     }
     //固件升级结果

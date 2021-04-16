@@ -7,3 +7,4 @@
 #import "MKMQTTServerInterface.h"
 #import "MKMQTTServerInterface+MKSmartPlug.h"
 #import "MKMQTTServerInterface+MKSmartSwich.h"
+#import "MKMQTTServerInterface+MK115Add.h"

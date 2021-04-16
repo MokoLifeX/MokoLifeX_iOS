@@ -91,6 +91,10 @@ static CGFloat const offset_X = 20.f;
             [weakSelf.view showCentralToast:error.userInfo[@"errorInfo"]];
             return ;
         }
+        if (!success || !deviceModel) {
+            [weakSelf.view showCentralToast:@"Connect Failed"];
+            return ;
+        }
         [[NSNotificationCenter defaultCenter] postNotificationName:MKNeedReadDataFromLocalNotification object:nil];
         MKSaveDeviceNameController *vc = [[MKSaveDeviceNameController alloc] init];
         MKDeviceModel *tempModel = [[MKDeviceModel alloc] init];

@@ -27,7 +27,7 @@
                   mqttID:(NSString *)mqttID
                 sucBlock:(void (^)(void))sucBlock
              failedBlock:(void (^)(NSError *error))failedBlock {
-    if (value < 10 || value > 2530) {
+    if (value < 10 || value > 3795) {
         [MKMQTTServerErrorBlockAdopter operationParamsErrorBlock:failedBlock];
         return;
     }
@@ -252,22 +252,22 @@
         if (!protocol || ![protocol conformsToProtocol:@protocol(mk_ledColorConfigProtocol)]) {
             return NO;
         }
-        if (protocol.b_color < 1 || protocol.b_color >= 2525) {
+        if (protocol.b_color < 1 || protocol.b_color >= 3790) {
             return NO;
         }
-        if (protocol.g_color <= protocol.b_color || protocol.g_color >= 2526) {
+        if (protocol.g_color <= protocol.b_color || protocol.g_color >= 3791) {
             return NO;
         }
-        if (protocol.y_color <= protocol.g_color || protocol.y_color >= 2527) {
+        if (protocol.y_color <= protocol.g_color || protocol.y_color >= 3792) {
             return NO;
         }
-        if (protocol.o_color <= protocol.y_color || protocol.o_color >= 2528) {
+        if (protocol.o_color <= protocol.y_color || protocol.o_color >= 3793) {
             return NO;
         }
-        if (protocol.r_color <= protocol.o_color || protocol.r_color >= 2529) {
+        if (protocol.r_color <= protocol.o_color || protocol.r_color >= 3794) {
             return NO;
         }
-        if (protocol.p_color <= protocol.r_color || protocol.p_color >= 2530) {
+        if (protocol.p_color <= protocol.r_color || protocol.p_color >= 3795) {
             return NO;
         }
     }

@@ -280,7 +280,7 @@
 #pragma mark - UI
 
 - (void)loadEnergyIntervalUI {
-    UILabel *msgLabel1 = [self loadMsgLabel:@"Energy accumulated interval(min)"];
+    UILabel *msgLabel1 = [self loadMsgLabel:@"Energy storage period(min)"];
     [self.view addSubview:msgLabel1];
     [msgLabel1 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(15.f);

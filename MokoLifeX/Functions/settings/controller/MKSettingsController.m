@@ -172,7 +172,7 @@
 
 #pragma mark - private method
 - (void)resetEnergyConsumptionAlert {
-    NSString *msg = @"Please confirmalue again whether to reset the accumulated energy value? Value will be recounted after reset.";
+    NSString *msg = @"Please confirm again whether to reset energy consumption data. After reset, all energy data will be cleaned.";
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Reset Energy Consumption"
                                                                              message:msg
                                                                       preferredStyle:UIAlertControllerStyleAlert];

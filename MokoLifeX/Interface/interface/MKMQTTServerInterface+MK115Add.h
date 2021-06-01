@@ -26,27 +26,27 @@ typedef NS_ENUM(NSInteger, mk_ledColorType) {
 @protocol mk_ledColorConfigProtocol <NSObject>
 
 /// Blue..
-/// 0 <  b_color < 2525.
+/// 0 <  b_color < =3790.
 @property (nonatomic, assign)NSInteger b_color;
 
 /// Green
-/// b_color < g_color < 2526.
+/// b_color < g_color <= 3791.
 @property (nonatomic, assign)NSInteger g_color;
 
 /// Yellow
-/// g_color < y_color < 2527.
+/// g_color < y_color < =3792.
 @property (nonatomic, assign)NSInteger y_color;
 
 /// Orange
-/// y_color < o_color < 2528.
+/// y_color < o_color < =3793.
 @property (nonatomic, assign)NSInteger o_color;
 
 /// Red
-/// o_color < r_color < 2529.
+/// o_color < r_color <=3794.
 @property (nonatomic, assign)NSInteger r_color;
 
 /// Purple
-/// r_color < p_color <  2530.
+/// r_color < p_color <=  3795.
 @property (nonatomic, assign)NSInteger p_color;
 
 @end
@@ -66,7 +66,7 @@ typedef NS_ENUM(NSInteger, mk_ledColorType) {
                        failedBlock:(void (^)(NSError *error))failedBlock;
 
 /// Set device overload status.
-/// @param value overload status.10-2530W
+/// @param value overload status.10-3795W
 /// @param topic topic
 /// @param mqttID mqttID
 /// @param sucBlock Success callback

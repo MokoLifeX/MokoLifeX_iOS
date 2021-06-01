@@ -129,8 +129,8 @@ static CGFloat const alertViewHeight = 230.f;
  */
 - (void)confirmButtonPressed{
     //先进行校验，看看wifi的ssid和wifi 密码是否输入了
-    NSString *ssid = [self.wifiNameTextField.text stringByReplacingOccurrencesOfString:@" " withString:@""];
-    NSString *password = [self.wifiPasswordTextField.text stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSString *ssid = self.wifiNameTextField.text;
+    NSString *password = self.wifiPasswordTextField.text;
     if (!ValidStr(ssid)) {
         [self.alertView showCentralToast:@"Please enter a valid name of wifi"];
         return;
@@ -165,7 +165,7 @@ static CGFloat const alertViewHeight = 230.f;
 
 - (UITextField *)wifiNameTextField{
     if (!_wifiNameTextField) {
-        _wifiNameTextField = [MKCommonlyUIHelper configServerTextField];
+        _wifiNameTextField = [self loadTextField];
         _wifiNameTextField.keyboardType = UIKeyboardTypeDefault;
     }
     return _wifiNameTextField;
@@ -180,9 +180,24 @@ static CGFloat const alertViewHeight = 230.f;
 
 - (UITextField *)wifiPasswordTextField{
     if (!_wifiPasswordTextField) {
-        _wifiPasswordTextField = [MKCommonlyUIHelper configServerTextField];
+        _wifiPasswordTextField = [self loadTextField];
     }
     return _wifiPasswordTextField;
+}
+
+- (UITextField *)loadTextField {
+    UITextField *textField = [[UITextField alloc] init];
+    textField.backgroundColor = COLOR_WHITE_MACROS;
+    textField.borderStyle = UITextBorderStyleNone;
+    textField.textColor = DEFAULT_TEXT_COLOR;
+    textField.textAlignment = NSTextAlignmentLeft;
+    textField.font = MKFont(15.f);
+    
+    textField.layer.masksToBounds = YES;
+    textField.layer.borderColor = CUTTING_LINE_COLOR.CGColor;
+    textField.layer.borderWidth = CUTTING_LINE_HEIGHT;
+    textField.layer.cornerRadius = 5.f;
+    return textField;
 }
 
 @end

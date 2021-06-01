@@ -43,7 +43,6 @@
                                    selector:@selector(receiveElectricityData:)
                                        name:MKMQTTServerReceivedElectricityNotification
                                      object:nil];
-    // Do any additional setup after loading the view.
 }
 
 #pragma mark - UITableViewDelegate
@@ -74,7 +73,13 @@
     }
     if (ValidNum(deviceDic[@"voltage"])) {
         MKElectricityModel *volModel = self.dataList[1];
-        volModel.value = [NSString stringWithFormat:@"%.1f",([deviceDic[@"voltage"] integerValue] * 0.1)];
+        CGFloat voltage = 0;
+        if ([MKDeviceModelManager.shared.deviceModel.device_type isEqualToString:@"2"]) {
+            voltage = [deviceDic[@"voltage"] integerValue];
+        }else {
+            voltage = [deviceDic[@"voltage"] integerValue] * 0.1;
+        }
+        volModel.value = [NSString stringWithFormat:@"%.1f",voltage];
     }
     if (ValidNum(deviceDic[@"power"])) {
         MKElectricityModel *powerModel = self.dataList[2];

@@ -129,27 +129,27 @@ MKMeasuredPowerLEDCellDelegate>
         MKMeasuredPowerLEDModel *pModel = self.dataList[5];
         colorModel.p_color = [pModel.textValue integerValue];
         
-        if (colorModel.b_color < 1 || colorModel.b_color >= 3790) {
+        if (colorModel.b_color < 1 || colorModel.b_color > 3790) {
             [self.view showCentralToast:@"Param1 Error"];
             return;
         }
-        if (colorModel.g_color <= colorModel.b_color || colorModel.g_color >= 3791) {
+        if (colorModel.g_color <= colorModel.b_color || colorModel.g_color > 3791) {
             [self.view showCentralToast:@"Param2 Error"];
             return;
         }
-        if (colorModel.y_color <= colorModel.g_color || colorModel.y_color >= 3792) {
+        if (colorModel.y_color <= colorModel.g_color || colorModel.y_color > 3792) {
             [self.view showCentralToast:@"Param3 Error"];
             return;
         }
-        if (colorModel.o_color <= colorModel.y_color || colorModel.o_color >= 3793) {
+        if (colorModel.o_color <= colorModel.y_color || colorModel.o_color > 3793) {
             [self.view showCentralToast:@"Param4 Error"];
             return;
         }
-        if (colorModel.r_color <= colorModel.o_color || colorModel.r_color >= 3794) {
+        if (colorModel.r_color <= colorModel.o_color || colorModel.r_color > 3794) {
             [self.view showCentralToast:@"Param5 Error"];
             return;
         }
-        if (colorModel.p_color <= colorModel.r_color || colorModel.p_color >= 3795) {
+        if (colorModel.p_color <= colorModel.r_color || colorModel.p_color > 3795) {
             [self.view showCentralToast:@"Param6 Error"];
             return;
         }
@@ -184,18 +184,18 @@ MKMeasuredPowerLEDCellDelegate>
         return;
     }
     [[MKHudManager share] hide];
-    dispatch_cancel(self.readTimer);
-    self.currentColorType = [deviceDic[@"led_state"] integerValue];
-    if (self.currentColorType == mk_ledColorTransitionSmoothly || self.currentColorType == mk_ledColorTransitionDirectly) {
-        MKMeasuredPowerLEDColorModel *colorModel = [[MKMeasuredPowerLEDColorModel alloc] init];
-        colorModel.b_color = [deviceDic[@"blue"] integerValue];
-        colorModel.g_color = [deviceDic[@"green"] integerValue];
-        colorModel.y_color = [deviceDic[@"yellow"] integerValue];
-        colorModel.o_color = [deviceDic[@"orange"] integerValue];
-        colorModel.r_color = [deviceDic[@"red"] integerValue];
-        colorModel.p_color = [deviceDic[@"purple"] integerValue];
-        [self setupTableDatas:colorModel];
+    if (self.readTimer) {
+        dispatch_cancel(self.readTimer);
     }
+    self.currentColorType = [deviceDic[@"led_state"] integerValue];
+    MKMeasuredPowerLEDColorModel *colorModel = [[MKMeasuredPowerLEDColorModel alloc] init];
+    colorModel.b_color = [deviceDic[@"blue"] integerValue];
+    colorModel.g_color = [deviceDic[@"green"] integerValue];
+    colorModel.y_color = [deviceDic[@"yellow"] integerValue];
+    colorModel.o_color = [deviceDic[@"orange"] integerValue];
+    colorModel.r_color = [deviceDic[@"red"] integerValue];
+    colorModel.p_color = [deviceDic[@"purple"] integerValue];
+    [self setupTableDatas:colorModel];
     [self.tableView reloadData];
     [self.headerView updateColorType:self.currentColorType];
 }

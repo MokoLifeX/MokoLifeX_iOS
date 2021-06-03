@@ -26,7 +26,7 @@ typedef NS_ENUM(NSInteger, mk_ledColorType) {
 @protocol mk_ledColorConfigProtocol <NSObject>
 
 /// Blue..
-/// 0 <  b_color < =3790.
+/// 1 <=  b_color <= 3790.
 @property (nonatomic, assign)NSInteger b_color;
 
 /// Green
@@ -34,15 +34,15 @@ typedef NS_ENUM(NSInteger, mk_ledColorType) {
 @property (nonatomic, assign)NSInteger g_color;
 
 /// Yellow
-/// g_color < y_color < =3792.
+/// g_color < y_color <= 3792.
 @property (nonatomic, assign)NSInteger y_color;
 
 /// Orange
-/// y_color < o_color < =3793.
+/// y_color < o_color <= 3793.
 @property (nonatomic, assign)NSInteger o_color;
 
 /// Red
-/// o_color < r_color <=3794.
+/// o_color < r_color <= 3794.
 @property (nonatomic, assign)NSInteger r_color;
 
 /// Purple

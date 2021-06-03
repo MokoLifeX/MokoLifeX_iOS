@@ -69,21 +69,21 @@
     }
     if (ValidNum(deviceDic[@"current"])) {
         MKElectricityModel *currentModel = self.dataList[0];
-        currentModel.value = [NSString stringWithFormat:@"%ld",(long)[deviceDic[@"current"] integerValue]];
+        currentModel.value = [NSString stringWithFormat:@"%.1f",[deviceDic[@"current"] floatValue]];
     }
     if (ValidNum(deviceDic[@"voltage"])) {
         MKElectricityModel *volModel = self.dataList[1];
         CGFloat voltage = 0;
         if ([MKDeviceModelManager.shared.deviceModel.device_type isEqualToString:@"2"]) {
-            voltage = [deviceDic[@"voltage"] integerValue];
+            voltage = [deviceDic[@"voltage"] floatValue];
         }else {
-            voltage = [deviceDic[@"voltage"] integerValue] * 0.1;
+            voltage = [deviceDic[@"voltage"] floatValue] * 0.1;
         }
         volModel.value = [NSString stringWithFormat:@"%.1f",voltage];
     }
     if (ValidNum(deviceDic[@"power"])) {
         MKElectricityModel *powerModel = self.dataList[2];
-        powerModel.value = [NSString stringWithFormat:@"%ld",(long)[deviceDic[@"power"] integerValue]];
+        powerModel.value = [NSString stringWithFormat:@"%.1f",[deviceDic[@"power"] floatValue]];
     }
     [self.tableView reloadData];
 }

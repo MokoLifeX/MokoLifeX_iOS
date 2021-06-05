@@ -86,7 +86,7 @@ static NSString *const MKConfigServerHostCellIdenty = @"MKConfigServerHostCellId
  }
  */
 - (NSDictionary *)configServerCellValue{
-    NSString *host = [self.textField.text stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSString *host = self.textField.text;
     return @{@"host":host};
 }
 

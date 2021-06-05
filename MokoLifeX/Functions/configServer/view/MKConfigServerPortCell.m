@@ -104,7 +104,7 @@ static NSString *const MKConfigServerPortCellIdenty = @"MKConfigServerPortCellId
  }
  */
 - (NSDictionary *)configServerCellValue{
-    NSString *port = [self.textField.text stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSString *port = self.textField.text;
     return @{
              @"port":port,
              @"cleanSession":@(self.switchView.on)

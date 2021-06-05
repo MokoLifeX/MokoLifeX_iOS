@@ -63,7 +63,7 @@ static CGFloat const alertViewHeight = 190.f;
 
 #pragma mark - event method
 - (void)confirmButtonPressed{
-    NSString *name = [self.textField.text stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSString *name = self.textField.text;
     if (!ValidStr(name)) {
         if (self.confirmBlock) {
             self.confirmBlock(YES, nil);

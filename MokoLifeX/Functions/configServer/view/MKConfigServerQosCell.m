@@ -132,7 +132,7 @@ static NSString *const MKConfigServerQosCellIdenty = @"MKConfigServerQosCellIden
  }
  */
 - (NSDictionary *)configServerCellValue{
-    NSString *keepAlive = [self.aliveTextField.text stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSString *keepAlive = self.aliveTextField.text;
     return @{
              @"qos":self.qosValueLabel.text,
              @"keepAlive":keepAlive

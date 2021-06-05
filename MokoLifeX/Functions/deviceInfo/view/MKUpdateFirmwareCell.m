@@ -64,7 +64,7 @@ static NSString *const MKUpdateFirmwareCellIdenty = @"MKUpdateFirmwareCellIdenty
 
 #pragma mark - MKUpdateCellProtocol
 - (NSString *)currentValue{
-    return [self.textField.text stringByReplacingOccurrencesOfString:@" " withString:@""];
+    return self.textField.text;
 }
 
 #pragma mark - public method

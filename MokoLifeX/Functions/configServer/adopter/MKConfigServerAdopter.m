@@ -51,13 +51,15 @@
     //Username
     MKConfigServerNormalCell *userNameCell = [MKConfigServerNormalCell initCellWithTableView:tableView];
     userNameCell.msg = @"Username";
+    userNameCell.textField.clearButtonMode = UITextFieldViewModeAlways;
     [userNameCell setParams:SafeStr(configModel.userName)];
     [dataList addObject:userNameCell];
     
     //Password
     MKConfigServerNormalCell *passwordCell = [MKConfigServerNormalCell initCellWithTableView:tableView];
     passwordCell.msg = @"Password";
-    passwordCell.secureTextEntry = YES;
+    passwordCell.secureTextEntry = NO;
+    passwordCell.textField.clearButtonMode = UITextFieldViewModeAlways;
     [passwordCell setParams:SafeStr(configModel.password)];
     [dataList addObject:passwordCell];
     

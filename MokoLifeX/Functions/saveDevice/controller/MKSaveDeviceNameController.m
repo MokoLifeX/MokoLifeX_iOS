@@ -55,7 +55,7 @@
 
 #pragma mark - event method
 - (void)doneButtonPressed{
-    self.deviceModel.local_name = [self.textField.text stringByReplacingOccurrencesOfString:@" " withString:@""];
+    self.deviceModel.local_name = self.textField.text;
     if (!ValidStr(self.deviceModel.local_name)) {
         [self.view showCentralToast:@"Device name cann't be blank."];
         return;

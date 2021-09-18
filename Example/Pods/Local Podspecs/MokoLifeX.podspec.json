@@ -1,0 +1,59 @@
+{
+  "name": "MokoLifeX",
+  "version": "0.1.0",
+  "summary": "A short description of MokoLifeX.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/aadyx2007@163.com/MokoLifeX",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "aadyx2007@163.com": "aadyx2007@163.com"
+  },
+  "source": {
+    "git": "https://github.com/aadyx2007@163.com/MokoLifeX.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "12.0"
+  },
+  "source_files": "MokoLifeX/Classes/**/*",
+  "resource_bundles": {
+    "MokoLifeX": [
+      "MokoLifeX/Assets/*.*"
+    ]
+  },
+  "dependencies": {
+    "MKBaseModuleLibrary": [
+
+    ],
+    "MKCustomUIModule": [
+
+    ],
+    "MKBaseMQTTModule": [
+
+    ],
+    "MLInputDodger": [
+
+    ],
+    "FMDB": [
+
+    ],
+    "CTMediator": [
+
+    ],
+    "AFNetworking": [
+
+    ],
+    "CocoaAsyncSocket": [
+
+    ],
+    "MQTTClient": [
+
+    ],
+    "FLAnimatedImage": [
+
+    ]
+  }
+}

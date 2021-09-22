@@ -24,12 +24,11 @@
 
 #import "MKLFXSocketManager.h"
 
+#import "CTMediator+MKLFXAdd.h"
+
 #import "MKLFXConnectShowView.h"
 
 #import "MKLFXOperationStepsController.h"
-#import "MKLFXAOVMDeviceController.h"
-#import "MKLFXBOVMDeviceController.h"
-#import "MKLFXCServerForDeviceController.h"
 
 @interface MKLFXAddDeviceController ()
 
@@ -124,28 +123,8 @@
 }
 
 - (void)pushMQTTForDevicePage:(NSDictionary *)deviceInfo {
-    NSInteger deviceType = [deviceInfo[@"device_type"] integerValue];
-    if (deviceType == 0 || deviceType == 1) {
-        //MK102、MK112、MK114
-        MKLFXAOVMDeviceController *vc = [[MKLFXAOVMDeviceController alloc] init];
-        vc.deviceInfo = deviceInfo;
-        [self.navigationController pushViewController:vc animated:YES];
-        return;
-    }
-    if (deviceType == 2 || deviceType == 3) {
-        //MK115、MK116
-        MKLFXBOVMDeviceController *vc = [[MKLFXBOVMDeviceController alloc] init];
-        vc.deviceInfo = deviceInfo;
-        [self.navigationController pushViewController:vc animated:YES];
-        return;
-    }
-    if (deviceType == 4 || deviceType == 5) {
-        //MK117、MK117D
-        MKLFXCServerForDeviceController *vc = [[MKLFXCServerForDeviceController alloc] init];
-        vc.deviceInfo = deviceInfo;
-        [self.navigationController pushViewController:vc animated:YES];
-        return;
-    }
+    UIViewController *vc = [[CTMediator sharedInstance] CTMediator_MokoLifeX_ServerForDevicePage:deviceInfo];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - UI

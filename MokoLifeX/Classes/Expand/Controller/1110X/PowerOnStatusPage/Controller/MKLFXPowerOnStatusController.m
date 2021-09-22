@@ -20,9 +20,6 @@
 
 #import "MKLFXDeviceModel.h"
 
-#import "MKLFXAMQTTInterface.h"
-#import "MKLFXAMQTTManager.h"
-
 
 @interface MKLFXPowerOnStatusController ()<UITableViewDelegate, UITableViewDataSource>
 

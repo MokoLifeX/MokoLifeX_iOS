@@ -10,7 +10,7 @@
 
 #import "MKMacroDefines.h"
 
-#import "MKLFXMQTTManager.h"
+#import "MKLFXServerManager.h"
 
 NSString *const MKLFXDeviceModelOfflineNotification = @"MKLFXDeviceModelOfflineNotification";
 
@@ -86,15 +86,15 @@ NSString *const MKLFXDeviceModelOfflineNotification = @"MKLFXDeviceModelOfflineN
 }
 
 - (NSString *)currentSubscribedTopic {
-    if (ValidStr([MKLFXMQTTManager shared].publishedTopic)) {
-        return [MKLFXMQTTManager shared].publishedTopic;
+    if (ValidStr([MKLFXServerManager shared].serverParams.publishTopic)) {
+        return [MKLFXServerManager shared].serverParams.publishTopic;
     }
     return self.subscribedTopic;
 }
 
 - (NSString *)currentPublishedTopic {
-    if (ValidStr([MKLFXMQTTManager shared].subscribeTopic)) {
-        return [MKLFXMQTTManager shared].subscribeTopic;
+    if (ValidStr([MKLFXServerManager shared].serverParams.subscribeTopic)) {
+        return [MKLFXServerManager shared].serverParams.subscribeTopic;
     }
     return self.publishedTopic;
 }

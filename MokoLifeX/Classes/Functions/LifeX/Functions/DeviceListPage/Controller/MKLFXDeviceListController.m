@@ -29,6 +29,8 @@
 
 #import "MKNetworkManager.h"
 
+#import "CTMediator+MKLFXAdd.h"
+
 #import "MKLFXMQTTManager.h"
 #import "MKLFXMQTTInterface.h"
 
@@ -39,10 +41,6 @@
 #import "MKLFXEasyShowView.h"
 
 #import "MKLFXAddDeviceController.h"
-
-#import "MKLFXASwitchStateController.h"
-#import "MKLFXBSwitchStateController.h"
-#import "MKLFXCSwitchStateController.h"
 
 static NSTimeInterval const kRefreshInterval = 0.5f;
 
@@ -104,31 +102,13 @@ MKLFXDeviceListCellDelegate>
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     MKLFXDeviceModel *deviceModel = self.dataList[indexPath.row];
-    if ([deviceModel.deviceType isEqualToString:@"4"] || [deviceModel.deviceType isEqualToString:@"5"]) {
-        //当前设备是MK117、MK117D
-        MKLFXCSwitchStateController *vc = [[MKLFXCSwitchStateController alloc] init];
-        vc.deviceModel = deviceModel;
-        [self.navigationController pushViewController:vc animated:YES];
-        return;
-    }
-    if (deviceModel.state == MKLFXDeviceModelStateOffline) {
+    if (![deviceModel.deviceType isEqualToString:@"4"] && ![deviceModel.deviceType isEqualToString:@"5"] && deviceModel.state == MKLFXDeviceModelStateOffline) {
+        //MK117、MK117D离线状态下也可以进入下一级页面
         [self.view showCentralToast:@"Device is off-line!"];
         return;
     }
-    if ([deviceModel.deviceType isEqualToString:@"0"] || [deviceModel.deviceType isEqualToString:@"1"]) {
-        //当前设备是MK112、MK114
-        MKLFXASwitchStateController *vc = [[MKLFXASwitchStateController alloc] init];
-        vc.deviceModel = deviceModel;
-        [self.navigationController pushViewController:vc animated:YES];
-        return;
-    }
-    if ([deviceModel.deviceType isEqualToString:@"2"] || [deviceModel.deviceType isEqualToString:@"3"]) {
-        //当前设备是MK115、MK116
-        MKLFXBSwitchStateController *vc = [[MKLFXBSwitchStateController alloc] init];
-        vc.deviceModel = deviceModel;
-        [self.navigationController pushViewController:vc animated:YES];
-        return;
-    }
+    UIViewController *vc = [[CTMediator sharedInstance] CTMediator_MokoLifeX_SwitchStatePage:deviceModel];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark - UITableViewDataSource

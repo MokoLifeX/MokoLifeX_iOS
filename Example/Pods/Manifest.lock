@@ -482,16 +482,1773 @@ PODS:
     - MKCustomUIModule/View/MKTextField
   - MLInputDodger (1.5.2)
   - MokoLifeX (0.1.0):
-    - AFNetworking
-    - CocoaAsyncSocket
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/ApplicationModule (= 0.1.0)
+    - MokoLifeX/CTMediator (= 0.1.0)
+    - MokoLifeX/DeviceModel (= 0.1.0)
+    - MokoLifeX/Expand (= 0.1.0)
+    - MokoLifeX/Functions (= 0.1.0)
+    - MokoLifeX/SDK (= 0.1.0)
+    - MokoLifeX/Target (= 0.1.0)
+  - MokoLifeX/ApplicationModule (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+  - MokoLifeX/CTMediator (0.1.0):
     - CTMediator
     - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/DeviceModel
+  - MokoLifeX/DeviceModel (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/SDK/MQTT
+  - MokoLifeX/Expand (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/Expand/Cell (= 0.1.0)
+    - MokoLifeX/Expand/Controller (= 0.1.0)
+    - MokoLifeX/Expand/DatabaseManager (= 0.1.0)
+    - MokoLifeX/Expand/View (= 0.1.0)
+  - MokoLifeX/Expand/Cell (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/Expand/Cell/PowerOnStatusCell (= 0.1.0)
+  - MokoLifeX/Expand/Cell/PowerOnStatusCell (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+  - MokoLifeX/Expand/Controller (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand/Controller/1110X (= 0.1.0)
+    - MokoLifeX/Expand/Controller/BaseController (= 0.1.0)
+    - MokoLifeX/Expand/Controller/Common (= 0.1.0)
+  - MokoLifeX/Expand/Controller/1110X (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand/Controller/1110X/DeviceInfoPage (= 0.1.0)
+    - MokoLifeX/Expand/Controller/1110X/ElectricityPage (= 0.1.0)
+    - MokoLifeX/Expand/Controller/1110X/PowerOnStatusPage (= 0.1.0)
+  - MokoLifeX/Expand/Controller/1110X/DeviceInfoPage (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand/Controller/1110X/DeviceInfoPage/Controller (= 0.1.0)
+    - MokoLifeX/Expand/Controller/1110X/DeviceInfoPage/Protocol (= 0.1.0)
+  - MokoLifeX/Expand/Controller/1110X/DeviceInfoPage/Controller (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand/Controller/1110X/DeviceInfoPage/Protocol
+    - MokoLifeX/Expand/Controller/BaseController
+  - MokoLifeX/Expand/Controller/1110X/DeviceInfoPage/Protocol (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/DeviceModel
+  - MokoLifeX/Expand/Controller/1110X/ElectricityPage (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand/Controller/1110X/ElectricityPage/Controller (= 0.1.0)
+  - MokoLifeX/Expand/Controller/1110X/ElectricityPage/Controller (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand/Controller/BaseController
+  - MokoLifeX/Expand/Controller/1110X/PowerOnStatusPage (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand/Controller/1110X/PowerOnStatusPage/Controller (= 0.1.0)
+    - MokoLifeX/Expand/Controller/1110X/PowerOnStatusPage/Protocol (= 0.1.0)
+  - MokoLifeX/Expand/Controller/1110X/PowerOnStatusPage/Controller (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand/Cell/PowerOnStatusCell
+    - MokoLifeX/Expand/Controller/1110X/PowerOnStatusPage/Protocol
+    - MokoLifeX/Expand/Controller/BaseController
+  - MokoLifeX/Expand/Controller/1110X/PowerOnStatusPage/Protocol (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/DeviceModel
+  - MokoLifeX/Expand/Controller/BaseController (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/DeviceModel
+  - MokoLifeX/Expand/Controller/Common (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand/Controller/Common/SaveDevice (= 0.1.0)
+    - MokoLifeX/Expand/Controller/Common/UpdatePage (= 0.1.0)
+  - MokoLifeX/Expand/Controller/Common/SaveDevice (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand/Controller/Common/SaveDevice/Controller (= 0.1.0)
+  - MokoLifeX/Expand/Controller/Common/SaveDevice/Controller (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand/Controller/BaseController
+    - MokoLifeX/Expand/DatabaseManager
+  - MokoLifeX/Expand/Controller/Common/UpdatePage (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand/Controller/Common/UpdatePage/Controller (= 0.1.0)
+    - MokoLifeX/Expand/Controller/Common/UpdatePage/Model (= 0.1.0)
+    - MokoLifeX/Expand/Controller/Common/UpdatePage/Protocol (= 0.1.0)
+  - MokoLifeX/Expand/Controller/Common/UpdatePage/Controller (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand/Controller/BaseController
+    - MokoLifeX/Expand/Controller/Common/UpdatePage/Model
+    - MokoLifeX/Expand/Controller/Common/UpdatePage/Protocol
+  - MokoLifeX/Expand/Controller/Common/UpdatePage/Model (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/DeviceModel
+  - MokoLifeX/Expand/Controller/Common/UpdatePage/Protocol (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/DeviceModel
+  - MokoLifeX/Expand/DatabaseManager (0.1.0):
+    - FLAnimatedImage
     - FMDB
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/DeviceModel
+  - MokoLifeX/Expand/View (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/Expand/View/CountdownPickerView (= 0.1.0)
+    - MokoLifeX/Expand/View/EnergyViews (= 0.1.0)
+  - MokoLifeX/Expand/View/CountdownPickerView (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+  - MokoLifeX/Expand/View/EnergyViews (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+  - MokoLifeX/Functions (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/LifeX (= 0.1.0)
+    - MokoLifeX/Functions/MK10X (= 0.1.0)
+    - MokoLifeX/Functions/MK117 (= 0.1.0)
+    - MokoLifeX/Functions/MK11X (= 0.1.0)
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/LifeX (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/LifeX/Functions (= 0.1.0)
+    - MokoLifeX/Functions/LifeX/MQTT (= 0.1.0)
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/LifeX/Functions (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/LifeX/Functions/AddDevicePage (= 0.1.0)
+    - MokoLifeX/Functions/LifeX/Functions/DeviceListPage (= 0.1.0)
+    - MokoLifeX/Functions/LifeX/Functions/OperationStepsPage (= 0.1.0)
+    - MokoLifeX/Functions/LifeX/Functions/ServerForAPP (= 0.1.0)
+    - MokoLifeX/Functions/LifeX/MQTT
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/LifeX/Functions/AddDevicePage (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/LifeX/Functions/AddDevicePage/Controller (= 0.1.0)
+    - MokoLifeX/Functions/LifeX/Functions/AddDevicePage/View (= 0.1.0)
+    - MokoLifeX/Functions/LifeX/MQTT
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/LifeX/Functions/AddDevicePage/Controller (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/LifeX/Functions/AddDevicePage/View
+    - MokoLifeX/Functions/LifeX/Functions/OperationStepsPage/Controller
+    - MokoLifeX/Functions/LifeX/MQTT
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/LifeX/Functions/AddDevicePage/View (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/LifeX/MQTT
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/LifeX/Functions/DeviceListPage (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/LifeX/Functions/DeviceListPage/Controller (= 0.1.0)
+    - MokoLifeX/Functions/LifeX/Functions/DeviceListPage/Model (= 0.1.0)
+    - MokoLifeX/Functions/LifeX/Functions/DeviceListPage/View (= 0.1.0)
+    - MokoLifeX/Functions/LifeX/MQTT
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/LifeX/Functions/DeviceListPage/Controller (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/LifeX/Functions/AddDevicePage/Controller
+    - MokoLifeX/Functions/LifeX/Functions/DeviceListPage/Model
+    - MokoLifeX/Functions/LifeX/Functions/DeviceListPage/View
+    - MokoLifeX/Functions/LifeX/MQTT
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/LifeX/Functions/DeviceListPage/Model (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/LifeX/MQTT
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/LifeX/Functions/DeviceListPage/View (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/LifeX/MQTT
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/LifeX/Functions/OperationStepsPage (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/LifeX/Functions/OperationStepsPage/Controller (= 0.1.0)
+    - MokoLifeX/Functions/LifeX/Functions/OperationStepsPage/View (= 0.1.0)
+    - MokoLifeX/Functions/LifeX/MQTT
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/LifeX/Functions/OperationStepsPage/Controller (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/LifeX/Functions/OperationStepsPage/View
+    - MokoLifeX/Functions/LifeX/MQTT
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/LifeX/Functions/OperationStepsPage/View (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/LifeX/MQTT
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/LifeX/Functions/ServerForAPP (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/LifeX/Functions/ServerForAPP/Controller (= 0.1.0)
+    - MokoLifeX/Functions/LifeX/Functions/ServerForAPP/Model (= 0.1.0)
+    - MokoLifeX/Functions/LifeX/Functions/ServerForAPP/View (= 0.1.0)
+    - MokoLifeX/Functions/LifeX/MQTT
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/LifeX/Functions/ServerForAPP/Controller (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/LifeX/Functions/ServerForAPP/Model
+    - MokoLifeX/Functions/LifeX/Functions/ServerForAPP/View
+    - MokoLifeX/Functions/LifeX/MQTT
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/LifeX/Functions/ServerForAPP/Model (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/LifeX/MQTT
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/LifeX/Functions/ServerForAPP/View (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/LifeX/MQTT
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/LifeX/MQTT (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK10X (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK10X/Functions (= 0.1.0)
+    - MokoLifeX/Functions/MK10X/MQTT (= 0.1.0)
+    - MokoLifeX/Functions/MK10X/Socket (= 0.1.0)
+    - MokoLifeX/Functions/MK10X/Target (= 0.1.0)
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK10X/Functions (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK10X/Functions/MorePage (= 0.1.0)
+    - MokoLifeX/Functions/MK10X/Functions/ServerForDevice (= 0.1.0)
+    - MokoLifeX/Functions/MK10X/Functions/SwitchStatePage (= 0.1.0)
+    - MokoLifeX/Functions/MK10X/MQTT
+    - MokoLifeX/Functions/MK10X/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK10X/Functions/MorePage (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK10X/Functions/MorePage/Controller (= 0.1.0)
+    - MokoLifeX/Functions/MK10X/Functions/MorePage/Model (= 0.1.0)
+    - MokoLifeX/Functions/MK10X/MQTT
+    - MokoLifeX/Functions/MK10X/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK10X/Functions/MorePage/Controller (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK10X/Functions/MorePage/Model
+    - MokoLifeX/Functions/MK10X/MQTT
+    - MokoLifeX/Functions/MK10X/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK10X/Functions/MorePage/Model (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK10X/MQTT
+    - MokoLifeX/Functions/MK10X/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK10X/Functions/ServerForDevice (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK10X/Functions/ServerForDevice/Controller (= 0.1.0)
+    - MokoLifeX/Functions/MK10X/Functions/ServerForDevice/Model (= 0.1.0)
+    - MokoLifeX/Functions/MK10X/Functions/ServerForDevice/View (= 0.1.0)
+    - MokoLifeX/Functions/MK10X/MQTT
+    - MokoLifeX/Functions/MK10X/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK10X/Functions/ServerForDevice/Controller (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK10X/Functions/ServerForDevice/Model
+    - MokoLifeX/Functions/MK10X/Functions/ServerForDevice/View
+    - MokoLifeX/Functions/MK10X/MQTT
+    - MokoLifeX/Functions/MK10X/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK10X/Functions/ServerForDevice/Model (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK10X/MQTT
+    - MokoLifeX/Functions/MK10X/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK10X/Functions/ServerForDevice/View (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK10X/Functions/ServerForDevice/Model
+    - MokoLifeX/Functions/MK10X/MQTT
+    - MokoLifeX/Functions/MK10X/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK10X/Functions/SwitchStatePage (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK10X/Functions/SwitchStatePage/Controller (= 0.1.0)
+    - MokoLifeX/Functions/MK10X/Functions/SwitchStatePage/View (= 0.1.0)
+    - MokoLifeX/Functions/MK10X/MQTT
+    - MokoLifeX/Functions/MK10X/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK10X/Functions/SwitchStatePage/Controller (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK10X/Functions/MorePage/Controller
+    - MokoLifeX/Functions/MK10X/Functions/SwitchStatePage/View
+    - MokoLifeX/Functions/MK10X/MQTT
+    - MokoLifeX/Functions/MK10X/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK10X/Functions/SwitchStatePage/View (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK10X/MQTT
+    - MokoLifeX/Functions/MK10X/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK10X/MQTT (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK10X/Socket (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK10X/Target (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK10X/Functions
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117 (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand (= 0.1.0)
+    - MokoLifeX/Functions/MK117/Functions (= 0.1.0)
+    - MokoLifeX/Functions/MK117/MQTT (= 0.1.0)
+    - MokoLifeX/Functions/MK117/Socket (= 0.1.0)
+    - MokoLifeX/Functions/MK117/Target (= 0.1.0)
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Expand (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand/BaseController (= 0.1.0)
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Expand/BaseController (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/Functions/ColorSettingPage (= 0.1.0)
+    - MokoLifeX/Functions/MK117/Functions/ConnectionPage (= 0.1.0)
+    - MokoLifeX/Functions/MK117/Functions/DeviceInfoPage (= 0.1.0)
+    - MokoLifeX/Functions/MK117/Functions/ElectricityPage (= 0.1.0)
+    - MokoLifeX/Functions/MK117/Functions/EnergyPage (= 0.1.0)
+    - MokoLifeX/Functions/MK117/Functions/EnergyReportPage (= 0.1.0)
+    - MokoLifeX/Functions/MK117/Functions/LEDSettingPage (= 0.1.0)
+    - MokoLifeX/Functions/MK117/Functions/LoadStatusPage (= 0.1.0)
+    - MokoLifeX/Functions/MK117/Functions/MQTTSettingForDevicePage (= 0.1.0)
+    - MokoLifeX/Functions/MK117/Functions/NTPConfigPage (= 0.1.0)
+    - MokoLifeX/Functions/MK117/Functions/OverThresholdPage (= 0.1.0)
+    - MokoLifeX/Functions/MK117/Functions/PowerOnStatusPage (= 0.1.0)
+    - MokoLifeX/Functions/MK117/Functions/PowerReportPage (= 0.1.0)
+    - MokoLifeX/Functions/MK117/Functions/ProtectionSettingPage (= 0.1.0)
+    - MokoLifeX/Functions/MK117/Functions/ServerForDevice (= 0.1.0)
+    - MokoLifeX/Functions/MK117/Functions/SettingsPage (= 0.1.0)
+    - MokoLifeX/Functions/MK117/Functions/StatusReportPage (= 0.1.0)
+    - MokoLifeX/Functions/MK117/Functions/SwitchStatePage (= 0.1.0)
+    - MokoLifeX/Functions/MK117/Functions/SystemTimePage (= 0.1.0)
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/ColorSettingPage (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/Functions/ColorSettingPage/Controller (= 0.1.0)
+    - MokoLifeX/Functions/MK117/Functions/ColorSettingPage/Model (= 0.1.0)
+    - MokoLifeX/Functions/MK117/Functions/ColorSettingPage/View (= 0.1.0)
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/ColorSettingPage/Controller (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/Functions/ColorSettingPage/Model
+    - MokoLifeX/Functions/MK117/Functions/ColorSettingPage/View
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/ColorSettingPage/Model (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/ColorSettingPage/View (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/ConnectionPage (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/Functions/ConnectionPage/Controller (= 0.1.0)
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/ConnectionPage/Controller (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/DeviceInfoPage (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/Functions/DeviceInfoPage/Controller (= 0.1.0)
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/DeviceInfoPage/Controller (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/ElectricityPage (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/Functions/ElectricityPage/Controller (= 0.1.0)
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/ElectricityPage/Controller (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/EnergyPage (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/Functions/EnergyPage/Controller (= 0.1.0)
+    - MokoLifeX/Functions/MK117/Functions/EnergyPage/Model (= 0.1.0)
+    - MokoLifeX/Functions/MK117/Functions/EnergyPage/View (= 0.1.0)
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/EnergyPage/Controller (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/Functions/EnergyPage/Model
+    - MokoLifeX/Functions/MK117/Functions/EnergyPage/View
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/EnergyPage/Model (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/EnergyPage/View (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/EnergyReportPage (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/Functions/EnergyReportPage/Controller (= 0.1.0)
+    - MokoLifeX/Functions/MK117/Functions/EnergyReportPage/Model (= 0.1.0)
+    - MokoLifeX/Functions/MK117/Functions/EnergyReportPage/View (= 0.1.0)
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/EnergyReportPage/Controller (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/Functions/EnergyReportPage/Model
+    - MokoLifeX/Functions/MK117/Functions/EnergyReportPage/View
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/EnergyReportPage/Model (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/EnergyReportPage/View (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/LEDSettingPage (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/Functions/LEDSettingPage/Controller (= 0.1.0)
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/LEDSettingPage/Controller (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/Functions/ColorSettingPage/Controller
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/LoadStatusPage (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/Functions/LoadStatusPage/Controller (= 0.1.0)
+    - MokoLifeX/Functions/MK117/Functions/LoadStatusPage/Model (= 0.1.0)
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/LoadStatusPage/Controller (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/Functions/LoadStatusPage/Model
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/LoadStatusPage/Model (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/MQTTSettingForDevicePage (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/Functions/MQTTSettingForDevicePage/Controller (= 0.1.0)
+    - MokoLifeX/Functions/MK117/Functions/MQTTSettingForDevicePage/View (= 0.1.0)
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/MQTTSettingForDevicePage/Controller (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/Functions/MQTTSettingForDevicePage/View
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/MQTTSettingForDevicePage/View (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/NTPConfigPage (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/Functions/NTPConfigPage/Controller (= 0.1.0)
+    - MokoLifeX/Functions/MK117/Functions/NTPConfigPage/Model (= 0.1.0)
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/NTPConfigPage/Controller (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/Functions/NTPConfigPage/Model
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/NTPConfigPage/Model (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/OverThresholdPage (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/Functions/OverThresholdPage/Controller (= 0.1.0)
+    - MokoLifeX/Functions/MK117/Functions/OverThresholdPage/Model (= 0.1.0)
+    - MokoLifeX/Functions/MK117/Functions/OverThresholdPage/View (= 0.1.0)
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/OverThresholdPage/Controller (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/Functions/OverThresholdPage/Model
+    - MokoLifeX/Functions/MK117/Functions/OverThresholdPage/View
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/OverThresholdPage/Model (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/OverThresholdPage/View (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/PowerOnStatusPage (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/Functions/PowerOnStatusPage/Controller (= 0.1.0)
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/PowerOnStatusPage/Controller (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/PowerReportPage (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/Functions/PowerReportPage/Controller (= 0.1.0)
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/PowerReportPage/Controller (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/ProtectionSettingPage (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/Functions/ProtectionSettingPage/Controller (= 0.1.0)
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/ProtectionSettingPage/Controller (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/Functions/OverThresholdPage/Controller
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/ServerForDevice (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/Functions/ServerForDevice/Controller (= 0.1.0)
+    - MokoLifeX/Functions/MK117/Functions/ServerForDevice/Model (= 0.1.0)
+    - MokoLifeX/Functions/MK117/Functions/ServerForDevice/View (= 0.1.0)
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/ServerForDevice/Controller (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/Functions/ServerForDevice/Model
+    - MokoLifeX/Functions/MK117/Functions/ServerForDevice/View
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/ServerForDevice/Model (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/ServerForDevice/View (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/SettingsPage (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/Functions/SettingsPage/Controller (= 0.1.0)
+    - MokoLifeX/Functions/MK117/Functions/SettingsPage/Model (= 0.1.0)
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/SettingsPage/Controller (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/Functions/ConnectionPage/Controller
+    - MokoLifeX/Functions/MK117/Functions/DeviceInfoPage/Controller
+    - MokoLifeX/Functions/MK117/Functions/EnergyReportPage/Controller
+    - MokoLifeX/Functions/MK117/Functions/LEDSettingPage/Controller
+    - MokoLifeX/Functions/MK117/Functions/LoadStatusPage/Controller
+    - MokoLifeX/Functions/MK117/Functions/MQTTSettingForDevicePage/Controller
+    - MokoLifeX/Functions/MK117/Functions/PowerOnStatusPage/Controller
+    - MokoLifeX/Functions/MK117/Functions/ProtectionSettingPage/Controller
+    - MokoLifeX/Functions/MK117/Functions/SettingsPage/Model
+    - MokoLifeX/Functions/MK117/Functions/StatusReportPage/Controller
+    - MokoLifeX/Functions/MK117/Functions/SystemTimePage/Controller
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/SettingsPage/Model (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/StatusReportPage (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/Functions/StatusReportPage/Controller (= 0.1.0)
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/StatusReportPage/Controller (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/SwitchStatePage (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/Functions/SwitchStatePage/Controller (= 0.1.0)
+    - MokoLifeX/Functions/MK117/Functions/SwitchStatePage/View (= 0.1.0)
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/SwitchStatePage/Controller (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/Functions/ElectricityPage/Controller
+    - MokoLifeX/Functions/MK117/Functions/EnergyPage/Controller
+    - MokoLifeX/Functions/MK117/Functions/SettingsPage/Controller
+    - MokoLifeX/Functions/MK117/Functions/SwitchStatePage/View
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/SwitchStatePage/View (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/SystemTimePage (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/Functions/SystemTimePage/Controller (= 0.1.0)
+    - MokoLifeX/Functions/MK117/Functions/SystemTimePage/View (= 0.1.0)
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/SystemTimePage/Controller (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/Functions/NTPConfigPage/Controller
+    - MokoLifeX/Functions/MK117/Functions/SystemTimePage/View
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/SystemTimePage/View (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/MQTT (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Socket (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Target (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Functions
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK11X (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK11X/Functions (= 0.1.0)
+    - MokoLifeX/Functions/MK11X/MQTT (= 0.1.0)
+    - MokoLifeX/Functions/MK11X/Socket (= 0.1.0)
+    - MokoLifeX/Functions/MK11X/Target (= 0.1.0)
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK11X/Functions (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK11X/Functions/ColorSettingPage (= 0.1.0)
+    - MokoLifeX/Functions/MK11X/Functions/ConfigDataPage (= 0.1.0)
+    - MokoLifeX/Functions/MK11X/Functions/EnergyPage (= 0.1.0)
+    - MokoLifeX/Functions/MK11X/Functions/MorePage (= 0.1.0)
+    - MokoLifeX/Functions/MK11X/Functions/ServerForDevice (= 0.1.0)
+    - MokoLifeX/Functions/MK11X/Functions/SettingsPage (= 0.1.0)
+    - MokoLifeX/Functions/MK11X/Functions/SwitchStatePage (= 0.1.0)
+    - MokoLifeX/Functions/MK11X/MQTT
+    - MokoLifeX/Functions/MK11X/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK11X/Functions/ColorSettingPage (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK11X/Functions/ColorSettingPage/Controller (= 0.1.0)
+    - MokoLifeX/Functions/MK11X/Functions/ColorSettingPage/Model (= 0.1.0)
+    - MokoLifeX/Functions/MK11X/Functions/ColorSettingPage/View (= 0.1.0)
+    - MokoLifeX/Functions/MK11X/MQTT
+    - MokoLifeX/Functions/MK11X/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK11X/Functions/ColorSettingPage/Controller (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK11X/Functions/ColorSettingPage/Model
+    - MokoLifeX/Functions/MK11X/Functions/ColorSettingPage/View
+    - MokoLifeX/Functions/MK11X/MQTT
+    - MokoLifeX/Functions/MK11X/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK11X/Functions/ColorSettingPage/Model (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK11X/MQTT
+    - MokoLifeX/Functions/MK11X/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK11X/Functions/ColorSettingPage/View (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK11X/MQTT
+    - MokoLifeX/Functions/MK11X/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK11X/Functions/ConfigDataPage (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK11X/Functions/ConfigDataPage/Controller (= 0.1.0)
+    - MokoLifeX/Functions/MK11X/Functions/ConfigDataPage/View (= 0.1.0)
+    - MokoLifeX/Functions/MK11X/MQTT
+    - MokoLifeX/Functions/MK11X/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK11X/Functions/ConfigDataPage/Controller (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK11X/Functions/ConfigDataPage/View
+    - MokoLifeX/Functions/MK11X/MQTT
+    - MokoLifeX/Functions/MK11X/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK11X/Functions/ConfigDataPage/View (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK11X/MQTT
+    - MokoLifeX/Functions/MK11X/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK11X/Functions/EnergyPage (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK11X/Functions/EnergyPage/Controller (= 0.1.0)
+    - MokoLifeX/Functions/MK11X/Functions/EnergyPage/Model (= 0.1.0)
+    - MokoLifeX/Functions/MK11X/MQTT
+    - MokoLifeX/Functions/MK11X/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK11X/Functions/EnergyPage/Controller (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK11X/Functions/EnergyPage/Model
+    - MokoLifeX/Functions/MK11X/MQTT
+    - MokoLifeX/Functions/MK11X/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK11X/Functions/EnergyPage/Model (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK11X/MQTT
+    - MokoLifeX/Functions/MK11X/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK11X/Functions/MorePage (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK11X/Functions/MorePage/Controller (= 0.1.0)
+    - MokoLifeX/Functions/MK11X/Functions/MorePage/Model (= 0.1.0)
+    - MokoLifeX/Functions/MK11X/MQTT
+    - MokoLifeX/Functions/MK11X/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK11X/Functions/MorePage/Controller (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK11X/Functions/MorePage/Model
+    - MokoLifeX/Functions/MK11X/MQTT
+    - MokoLifeX/Functions/MK11X/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK11X/Functions/MorePage/Model (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK11X/MQTT
+    - MokoLifeX/Functions/MK11X/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK11X/Functions/ServerForDevice (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK11X/Functions/ServerForDevice/Controller (= 0.1.0)
+    - MokoLifeX/Functions/MK11X/Functions/ServerForDevice/Model (= 0.1.0)
+    - MokoLifeX/Functions/MK11X/Functions/ServerForDevice/View (= 0.1.0)
+    - MokoLifeX/Functions/MK11X/MQTT
+    - MokoLifeX/Functions/MK11X/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK11X/Functions/ServerForDevice/Controller (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK11X/Functions/ServerForDevice/Model
+    - MokoLifeX/Functions/MK11X/Functions/ServerForDevice/View
+    - MokoLifeX/Functions/MK11X/MQTT
+    - MokoLifeX/Functions/MK11X/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK11X/Functions/ServerForDevice/Model (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK11X/MQTT
+    - MokoLifeX/Functions/MK11X/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK11X/Functions/ServerForDevice/View (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK11X/Functions/ServerForDevice/Model
+    - MokoLifeX/Functions/MK11X/MQTT
+    - MokoLifeX/Functions/MK11X/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK11X/Functions/SettingsPage (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK11X/Functions/SettingsPage/Controller (= 0.1.0)
+    - MokoLifeX/Functions/MK11X/Functions/SettingsPage/View (= 0.1.0)
+    - MokoLifeX/Functions/MK11X/MQTT
+    - MokoLifeX/Functions/MK11X/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK11X/Functions/SettingsPage/Controller (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK11X/Functions/ColorSettingPage/Controller
+    - MokoLifeX/Functions/MK11X/Functions/ConfigDataPage/Controller
+    - MokoLifeX/Functions/MK11X/Functions/SettingsPage/View
+    - MokoLifeX/Functions/MK11X/MQTT
+    - MokoLifeX/Functions/MK11X/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK11X/Functions/SettingsPage/View (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK11X/MQTT
+    - MokoLifeX/Functions/MK11X/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK11X/Functions/SwitchStatePage (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK11X/Functions/SwitchStatePage/Controller (= 0.1.0)
+    - MokoLifeX/Functions/MK11X/Functions/SwitchStatePage/View (= 0.1.0)
+    - MokoLifeX/Functions/MK11X/MQTT
+    - MokoLifeX/Functions/MK11X/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK11X/Functions/SwitchStatePage/Controller (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK11X/Functions/EnergyPage/Controller
+    - MokoLifeX/Functions/MK11X/Functions/MorePage/Controller
+    - MokoLifeX/Functions/MK11X/Functions/SettingsPage/Controller
+    - MokoLifeX/Functions/MK11X/Functions/SwitchStatePage/View
+    - MokoLifeX/Functions/MK11X/MQTT
+    - MokoLifeX/Functions/MK11X/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK11X/Functions/SwitchStatePage/View (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK11X/MQTT
+    - MokoLifeX/Functions/MK11X/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK11X/MQTT (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK11X/Socket (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK11X/Target (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK11X/Functions
+    - MokoLifeX/SDK
+  - MokoLifeX/SDK (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/SDK/MQTT (= 0.1.0)
+    - MokoLifeX/SDK/Socket (= 0.1.0)
+  - MokoLifeX/SDK/MQTT (0.1.0):
+    - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKBaseMQTTModule
     - MKCustomUIModule
     - MLInputDodger
-    - MQTTClient
+  - MokoLifeX/SDK/Socket (0.1.0):
+    - CocoaAsyncSocket
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+  - MokoLifeX/Target (0.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
   - MQTTClient (0.15.3):
     - MQTTClient/Core (= 0.15.3)
   - MQTTClient/Core (0.15.3):
@@ -547,7 +2304,7 @@ SPEC CHECKSUMS:
   MKBaseMQTTModule: a897389b91385b06f3eee1c9be26e89ca449ef93
   MKCustomUIModule: 886ed51a8ddfeaee966fad93a0b9af5056a2ecef
   MLInputDodger: 79a0e420a80d0d3bba122bf2639603cc76609ba8
-  MokoLifeX: 59c32ece3be8b46b0d63ce8415497197cbee77a4
+  MokoLifeX: 9748041f802e555eaf3c40d5adc4d9059d7290ce
   MQTTClient: 0dfa04e789479c2e461786464969895c1fcb0875
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
   WRNavigationBar: 10bfdf96addf14d640d07c2ef08a029c18d8af10

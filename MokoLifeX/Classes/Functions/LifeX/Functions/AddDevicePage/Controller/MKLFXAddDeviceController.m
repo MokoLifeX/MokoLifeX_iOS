@@ -123,6 +123,23 @@
 }
 
 - (void)pushMQTTForDevicePage:(NSDictionary *)deviceInfo {
+    //先判断当前有没有推出设备的MQTT配置页面
+    UIViewController *settingVC = nil;
+    for (UIViewController *vc in self.navigationController.viewControllers) {
+        if ([vc isKindOfClass:NSClassFromString(@"MKLFXAOVMDeviceController")] || [vc isKindOfClass:NSClassFromString(@"MKLFXBOVMDeviceController")] || [vc isKindOfClass:NSClassFromString(@"MKLFXCServerForDeviceController")]) {
+            settingVC = vc;
+            break;
+        }
+    }
+    if (settingVC && [settingVC isKindOfClass:UIViewController.class]) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+        if ([settingVC respondsToSelector:NSSelectorFromString(@"setDeviceInfo:")]) {
+            [settingVC performSelector:NSSelectorFromString(@"setDeviceInfo:") withObject:deviceInfo];
+        }
+#pragma clang diagnostic pop
+        return;
+    }
     UIViewController *vc = [[CTMediator sharedInstance] CTMediator_MokoLifeX_ServerForDevicePage:deviceInfo];
     [self.navigationController pushViewController:vc animated:YES];
 }

@@ -139,7 +139,7 @@ TODO: Add long description of the pod here.
         
         ssss.subspec 'ElectricityPage' do |sssss|
           sssss.subspec 'Controller' do |ssssss|
-            ssssss.source_files = 'MokoLifeX/Classes/Expand/Controller/1110X/ElectricityPage/**'
+            ssssss.source_files = 'MokoLifeX/Classes/Expand/Controller/1110X/ElectricityPage/Controller/**'
                         
             ssssss.dependency 'MokoLifeX/Expand/Controller/BaseController'
           end
@@ -211,6 +211,7 @@ TODO: Add long description of the pod here.
               ssssss.source_files = 'MokoLifeX/Classes/Functions/LifeX/Functions/DeviceListPage/Controller/**'
               
               ssssss.dependency 'MokoLifeX/Functions/LifeX/Functions/AddDevicePage/Controller'
+              ssssss.dependency 'MokoLifeX/Functions/LifeX/Functions/ServerForAPP/Controller'
               
               ssssss.dependency 'MokoLifeX/Functions/LifeX/Functions/DeviceListPage/View'
               ssssss.dependency 'MokoLifeX/Functions/LifeX/Functions/DeviceListPage/Model'

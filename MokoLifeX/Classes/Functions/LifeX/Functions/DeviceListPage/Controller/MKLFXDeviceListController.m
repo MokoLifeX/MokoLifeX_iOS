@@ -23,11 +23,9 @@
 #import "MKAlertController.h"
 #import "MKAboutController.h"
 
-#import "MKLFXServerForAppController.h"
+#import "MKNetworkManager.h"
 
 #import "MKLFXDeviceModel.h"
-
-#import "MKNetworkManager.h"
 
 #import "CTMediator+MKLFXAdd.h"
 
@@ -41,6 +39,7 @@
 #import "MKLFXEasyShowView.h"
 
 #import "MKLFXAddDeviceController.h"
+#import "MKLFXServerForAppController.h"
 
 static NSTimeInterval const kRefreshInterval = 0.5f;
 

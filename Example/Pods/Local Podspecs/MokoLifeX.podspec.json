@@ -1,6 +1,6 @@
 {
   "name": "MokoLifeX",
-  "version": "0.1.0",
+  "version": "0.1.20",
   "summary": "A short description of MokoLifeX.",
   "description": "TODO: Add long description of the pod here.",
   "homepage": "https://github.com/MokoLifeX/MokoLifeX_iOS",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/MokoLifeX/MokoLifeX_iOS.git",
-    "tag": "0.1.0"
+    "tag": "0.1.20"
   },
   "platforms": {
     "ios": "12.0"
@@ -193,7 +193,7 @@
                   "subspecs": [
                     {
                       "name": "Controller",
-                      "source_files": "MokoLifeX/Classes/Expand/Controller/1110X/ElectricityPage/**",
+                      "source_files": "MokoLifeX/Classes/Expand/Controller/1110X/ElectricityPage/Controller/**",
                       "dependencies": {
                         "MokoLifeX/Expand/Controller/BaseController": [
 
@@ -319,6 +319,9 @@
                       "source_files": "MokoLifeX/Classes/Functions/LifeX/Functions/DeviceListPage/Controller/**",
                       "dependencies": {
                         "MokoLifeX/Functions/LifeX/Functions/AddDevicePage/Controller": [
+
+                        ],
+                        "MokoLifeX/Functions/LifeX/Functions/ServerForAPP/Controller": [
 
                         ],
                         "MokoLifeX/Functions/LifeX/Functions/DeviceListPage/View": [

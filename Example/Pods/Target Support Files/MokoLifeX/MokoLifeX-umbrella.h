@@ -145,6 +145,7 @@
 #import "MKLFXDeviceModel.h"
 #import "MKLFXPowerOnStatusCell.h"
 #import "MKLFXDeviceInfoPageProtocol.h"
+#import "MKLFXElectricityController.h"
 #import "MKLFXPowerOnStatusProtocol.h"
 #import "MKLFXBaseController.h"
 #import "MKLFXUpdateModel.h"

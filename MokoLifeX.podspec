@@ -110,7 +110,7 @@ TODO: Add long description of the pod here.
         
         ssss.subspec 'DeviceInfoPage' do |sssss|
           sssss.subspec 'Controller' do |ssssss|
-            ssssss.source_files = 'MokoLifeX/Classes/Expand/Controller/1110X/DeviceInfoPage/**'
+            ssssss.source_files = 'MokoLifeX/Classes/Expand/Controller/1110X/DeviceInfoPage/Controller/**'
             
             ssssss.dependency 'MokoLifeX/Expand/Controller/BaseController'
             
@@ -123,7 +123,7 @@ TODO: Add long description of the pod here.
         
         ssss.subspec 'PowerOnStatusPage' do |sssss|
           sssss.subspec 'Controller' do |ssssss|
-            ssssss.source_files = 'MokoLifeX/Classes/Expand/Controller/1110X/PowerOnStatusPage/**'
+            ssssss.source_files = 'MokoLifeX/Classes/Expand/Controller/1110X/PowerOnStatusPage/Controller/**'
             
             ssssss.dependency 'MokoLifeX/Expand/Cell/PowerOnStatusCell'
             
@@ -150,7 +150,7 @@ TODO: Add long description of the pod here.
         
         ssss.subspec 'SaveDevice' do |sssss|
           sssss.subspec 'Controller' do |ssssss|
-            ssssss.source_files = 'MokoLifeX/Classes/Expand/Controller/Common/SaveDevice/**'
+            ssssss.source_files = 'MokoLifeX/Classes/Expand/Controller/Common/SaveDevice/Controller/**'
                         
             ssssss.dependency 'MokoLifeX/Expand/DatabaseManager'
             
@@ -160,7 +160,7 @@ TODO: Add long description of the pod here.
         
         ssss.subspec 'UpdatePage' do |sssss|
           sssss.subspec 'Controller' do |ssssss|
-            ssssss.source_files = 'MokoLifeX/Classes/Expand/Controller/Common/UpdatePage/**'
+            ssssss.source_files = 'MokoLifeX/Classes/Expand/Controller/Common/UpdatePage/Controller/**'
             
             ssssss.dependency 'MokoLifeX/Expand/Controller/BaseController'
             
@@ -269,7 +269,8 @@ TODO: Add long description of the pod here.
       sss.subspec 'Target' do |ssss|
         ssss.source_files = 'MokoLifeX/Classes/Functions/MK10X/Target/**'
         
-        ssss.dependency 'MokoLifeX/Functions/MK10X/Functions'
+        ssss.dependency 'MokoLifeX/Functions/MK10X/Functions/ServerForDevice/Controller'
+        ssss.dependency 'MokoLifeX/Functions/MK10X/Functions/SwitchStatePage/Controller'
       end
       
       sss.subspec 'Functions' do |ssss|
@@ -334,7 +335,8 @@ TODO: Add long description of the pod here.
       sss.subspec 'Target' do |ssss|
         ssss.source_files = 'MokoLifeX/Classes/Functions/MK11X/Target/**'
         
-        ssss.dependency 'MokoLifeX/Functions/MK11X/Functions'
+        ssss.dependency 'MokoLifeX/Functions/MK11X/Functions/ServerForDevice/Controller'
+        ssss.dependency 'MokoLifeX/Functions/MK11X/Functions/SwitchStatePage/Controller'
       end
       
       sss.subspec 'Functions' do |ssss|
@@ -452,7 +454,8 @@ TODO: Add long description of the pod here.
       sss.subspec 'Target' do |ssss|
         ssss.source_files = 'MokoLifeX/Classes/Functions/MK117/Target/**'
         
-        ssss.dependency 'MokoLifeX/Functions/MK117/Functions'
+        ssss.dependency 'MokoLifeX/Functions/MK117/Functions/ServerForDevice/Controller'
+        ssss.dependency 'MokoLifeX/Functions/MK117/Functions/SwitchStatePage/Controller'
       end
       
       sss.subspec 'Expand' do |ssss|

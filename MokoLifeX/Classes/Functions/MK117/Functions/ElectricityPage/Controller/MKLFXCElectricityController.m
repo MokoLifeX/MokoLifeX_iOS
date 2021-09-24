@@ -92,7 +92,7 @@
     }
     if (ValidNum(userInfo[@"data"][@"power_factor"])) {
         MKNormalTextCellModel *factorModel = self.dataList[3];
-        factorModel.rightMsg = [NSString stringWithFormat:@"%.2f",[userInfo[@"data"][@"power_factor"] floatValue] * 0.001];
+        factorModel.rightMsg = [NSString stringWithFormat:@"%.3f",[userInfo[@"data"][@"power_factor"] floatValue] * 0.001];
     }
     [self.tableView reloadData];
 }

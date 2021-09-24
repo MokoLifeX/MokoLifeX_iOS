@@ -632,6 +632,7 @@ TODO: Add long description of the pod here.
               ssssss.dependency 'MokoLifeX/Functions/MK117/Functions/LEDSettingPage/Controller'
               ssssss.dependency 'MokoLifeX/Functions/MK117/Functions/DeviceInfoPage/Controller'
               ssssss.dependency 'MokoLifeX/Functions/MK117/Functions/StatusReportPage/Controller'
+              ssssss.dependency 'MokoLifeX/Functions/MK117/Functions/PowerReportPage/Controller'
               ssssss.dependency 'MokoLifeX/Functions/MK117/Functions/EnergyReportPage/Controller'
               ssssss.dependency 'MokoLifeX/Functions/MK117/Functions/ConnectionPage/Controller'
               ssssss.dependency 'MokoLifeX/Functions/MK117/Functions/LoadStatusPage/Controller'

@@ -1,12 +1,12 @@
 //
-//  MKLFXCMQTTSSLForDeviceView.m
+//  MKLFXBMQTTSSLForDeviceView.m
 //  MokoLifeX_Example
 //
 //  Created by aa on 2021/8/22.
 //  Copyright © 2021 aadyx2007@163.com. All rights reserved.
 //
 
-#import "MKLFXCMQTTSSLForDeviceView.h"
+#import "MKLFXBMQTTSSLForDeviceView.h"
 
 #import "Masonry.h"
 
@@ -17,10 +17,10 @@
 #import "MKPickerView.h"
 #import "MKMQTTSSLCertificateView.h"
 
-@implementation MKLFXCMQTTSSLForDeviceViewModel
+@implementation MKLFXBMQTTSSLForDeviceViewModel
 @end
 
-@interface MKLFXCMQTTSSLForDeviceView ()<MKMQTTSSLCertificateViewDelegate>
+@interface MKLFXBMQTTSSLForDeviceView ()<MKMQTTSSLCertificateViewDelegate>
 
 @property (nonatomic, strong)UILabel *sslLabel;
 
@@ -40,7 +40,7 @@
 
 @end
 
-@implementation MKLFXCMQTTSSLForDeviceView
+@implementation MKLFXBMQTTSSLForDeviceView
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
@@ -121,21 +121,21 @@
 - (void)mk_fileSelectedButtonPressed:(NSInteger)index {
     if (index == 0) {
         //CA File
-        if ([self.delegate respondsToSelector:@selector(lfxc_mqtt_sslParams_device_caFilePressed)]) {
-            [self.delegate lfxc_mqtt_sslParams_device_caFilePressed];
+        if ([self.delegate respondsToSelector:@selector(lfxb_mqtt_sslParams_device_caFilePressed)]) {
+            [self.delegate lfxb_mqtt_sslParams_device_caFilePressed];
         }
         return;
     }
     if (index == 1) {
         //Client Key File
-        if ([self.delegate respondsToSelector:@selector(lfxc_mqtt_sslParams_device_clientKeyPressed)]) {
-            [self.delegate lfxc_mqtt_sslParams_device_clientKeyPressed];
+        if ([self.delegate respondsToSelector:@selector(lfxb_mqtt_sslParams_device_clientKeyPressed)]) {
+            [self.delegate lfxb_mqtt_sslParams_device_clientKeyPressed];
         }
         return;
     }
     //Client Cert File
-    if ([self.delegate respondsToSelector:@selector(lfxc_mqtt_sslParams_device_clientCertPressed)]) {
-        [self.delegate lfxc_mqtt_sslParams_device_clientCertPressed];
+    if ([self.delegate respondsToSelector:@selector(lfxb_mqtt_sslParams_device_clientCertPressed)]) {
+        [self.delegate lfxb_mqtt_sslParams_device_clientCertPressed];
     }
 }
 
@@ -144,8 +144,8 @@
     self.sslButton.selected = !self.sslButton.selected;
     [self updateSSLButtonIcon];
     self.bottomView.hidden = !self.sslButton.selected;
-    if ([self.delegate respondsToSelector:@selector(lfxc_mqtt_sslParams_device_sslStatusChanged:)]) {
-        [self.delegate lfxc_mqtt_sslParams_device_sslStatusChanged:self.sslButton.selected];
+    if ([self.delegate respondsToSelector:@selector(lfxb_mqtt_sslParams_device_sslStatusChanged:)]) {
+        [self.delegate lfxb_mqtt_sslParams_device_sslStatusChanged:self.sslButton.selected];
     }
 }
 
@@ -162,17 +162,17 @@
     [pickView showPickViewWithDataList:dataList selectedRow:index block:^(NSInteger currentRow) {
         [self.certificateButton setTitle:dataList[currentRow] forState:UIControlStateNormal];
         [self updateCertificateView:currentRow];
-        if ([self.delegate respondsToSelector:@selector(lfxc_mqtt_sslParams_device_certificateChanged:)]) {
-            [self.delegate lfxc_mqtt_sslParams_device_certificateChanged:currentRow];
+        if ([self.delegate respondsToSelector:@selector(lfxb_mqtt_sslParams_device_certificateChanged:)]) {
+            [self.delegate lfxb_mqtt_sslParams_device_certificateChanged:currentRow];
         }
     }];
 }
 
 #pragma mark - setter
-- (void)setDataModel:(MKLFXCMQTTSSLForDeviceViewModel *)dataModel {
+- (void)setDataModel:(MKLFXBMQTTSSLForDeviceViewModel *)dataModel {
     _dataModel = nil;
     _dataModel = dataModel;
-    if (!_dataModel || ![_dataModel isKindOfClass:MKLFXCMQTTSSLForDeviceViewModel.class]) {
+    if (!_dataModel || ![_dataModel isKindOfClass:MKLFXBMQTTSSLForDeviceViewModel.class]) {
         return;
     }
     self.sslButton.selected = _dataModel.sslIsOn;
@@ -204,7 +204,7 @@
 
 #pragma mark - private method
 - (void)updateSSLButtonIcon {
-    UIImage *image = (self.sslButton.selected ? LOADICON(@"MokoLifeX", @"MKLFXCMQTTSSLForDeviceView", @"lfx_switchSelectedIcon.png") : LOADICON(@"MokoLifeX", @"MKLFXCMQTTSSLForDeviceView", @"lfx_switchUnselectedIcon.png"));
+    UIImage *image = (self.sslButton.selected ? LOADICON(@"MokoLifeX", @"MKLFXBMQTTSSLForDeviceView", @"lfx_switchSelectedIcon.png") : LOADICON(@"MokoLifeX", @"MKLFXBMQTTSSLForDeviceView", @"lfx_switchUnselectedIcon.png"));
     [self.sslButton setImage:image forState:UIControlStateNormal];
 }
 

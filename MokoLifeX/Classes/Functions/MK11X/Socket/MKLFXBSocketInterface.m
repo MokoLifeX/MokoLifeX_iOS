@@ -44,6 +44,22 @@ static NSInteger const certPackageDataLength = 200;
     onceToken = 0;
 }
 
+- (BOOL)isConnected {
+    return [MKLFXSocketManager shared].isConnected;
+}
+
+- (void)connectWithSucBlock:(void (^)(void))sucBlock
+                failedBlock:(void (^)(NSError *error))failedBlock {
+    [[MKLFXSocketManager shared] connectWithHost:lfx_defaultHostIpAddress
+                                            port:lfx_defaultPort
+                                        sucBlock:sucBlock
+                                     failedBlock:failedBlock];
+}
+
+- (void)disconnect {
+    [[MKLFXSocketManager shared] disconnect];
+}
+
 #pragma mark - interface
 - (void)lfxb_configMQTTServerHost:(NSString *)host
                              port:(NSInteger)port

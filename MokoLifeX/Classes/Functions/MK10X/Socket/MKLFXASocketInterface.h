@@ -44,6 +44,16 @@ typedef NS_ENUM(NSInteger, lfxa_electricalDefaultState) {
 
 + (void)sharedDealloc;
 
+- (BOOL)isConnected;
+
+/// Device connection.
+/// @param sucBlock Success callback
+/// @param failedBlock Failure callback
+- (void)connectWithSucBlock:(void (^)(void))sucBlock
+                failedBlock:(void (^)(NSError *error))failedBlock;
+
+- (void)disconnect;
+
 /**
  Send the MQTT server information to the plug.If the plug receives this information and successfully parses it, and plug successfully connects to the WiFi network, the plug will automatically connect to the MQTT server specified by the Smartphone.
  

@@ -69,11 +69,11 @@
     }
     if (ValidNum(userInfo[@"data"][@"current"])) {
         MKNormalTextCellModel *currentModel = self.dataList[0];
-        currentModel.rightMsg = [NSString stringWithFormat:@"%.1f",[userInfo[@"data"][@"current"] floatValue]];
+        currentModel.rightMsg = [NSString stringWithFormat:@"%ld",(long)[userInfo[@"data"][@"current"] integerValue]];
     }
     if (ValidNum(userInfo[@"data"][@"voltage"])) {
         MKNormalTextCellModel *volModel = self.dataList[1];
-        CGFloat voltage = [userInfo[@"data"][@"voltage"] floatValue];
+        CGFloat voltage = [userInfo[@"data"][@"voltage"] floatValue] * self.voltageCoffe;
         volModel.rightMsg = [NSString stringWithFormat:@"%.1f",voltage];
     }
     if (ValidNum(userInfo[@"data"][@"power"])) {

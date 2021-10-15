@@ -1,12 +1,12 @@
 //
-//  MKLFXCServerForDeviceController.m
+//  MKLFXAServerForDeviceController.m
 //  MokoLifeX_Example
 //
 //  Created by aa on 2021/8/22.
 //  Copyright © 2021 aadyx2007@163.com. All rights reserved.
 //
 
-#import "MKLFXCServerForDeviceController.h"
+#import "MKLFXAServerForDeviceController.h"
 
 #import "Masonry.h"
 
@@ -29,21 +29,21 @@
 
 #import "MKLFXSaveDeviceController.h"
 
-#import "MKLFXCServerConfigDeviceFooterView.h"
+#import "MKLFXAServerConfigDeviceFooterView.h"
 
-#import "MKLFXCServerForDeviceModel.h"
+#import "MKLFXAServerForDeviceModel.h"
 
 #import "MKLFXDeviceModel.h"
 
-#import "MKLFXCMQTTManager.h"
-#import "MKLFXCSocketInterface.h"
+#import "MKLFXAMQTTManager.h"
+#import "MKLFXASocketInterface.h"
 
-@interface MKLFXCServerForDeviceController ()<UITableViewDelegate,
+@interface MKLFXAServerForDeviceController ()<UITableViewDelegate,
 UITableViewDataSource,
 MKTextFieldCellDelegate,
-MKLFXCServerConfigDeviceFooterViewDelegate,
+MKLFXAServerConfigDeviceFooterViewDelegate,
 MKCAFileSelectControllerDelegate,
-MKLFXCMQTTManagerDeviceOnlineDelegate>
+MKLFXAMQTTManagerDeviceOnlineDelegate>
 
 @property (nonatomic, strong)MKBaseTableView *tableView;
 
@@ -53,11 +53,11 @@ MKLFXCMQTTManagerDeviceOnlineDelegate>
 
 @property (nonatomic, strong)NSMutableArray *sectionHeaderList;
 
-@property (nonatomic, strong)MKLFXCServerForDeviceModel *dataModel;
+@property (nonatomic, strong)MKLFXAServerForDeviceModel *dataModel;
 
-@property (nonatomic, strong)MKLFXCServerConfigDeviceFooterView *sslParamsView;
+@property (nonatomic, strong)MKLFXAServerConfigDeviceFooterView *sslParamsView;
 
-@property (nonatomic, strong)MKLFXCServerConfigDeviceFooterViewModel *sslParamsModel;
+@property (nonatomic, strong)MKLFXAServerConfigDeviceFooterViewModel *sslParamsModel;
 
 @property (nonatomic, strong)UIView *footerView;
 
@@ -71,10 +71,10 @@ MKLFXCMQTTManagerDeviceOnlineDelegate>
 
 @end
 
-@implementation MKLFXCServerForDeviceController
+@implementation MKLFXAServerForDeviceController
 
 - (void)dealloc {
-    NSLog(@"MKLFXCServerForDeviceController销毁");
+    NSLog(@"MKLFXAServerForDeviceController销毁");
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     if (self.connectTimer) {
         dispatch_cancel(self.connectTimer);
@@ -209,11 +209,11 @@ MKLFXCMQTTManagerDeviceOnlineDelegate>
     }
 }
 
-#pragma mark - MKLFXCServerConfigDeviceFooterViewDelegate
+#pragma mark - MKLFXAServerConfigDeviceFooterViewDelegate
 /// 用户改变了开关状态
 /// @param isOn isOn
 /// @param statusID 0:cleanSession   1:ssl
-- (void)lfxc_mqtt_serverForDevice_switchStatusChanged:(BOOL)isOn statusID:(NSInteger)statusID {
+- (void)lfxa_mqtt_serverForDevice_switchStatusChanged:(BOOL)isOn statusID:(NSInteger)statusID {
     if (statusID == 0) {
         //cleanSession
         self.dataModel.cleanSession = isOn;
@@ -233,8 +233,8 @@ MKLFXCMQTTManagerDeviceOnlineDelegate>
 
 /// 输入框内容发生了改变
 /// @param text 最新的输入框内容
-/// @param textID 0:keepAlive    1:userName     2:password    3:deviceID   4:ntpURL
-- (void)lfxc_mqtt_serverForDevice_textFieldValueChanged:(NSString *)text textID:(NSInteger)textID {
+/// @param textID 0:keepAlive    1:userName     2:password    3:deviceID
+- (void)lfxa_mqtt_serverForDevice_textFieldValueChanged:(NSString *)text textID:(NSInteger)textID {
     if (textID == 0) {
         //keepAlive
         self.dataModel.keepAlive = text;
@@ -259,22 +259,16 @@ MKLFXCMQTTManagerDeviceOnlineDelegate>
         self.sslParamsModel.deviceID = text;
         return;
     }
-    if (textID == 4) {
-        //ntpURL
-        self.dataModel.ntpHost = text;
-        self.sslParamsModel.ntpHost = text;
-        return;
-    }
 }
 
-- (void)lfxc_mqtt_serverForDevice_qosChanged:(NSInteger)qos {
+- (void)lfxa_mqtt_serverForDevice_qosChanged:(NSInteger)qos {
     self.dataModel.qos = qos;
     self.sslParamsModel.qos = qos;
 }
 
 /// 用户选择了加密方式
 /// @param certificate 0:CA signed server certificate     1:CA certificate     2:Self signed certificates
-- (void)lfxc_mqtt_serverForDevice_certificateChanged:(NSInteger)certificate {
+- (void)lfxa_mqtt_serverForDevice_certificateChanged:(NSInteger)certificate {
     self.dataModel.certificate = certificate;
     self.sslParamsModel.certificate = certificate;
     //动态刷新footer
@@ -284,7 +278,7 @@ MKLFXCMQTTManagerDeviceOnlineDelegate>
 
 /// 用户点击了证书相关按钮
 /// @param fileType 0:caFaile   1:cilentKeyFile   2:client cert file
-- (void)lfxc_mqtt_serverForDevice_fileButtonPressed:(NSInteger)fileType {
+- (void)lfxa_mqtt_serverForDevice_fileButtonPressed:(NSInteger)fileType {
     if (fileType == 0) {
         //caFile
         MKCAFileSelectController *vc = [[MKCAFileSelectController alloc] init];
@@ -309,13 +303,6 @@ MKLFXCMQTTManagerDeviceOnlineDelegate>
         [self.navigationController pushViewController:vc animated:YES];
         return;
     }
-}
-
-/// 时区改变
-/// @param timeZone -24~24
-- (void)lfxc_mqtt_serverForDevice_timeZoneChanged:(NSInteger)timeZone {
-    self.dataModel.timeZone = timeZone;
-    self.sslParamsModel.timeZone = timeZone;
 }
 
 #pragma mark - MKCAFileSelectControllerDelegate
@@ -355,13 +342,13 @@ MKLFXCMQTTManagerDeviceOnlineDelegate>
     }
 }
 
-#pragma mark - MKLFXCMQTTManagerDeviceOnlineDelegate
-- (void)lfxc_deviceOnline:(NSString *)deviceID {
+#pragma mark - MKLFXAMQTTManagerDeviceOnlineDelegate
+- (void)lfxa_deviceOnline:(NSString *)deviceID {
     if (!ValidStr(deviceID) || ![self.dataModel.deviceID isEqualToString:deviceID]) {
         return;
     }
     //接收到设备的网络状态上报，认为设备入网成功
-    [MKLFXCMQTTManager shared].delegate = nil;
+    [MKLFXAMQTTManager shared].delegate = nil;
     if (self.connectTimer) {
         dispatch_cancel(self.connectTimer);
     }
@@ -384,15 +371,15 @@ MKLFXCMQTTManagerDeviceOnlineDelegate>
 
 - (void)configServerParamsComplete {
     NSString *topic = @"";
-    if (ValidStr([MKLFXCMQTTManager shared].subscribeTopic)) {
+    if (ValidStr([MKLFXAMQTTManager shared].subscribeTopic)) {
         //查看是否设置了服务器的订阅topic
-        topic = [MKLFXCMQTTManager shared].subscribeTopic;
+        topic = [MKLFXAMQTTManager shared].subscribeTopic;
     }else {
         topic = [self.dataModel currentPublishTopic];
     }
     [self.progressView show];
-    [[MKLFXCMQTTManager shared] subscriptions:@[topic]];
-    [MKLFXCMQTTManager shared].delegate = self;
+    [[MKLFXAMQTTManager shared] subscriptions:@[topic]];
+    [MKLFXAMQTTManager shared].delegate = self;
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     self.connectTimer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
     self.timeCount = 0;
@@ -404,7 +391,7 @@ MKLFXCMQTTManagerDeviceOnlineDelegate>
             //接受数据超时
             dispatch_cancel(self.connectTimer);
             self.timeCount = 0;
-            [MKLFXCMQTTManager shared].delegate = nil;
+            [MKLFXAMQTTManager shared].delegate = nil;
             moko_dispatch_main_safe(^{
                 [self.progressView dismiss];
                 [self.view showCentralToast:@"Connect Failed!"];
@@ -427,15 +414,15 @@ MKLFXCMQTTManagerDeviceOnlineDelegate>
     if (self.progressView) {
         [self.progressView dismiss];
     }
-    [MKLFXCMQTTManager singleDealloc];
-    [MKLFXCSocketInterface sharedDealloc];
+    [MKLFXAMQTTManager singleDealloc];
+    [MKLFXASocketInterface sharedDealloc];
     MKLFXDeviceModel *deviceModel = [[MKLFXDeviceModel alloc] init];
     deviceModel.deviceID = self.dataModel.deviceID;
     deviceModel.clientID = self.dataModel.clientID;
     deviceModel.subscribedTopic = [self.dataModel currentSubscribeTopic];
     deviceModel.publishedTopic = [self.dataModel currentPublishTopic];
     deviceModel.macAddress = self.deviceInfo[@"device_id"];
-    deviceModel.deviceName = self.deviceInfo[@"device_name"];
+    deviceModel.deviceName = [NSString stringWithFormat:@"%@-%@",SafeStr(self.deviceInfo[@"device_name"]),SafeStr(self.deviceInfo[@"device_id"])];
     deviceModel.deviceType = [NSString stringWithFormat:@"%ld",(long)[self.deviceInfo[@"device_type"] integerValue]];
     deviceModel.state = MKLFXDeviceModelStateOff;
     
@@ -459,10 +446,10 @@ MKLFXCMQTTManagerDeviceOnlineDelegate>
     MKTextFieldCellModel *cellModel1 = [[MKTextFieldCellModel alloc] init];
     cellModel1.index = 0;
     cellModel1.msg = @"Host";
-    cellModel1.textPlaceholder = @"1-64 Characters";
+    cellModel1.textPlaceholder = @"1-63 Characters";
     cellModel1.textFieldType = mk_normal;
     cellModel1.textFieldValue = self.dataModel.host;
-    cellModel1.maxLength = 64;
+    cellModel1.maxLength = 63;
     [self.section0List addObject:cellModel1];
     
     MKTextFieldCellModel *cellModel2 = [[MKTextFieldCellModel alloc] init];
@@ -538,7 +525,7 @@ MKLFXCMQTTManagerDeviceOnlineDelegate>
 #pragma mark - UI
 - (void)loadSubViews {
     self.defaultTitle = @"MQTT Settings for Device";
-    [self.rightButton setImage:LOADICON(@"MokoLifeX", @"MKLFXCServerForDeviceController", @"lfx_saveIcon.png") forState:UIControlStateNormal];
+    [self.rightButton setImage:LOADICON(@"MokoLifeX", @"MKLFXAServerForDeviceController", @"lfx_saveIcon.png") forState:UIControlStateNormal];
     [self.view addSubview:self.tableView];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(0);
@@ -593,9 +580,9 @@ MKLFXCMQTTManagerDeviceOnlineDelegate>
     return _section1List;
 }
 
-- (MKLFXCServerForDeviceModel *)dataModel {
+- (MKLFXAServerForDeviceModel *)dataModel {
     if (!_dataModel) {
-        _dataModel = [[MKLFXCServerForDeviceModel alloc] init];
+        _dataModel = [[MKLFXAServerForDeviceModel alloc] init];
         _dataModel.deviceName = self.deviceInfo[@"device_name"];
     }
     return _dataModel;
@@ -608,9 +595,9 @@ MKLFXCMQTTManagerDeviceOnlineDelegate>
     return _sectionHeaderList;
 }
 
-- (MKLFXCServerConfigDeviceFooterView *)sslParamsView {
+- (MKLFXAServerConfigDeviceFooterView *)sslParamsView {
     if (!_sslParamsView) {
-        _sslParamsView = [[MKLFXCServerConfigDeviceFooterView alloc] initWithFrame:CGRectMake(0, 0, kViewWidth, 380.f)];
+        _sslParamsView = [[MKLFXAServerConfigDeviceFooterView alloc] initWithFrame:CGRectMake(0, 0, kViewWidth, 380.f)];
         _sslParamsView.delegate = self;
     }
     return _sslParamsView;
@@ -618,16 +605,16 @@ MKLFXCMQTTManagerDeviceOnlineDelegate>
 
 - (UIView *)footerView {
     if (!_footerView) {
-        _footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kViewWidth, 450.f)];
+        _footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kViewWidth, 60.f)];
         _footerView.backgroundColor = COLOR_WHITE_MACROS;
         [_footerView addSubview:self.sslParamsView];
     }
     return _footerView;
 }
 
-- (MKLFXCServerConfigDeviceFooterViewModel *)sslParamsModel {
+- (MKLFXAServerConfigDeviceFooterViewModel *)sslParamsModel {
     if (!_sslParamsModel) {
-        _sslParamsModel = [[MKLFXCServerConfigDeviceFooterViewModel alloc] init];
+        _sslParamsModel = [[MKLFXAServerConfigDeviceFooterViewModel alloc] init];
     }
     return _sslParamsModel;
 }

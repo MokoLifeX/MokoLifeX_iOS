@@ -1,5 +1,5 @@
 //
-//  MKLFXCMQTTSSLForDeviceView.h
+//  MKLFXBMQTTSSLForDeviceView.h
 //  MokoLifeX_Example
 //
 //  Created by aa on 2021/8/22.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MKLFXCMQTTSSLForDeviceViewModel : NSObject
+@interface MKLFXBMQTTSSLForDeviceViewModel : NSObject
 
 @property (nonatomic, assign)BOOL sslIsOn;
 
@@ -25,30 +25,30 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@protocol MKLFXCMQTTSSLForDeviceViewDelegate <NSObject>
+@protocol MKLFXBMQTTSSLForDeviceViewDelegate <NSObject>
 
-- (void)lfxc_mqtt_sslParams_device_sslStatusChanged:(BOOL)isOn;
+- (void)lfxb_mqtt_sslParams_device_sslStatusChanged:(BOOL)isOn;
 
 /// 用户选择了加密方式
 /// @param certificate 0:CA signed server certificate     1:CA certificate     2:Self signed certificates
-- (void)lfxc_mqtt_sslParams_device_certificateChanged:(NSInteger)certificate;
+- (void)lfxb_mqtt_sslParams_device_certificateChanged:(NSInteger)certificate;
 
 /// 用户点击选择了caFaile按钮
-- (void)lfxc_mqtt_sslParams_device_caFilePressed;
+- (void)lfxb_mqtt_sslParams_device_caFilePressed;
 
 /// 用户点击选择了Client Key按钮
-- (void)lfxc_mqtt_sslParams_device_clientKeyPressed;
+- (void)lfxb_mqtt_sslParams_device_clientKeyPressed;
 
 /// 用户点击了Client Cert File按钮
-- (void)lfxc_mqtt_sslParams_device_clientCertPressed;
+- (void)lfxb_mqtt_sslParams_device_clientCertPressed;
 
 @end
 
-@interface MKLFXCMQTTSSLForDeviceView : UIView
+@interface MKLFXBMQTTSSLForDeviceView : UIView
 
-@property (nonatomic, strong)MKLFXCMQTTSSLForDeviceViewModel *dataModel;
+@property (nonatomic, strong)MKLFXBMQTTSSLForDeviceViewModel *dataModel;
 
-@property (nonatomic, weak)id <MKLFXCMQTTSSLForDeviceViewDelegate>delegate;
+@property (nonatomic, weak)id <MKLFXBMQTTSSLForDeviceViewDelegate>delegate;
 
 @end
 

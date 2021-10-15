@@ -15,6 +15,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// 电能通知名称
 @property (nonatomic, copy)NSString *electricityNotificationName;
 
+/// 112/114设备上报的电压数据需要乘以0.1
+@property (nonatomic, assign)float voltageCoffe;
+
 @end
 
 NS_ASSUME_NONNULL_END

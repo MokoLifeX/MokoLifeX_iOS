@@ -96,6 +96,12 @@ static NSString *const defaultPubTopic = @"{device_name}/{device_id}/device_to_a
                         sucBlock:(void (^)(void))sucBlock
                      failedBlock:(void (^)(NSError *error))failedBlock {
     dispatch_async(self.configQueue, ^{
+        if (![MKLFXCSocketInterface shared].isConnected) {
+            if (![self connectDevice]) {
+                [self operationFailedBlockWithMsg:@"Connect Device Failed" block:failedBlock];
+                return;
+            }
+        }
         if (![self configMQTTServer]) {
             [self operationFailedBlockWithMsg:@"Config MQTT Server Failed" block:failedBlock];
             return;
@@ -169,6 +175,18 @@ static NSString *const defaultPubTopic = @"{device_name}/{device_id}/device_to_a
 }
 
 #pragma mark - interface
+- (BOOL)connectDevice {
+    __block BOOL success = NO;
+    [[MKLFXCSocketInterface shared] connectWithSucBlock:^{
+        success = YES;
+        dispatch_semaphore_signal(self.semaphore);
+    } failedBlock:^(NSError * _Nonnull error) {
+        dispatch_semaphore_signal(self.semaphore);
+    }];
+    dispatch_semaphore_wait(self.semaphore, DISPATCH_TIME_FOREVER);
+    return success;
+}
+
 - (BOOL)configMQTTServer {
     __block BOOL success = NO;
     lfxc_mqttServerConnectMode connectMode = lfxc_connectMode_TCP;

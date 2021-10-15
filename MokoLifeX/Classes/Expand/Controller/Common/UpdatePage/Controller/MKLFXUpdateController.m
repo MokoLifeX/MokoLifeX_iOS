@@ -217,7 +217,9 @@ MKTextFieldCellDelegate>
     cellModel1.index = 0;
     cellModel1.msg = @"Host";
     cellModel1.textFieldType = mk_normal;
+    cellModel1.textPlaceholder = @"1-64 Characters";
     cellModel1.textFieldValue = self.dataModel.host;
+    cellModel1.maxLength = 64;
     [self.section1List addObject:cellModel1];
     
     MKTextFieldCellModel *cellModel2 = [[MKTextFieldCellModel alloc] init];
@@ -233,7 +235,9 @@ MKTextFieldCellDelegate>
     cellModel3.index = 2;
     cellModel3.msg = @"Catalogue";
     cellModel3.textFieldType = mk_normal;
+    cellModel3.textPlaceholder = @"1-100 Characters";
     cellModel3.textFieldValue = self.dataModel.catalogue;
+    cellModel3.maxLength = 100;
     [self.section1List addObject:cellModel3];
 }
 

@@ -77,7 +77,7 @@ static CGFloat const buttonViewHeight = 50.f;
     [super viewDidLoad];
     [MKLFXBMQTTManager shared];
     [self loadSubViews];
-    [self readDataFromDevice];
+    [self configDate];
 }
 
 #pragma mark - super method
@@ -239,6 +239,7 @@ static CGFloat const buttonViewHeight = 50.f;
     MKLFXElectricityController *vc = [[MKLFXElectricityController alloc] init];
     vc.deviceModel = self.deviceModel;
     vc.electricityNotificationName = MKLFXBReceiveElectricityNotification;
+    vc.voltageCoffe = 1.f;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -264,6 +265,21 @@ static CGFloat const buttonViewHeight = 50.f;
 }
 
 #pragma mark - interface
+- (void)configDate {
+    [[MKHudManager share] showHUDWithTitle:@"Config..." inView:self.view isPenetration:NO];
+    [MKLFXBMQTTInterface lfxb_setDeviceDate:[NSDate date]
+                                   deviceID:self.deviceModel.deviceID
+                                      topic:[self.deviceModel currentSubscribedTopic]
+                                   sucBlock:^{
+        [self readDataFromDevice];
+    }
+                                failedBlock:^(NSError * _Nonnull error) {
+        [[MKHudManager share] hide];
+        [self.view showCentralToast:error.userInfo[@"errorInfo"]];
+        [self performSelector:@selector(leftButtonMethod) withObject:nil afterDelay:0.5f];
+    }];
+}
+
 - (void)readDataFromDevice {
     [[MKHudManager share] showHUDWithTitle:@"Reading..." inView:self.view isPenetration:NO];
     [MKLFXBMQTTInterface lfxb_readOverloadValueWithDeviceID:self.deviceModel.deviceID

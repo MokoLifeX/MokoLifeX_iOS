@@ -155,7 +155,7 @@
         [self operationFailedBlockWithMsg:@"ClientID error" failedBlock:failedBlock];
         return;
     }
-    if (port < 0 || port > 65535 || !catalogue || !host) {
+    if (port < 0 || port > 65535 || !ValidStr(catalogue) || catalogue.length > 100 || !ValidStr(host) || host.length > 64) {
         [self operationFailedBlockWithMsg:@"Params error" failedBlock:failedBlock];
         return;
     }

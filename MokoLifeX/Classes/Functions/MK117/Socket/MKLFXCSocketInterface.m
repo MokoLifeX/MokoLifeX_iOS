@@ -44,6 +44,22 @@ static NSInteger const certPackageDataLength = 200;
     onceToken = 0;
 }
 
+- (BOOL)isConnected {
+    return [MKLFXSocketManager shared].isConnected;
+}
+
+- (void)connectWithSucBlock:(void (^)(void))sucBlock
+                failedBlock:(void (^)(NSError *error))failedBlock {
+    [[MKLFXSocketManager shared] connectWithHost:lfx_defaultHostIpAddress
+                                            port:lfx_defaultPort
+                                        sucBlock:sucBlock
+                                     failedBlock:failedBlock];
+}
+
+- (void)disconnect {
+    [[MKLFXSocketManager shared] disconnect];
+}
+
 #pragma mark - interface
 - (void)lfxc_configMQTTServerHost:(NSString *)host
                              port:(NSInteger)port
@@ -56,7 +72,7 @@ static NSInteger const certPackageDataLength = 200;
                          password:(NSString *)password
                          sucBlock:(void (^)(id returnData))sucBlock
                       failedBlock:(void (^)(NSError *error))failedBlock {
-    if (![MKLFXSocketAdopter isValidatIP:host] && (host.length < 1 || host.length > 63)) {
+    if (![MKLFXSocketAdopter isValidatIP:host] && (host.length < 1 || host.length > 64)) {
         [self operationFailedBlockWithMsg:@"Host error" failedBlock:failedBlock];
         return;
     }

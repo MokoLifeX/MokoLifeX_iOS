@@ -1,5 +1,5 @@
 //
-//  MKLFXCServerConfigDeviceFooterView.h
+//  MKLFXAServerConfigDeviceFooterView.h
 //  MokoLifeX_Example
 //
 //  Created by aa on 2021/8/22.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MKLFXCServerConfigDeviceFooterViewModel : NSObject
+@interface MKLFXAServerConfigDeviceFooterViewModel : NSObject
 
 @property (nonatomic, assign)BOOL cleanSession;
 
@@ -43,39 +43,35 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@protocol MKLFXCServerConfigDeviceFooterViewDelegate <NSObject>
+@protocol MKLFXAServerConfigDeviceFooterViewDelegate <NSObject>
 
 /// 用户改变了开关状态
 /// @param isOn isOn
 /// @param statusID 0:cleanSession   1:ssl
-- (void)lfxc_mqtt_serverForDevice_switchStatusChanged:(BOOL)isOn statusID:(NSInteger)statusID;
+- (void)lfxa_mqtt_serverForDevice_switchStatusChanged:(BOOL)isOn statusID:(NSInteger)statusID;
 
 /// 输入框内容发生了改变
 /// @param text 最新的输入框内容
-/// @param textID 0:keepAlive    1:userName     2:password    3:deviceID   4:ntpURL
-- (void)lfxc_mqtt_serverForDevice_textFieldValueChanged:(NSString *)text textID:(NSInteger)textID;
+/// @param textID 0:keepAlive    1:userName     2:password    3:deviceID
+- (void)lfxa_mqtt_serverForDevice_textFieldValueChanged:(NSString *)text textID:(NSInteger)textID;
 
-- (void)lfxc_mqtt_serverForDevice_qosChanged:(NSInteger)qos;
+- (void)lfxa_mqtt_serverForDevice_qosChanged:(NSInteger)qos;
 
 /// 用户选择了加密方式
 /// @param certificate 0:CA signed server certificate     1:CA certificate     2:Self signed certificates
-- (void)lfxc_mqtt_serverForDevice_certificateChanged:(NSInteger)certificate;
+- (void)lfxa_mqtt_serverForDevice_certificateChanged:(NSInteger)certificate;
 
 /// 用户点击了证书相关按钮
 /// @param fileType 0:caFaile   1:cilentKeyFile   2:client cert file
-- (void)lfxc_mqtt_serverForDevice_fileButtonPressed:(NSInteger)fileType;
-
-/// 时区改变
-/// @param timeZone -12~12
-- (void)lfxc_mqtt_serverForDevice_timeZoneChanged:(NSInteger)timeZone;
+- (void)lfxa_mqtt_serverForDevice_fileButtonPressed:(NSInteger)fileType;
 
 @end
 
-@interface MKLFXCServerConfigDeviceFooterView : UIView
+@interface MKLFXAServerConfigDeviceFooterView : UIView
 
-@property (nonatomic, strong)MKLFXCServerConfigDeviceFooterViewModel *dataModel;
+@property (nonatomic, strong)MKLFXAServerConfigDeviceFooterViewModel *dataModel;
 
-@property (nonatomic, weak)id <MKLFXCServerConfigDeviceFooterViewDelegate>delegate;
+@property (nonatomic, weak)id <MKLFXAServerConfigDeviceFooterViewDelegate>delegate;
 
 /// 动态刷新高度
 /// @param isOn ssl开关是否打开

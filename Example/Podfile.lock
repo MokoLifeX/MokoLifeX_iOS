@@ -21,7 +21,7 @@ PODS:
   - FMDB (2.7.5):
     - FMDB/standard (= 2.7.5)
   - FMDB/standard (2.7.5)
-  - iOSDFULibrary (4.11.0):
+  - iOSDFULibrary (4.11.1):
     - ZIPFoundation (= 0.9.11)
   - Masonry (1.1.0)
   - MBProgressHUD (1.2.0)
@@ -1073,7 +1073,8 @@ PODS:
     - MokoLifeX/CTMediator
     - MokoLifeX/DeviceModel
     - MokoLifeX/Expand
-    - MokoLifeX/Functions/MK10X/Functions
+    - MokoLifeX/Functions/MK10X/Functions/ServerForDevice/Controller
+    - MokoLifeX/Functions/MK10X/Functions/SwitchStatePage/Controller
     - MokoLifeX/SDK
   - MokoLifeX/Functions/MK117 (0.1.20):
     - FLAnimatedImage
@@ -1729,6 +1730,7 @@ PODS:
     - MokoLifeX/Functions/MK117/Functions/LoadStatusPage/Controller
     - MokoLifeX/Functions/MK117/Functions/MQTTSettingForDevicePage/Controller
     - MokoLifeX/Functions/MK117/Functions/PowerOnStatusPage/Controller
+    - MokoLifeX/Functions/MK117/Functions/PowerReportPage/Controller
     - MokoLifeX/Functions/MK117/Functions/ProtectionSettingPage/Controller
     - MokoLifeX/Functions/MK117/Functions/SettingsPage/Model
     - MokoLifeX/Functions/MK117/Functions/StatusReportPage/Controller
@@ -1881,7 +1883,8 @@ PODS:
     - MokoLifeX/CTMediator
     - MokoLifeX/DeviceModel
     - MokoLifeX/Expand
-    - MokoLifeX/Functions/MK117/Functions
+    - MokoLifeX/Functions/MK117/Functions/ServerForDevice/Controller
+    - MokoLifeX/Functions/MK117/Functions/SwitchStatePage/Controller
     - MokoLifeX/SDK
   - MokoLifeX/Functions/MK11X (0.1.20):
     - FLAnimatedImage
@@ -2224,7 +2227,8 @@ PODS:
     - MokoLifeX/CTMediator
     - MokoLifeX/DeviceModel
     - MokoLifeX/Expand
-    - MokoLifeX/Functions/MK11X/Functions
+    - MokoLifeX/Functions/MK11X/Functions/ServerForDevice/Controller
+    - MokoLifeX/Functions/MK11X/Functions/SwitchStatePage/Controller
     - MokoLifeX/SDK
   - MokoLifeX/SDK (0.1.20):
     - FLAnimatedImage
@@ -2297,7 +2301,7 @@ SPEC CHECKSUMS:
   CTMediator: f1cf58d509fb3192086c367711f039efd769b907
   FLAnimatedImage: 8f3e854ebf9680b71f0b6e700939687fc4d82b4b
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
-  iOSDFULibrary: ca2a4da1f1680fe4957b0a33ad605c9e10f7ae7c
+  iOSDFULibrary: 3500ac00451aa7d8ec48a752e91099669a2c1d27
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   MJRefresh: 30997d30b347c8e9508a4db11e3a690da0c9b85a
@@ -2305,7 +2309,7 @@ SPEC CHECKSUMS:
   MKBaseMQTTModule: a897389b91385b06f3eee1c9be26e89ca449ef93
   MKCustomUIModule: 886ed51a8ddfeaee966fad93a0b9af5056a2ecef
   MLInputDodger: 79a0e420a80d0d3bba122bf2639603cc76609ba8
-  MokoLifeX: c418c5d9fc064814d1b5125eca8e7b9e0b5fc245
+  MokoLifeX: 460122eb43f89f5a8798d5722b220f6b6d0652b1
   MQTTClient: 0dfa04e789479c2e461786464969895c1fcb0875
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
   WRNavigationBar: 10bfdf96addf14d640d07c2ef08a029c18d8af10

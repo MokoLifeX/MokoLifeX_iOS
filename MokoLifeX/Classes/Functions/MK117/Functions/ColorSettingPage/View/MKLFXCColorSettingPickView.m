@@ -177,7 +177,7 @@
     [self.dataList addObject:blueModel];
     
     MKLFXCColorSettingPickViewModel *orangeModel = [[MKLFXCColorSettingPickViewModel alloc] init];
-    orangeModel.colorMsg = @"Yellow";
+    orangeModel.colorMsg = @"Orange";
     orangeModel.colorType = 6;
     [self.dataList addObject:orangeModel];
     

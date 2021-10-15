@@ -20,6 +20,9 @@ NSString *const lfx_defaultHostIpAddress = @"192.168.4.1";
 //设备默认的端口号
 NSInteger const lfx_defaultPort = 8266;
 
+//设备socket断开连接
+NSString *const lfx_socket_deviceDisconnectNotification = @"lfx_socket_deviceDisconnectNotification";
+
 static MKLFXSocketManager *manager = nil;
 static dispatch_once_t onceToken;
 
@@ -95,6 +98,7 @@ static dispatch_once_t onceToken;
     }
     [self.operationQueue cancelAllOperations];
     MKSKBase_main_safe(^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:lfx_socket_deviceDisconnectNotification object:nil];
         if (self.connectFailedBlock) {
             self.connectFailedBlock(err);
         }
@@ -231,6 +235,10 @@ shouldTimeoutReadWithTag:(long)tag
                     data:[MKLFXSocketAdopter convertToJsonData:@{@"header":@(4001)}]
                 sucBlock:sucBlock
              failedBlock:failedBlock];
+}
+
+- (BOOL)currentSocketStatus {
+    return self.socket.isConnected;
 }
 
 #pragma mark - connect private method

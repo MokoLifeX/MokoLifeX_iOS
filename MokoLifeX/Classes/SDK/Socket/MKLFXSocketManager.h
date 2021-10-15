@@ -15,7 +15,12 @@ extern NSString *const lfx_defaultHostIpAddress;
 //Device default port
 extern NSInteger const lfx_defaultPort;
 
+//socket disconnect
+extern NSString *const lfx_socket_deviceDisconnectNotification;
+
 @interface MKLFXSocketManager : NSObject
+
+@property (nonatomic, assign, readonly, getter=currentSocketStatus)BOOL isConnected;
 
 + (MKLFXSocketManager *)shared;
 

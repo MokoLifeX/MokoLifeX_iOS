@@ -148,7 +148,7 @@
                   "subspecs": [
                     {
                       "name": "Controller",
-                      "source_files": "MokoLifeX/Classes/Expand/Controller/1110X/DeviceInfoPage/**",
+                      "source_files": "MokoLifeX/Classes/Expand/Controller/1110X/DeviceInfoPage/Controller/**",
                       "dependencies": {
                         "MokoLifeX/Expand/Controller/BaseController": [
 
@@ -169,7 +169,7 @@
                   "subspecs": [
                     {
                       "name": "Controller",
-                      "source_files": "MokoLifeX/Classes/Expand/Controller/1110X/PowerOnStatusPage/**",
+                      "source_files": "MokoLifeX/Classes/Expand/Controller/1110X/PowerOnStatusPage/Controller/**",
                       "dependencies": {
                         "MokoLifeX/Expand/Cell/PowerOnStatusCell": [
 
@@ -212,7 +212,7 @@
                   "subspecs": [
                     {
                       "name": "Controller",
-                      "source_files": "MokoLifeX/Classes/Expand/Controller/Common/SaveDevice/**",
+                      "source_files": "MokoLifeX/Classes/Expand/Controller/Common/SaveDevice/Controller/**",
                       "dependencies": {
                         "MokoLifeX/Expand/DatabaseManager": [
 
@@ -229,7 +229,7 @@
                   "subspecs": [
                     {
                       "name": "Controller",
-                      "source_files": "MokoLifeX/Classes/Expand/Controller/Common/UpdatePage/**",
+                      "source_files": "MokoLifeX/Classes/Expand/Controller/Common/UpdatePage/Controller/**",
                       "dependencies": {
                         "MokoLifeX/Expand/Controller/BaseController": [
 
@@ -404,7 +404,10 @@
               "name": "Target",
               "source_files": "MokoLifeX/Classes/Functions/MK10X/Target/**",
               "dependencies": {
-                "MokoLifeX/Functions/MK10X/Functions": [
+                "MokoLifeX/Functions/MK10X/Functions/ServerForDevice/Controller": [
+
+                ],
+                "MokoLifeX/Functions/MK10X/Functions/SwitchStatePage/Controller": [
 
                 ]
               }
@@ -508,7 +511,10 @@
               "name": "Target",
               "source_files": "MokoLifeX/Classes/Functions/MK11X/Target/**",
               "dependencies": {
-                "MokoLifeX/Functions/MK11X/Functions": [
+                "MokoLifeX/Functions/MK11X/Functions/ServerForDevice/Controller": [
+
+                ],
+                "MokoLifeX/Functions/MK11X/Functions/SwitchStatePage/Controller": [
 
                 ]
               }
@@ -703,7 +709,10 @@
               "name": "Target",
               "source_files": "MokoLifeX/Classes/Functions/MK117/Target/**",
               "dependencies": {
-                "MokoLifeX/Functions/MK117/Functions": [
+                "MokoLifeX/Functions/MK117/Functions/ServerForDevice/Controller": [
+
+                ],
+                "MokoLifeX/Functions/MK117/Functions/SwitchStatePage/Controller": [
 
                 ]
               }
@@ -1005,6 +1014,9 @@
 
                         ],
                         "MokoLifeX/Functions/MK117/Functions/StatusReportPage/Controller": [
+
+                        ],
+                        "MokoLifeX/Functions/MK117/Functions/PowerReportPage/Controller": [
 
                         ],
                         "MokoLifeX/Functions/MK117/Functions/EnergyReportPage/Controller": [

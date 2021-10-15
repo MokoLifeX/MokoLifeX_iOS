@@ -24,11 +24,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @protocol MKLFXCServerConfigDeviceSettingViewDelegate <NSObject>
 
-- (void)lfx_mqtt_deviecSetting_deviceIDChanged:(NSString *)deviceID;
+- (void)lfxc_mqtt_deviecSetting_deviceIDChanged:(NSString *)deviceID;
 
-- (void)lfx_mqtt_deviecSetting_ntpURLChanged:(NSString *)url;
+- (void)lfxc_mqtt_deviecSetting_ntpURLChanged:(NSString *)url;
 
-- (void)lfx_mqtt_deviecSetting_timeZoneChanged:(NSInteger)timeZone;
+- (void)lfxc_mqtt_deviecSetting_timeZoneChanged:(NSInteger)timeZone;
 
 @end
 

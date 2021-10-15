@@ -81,9 +81,9 @@ typedef NS_ENUM(NSInteger, mk_lfxa_devicePowerOnStatus) {
  Plug OTA upgrade
  
  @param fileType file type
- @param host The IP address or domain name of the new firmware host
+ @param host The IP address or domain name of the new firmware host.1-64 Characters.
  @param port Range 0~65535
- @param catalogue The length is less than 100 bytes
+ @param catalogue 1-100 Characters.
  @param topic update file topic
  @param deviceID deviceID
  @param sucBlock Success callback

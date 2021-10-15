@@ -171,6 +171,7 @@ static CGFloat const buttonViewHeight = 50.f;
     MKLFXElectricityController *vc = [[MKLFXElectricityController alloc] init];
     vc.deviceModel = self.deviceModel;
     vc.electricityNotificationName = MKLFXAReceiveElectricityNotification;
+    vc.voltageCoffe = 0.1;
     [self.navigationController pushViewController:vc animated:YES];
 }
 

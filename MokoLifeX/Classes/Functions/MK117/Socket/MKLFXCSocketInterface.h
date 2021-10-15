@@ -45,10 +45,20 @@ typedef NS_ENUM(NSInteger, lfxc_electricalDefaultState) {
 
 + (void)sharedDealloc;
 
+- (BOOL)isConnected;
+
+/// Device connection.
+/// @param sucBlock Success callback
+/// @param failedBlock Failure callback
+- (void)connectWithSucBlock:(void (^)(void))sucBlock
+                failedBlock:(void (^)(NSError *error))failedBlock;
+
+- (void)disconnect;
+
 /**
  Send the MQTT server information to the plug.If the plug receives this information and successfully parses it, and plug successfully connects to the WiFi network, the plug will automatically connect to the MQTT server specified by the Smartphone.
  
- @param host mqtt   Server host range 1~63
+ @param host mqtt   Server host range 1~64
  @param port mqtt   Server port range 0~65535
  @param mode        Connection mode 0: TCP,1: ssl one way,2:ssl two way
  @param qos mqqt    quality of service

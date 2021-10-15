@@ -299,7 +299,7 @@ MKLFXBConfigDataCellDelegate>
     MKLFXBConfigDataCellModel *cellModel = [[MKLFXBConfigDataCellModel alloc] init];
     cellModel.msg = @"Overload Value(W)";
     cellModel.index = 0;
-    cellModel.placeholder = @"10-3795W";
+    cellModel.placeholder = @"";
     cellModel.maxLen = 4;
     [self.dataList addObject:cellModel];
 }
@@ -315,7 +315,7 @@ MKLFXBConfigDataCellDelegate>
 
 - (void)loadEnergyStorageDatas {
     MKLFXBConfigDataCellModel *cellModel1 = [[MKLFXBConfigDataCellModel alloc] init];
-    cellModel1.msg = @"Energy storage period(min)";
+    cellModel1.msg = @"Energy report interval(min)";
     cellModel1.index = 0;
     cellModel1.placeholder = @"1-60Mins";
     cellModel1.maxLen = 2;
@@ -332,11 +332,11 @@ MKLFXBConfigDataCellDelegate>
 #pragma mark - UI
 - (void)loadSubViews {
     if (self.pageType == mk_lfxb_configDataPageType_overloadValue) {
-        self.defaultTitle = @"Overload value";
+        self.defaultTitle = @"Overload Value";
     }else if (self.pageType == mk_lfxb_configDataPageType_powerReport) {
-        self.defaultTitle = @"Power report period";
+        self.defaultTitle = @"Power Report Period";
     }else if (self.pageType == mk_lfxb_configDataPageType_energyStorage) {
-        self.defaultTitle = @"Energy storage parameters";
+        self.defaultTitle = @"Energy Report Parameters";
     }
     [self.view addSubview:self.tableView];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {

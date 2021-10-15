@@ -152,8 +152,8 @@
     MKPickerView *pickView = [[MKPickerView alloc] init];
     [pickView showPickViewWithDataList:self.dataList selectedRow:index block:^(NSInteger currentRow) {
         [self.timeZoneButton setTitle:self.dataList[currentRow] forState:UIControlStateNormal];
-        if ([self.delegate respondsToSelector:@selector(lfx_mqtt_deviecSetting_timeZoneChanged:)]) {
-            [self.delegate lfx_mqtt_deviecSetting_timeZoneChanged:currentRow];
+        if ([self.delegate respondsToSelector:@selector(lfxc_mqtt_deviecSetting_timeZoneChanged:)]) {
+            [self.delegate lfxc_mqtt_deviecSetting_timeZoneChanged:currentRow];
         }
     }];
 }
@@ -210,8 +210,8 @@
         @weakify(self);
         _deviceIDField.textChangedBlock = ^(NSString * _Nonnull text) {
             @strongify(self);
-            if ([self.delegate respondsToSelector:@selector(lfx_mqtt_deviecSetting_deviceIDChanged:)]) {
-                [self.delegate lfx_mqtt_deviecSetting_deviceIDChanged:text];
+            if ([self.delegate respondsToSelector:@selector(lfxc_mqtt_deviecSetting_deviceIDChanged:)]) {
+                [self.delegate lfxc_mqtt_deviecSetting_deviceIDChanged:text];
             }
         };
         _deviceIDField.maxLength = 32;
@@ -264,8 +264,8 @@
         @weakify(self);
         _ntpUrlField.textChangedBlock = ^(NSString * _Nonnull text) {
             @strongify(self);
-            if ([self.delegate respondsToSelector:@selector(lfx_mqtt_deviecSetting_ntpURLChanged:)]) {
-                [self.delegate lfx_mqtt_deviecSetting_ntpURLChanged:text];
+            if ([self.delegate respondsToSelector:@selector(lfxc_mqtt_deviecSetting_ntpURLChanged:)]) {
+                [self.delegate lfxc_mqtt_deviecSetting_ntpURLChanged:text];
             }
         };
         _ntpUrlField.maxLength = 64;

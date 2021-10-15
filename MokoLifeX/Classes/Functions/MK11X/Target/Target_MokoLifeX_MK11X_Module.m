@@ -8,14 +8,14 @@
 
 #import "Target_MokoLifeX_MK11X_Module.h"
 
-#import "MKLFXBOVMDeviceController.h"
+#import "MKLFXBServerForDeviceController.h"
 
 #import "MKLFXBSwitchStateController.h"
 
 @implementation Target_MokoLifeX_MK11X_Module
 
 - (UIViewController *)Action_MokoLifeX_MK11X_Module_ServerForDevicePage:(NSDictionary *)params {
-    MKLFXBOVMDeviceController *vc = [[MKLFXBOVMDeviceController alloc] init];
+    MKLFXBServerForDeviceController *vc = [[MKLFXBServerForDeviceController alloc] init];
     vc.deviceInfo = params;
     return vc;
 }

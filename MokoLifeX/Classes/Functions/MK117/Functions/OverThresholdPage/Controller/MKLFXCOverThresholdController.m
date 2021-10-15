@@ -474,14 +474,14 @@ MKLFXCOverThresholdCellDelegate>
     cellModel1.index = 0;
     cellModel1.msg = @"Power threshold(W)";
     cellModel1.maxLen = 4;
-    cellModel1.placeholder = @"10~4416";
+    cellModel1.placeholder = @"";
     [self.section1List addObject:cellModel1];
     
     MKLFXCOverThresholdCellModel *cellModel2 = [[MKLFXCOverThresholdCellModel alloc] init];
     cellModel2.index = 1;
     cellModel2.msg = @"Time threshold(Sec)";
     cellModel2.maxLen = 2;
-    cellModel2.placeholder = @"1~30";
+    cellModel2.placeholder = @"";
     [self.section1List addObject:cellModel2];
 }
 
@@ -498,14 +498,14 @@ MKLFXCOverThresholdCellDelegate>
     cellModel1.index = 0;
     cellModel1.msg = @"Voltage threshold(V)";
     cellModel1.maxLen = 3;
-    cellModel1.placeholder = @"100~260";
+    cellModel1.placeholder = @"";
     [self.section1List addObject:cellModel1];
     
     MKLFXCOverThresholdCellModel *cellModel2 = [[MKLFXCOverThresholdCellModel alloc] init];
     cellModel2.index = 1;
     cellModel2.msg = @"Time threshold(Sec)";
     cellModel2.maxLen = 2;
-    cellModel2.placeholder = @"1~30";
+    cellModel2.placeholder = @"";
     [self.section1List addObject:cellModel2];
 }
 
@@ -521,7 +521,7 @@ MKLFXCOverThresholdCellDelegate>
     MKLFXCOverThresholdCellModel *cellModel1 = [[MKLFXCOverThresholdCellModel alloc] init];
     cellModel1.index = 0;
     cellModel1.msg = @"Current threshold(A)";
-    cellModel1.placeholder = @"0.1~19.2";
+    cellModel1.placeholder = @"";
     cellModel1.floatType = YES;
     [self.section1List addObject:cellModel1];
     
@@ -529,7 +529,7 @@ MKLFXCOverThresholdCellDelegate>
     cellModel2.index = 1;
     cellModel2.msg = @"Time threshold(Sec)";
     cellModel2.maxLen = 2;
-    cellModel2.placeholder = @"1~30";
+    cellModel2.placeholder = @"";
     [self.section1List addObject:cellModel2];
 }
 
@@ -593,6 +593,17 @@ MKLFXCOverThresholdCellDelegate>
 }
 
 - (NSString *)currentTitle {
+    switch (self.pageType) {
+        case mk_lfxc_overThresholdType_load:
+            return @"Over-load Threshold";
+        case mk_lfxc_overThresholdType_voltage:
+            return @"Over-voltage Threshold";
+        case mk_lfxc_overThresholdType_current:
+            return @"Over-current Threshold";
+    }
+}
+
+- (NSString *)currentNoteMsg {
     switch (self.pageType) {
         case mk_lfxc_overThresholdType_load:
             return @"Over-load Threshold";

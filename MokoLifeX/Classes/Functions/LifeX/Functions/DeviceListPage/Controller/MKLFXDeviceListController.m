@@ -327,8 +327,7 @@ MKLFXDeviceListCellDelegate>
         return;
     }
     if ([MKLFXMQTTManager shared].state == MKLFXMQTTSessionManagerStateError) {
-        [self.loadingView hidden];
-        self.defaultTitle = @"Connect Failed";
+        [self connectFailed];
         return;
     }
 }
@@ -338,6 +337,11 @@ MKLFXDeviceListCellDelegate>
         self.defaultTitle = @"Network Unreachable";
         return;
     }
+}
+
+- (void)connectFailed {
+    [self.loadingView hidden];
+    self.defaultTitle = @"Connect Failed";
 }
 
 #pragma mark - event method
@@ -471,6 +475,10 @@ MKLFXDeviceListCellDelegate>
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(networkStatusChanged)
                                                  name:MKNetworkStatusChangedNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(connectFailed)
+                                                 name:@"MKLFXMQTTServerConnectFailedNotification"
                                                object:nil];
 }
 

@@ -372,9 +372,13 @@ TODO: Add long description of the pod here.
               ssssss.source_files = 'MokoLifeX/Classes/Functions/MK11X/Functions/EnergyPage/Controller/**'
               
               ssssss.dependency 'MokoLifeX/Functions/MK11X/Functions/EnergyPage/Model'
+              ssssss.dependency 'MokoLifeX/Functions/MK11X/Functions/EnergyPage/View'
             end
             sssss.subspec 'Model' do |ssssss|
               ssssss.source_files = 'MokoLifeX/Classes/Functions/MK11X/Functions/EnergyPage/Model/**'
+            end
+            sssss.subspec 'View' do |ssssss|
+              ssssss.source_files = 'MokoLifeX/Classes/Functions/MK11X/Functions/EnergyPage/View/**'
             end
         end
         

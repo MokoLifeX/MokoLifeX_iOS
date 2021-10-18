@@ -359,6 +359,10 @@ MKLFXAMQTTManagerDeviceOnlineDelegate>
 
 #pragma mark - private method
 - (void)configMQTTServerParams:(NSString *)ssid password:(NSString *)password {
+    if (!ValidStr(ssid) || ssid.length > 32 || password.length > 64) {
+        [self.view showCentralToast:@"Please enter a valid WIFI information."];
+        return;
+    }
     [[MKHudManager share] showHUDWithTitle:@"Config..." inView:self.view isPenetration:NO];
     [self.dataModel configParamsWithWifiSSID:ssid password:password sucBlock:^{
         [[MKHudManager share] hide];

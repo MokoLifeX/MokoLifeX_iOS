@@ -2012,6 +2012,7 @@ PODS:
     - MokoLifeX/Expand
     - MokoLifeX/Functions/MK11X/Functions/EnergyPage/Controller (= 0.1.20)
     - MokoLifeX/Functions/MK11X/Functions/EnergyPage/Model (= 0.1.20)
+    - MokoLifeX/Functions/MK11X/Functions/EnergyPage/View (= 0.1.20)
     - MokoLifeX/Functions/MK11X/MQTT
     - MokoLifeX/Functions/MK11X/Socket
     - MokoLifeX/SDK
@@ -2024,10 +2025,22 @@ PODS:
     - MokoLifeX/DeviceModel
     - MokoLifeX/Expand
     - MokoLifeX/Functions/MK11X/Functions/EnergyPage/Model
+    - MokoLifeX/Functions/MK11X/Functions/EnergyPage/View
     - MokoLifeX/Functions/MK11X/MQTT
     - MokoLifeX/Functions/MK11X/Socket
     - MokoLifeX/SDK
   - MokoLifeX/Functions/MK11X/Functions/EnergyPage/Model (0.1.20):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK11X/MQTT
+    - MokoLifeX/Functions/MK11X/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK11X/Functions/EnergyPage/View (0.1.20):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -2309,7 +2322,7 @@ SPEC CHECKSUMS:
   MKBaseMQTTModule: a897389b91385b06f3eee1c9be26e89ca449ef93
   MKCustomUIModule: 886ed51a8ddfeaee966fad93a0b9af5056a2ecef
   MLInputDodger: 79a0e420a80d0d3bba122bf2639603cc76609ba8
-  MokoLifeX: 460122eb43f89f5a8798d5722b220f6b6d0652b1
+  MokoLifeX: e0a9e06034b56bbba489b9c8c51aa1192ac2ec7d
   MQTTClient: 0dfa04e789479c2e461786464969895c1fcb0875
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
   WRNavigationBar: 10bfdf96addf14d640d07c2ef08a029c18d8af10

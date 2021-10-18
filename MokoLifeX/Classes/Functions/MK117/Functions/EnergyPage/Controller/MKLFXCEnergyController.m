@@ -20,15 +20,14 @@
 
 #import "MKLFXDeviceModel.h"
 
-#import "MKLFXEnergyDailyTableView.h"
-#import "MKLFXEnergyMonthlyTableView.h"
-
 #import "MKLFXCMQTTInterface.h"
 #import "MKLFXCMQTTManager.h"
 
 #import "MKLFXCEnergyDataModel.h"
 
 #import "MKLFXCEnergyTotalView.h"
+#import "MKLFXCEnergyDailyTableView.h"
+#import "MKLFXCEnergyMonthlyTableView.h"
 
 static CGFloat const segmentWidth = 240.f;
 static CGFloat const segmentHeight = 30.f;
@@ -41,9 +40,9 @@ static CGFloat const segmentHeight = 30.f;
 
 @property (nonatomic, strong)UISegmentedControl *segment;
 
-@property (nonatomic, strong)MKLFXEnergyDailyTableView *dailyView;
+@property (nonatomic, strong)MKLFXCEnergyDailyTableView *dailyView;
 
-@property (nonatomic, strong)MKLFXEnergyMonthlyTableView *monthView;
+@property (nonatomic, strong)MKLFXCEnergyMonthlyTableView *monthView;
 
 @property (nonatomic, strong)MKLFXCEnergyTotalView *totalView;
 
@@ -52,14 +51,6 @@ static CGFloat const segmentHeight = 30.f;
 @property (nonatomic, strong)dispatch_queue_t readQueue;
 
 @property (nonatomic, strong)dispatch_semaphore_t semaphore;
-
-@property (nonatomic, strong)NSArray *dailyList;
-
-@property (nonatomic, strong)NSArray *monthlyList;
-
-@property (nonatomic, copy)NSString *pulseConstant;
-
-@property (nonatomic, copy)NSString *totalEnergy;
 
 @property (nonatomic, strong)MKLFXCEnergyDataModel *dataModel;
 
@@ -134,7 +125,7 @@ static CGFloat const segmentHeight = 30.f;
         return;
     }
     self.dataModel.pulseSuccess = YES;
-    self.pulseConstant = [NSString stringWithFormat:@"%ld",(long)[userInfo[@"data"][@"EC"] integerValue]];
+    self.dataModel.pulseConstant = [NSString stringWithFormat:@"%ld",(long)[userInfo[@"data"][@"EC"] integerValue]];
     [self readDataSuccess];
 }
 
@@ -145,7 +136,9 @@ static CGFloat const segmentHeight = 30.f;
     }
     self.dataModel.monthSuccess = YES;
     NSArray *dateList = [userInfo[@"data"][@"start_time"] componentsSeparatedByString:@"&"];
-    self.monthlyList = [MKLFXCEnergyDataModel parseMonthList:dateList[0] dataList:userInfo[@"data"][@"result"]];
+    self.dataModel.monthlyList = [MKLFXCEnergyDataModel parseMonthList:dateList[0] dataList:userInfo[@"data"][@"result"]];
+    self.dataModel.timestampOfEndHistory = userInfo[@"data"][@"timestamp"];
+    self.dataModel.timestampOfStartHistory = userInfo[@"data"][@"start_time"];
     [self readDataSuccess];
 }
 
@@ -155,7 +148,8 @@ static CGFloat const segmentHeight = 30.f;
         return;
     }
     self.dataModel.dailySuccess = YES;
-    self.dailyList = [MKLFXCEnergyDataModel parseDaily:userInfo[@"data"][@"result"]];
+    self.dataModel.dailyList = [MKLFXCEnergyDataModel parseDaily:userInfo[@"data"][@"result"]];
+    self.dataModel.timestampOfToday = userInfo[@"data"][@"timestamp"];
     [self readDataSuccess];
 }
 
@@ -165,7 +159,7 @@ static CGFloat const segmentHeight = 30.f;
         return;
     }
     self.dataModel.totalSuccess = YES;
-    self.totalEnergy = [NSString stringWithFormat:@"%ld",(long)[userInfo[@"data"][@"all_energy"] integerValue]];
+    self.dataModel.totalEnergy = [NSString stringWithFormat:@"%ld",(long)[userInfo[@"data"][@"all_energy"] integerValue]];
     [self readDataSuccess];
 }
 
@@ -272,12 +266,11 @@ static CGFloat const segmentHeight = 30.f;
                                                         sucBlock:^{
         [[MKHudManager share] hide];
         [self.view showCentralToast:@"Success"];
-        self.totalEnergy = @"0";
-        self.dailyList = @[];
-        self.monthlyList = @[];
-        [self.dailyView updateEnergyDatas:self.dailyList pulseConstant:self.pulseConstant];
-        [self.monthView updateEnergyDatas:self.monthlyList pulseConstant:self.pulseConstant];
-        [self.totalView updateTotalValue:self.totalEnergy];
+        self.dataModel.totalEnergy = @"0";
+        self.dataModel.dailyList = @[];
+        self.dataModel.monthlyList = @[];
+        [self updateDataTableViews];
+        [self.totalView updateTotalValue:@"0"];
     }
                                                      failedBlock:^(NSError * _Nonnull error) {
         [[MKHudManager share] hide];
@@ -315,9 +308,30 @@ static CGFloat const segmentHeight = 30.f;
     }
     [self cancelTimer];
     [[MKHudManager share] hide];
-    [self.dailyView updateEnergyDatas:self.dailyList pulseConstant:self.pulseConstant];
-    [self.monthView updateEnergyDatas:self.monthlyList pulseConstant:self.pulseConstant];
-    [self.totalView updateTotalValue:self.totalEnergy];
+    [self updateDataTableViews];
+    float value = 0;
+    if (ValidStr(self.dataModel.pulseConstant) || [self.dataModel.pulseConstant integerValue] > 0) {
+        value = [self.dataModel.totalEnergy integerValue] * 1.0 / [self.dataModel.pulseConstant integerValue];
+    }
+    [self.totalView updateTotalValue:[NSString stringWithFormat:@"%.2f",value]];
+}
+
+- (void)updateDataTableViews {
+    NSArray *todayDateList = [self.dataModel.timestampOfToday componentsSeparatedByString:@"&"];
+    NSArray *startDateList = [self.dataModel.timestampOfStartHistory componentsSeparatedByString:@"&"];
+    NSArray *endDateList = [self.dataModel.timestampOfEndHistory componentsSeparatedByString:@"&"];
+    if (!ValidArray(todayDateList) || todayDateList.count != 2 || !ValidArray(startDateList) || startDateList.count != 2 || !ValidArray(endDateList) || endDateList.count != 2) {
+        return;
+    }
+    NSString *todayDate = todayDateList[0];
+    NSArray *todayList = [todayDate componentsSeparatedByString:@"-"];
+    [self.dailyView updateEnergyDatas:self.dataModel.dailyList
+                        pulseConstant:self.dataModel.pulseConstant
+                            timestamp:[NSString stringWithFormat:@"%@-%@",todayList[1],todayList[2]]];
+    [self.monthView updateEnergyDatas:self.dataModel.monthlyList
+                        pulseConstant:self.dataModel.pulseConstant
+                            startTime:startDateList[0]
+                              endTime:endDateList[0]];
 }
 
 #pragma mark - UI
@@ -349,18 +363,18 @@ static CGFloat const segmentHeight = 30.f;
     return _segment;
 }
 
-- (MKLFXEnergyDailyTableView *)dailyView {
+- (MKLFXCEnergyDailyTableView *)dailyView {
     if (!_dailyView) {
-        _dailyView = [[MKLFXEnergyDailyTableView alloc] initWithDeviceID:self.deviceModel.deviceID
-                                           currentEnergyNotificationName:MKLFXCReceiveCurrentEnergyNotification];
+        _dailyView = [[MKLFXCEnergyDailyTableView alloc] initWithDeviceID:self.deviceModel.deviceID
+                                            currentEnergyNotificationName:MKLFXCReceiveCurrentEnergyNotification];
     }
     return _dailyView;
 }
 
-- (MKLFXEnergyMonthlyTableView *)monthView {
+- (MKLFXCEnergyMonthlyTableView *)monthView {
     if (!_monthView) {
-        _monthView = [[MKLFXEnergyMonthlyTableView alloc] initWithDeviceID:self.deviceModel.deviceID
-                                             currentEnergyNotificationName:MKLFXCReceiveCurrentEnergyNotification];
+        _monthView = [[MKLFXCEnergyMonthlyTableView alloc] initWithDeviceID:self.deviceModel.deviceID
+                                              currentEnergyNotificationName:MKLFXCReceiveCurrentEnergyNotification];
     }
     return _monthView;
 }

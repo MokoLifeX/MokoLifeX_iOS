@@ -364,6 +364,9 @@ MKCAFileSelectControllerDelegate>
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:MKLFXMQTTSessionManagerStateChangedNotification
                                                   object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"MKLFXMQTTServerConnectFailedNotification" object:nil];
+    [[MKLFXServerManager shared] disconnect];
+    [self performSelector:@selector(backAction) withObject:nil afterDelay:0.5f];
 }
 
 - (void)startReceiveTimer{

@@ -47,9 +47,9 @@
                                             0,
                                             dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0));
     //开始时间
-    dispatch_time_t start = dispatch_time(DISPATCH_TIME_NOW, 10.f * NSEC_PER_SEC);
+    dispatch_time_t start = dispatch_time(DISPATCH_TIME_NOW, 30.f * NSEC_PER_SEC);
     //间隔时间
-    uint64_t interval = 10.f * NSEC_PER_SEC;
+    uint64_t interval = 30.f * NSEC_PER_SEC;
     dispatch_source_set_timer(self.readTimer, start, interval, 0);
     @weakify(self);
     dispatch_source_set_event_handler(self.readTimer, ^{

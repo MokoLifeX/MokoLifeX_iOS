@@ -1,5 +1,5 @@
 //
-//  MKLFXEnergyMonthlyTableView.h
+//  MKLFXBEnergyMonthlyTableView.h
 //  MokoLifeX_Example
 //
 //  Created by aa on 2021/9/12.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MKLFXEnergyMonthlyTableView : UIView
+@interface MKLFXBEnergyMonthlyTableView : UIView
 
 /// 初始化
 /// @param deviceID deviceID

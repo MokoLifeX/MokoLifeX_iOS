@@ -19,13 +19,12 @@
 
 #import "MKLFXDeviceModel.h"
 
-#import "MKLFXEnergyDailyTableView.h"
-#import "MKLFXEnergyMonthlyTableView.h"
-
 #import "MKLFXBMQTTInterface.h"
 #import "MKLFXBMQTTManager.h"
 
 #import "MKLFXBEnergyDataModel.h"
+#import "MKLFXBEnergyDailyTableView.h"
+#import "MKLFXBEnergyMonthlyTableView.h"
 
 static CGFloat const segmentWidth = 240.f;
 static CGFloat const segmentHeight = 30.f;
@@ -38,9 +37,9 @@ static CGFloat const segmentHeight = 30.f;
 
 @property (nonatomic, strong)UISegmentedControl *segment;
 
-@property (nonatomic, strong)MKLFXEnergyDailyTableView *dailyView;
+@property (nonatomic, strong)MKLFXBEnergyDailyTableView *dailyView;
 
-@property (nonatomic, strong)MKLFXEnergyMonthlyTableView *monthView;
+@property (nonatomic, strong)MKLFXBEnergyMonthlyTableView *monthView;
 
 @property (nonatomic, strong)UIScrollView *scrollView;
 
@@ -287,18 +286,18 @@ static CGFloat const segmentHeight = 30.f;
     return _segment;
 }
 
-- (MKLFXEnergyDailyTableView *)dailyView {
+- (MKLFXBEnergyDailyTableView *)dailyView {
     if (!_dailyView) {
-        _dailyView = [[MKLFXEnergyDailyTableView alloc] initWithDeviceID:self.deviceModel.deviceID
-                                           currentEnergyNotificationName:MKLFXBReceiveCurrentEnergyNotification];
+        _dailyView = [[MKLFXBEnergyDailyTableView alloc] initWithDeviceID:self.deviceModel.deviceID
+                                            currentEnergyNotificationName:MKLFXBReceiveCurrentEnergyNotification];
     }
     return _dailyView;
 }
 
-- (MKLFXEnergyMonthlyTableView *)monthView {
+- (MKLFXBEnergyMonthlyTableView *)monthView {
     if (!_monthView) {
-        _monthView = [[MKLFXEnergyMonthlyTableView alloc] initWithDeviceID:self.deviceModel.deviceID
-                                             currentEnergyNotificationName:MKLFXBReceiveCurrentEnergyNotification];
+        _monthView = [[MKLFXBEnergyMonthlyTableView alloc] initWithDeviceID:self.deviceModel.deviceID
+                                              currentEnergyNotificationName:MKLFXBReceiveCurrentEnergyNotification];
     }
     return _monthView;
 }

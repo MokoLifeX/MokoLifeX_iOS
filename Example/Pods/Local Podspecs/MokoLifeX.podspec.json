@@ -582,12 +582,19 @@
                       "dependencies": {
                         "MokoLifeX/Functions/MK11X/Functions/EnergyPage/Model": [
 
+                        ],
+                        "MokoLifeX/Functions/MK11X/Functions/EnergyPage/View": [
+
                         ]
                       }
                     },
                     {
                       "name": "Model",
                       "source_files": "MokoLifeX/Classes/Functions/MK11X/Functions/EnergyPage/Model/**"
+                    },
+                    {
+                      "name": "View",
+                      "source_files": "MokoLifeX/Classes/Functions/MK11X/Functions/EnergyPage/View/**"
                     }
                   ]
                 },

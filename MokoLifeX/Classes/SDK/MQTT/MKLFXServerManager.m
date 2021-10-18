@@ -237,6 +237,10 @@ static dispatch_once_t onceToken;
     return YES;
 }
 
+- (BOOL)disconnect {
+    [[MKMQTTServerManager shared] disconnect];
+}
+
 - (void)subscriptions:(NSArray <NSString *>*)topicList {
     [[MKMQTTServerManager shared] subscriptions:topicList qosLevel:MQTTQosLevelAtLeastOnce];
 }

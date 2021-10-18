@@ -193,7 +193,7 @@ MKTextButtonCellDelegate>
     @weakify(self);
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     self.readDateTimer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
-    dispatch_source_set_timer(self.readDateTimer, dispatch_walltime(NULL, 0), 30 * NSEC_PER_SEC, 0);
+    dispatch_source_set_timer(self.readDateTimer, dispatch_time(DISPATCH_TIME_NOW, 30.0 * NSEC_PER_SEC), 30 * NSEC_PER_SEC, 0);
     dispatch_source_set_event_handler(self.readDateTimer, ^{
         @strongify(self);
         moko_dispatch_main_safe(^{

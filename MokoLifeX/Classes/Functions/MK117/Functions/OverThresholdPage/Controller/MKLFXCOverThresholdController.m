@@ -16,6 +16,7 @@
 #import "MKBaseTableView.h"
 #import "UIView+MKAdd.h"
 #import "UITableView+MKAdd.h"
+#import "NSString+MKAdd.h"
 
 #import "MKHudManager.h"
 #import "MKTextSwitchCell.h"
@@ -103,7 +104,7 @@ MKLFXCOverThresholdCellDelegate>
         return self.section0List.count;
     }
     if (section == 1) {
-        return (self.dataModel.isOn ? self.section1List.count : 0);
+        return self.section1List.count;
     }
     return 0;
 }
@@ -130,7 +131,6 @@ MKLFXCOverThresholdCellDelegate>
     cellModel.isOn = isOn;
     if (index == 0) {
         self.dataModel.isOn = isOn;
-        [self.tableView mk_reloadSection:1 withRowAnimation:UITableViewRowAnimationNone];
         return;
     }
 }
@@ -553,6 +553,8 @@ MKLFXCOverThresholdCellDelegate>
         _tableView.backgroundColor = RGBCOLOR(242, 242, 242);
         _tableView.delegate = self;
         _tableView.dataSource = self;
+        
+        _tableView.tableFooterView = [self footerView];
     }
     return _tableView;
 }
@@ -592,25 +594,45 @@ MKLFXCOverThresholdCellDelegate>
     return _dataModel;
 }
 
+- (UIView *)footerView {
+    UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kViewWidth, 100.f)];
+    footerView.backgroundColor = RGBCOLOR(242, 242, 242);
+    
+    NSString *noteMsg = [self currentNoteMsg];
+    CGSize noteSize = [NSString sizeWithText:noteMsg
+                                     andFont:MKFont(11.f)
+                                  andMaxSize:CGSizeMake(kViewWidth - 2 * 15.f, MAXFLOAT)];
+    UILabel *msgLabel = [[UILabel alloc] initWithFrame:CGRectMake(15.f, 10.f, kViewWidth - 2 * 15.f, noteSize.height)];
+    msgLabel.textColor = RGBCOLOR(207, 207, 207);
+    msgLabel.font = MKFont(11.f);
+    msgLabel.textAlignment = NSTextAlignmentLeft;
+    msgLabel.numberOfLines = 0;
+    msgLabel.text = noteMsg;
+    
+    [footerView addSubview:msgLabel];
+    
+    return footerView;
+}
+
 - (NSString *)currentTitle {
     switch (self.pageType) {
         case mk_lfxc_overThresholdType_load:
-            return @"Over-load Threshold";
+            return @"Over-load Protection";
         case mk_lfxc_overThresholdType_voltage:
-            return @"Over-voltage Threshold";
+            return @"Over-voltage Protection";
         case mk_lfxc_overThresholdType_current:
-            return @"Over-current Threshold";
+            return @"Over-current Protection";
     }
 }
 
 - (NSString *)currentNoteMsg {
     switch (self.pageType) {
         case mk_lfxc_overThresholdType_load:
-            return @"Over-load Threshold";
+            return @"When the measured power exceeds the protection threshold and the duration exceeds the time threshold, the device will turn off automatically.";
         case mk_lfxc_overThresholdType_voltage:
-            return @"Over-voltage Threshold";
+            return @"When the measured voltage exceeds the protection threshold and the duration exceeds the time threshold, the device will turn off automatically.";
         case mk_lfxc_overThresholdType_current:
-            return @"Over-current Threshold";
+            return @"When the measured current exceeds the protection threshold and the duration exceeds the time threshold, the device will turn off automatically.";
     }
 }
 

@@ -1,12 +1,12 @@
 //
-//  MKLFXEnergyMonthlyTableView.m
+//  MKLFXCEnergyDailyTableView.m
 //  MokoLifeX_Example
 //
 //  Created by aa on 2021/9/12.
 //  Copyright © 2021 aadyx2007@163.com. All rights reserved.
 //
 
-#import "MKLFXEnergyMonthlyTableView.h"
+#import "MKLFXCEnergyDailyTableView.h"
 
 #import "Masonry.h"
 
@@ -17,7 +17,7 @@
 #import "MKLFXEnergyValueCell.h"
 #import "MKLFXEnergyTableHeaderView.h"
 
-@interface MKLFXEnergyMonthlyTableView ()<UITableViewDelegate, UITableViewDataSource>
+@interface MKLFXCEnergyDailyTableView ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong)MKBaseTableView *tableView;
 
@@ -33,10 +33,10 @@
 
 @end
 
-@implementation MKLFXEnergyMonthlyTableView
+@implementation MKLFXCEnergyDailyTableView
 
 - (void)dealloc {
-    NSLog(@"MKLFXReceiveCurrentEnergyNotification销毁");
+    NSLog(@"MKLFXCEnergyDailyTableView销毁");
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -84,45 +84,71 @@
 #pragma mark - note
 - (void)receiveCurrentEnergy:(NSNotification *)note {
     NSDictionary *userInfo = note.userInfo;
-    if (!ValidDict(userInfo) || ![userInfo[@"id"] isEqualToString:self.deviceID]) {
+    if (!ValidDict(userInfo) || ![userInfo[@"id"] isEqualToString:self.deviceID] || [userInfo[@"msg_id"] integerValue] != 1018) {
         return;
     }
     NSDictionary *energyDic = [self parseCurrentEnergyDatas:userInfo[@"data"]];
-    NSString *currentDate = [NSString stringWithFormat:@"%@-%@-%@",energyDic[@"date"][@"year"],energyDic[@"date"][@"month"],energyDic[@"date"][@"day"]];
+    NSString *hour = energyDic[@"date"][@"hour"];
+    NSString *minutes = energyDic[@"date"][@"minutes"];
+    NSString *seconds = energyDic[@"date"][@"seconds"];
+    //如果发过来的时间是XX:00:00,这个电能值是XX上一个小时的值
+    BOOL isLastOn = ([minutes isEqualToString:@"00"] && [seconds isEqualToString:@"00"]);
     if (self.dataList.count == 0) {
-        //没有数据直接添加
+        //没有直接添加
         MKLFXEnergyValueCellModel *newModel = [[MKLFXEnergyValueCellModel alloc] init];
-        newModel.timeValue = [NSString stringWithFormat:@"%@-%@",energyDic[@"date"][@"month"],energyDic[@"date"][@"day"]];
-        newModel.dateValue = currentDate;
-        newModel.energyValue = energyDic[@"currentDayValue"];
+        if (isLastOn) {
+            NSInteger tempHour = [hour integerValue] - 1;
+            if (tempHour < 0) {
+                tempHour = 0;
+            }
+            NSString *tempHourString = [NSString stringWithFormat:@"%ld",(long)tempHour];
+            if (tempHourString.length == 1) {
+                tempHourString = [@"0" stringByAppendingString:tempHourString];
+            }
+            newModel.timeValue = [NSString stringWithFormat:@"%@:%@",tempHourString,@"00"];
+        }else {
+            newModel.timeValue = [NSString stringWithFormat:@"%@:%@",hour,@"00"];
+        }
+        newModel.energyValue = energyDic[@"currentHourValue"];
         [self.dataList addObject:newModel];
     }else {
+        NSString *keyHour = hour;
+        if (isLastOn) {
+            NSInteger tempHour = [hour integerValue] - 1;
+            if (tempHour < 0) {
+                tempHour = 0;
+            }
+            keyHour = [NSString stringWithFormat:@"%ld",(long)tempHour];
+            if (keyHour.length == 1) {
+                keyHour = [@"0" stringByAppendingString:keyHour];
+            }
+        }
         BOOL contain = NO;
         for (NSInteger i = 0; i < self.dataList.count; i ++) {
             MKLFXEnergyValueCellModel *model = self.dataList[i];
-            if ([currentDate isEqualToString:model.dateValue]) {
-                //存在就替换
-                model.energyValue = energyDic[@"currentDayValue"];
+            if ([model.timeValue isEqualToString:[NSString stringWithFormat:@"%@:%@",keyHour,@"00"]]) {
+                //存在，替换
+                model.energyValue = energyDic[@"currentHourValue"];
                 contain = YES;
                 break;
             }
         }
         if (!contain) {
-            //不存在就插入
+            //没有，添加
             MKLFXEnergyValueCellModel *newModel = [[MKLFXEnergyValueCellModel alloc] init];
-            newModel.timeValue = [NSString stringWithFormat:@"%@-%@",energyDic[@"date"][@"month"],energyDic[@"date"][@"day"]];
-            newModel.dateValue = currentDate;
-            newModel.energyValue = energyDic[@"currentDayValue"];
+            newModel.timeValue = [NSString stringWithFormat:@"%@:%@",keyHour,@"00"];
+            newModel.energyValue = energyDic[@"currentHourValue"];
             [self.dataList insertObject:newModel atIndex:0];
         }
     }
-    
     [self.tableView reloadData];
-    [self reloadHeaderDateInfoWithEnergy:[energyDic[@"monthlyValue"] floatValue]];
+    [self reloadHeaderViewWithEnergy:[energyDic[@"currentDayValue"] floatValue] timestamp:[NSString stringWithFormat:@"%@-%@",energyDic[@"date"][@"month"],energyDic[@"date"][@"day"]]];
 }
 
 #pragma mark - public method
-- (void)updateEnergyDatas:(NSArray *)energyList pulseConstant:(NSString *)pulseConstant {
+- (void)updateEnergyDatas:(NSArray *)energyList
+            pulseConstant:(NSString *)pulseConstant
+                timestamp:(NSString *)timestamp {
     self.pulseConstant = [pulseConstant floatValue];
     if (energyList.count == 0) {
         return;
@@ -132,29 +158,31 @@
     for (NSInteger i = energyList.count - 1; i >= 0; i --) {
         NSDictionary *dic = energyList[i];
         MKLFXEnergyValueCellModel *model = [[MKLFXEnergyValueCellModel alloc] init];
-        NSString *date = dic[@"date"];
-        NSArray *dateList = [date componentsSeparatedByString:@"-"];
-        model.timeValue = [NSString stringWithFormat:@"%@-%@",dateList[1],dateList[2]];
-        model.dateValue = date;
+        NSString *timeValue = dic[@"index"];
+        NSString *tempTimeValue = (timeValue.length == 1 ? [@"0" stringByAppendingString:timeValue] : timeValue);
+        model.timeValue = [NSString stringWithFormat:@"%@:%@",tempTimeValue,@"00"];
         model.energyValue = dic[@"rotationsNumber"];
         totalValue += [dic[@"rotationsNumber"] integerValue];
         [self.dataList addObject:model];
     }
     [self.tableView reloadData];
-    [self reloadHeaderDateInfoWithEnergy:(totalValue * 1.f)];
+    [self reloadHeaderViewWithEnergy:(totalValue * 1.f) timestamp:timestamp];
 }
 
 - (void)resetAllDatas {
     [self.dataList removeAllObjects];
     [self.tableView reloadData];
-    self.headerModel.energyValue = @"0.0";
-    self.headerModel.dateMsg = [NSString stringWithFormat:@"%@ to %@",@"00-00-00",@"00-00-00"];
-    [self.tableHeaderView setDataModel:self.headerModel];
 }
 
 #pragma mark - private method
-- (void)reloadHeaderDateInfoWithEnergy:(float)energy {
+- (void)reloadHeaderViewWithEnergy:(float)energy timestamp:(NSString *)timestamp {
     self.headerModel.energyValue = (self.pulseConstant == 0 ? @"0" : [NSString stringWithFormat:@"%.2f",energy / self.pulseConstant]);
+    NSString *tempHour = @"00";
+    if (self.dataList.count > 0) {
+        MKLFXEnergyValueCellModel *model = self.dataList.firstObject;
+        tempHour = model.timeValue;
+    }
+    self.headerModel.dateMsg = [NSString stringWithFormat:@"00:00 to %@,%@",tempHour,timestamp];
     [self.tableHeaderView setDataModel:self.headerModel];
 }
 
@@ -176,11 +204,21 @@
     if (hour.length == 1) {
         hour = [@"0" stringByAppendingString:hour];
     }
+    NSString *minutes = hourList[1];
+    if (minutes.length == 1) {
+        minutes = [@"0" stringByAppendingString:minutes];
+    }
+    NSString *seconds = hourList[2];
+    if (seconds.length == 1) {
+        seconds = [@"0" stringByAppendingString:seconds];
+    }
     NSDictionary *dateDic = @{
         @"year":year,
         @"month":month,
         @"day":day,
         @"hour":hour,
+        @"minutes":minutes,
+        @"seconds":seconds
     };
     NSString *totalValue = [NSString stringWithFormat:@"%ld",(long)[energyDic[@"all_energy"] integerValue]];
     NSString *monthlyValue = [NSString stringWithFormat:@"%ld",(long)[energyDic[@"thirty_day_energy"] integerValue]];
@@ -193,17 +231,6 @@
         @"currentDayValue":currentDayValue,
         @"currentHourValue":currentHourValue,
     };
-}
-
-- (NSString *)fetchHeaderModelDate {
-    NSDate *date = [NSDate date];
-    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    [dateFormat setDateFormat:@"yyyy-MM-dd"];
-    NSString *endDateString = [dateFormat stringFromDate:date];
-    NSInteger second = 24 * 60 * 60;
-    NSDate *lastDate = [date initWithTimeIntervalSinceNow:(-29 * second)];
-    NSString *startDateString = [dateFormat stringFromDate:lastDate];
-    return [NSString stringWithFormat:@"%@ to %@",startDateString,endDateString];
 }
 
 #pragma mark - getter
@@ -236,8 +263,7 @@
     if (!_headerModel) {
         _headerModel = [[MKLFXEnergyTableHeaderViewModel alloc] init];
         _headerModel.energyValue = @"0";
-        _headerModel.timeMsg = @"Date";
-        _headerModel.dateMsg = [self fetchHeaderModelDate];
+        _headerModel.timeMsg = @"Hour";
     }
     return _headerModel;
 }

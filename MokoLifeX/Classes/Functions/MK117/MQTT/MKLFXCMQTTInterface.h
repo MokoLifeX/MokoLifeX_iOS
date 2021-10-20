@@ -448,7 +448,7 @@ typedef NS_ENUM(NSInteger, mk_lfxc_productModel) {
 
 /// 设置过流保护参数
 /// @param isOn 过流保护是否打开
-/// @param currentThreshold 过流保护值,欧法:0.1A~19.2A,美规:0.1~18A,英规0.1~15.6A
+/// @param currentThreshold 过流保护值,欧法:1~192(0.1A),美规:1~180(0.1A),英规1~156(0.1A)
 /// @param timeThreshold 判断过流的时间(超过过流保护值多长时间判定过载),1s~30s
 /// @param productModel 产品规格
 /// @param deviceID deviceID
@@ -456,7 +456,7 @@ typedef NS_ENUM(NSInteger, mk_lfxc_productModel) {
 /// @param sucBlock 成功回调
 /// @param failedBlock 失败回调
 + (void)lfxc_configOverCurrentParams:(BOOL)isOn
-                    currentThreshold:(double)currentThreshold
+                    currentThreshold:(NSInteger)currentThreshold
                        timeThreshold:(NSInteger)timeThreshold
                         productModel:(mk_lfxc_productModel)productModel
                             deviceID:(NSString *)deviceID

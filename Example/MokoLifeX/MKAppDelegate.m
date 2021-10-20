@@ -32,6 +32,7 @@
     [_window makeKeyAndVisible];
     [self addLaunchScreen];
     [self addLocationAuth];
+    
     return YES;
 }
 

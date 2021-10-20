@@ -761,7 +761,7 @@
 }
 
 + (void)lfxc_configOverCurrentParams:(BOOL)isOn
-                    currentThreshold:(double)currentThreshold
+                    currentThreshold:(NSInteger)currentThreshold
                        timeThreshold:(NSInteger)timeThreshold
                         productModel:(mk_lfxc_productModel)productModel
                             deviceID:(NSString *)deviceID
@@ -776,14 +776,14 @@
         [self operationFailedBlockWithMsg:@"ClientID error" failedBlock:failedBlock];
         return;
     }
-    double maxValue = 19.2;
-    double minValue = 0.1;
+    NSInteger maxValue = 192;
+    NSInteger minValue = 1;
     if (productModel == mk_lfxc_productModel_B) {
-        maxValue = 18;
-        minValue = 0.1;
+        maxValue = 180;
+        minValue = 1;
     }else if (productModel == mk_lfxc_productModel_G) {
-        maxValue = 15.6;
-        minValue = 0.1;
+        maxValue = 156;
+        minValue = 1;
     }
     if (isOn && (currentThreshold < minValue || currentThreshold > maxValue || timeThreshold < 1 || timeThreshold > 30)) {
         [self operationFailedBlockWithMsg:@"Params error" failedBlock:failedBlock];
@@ -795,7 +795,7 @@
                                                                                          raiseOnOverflow:NO
                                                                                         raiseOnUnderflow:NO
                                                                                      raiseOnDivideByZero:NO];
-    NSDecimalNumber *value = [[NSDecimalNumber alloc] initWithDouble:currentThreshold];
+    NSDecimalNumber *value = [[NSDecimalNumber alloc] initWithDouble:(currentThreshold * 0.1)];
     NSDecimalNumber *resultValue = [value decimalNumberByRoundingAccordingToBehavior:roundBehavior];
     NSDictionary *dataDic = @{
                               @"msg_id":@(2110),

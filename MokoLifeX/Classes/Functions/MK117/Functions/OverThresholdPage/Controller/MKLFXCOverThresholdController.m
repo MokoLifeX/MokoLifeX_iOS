@@ -172,7 +172,7 @@ MKLFXCOverThresholdCellDelegate>
         return;
     }
     self.dataModel.readOverValueSuccess = YES;
-    [self updateOverValues:userInfo];
+    [self updateOverValues:userInfo floatValue:NO];
     [self readDataSuccess];
 }
 
@@ -182,7 +182,7 @@ MKLFXCOverThresholdCellDelegate>
         return;
     }
     self.dataModel.readOverValueSuccess = YES;
-    [self updateOverValues:userInfo];
+    [self updateOverValues:userInfo floatValue:NO];
     [self readDataSuccess];
 }
 
@@ -192,7 +192,7 @@ MKLFXCOverThresholdCellDelegate>
         return;
     }
     self.dataModel.readOverValueSuccess = YES;
-    [self updateOverValues:userInfo];
+    [self updateOverValues:userInfo floatValue:YES];
     [self readDataSuccess];
 }
 
@@ -299,12 +299,16 @@ MKLFXCOverThresholdCellDelegate>
     }
 }
 
-- (void)updateOverValues:(NSDictionary *)userInfo {
+- (void)updateOverValues:(NSDictionary *)userInfo floatValue:(BOOL)floatValue {
     self.dataModel.isOn = ([userInfo[@"data"][@"protection_enable"] integerValue] == 1);
     MKTextSwitchCellModel *cellModel1 = self.section0List[0];
     cellModel1.isOn = self.dataModel.isOn;
+    if (floatValue) {
+        self.dataModel.valueThreshold = [NSString stringWithFormat:@"%.1f",[userInfo[@"data"][@"protection_value"] floatValue]];
+    }else {
+        self.dataModel.valueThreshold = [NSString stringWithFormat:@"%@",userInfo[@"data"][@"protection_value"]];
+    }
     
-    self.dataModel.valueThreshold = [NSString stringWithFormat:@"%@",userInfo[@"data"][@"protection_value"]];
     self.dataModel.timeThreshold = [NSString stringWithFormat:@"%@",userInfo[@"data"][@"judge_time"]];
     
     MKLFXCOverThresholdCellModel *cellModel2 = self.section1List[0];
@@ -446,7 +450,7 @@ MKLFXCOverThresholdCellDelegate>
     }
     [[MKHudManager share] showHUDWithTitle:@"Config..." inView:self.view isPenetration:NO];
     [MKLFXCMQTTInterface lfxc_configOverCurrentParams:self.dataModel.isOn
-                                     currentThreshold:[self.dataModel.valueThreshold doubleValue]
+                                     currentThreshold:(NSInteger)([self.dataModel.valueThreshold doubleValue] * 10)
                                         timeThreshold:[self.dataModel.timeThreshold integerValue]
                                          productModel:self.dataModel.productModel
                                              deviceID:self.deviceModel.deviceID
@@ -523,6 +527,7 @@ MKLFXCOverThresholdCellDelegate>
     cellModel1.msg = @"Current threshold(A)";
     cellModel1.placeholder = @"";
     cellModel1.floatType = YES;
+    cellModel1.maxLen = 4;
     [self.section1List addObject:cellModel1];
     
     MKLFXCOverThresholdCellModel *cellModel2 = [[MKLFXCOverThresholdCellModel alloc] init];

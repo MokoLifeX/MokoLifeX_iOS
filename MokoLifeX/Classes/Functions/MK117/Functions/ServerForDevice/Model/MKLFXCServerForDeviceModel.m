@@ -37,7 +37,7 @@ static NSString *const defaultPubTopic = @"{device_name}/{device_id}/device_to_a
         _cleanSession = YES;
         _keepAlive = @"60";
         _qos = 1;
-        _timeZone = 24;
+        _timeZone = 0;
     }
     return self;
 }
@@ -89,7 +89,7 @@ static NSString *const defaultPubTopic = @"{device_name}/{device_id}/device_to_a
     if (self.ntpHost.length > 64 || (ValidStr(self.ntpHost) && ![self.ntpHost isAsciiString])) {
         return @"NTP URL error";
     }
-    if (self.timeZone < 0 || self.timeZone > 48) {
+    if (self.timeZone < -24 || self.timeZone > 24) {
         return @"TimeZone error";
     }
     return @"";
@@ -337,7 +337,7 @@ static NSString *const defaultPubTopic = @"{device_name}/{device_id}/device_to_a
 
 - (BOOL)configTimeZone {
     __block BOOL success = NO;
-    [[MKLFXCSocketInterface shared] lfxc_configTimeZone:(self.timeZone - 24)
+    [[MKLFXCSocketInterface shared] lfxc_configTimeZone:self.timeZone
                                                sucBlock:^(id  _Nonnull returnData) {
         success = YES;
         dispatch_semaphore_signal(self.semaphore);

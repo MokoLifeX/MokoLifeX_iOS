@@ -51,7 +51,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// 0-64 Characters
 @property (nonatomic, copy)NSString *ntpHost;
 
-/// 0~48(-24~24)
+/// (-24~24)
 @property (nonatomic, assign)NSInteger timeZone;
 
 - (NSString *)checkParams;

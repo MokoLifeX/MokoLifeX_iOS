@@ -153,7 +153,7 @@
     [pickView showPickViewWithDataList:self.dataList selectedRow:index block:^(NSInteger currentRow) {
         [self.timeZoneButton setTitle:self.dataList[currentRow] forState:UIControlStateNormal];
         if ([self.delegate respondsToSelector:@selector(lfxc_mqtt_deviecSetting_timeZoneChanged:)]) {
-            [self.delegate lfxc_mqtt_deviecSetting_timeZoneChanged:currentRow];
+            [self.delegate lfxc_mqtt_deviecSetting_timeZoneChanged:(currentRow - 24)];
         }
     }];
 }

@@ -1,6 +1,6 @@
 {
   "name": "MokoLifeX",
-  "version": "0.1.20",
+  "version": "1.0.1",
   "summary": "A short description of MokoLifeX.",
   "description": "TODO: Add long description of the pod here.",
   "homepage": "https://github.com/MokoLifeX/MokoLifeX_iOS",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/MokoLifeX/MokoLifeX_iOS.git",
-    "tag": "0.1.20"
+    "tag": "1.0.1"
   },
   "platforms": {
     "ios": "12.0"
@@ -76,6 +76,9 @@
           "source_files": "MokoLifeX/Classes/SDK/MQTT/**",
           "dependencies": {
             "MKBaseMQTTModule": [
+
+            ],
+            "MQTTClient": [
 
             ]
           }

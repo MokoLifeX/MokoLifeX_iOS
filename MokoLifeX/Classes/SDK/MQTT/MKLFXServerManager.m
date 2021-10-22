@@ -237,7 +237,7 @@ static dispatch_once_t onceToken;
     return YES;
 }
 
-- (BOOL)disconnect {
+- (void)disconnect {
     [[MKMQTTServerManager shared] disconnect];
 }
 

@@ -51,7 +51,7 @@ extern NSString *const MKLFXMQTTSessionManagerStateChangedNotification;
 /// 开始连接服务器，前提是必须服务器参数不能为空
 - (BOOL)connect;
 
-- (BOOL)disconnect;
+- (void)disconnect;
 
 /**
  Subscribe the topic

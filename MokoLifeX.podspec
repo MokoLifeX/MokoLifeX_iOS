@@ -63,6 +63,7 @@ TODO: Add long description of the pod here.
       sss.source_files = 'MokoLifeX/Classes/SDK/MQTT/**'
       
       sss.dependency 'MKBaseMQTTModule'
+      sss.dependency 'MQTTClient'
     end
   end
   

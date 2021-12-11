@@ -1,6 +1,6 @@
 //
 //  NSBundle+MJRefresh.m
-//  MJRefresh
+//  MJRefreshExample
 //
 //  Created by MJ Lee on 16/6/13.
 //  Copyright © 2016年 小码哥. All rights reserved.
@@ -18,7 +18,7 @@ static NSBundle *mj_systemI18nBundle = nil;
 {
     static NSBundle *refreshBundle = nil;
     if (refreshBundle == nil) {
-#ifdef SWIFT_PACKAGE
+#ifdef MJ_SPM
         NSBundle *containnerBundle = SWIFTPM_MODULE_BUNDLE;
 #else
         NSBundle *containnerBundle = [NSBundle bundleForClass:[MJRefreshComponent class]];

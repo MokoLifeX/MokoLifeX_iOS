@@ -1,16 +1,12 @@
 //
 //  MJRefreshBackFooter.m
-//  MJRefresh
+//  MJRefreshExample
 //
 //  Created by MJ Lee on 15/4/24.
 //  Copyright (c) 2015年 小码哥. All rights reserved.
 //
 
 #import "MJRefreshBackFooter.h"
-#import "NSBundle+MJRefresh.h"
-#import "UIView+MJExtension.h"
-#import "UIScrollView+MJExtension.h"
-#import "UIScrollView+MJRefresh.h"
 
 @interface MJRefreshBackFooter()
 @property (assign, nonatomic) NSInteger lastRefreshCount;
@@ -76,17 +72,12 @@
 {
     [super scrollViewContentSizeDidChange:change];
     
-    CGSize size = [change[NSKeyValueChangeNewKey] CGSizeValue];
-    CGFloat contentHeight = size.height == 0 ? self.scrollView.mj_contentH : size.height;
     // 内容的高度
-    contentHeight += self.ignoredScrollViewContentInsetBottom;
+    CGFloat contentHeight = self.scrollView.mj_contentH + self.ignoredScrollViewContentInsetBottom;
     // 表格的高度
     CGFloat scrollHeight = self.scrollView.mj_h - self.scrollViewOriginalInset.top - self.scrollViewOriginalInset.bottom + self.ignoredScrollViewContentInsetBottom;
-    // 设置位置
-    CGFloat y = MAX(contentHeight, scrollHeight);
-    if (self.mj_y != y) {
-        self.mj_y = y;
-    }
+    // 设置位置和尺寸
+    self.mj_y = MAX(contentHeight, scrollHeight);
 }
 
 - (void)setState:(MJRefreshState)state

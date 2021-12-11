@@ -204,7 +204,6 @@ static CGFloat const alertViewHeight = 230.f;
         _ssidField.placeholder = @"1-32 Characters";
         _ssidField.borderStyle = UITextBorderStyleNone;
         _ssidField.font = MKFont(13.f);
-        _ssidField.textColor = DEFAULT_TEXT_COLOR;
         
         _ssidField.backgroundColor = COLOR_WHITE_MACROS;
         _ssidField.layer.masksToBounds = YES;
@@ -233,7 +232,6 @@ static CGFloat const alertViewHeight = 230.f;
         _passwordField.placeholder = @"0-64 Characters";
         _passwordField.borderStyle = UITextBorderStyleNone;
         _passwordField.font = MKFont(13.f);
-        _passwordField.textColor = DEFAULT_TEXT_COLOR;
         
         _passwordField.backgroundColor = COLOR_WHITE_MACROS;
         _passwordField.layer.masksToBounds = YES;

@@ -1,6 +1,6 @@
 //  代码地址: https://github.com/CoderMJLee/MJRefresh
 //  MJRefreshComponent.m
-//  MJRefresh
+//  MJRefreshExample
 //
 //  Created by MJ Lee on 15/3/4.
 //  Copyright (c) 2015年 小码哥. All rights reserved.
@@ -9,10 +9,6 @@
 #import "MJRefreshComponent.h"
 #import "MJRefreshConst.h"
 #import "MJRefreshConfig.h"
-#import "UIView+MJExtension.h"
-#import "UIScrollView+MJExtension.h"
-#import "UIScrollView+MJRefresh.h"
-#import "NSBundle+MJRefresh.h"
 
 @interface MJRefreshComponent()
 @property (strong, nonatomic) UIPanGestureRecognizer *pan;
@@ -237,15 +233,17 @@
 #pragma mark - 内部方法
 - (void)executeRefreshingCallback
 {
-    if (self.refreshingBlock) {
-        self.refreshingBlock();
-    }
-    if ([self.refreshingTarget respondsToSelector:self.refreshingAction]) {
-        MJRefreshMsgSend(MJRefreshMsgTarget(self.refreshingTarget), self.refreshingAction, self);
-    }
-    if (self.beginRefreshingCompletionBlock) {
-        self.beginRefreshingCompletionBlock();
-    }
+    MJRefreshDispatchAsyncOnMainQueue({
+        if (self.refreshingBlock) {
+            self.refreshingBlock();
+        }
+        if ([self.refreshingTarget respondsToSelector:self.refreshingAction]) {
+            MJRefreshMsgSend(MJRefreshMsgTarget(self.refreshingTarget), self.refreshingAction, self);
+        }
+        if (self.beginRefreshingCompletionBlock) {
+            self.beginRefreshingCompletionBlock();
+        }
+    })
 }
 
 #pragma mark - 刷新动画时间控制

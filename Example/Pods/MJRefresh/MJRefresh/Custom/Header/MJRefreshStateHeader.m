@@ -1,16 +1,12 @@
 //
 //  MJRefreshStateHeader.m
-//  MJRefresh
+//  MJRefreshExample
 //
 //  Created by MJ Lee on 15/4/24.
 //  Copyright (c) 2015年 小码哥. All rights reserved.
 //
 
 #import "MJRefreshStateHeader.h"
-#import "MJRefreshConst.h"
-#import "NSBundle+MJRefresh.h"
-#import "UIView+MJExtension.h"
-#import "UIScrollView+MJExtension.h"
 
 @interface MJRefreshStateHeader()
 {
@@ -47,12 +43,6 @@
         [self addSubview:_lastUpdatedTimeLabel = [UILabel mj_label]];
     }
     return _lastUpdatedTimeLabel;
-}
-
-- (void)setLastUpdatedTimeText:(NSString * _Nonnull (^)(NSDate * _Nullable))lastUpdatedTimeText{
-    _lastUpdatedTimeText = lastUpdatedTimeText;
-    // 重新设置key（重新显示时间）
-    self.lastUpdatedTimeKey = self.lastUpdatedTimeKey;
 }
 
 #pragma mark - 公共方法

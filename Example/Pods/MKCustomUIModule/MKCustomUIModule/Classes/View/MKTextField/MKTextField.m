@@ -35,7 +35,6 @@
                                                    object:self];
         [self setAutocorrectionType:UITextAutocorrectionTypeNo];
         [self setAutocapitalizationType:UITextAutocapitalizationTypeNone];
-        self.textColor = DEFAULT_TEXT_COLOR;
     }
     return self;
 }
@@ -62,14 +61,6 @@
 - (void)delete:(id)sender {
     //长按出现UIMenuController菜单，如果用户点击了删除，textField必须实现该方法，否则闪退
     NSLog(@"%@",sender);
-}
-
--(void)drawPlaceholderInRect:(CGRect)rect {
-    CGSize placeholderSize = [self.placeholder sizeWithAttributes:@{NSFontAttributeName : self.font}];
-    CGRect drawRect = CGRectMake(0, (rect.size.height - placeholderSize.height)/2, rect.size.width, rect.size.height);
-    NSDictionary *attributes = @{NSForegroundColorAttributeName : RGBCOLOR(220, 220, 220),
-                                 NSFontAttributeName : self.font};
-    [self.placeholder drawInRect:drawRect withAttributes:attributes];
 }
 
 #pragma mark - Notification Methods

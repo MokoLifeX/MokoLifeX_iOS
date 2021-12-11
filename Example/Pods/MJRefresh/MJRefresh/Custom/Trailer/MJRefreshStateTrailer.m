@@ -1,14 +1,12 @@
 //
 //  MJRefreshStateTrailer.m
-//  MJRefresh
+//  MJRefreshExample
 //
 //  Created by kinarobin on 2020/5/3.
 //  Copyright © 2020 小码哥. All rights reserved.
 //
 
 #import "MJRefreshStateTrailer.h"
-#import "NSBundle+MJRefresh.h"
-#import "UIView+MJExtension.h"
 
 @interface MJRefreshStateTrailer() {
     /** 显示刷新状态的label */
@@ -40,7 +38,6 @@
 - (instancetype)setTitle:(NSString *)title forState:(MJRefreshState)state {
     if (title == nil) return self;
     self.stateTitles[@(state)] = title;
-    self.stateLabel.text = self.stateTitles[@(self.state)];
     return self;
 }
 

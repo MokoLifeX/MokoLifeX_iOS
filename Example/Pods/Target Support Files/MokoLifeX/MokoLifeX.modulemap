@@ -1,6 +1,0 @@
-framework module MokoLifeX {
-  umbrella header "MokoLifeX-umbrella.h"
-
-  export *
-  module * { export * }
-}

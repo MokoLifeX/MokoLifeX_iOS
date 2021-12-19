@@ -26,7 +26,10 @@ NSString *const kAction_MokoLifeX_MK11X_switchStatePage = @"MokoLifeX_MK11X_Modu
 
 NSString *const kTarget_MokoLifeX_MK117_module = @"MokoLifeX_MK117_Module";
 
-//设备MQTT页面
+//MK117设备MQTT页面
 NSString *const kAction_MokoLifeX_MK117_serverForDevicePage = @"MokoLifeX_MK117_Module_ServerForDevicePage";
 //设备的开关页面
 NSString *const kAction_MokoLifeX_MK117_switchStatePage = @"MokoLifeX_MK117_Module_SwitchStatePage";
+//MK117D设备MQTT页面
+NSString *const kAction_MokoLifeX_MK117_117DserverForDevicePage = @"MokoLifeX_MK117_Module_117DServerForDevicePage";
+

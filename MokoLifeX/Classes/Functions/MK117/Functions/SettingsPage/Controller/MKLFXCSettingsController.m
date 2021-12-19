@@ -42,6 +42,7 @@
 #import "MKLFXCProtectionSettingController.h"
 #import "MKLFXCMQTTSettingForDeviceController.h"
 #import "MKLFXCSystemTimeController.h"
+#import "MKLFXCDModifyServerController.h"
 
 @interface MKLFXCSettingsController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -175,11 +176,20 @@
     }
     
 #pragma mark - section3
-    if (indexPath.section == 3 && indexPath.row == 0) {
+    if (indexPath.section == 3) {
+        if ([self.deviceModel.deviceType integerValue] == 5 && indexPath.row == 0) {
+            //MK117D的Modify MQTT settings页面
+            MKLFXCDModifyServerController *vc = [[MKLFXCDModifyServerController alloc] init];
+            vc.deviceModel = self.deviceModel;
+            [self.navigationController pushViewController:vc animated:YES];
+            return;
+        }
+        //OTA
         MKLFXUpdateController *vc = [[MKLFXUpdateController alloc] init];
         vc.deviceModel = self.deviceModel;
         vc.protocol = [[MKLFXCUpdateDataModel alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
+        return;
     }
     
 #pragma mark - section4
@@ -473,9 +483,15 @@
 }
 
 - (void)loadSection3Datas {
-    MKSettingTextCellModel *cellModel = [[MKSettingTextCellModel alloc] init];
-    cellModel.leftMsg = @"OTA";
-    [self.section3List addObject:cellModel];
+    if ([self.deviceModel.deviceType integerValue] == 5) {
+        //MK117D
+        MKSettingTextCellModel *cellModel1 = [[MKSettingTextCellModel alloc] init];
+        cellModel1.leftMsg = @"Modify MQTT settings";
+        [self.section3List addObject:cellModel1];
+    }
+    MKSettingTextCellModel *cellModel2 = [[MKSettingTextCellModel alloc] init];
+    cellModel2.leftMsg = @"OTA";
+    [self.section3List addObject:cellModel2];
 }
 
 - (void)loadSection4Datas {

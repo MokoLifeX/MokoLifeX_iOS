@@ -30,10 +30,16 @@
                                                         action:kAction_MokoLifeX_MK11X_serverForDevicePage
                                                         params:params];
     }
-    if (deviceType == 4 || deviceType == 5) {
-        //MK117、MK117D
+    if (deviceType == 4) {
+        //MK117
         return [self Action_MokoLifeX_ViewControllerWithTarget:kTarget_MokoLifeX_MK117_module
                                                         action:kAction_MokoLifeX_MK117_serverForDevicePage
+                                                        params:params];
+    }
+    if (deviceType == 5) {
+        //MK117D
+        return [self Action_MokoLifeX_ViewControllerWithTarget:kTarget_MokoLifeX_MK117_module
+                                                        action:kAction_MokoLifeX_MK117_117DserverForDevicePage
                                                         params:params];
     }
     return [[UIViewController alloc] init];

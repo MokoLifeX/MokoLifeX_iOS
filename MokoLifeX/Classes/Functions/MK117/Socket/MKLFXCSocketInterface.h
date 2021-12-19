@@ -55,6 +55,10 @@ typedef NS_ENUM(NSInteger, lfxc_electricalDefaultState) {
 
 - (void)disconnect;
 
+- (void)operationFailedBlockWithMsg:(NSString *)message
+                        failedBlock:(void (^)(NSError *error))failedBlock;
+
+#pragma mark - interface
 /**
  Send the MQTT server information to the plug.If the plug receives this information and successfully parses it, and plug successfully connects to the WiFi network, the plug will automatically connect to the MQTT server specified by the Smartphone.
  
@@ -151,14 +155,6 @@ typedef NS_ENUM(NSInteger, lfxc_electricalDefaultState) {
 - (void)lfxc_configNTPServer:(NSString *)host
                     sucBlock:(void (^)(id returnData))sucBlock
                  failedBlock:(void (^)(NSError *error))failedBlock;
-
-/// 配置时区
-/// @param timeZone -24~24
-/// @param sucBlock 成功回调
-/// @param failedBlock 失败回调
-- (void)lfxc_configTimeZone:(NSInteger)timeZone
-                   sucBlock:(void (^)(id returnData))sucBlock
-                failedBlock:(void (^)(NSError *error))failedBlock;
 
 @end
 

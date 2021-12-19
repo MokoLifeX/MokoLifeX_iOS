@@ -1,6 +1,6 @@
 {
   "name": "MokoLifeX",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "summary": "A short description of MokoLifeX.",
   "description": "TODO: Add long description of the pod here.",
   "homepage": "https://github.com/MokoLifeX/MokoLifeX_iOS",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/MokoLifeX/MokoLifeX_iOS.git",
-    "tag": "1.0.1"
+    "tag": "1.1.0"
   },
   "platforms": {
     "ios": "12.0"
@@ -755,6 +755,61 @@
                 ]
               },
               "subspecs": [
+                {
+                  "name": "MK117DPages",
+                  "subspecs": [
+                    {
+                      "name": "ServerForDevicePage",
+                      "subspecs": [
+                        {
+                          "name": "Controller",
+                          "source_files": "MokoLifeX/Classes/Functions/MK117/Functions/MK117DPages/ServerForDevicePage/Controller/**",
+                          "dependencies": {
+                            "MokoLifeX/Functions/MK117/Functions/MK117DPages/ServerForDevicePage/Model": [
+
+                            ],
+                            "MokoLifeX/Functions/MK117/Functions/MK117DPages/ServerForDevicePage/View": [
+
+                            ]
+                          }
+                        },
+                        {
+                          "name": "Model",
+                          "source_files": "MokoLifeX/Classes/Functions/MK117/Functions/MK117DPages/ServerForDevicePage/Model/**"
+                        },
+                        {
+                          "name": "View",
+                          "source_files": "MokoLifeX/Classes/Functions/MK117/Functions/MK117DPages/ServerForDevicePage/View/**"
+                        }
+                      ]
+                    },
+                    {
+                      "name": "ModifyMQTTServerPage",
+                      "subspecs": [
+                        {
+                          "name": "Controller",
+                          "source_files": "MokoLifeX/Classes/Functions/MK117/Functions/MK117DPages/ModifyMQTTServerPage/Controller/**",
+                          "dependencies": {
+                            "MokoLifeX/Functions/MK117/Functions/MK117DPages/ModifyMQTTServerPage/Model": [
+
+                            ],
+                            "MokoLifeX/Functions/MK117/Functions/MK117DPages/ModifyMQTTServerPage/View": [
+
+                            ]
+                          }
+                        },
+                        {
+                          "name": "Model",
+                          "source_files": "MokoLifeX/Classes/Functions/MK117/Functions/MK117DPages/ModifyMQTTServerPage/Model/**"
+                        },
+                        {
+                          "name": "View",
+                          "source_files": "MokoLifeX/Classes/Functions/MK117/Functions/MK117DPages/ModifyMQTTServerPage/View/**"
+                        }
+                      ]
+                    }
+                  ]
+                },
                 {
                   "name": "ColorSettingPage",
                   "subspecs": [

@@ -10,38 +10,8 @@
 
 #import "MKLFXServerManager.h"
 
-NSString *const MKLFXCReceiveSwitchStateNotification = @"MKLFXCReceiveSwitchStateNotification";
-NSString *const MKLFXCReceiveFirmwareInfoNotification = @"MKLFXCReceiveFirmwareInfoNotification";
-NSString *const MKLFXCReceiveDelayTimeNotification = @"MKLFXCReceiveDelayTimeNotification";
-NSString *const MKLFXCReceiveUpdateResultNotification = @"MKLFXCReceiveUpdateResultNotification";
-NSString *const MKLFXCReceiveElectricityNotification = @"MKLFXCReceiveElectricityNotification";
-NSString *const MKLFXCReceiveDevicePowerOnStatusNotification = @"MKLFXCReceiveDevicePowerOnStatusNotification";
-NSString *const MKLFXCReceiveLEDColorNotification = @"MKLFXCReceiveLEDColorNotification";
-NSString *const MKLFXCReceiveLoadChangeStatusNotification = @"MKLFXCReceiveLoadChangeStatusNotification";
-NSString *const MKLFXCReceivePowerReportIntervalNotification = @"MKLFXCReceivePowerReportIntervalNotification";
-
-NSString *const MKLFXCReceiveEnergyParamsNotification = @"MKLFXCReceiveEnergyParamsNotification";
-NSString *const MKLFXCReceiveHistoricalEnergyNotification = @"MKLFXCReceiveHistoricalEnergyNotification";
-NSString *const MKLFXCReceiveEnergyDataOfTodayNotification = @"MKLFXCReceiveEnergyDataOfTodayNotification";
-NSString *const MKLFXCReceivePulseConstantNotification = @"MKLFXCReceivePulseConstantNotification";
-NSString *const MKLFXCReceiveTotalEnergyNotification = @"MKLFXCReceiveTotalEnergyNotification";
-NSString *const MKLFXCReceiveCurrentEnergyNotification = @"MKLFXCReceiveCurrentEnergyNotification";
-NSString *const MKLFXCReceiveEnergyReportPeriodNotification = @"MKLFXCReceiveEnergyReportPeriodNotification";
-NSString *const MKLFXCReceiveSwitchStatusReportIntervalNotification = @"MKLFXCReceiveSwitchStatusReportIntervalNotification";
-
-NSString *const MKLFXCReceiveOverLoadParamsNotification = @"MKLFXCReceiveOverLoadParamsNotification";
-NSString *const MKLFXCReceiveOverLoadStatusNotification = @"MKLFXCReceiveOverLoadStatusNotification";
-NSString *const MKLFXCReceiveOverVoltageParamsNotification = @"MKLFXCReceiveOverVoltageParamsNotification";
-NSString *const MKLFXCReceiveOverVoltageStatusNotification = @"MKLFXCReceiveOverVoltageStatusNotification";
-NSString *const MKLFXCReceiveOverCurrentParamsNotification = @"MKLFXCReceiveOverCurrentParamsNotification";
-NSString *const MKLFXCReceiveOverCurrentStatusNotification = @"MKLFXCReceiveOverCurrentStatusNotification";
-NSString *const MKLFXCReceiveNTPParamsNotification = @"MKLFXCReceiveNTPParamsNotification";
-
-NSString *const MKLFXCReceiveLoadChangeNoteStatusNotification = @"MKLFXCReceiveLoadChangeNoteStatusNotification";
-NSString *const MKLFXCReceiveRCLEDStatusNotification = @"MKLFXCReceiveRCLEDStatusNotification";
-NSString *const MKLFXCReceiveConnectionTimeoutSettingNotification = @"MKLFXCReceiveConnectionTimeoutSettingNotification";
-NSString *const MKLFXCReceiveDeviceCurrentTimeNotification = @"MKLFXCReceiveDeviceCurrentTimeNotification";
-NSString *const MKLFXCReceiveDeviceMQTTParamsNotification = @"MKLFXCReceiveDeviceMQTTParamsNotification";
+#import "MKLFXCDeviceMQTTNotifications.h"
+#import "MKLFXC117DMQTTNotifications.h"
 
 static MKLFXCMQTTManager *manager = nil;
 static dispatch_once_t onceToken;
@@ -234,6 +204,14 @@ static dispatch_once_t onceToken;
     if (msgID == 1123) {
         //发布设备的MQTT参数
         return MKLFXCReceiveDeviceMQTTParamsNotification;
+    }
+    if (msgID == 1124) {
+        //发布网络配置结果(下载证书之类)
+        return MKLFXCReceiveModifyMQTTConfigNotification;
+    }
+    if (msgID == 1125) {
+        //发布网络切换结果
+        return MKLFXCReceiveReconnectNetworkMQTTConfigNotification;
     }
     return @"";
 }

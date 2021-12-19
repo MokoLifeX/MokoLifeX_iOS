@@ -15,6 +15,17 @@
 
 @implementation MKLFXCMQTTInterface
 
++ (void)operationFailedBlockWithMsg:(NSString *)message failedBlock:(void (^)(NSError *error))failedBlock {
+    NSError *error = [[NSError alloc] initWithDomain:@"com.moko.LFXMQTTInterface"
+                                                code:-999
+                                            userInfo:@{@"errorInfo":message}];
+    moko_dispatch_main_safe(^{
+        if (failedBlock) {
+            failedBlock(error);
+        }
+    });
+}
+
 + (void)lfxc_readDeviceSwitchStateWithDeviceID:(NSString *)deviceID
                                          topic:(NSString *)topic
                                       sucBlock:(void (^)(void))sucBlock
@@ -132,42 +143,6 @@
     NSDictionary *dataDic = @{
                               @"msg_id":@(2005),
                               @"id":deviceID,
-                              };
-    [[MKLFXCMQTTManager shared] sendData:dataDic
-                                   topic:topic
-                                sucBlock:sucBlock
-                             failedBlock:failedBlock];
-}
-
-+ (void)lfxc_updateFile:(mk_lfxc_updateFileType)fileType
-                   host:(NSString *)host
-                   port:(NSInteger)port
-              catalogue:(NSString *)catalogue
-               deviceID:(NSString *)deviceID
-                  topic:(NSString *)topic
-               sucBlock:(void (^)(void))sucBlock
-            failedBlock:(void (^)(NSError *error))failedBlock {
-    if (!ValidStr(topic) || topic.length > 128 || ![topic isAsciiString]) {
-        [self operationFailedBlockWithMsg:@"Topic error" failedBlock:failedBlock];
-        return;
-    }
-    if (!ValidStr(deviceID) || deviceID.length > 32 || ![deviceID isAsciiString]) {
-        [self operationFailedBlockWithMsg:@"ClientID error" failedBlock:failedBlock];
-        return;
-    }
-    if (port < 0 || port > 65535 || !ValidStr(catalogue) || catalogue.length > 100 || !ValidStr(host) || host.length > 64) {
-        [self operationFailedBlockWithMsg:@"Params error" failedBlock:failedBlock];
-        return;
-    }
-    NSDictionary *dataDic = @{
-                              @"msg_id":@(2004),
-                              @"id":deviceID,
-                              @"data":@{
-                                      @"file_type":@(fileType),
-                                      @"domain_name":host,
-                                      @"port":@(port),
-                                      @"file_way":catalogue,
-                                      }
                               };
     [[MKLFXCMQTTManager shared] sendData:dataDic
                                    topic:topic
@@ -1128,48 +1103,7 @@
                              failedBlock:failedBlock];
 }
 
-+ (void)lfxc_configDeviceTimeZone:(NSInteger)timeZone
-                         deviceID:(NSString *)deviceID
-                            topic:(NSString *)topic
-                         sucBlock:(void (^)(void))sucBlock
-                      failedBlock:(void (^)(NSError *error))failedBlock {
-    if (!ValidStr(topic) || topic.length > 128 || ![topic isAsciiString]) {
-        [self operationFailedBlockWithMsg:@"Topic error" failedBlock:failedBlock];
-        return;
-    }
-    if (!ValidStr(deviceID) || deviceID.length > 32 || ![deviceID isAsciiString]) {
-        [self operationFailedBlockWithMsg:@"ClientID error" failedBlock:failedBlock];
-        return;
-    }
-    if (timeZone < -24 || timeZone > 24) {
-        [self operationFailedBlockWithMsg:@"Params error" failedBlock:failedBlock];
-        return;
-    }
-    NSDictionary *dataDic = @{
-                              @"msg_id":@(2124),
-                              @"id":deviceID,
-                              @"data":@{
-                                      @"timestamp":@((long long)[[NSDate date] timeIntervalSince1970]),
-                                      @"time_zone":@(timeZone),
-                                },
-                              };
-    [[MKLFXCMQTTManager shared] sendData:dataDic
-                                   topic:topic
-                                sucBlock:sucBlock
-                             failedBlock:failedBlock];
-}
-
 #pragma mark - private method
-+ (void)operationFailedBlockWithMsg:(NSString *)message failedBlock:(void (^)(NSError *error))failedBlock {
-    NSError *error = [[NSError alloc] initWithDomain:@"com.moko.LFXMQTTInterface"
-                                                code:-999
-                                            userInfo:@{@"errorInfo":message}];
-    moko_dispatch_main_safe(^{
-        if (failedBlock) {
-            failedBlock(error);
-        }
-    });
-}
 
 + (BOOL)checkLEDColorParams:(mk_lfxc_ledColorType)colorType
               colorProtocol:(nullable id <mk_lfxc_ledColorConfigProtocol>)protocol

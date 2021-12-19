@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'MokoLifeX'
-  s.version          = '1.0.1'
+  s.version          = '1.1.0'
   s.summary          = 'A short description of MokoLifeX.'
 
 # This description is used to generate tags and improve search results.
@@ -474,6 +474,40 @@ TODO: Add long description of the pod here.
       end
       
       sss.subspec 'Functions' do |ssss|
+        
+        ssss.subspec 'MK117DPages' do |sssss|
+          
+          sssss.subspec 'ServerForDevicePage' do |ssssss|
+            ssssss.subspec 'Controller' do |sssssss|
+              sssssss.source_files = 'MokoLifeX/Classes/Functions/MK117/Functions/MK117DPages/ServerForDevicePage/Controller/**'
+              
+              sssssss.dependency 'MokoLifeX/Functions/MK117/Functions/MK117DPages/ServerForDevicePage/Model'
+              sssssss.dependency 'MokoLifeX/Functions/MK117/Functions/MK117DPages/ServerForDevicePage/View'
+            end
+            ssssss.subspec 'Model' do |sssssss|
+              sssssss.source_files = 'MokoLifeX/Classes/Functions/MK117/Functions/MK117DPages/ServerForDevicePage/Model/**'
+            end
+            ssssss.subspec 'View' do |sssssss|
+              sssssss.source_files = 'MokoLifeX/Classes/Functions/MK117/Functions/MK117DPages/ServerForDevicePage/View/**'
+            end
+          end
+          
+          sssss.subspec 'ModifyMQTTServerPage' do |ssssss|
+            ssssss.subspec 'Controller' do |sssssss|
+              sssssss.source_files = 'MokoLifeX/Classes/Functions/MK117/Functions/MK117DPages/ModifyMQTTServerPage/Controller/**'
+              
+              sssssss.dependency 'MokoLifeX/Functions/MK117/Functions/MK117DPages/ModifyMQTTServerPage/Model'
+              sssssss.dependency 'MokoLifeX/Functions/MK117/Functions/MK117DPages/ModifyMQTTServerPage/View'
+            end
+            ssssss.subspec 'Model' do |sssssss|
+              sssssss.source_files = 'MokoLifeX/Classes/Functions/MK117/Functions/MK117DPages/ModifyMQTTServerPage/Model/**'
+            end
+            ssssss.subspec 'View' do |sssssss|
+              sssssss.source_files = 'MokoLifeX/Classes/Functions/MK117/Functions/MK117DPages/ModifyMQTTServerPage/View/**'
+            end
+          end
+        
+        end
         
         ssss.subspec 'ColorSettingPage' do |sssss|
             sssss.subspec 'Controller' do |ssssss|

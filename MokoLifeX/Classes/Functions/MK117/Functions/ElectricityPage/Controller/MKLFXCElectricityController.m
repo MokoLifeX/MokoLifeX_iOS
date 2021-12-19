@@ -20,8 +20,8 @@
 
 #import "MKLFXDeviceModel.h"
 
-#import "MKLFXCMQTTManager.h"
 #import "MKLFXCMQTTInterface.h"
+#import "MKLFXCDeviceMQTTNotifications.h"
 
 @interface MKLFXCElectricityController ()<UITableViewDelegate, UITableViewDataSource>
 

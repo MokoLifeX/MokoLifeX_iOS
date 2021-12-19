@@ -8,8 +8,8 @@
 
 #import "MKLFXCUpdateDataModel.h"
 
-#import "MKLFXCMQTTInterface.h"
-#import "MKLFXCMQTTManager.h"
+#import "MKLFXCMQTTInterface+MKLFX117Add.h"
+#import "MKLFXCDeviceMQTTNotifications.h"
 
 @implementation MKLFXCUpdateDataModel
 

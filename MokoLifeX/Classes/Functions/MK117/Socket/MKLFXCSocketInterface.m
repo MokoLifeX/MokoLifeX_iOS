@@ -12,11 +12,16 @@
 #import "MKLFXSocketAdopter.h"
 #import "MKLFXSocketDefines.h"
 
-#import "MKLFXCSocketTag.h"
+static long const lfxc_socket_configMQTTServerTag = 2021090801;
+static long const lfxc_socket_configCertDataTag = 2021090802;
+static long const lfxc_socket_configTopicTag = 2021090803;
+static long const lfxc_socket_configElectricalDefaultStateTag = 2021090804;
+static long const lfxc_socket_configWifiParamsTag = 2021090805;
+static long const lfxc_socket_configDeviceIDTag = 2021090806;
+static long const lfxc_socket_configNTPTag = 2021090807;
 
 static MKLFXCSocketInterface *manager = nil;
 static dispatch_once_t onceToken;
-
 
 static NSInteger const certPackageDataLength = 200;
 
@@ -58,6 +63,17 @@ static NSInteger const certPackageDataLength = 200;
 
 - (void)disconnect {
     [[MKLFXSocketManager shared] disconnect];
+}
+
+- (void)operationFailedBlockWithMsg:(NSString *)message failedBlock:(void (^)(NSError *error))failedBlock {
+    NSError *error = [[NSError alloc] initWithDomain:@"com.moko.MKSocketInterface"
+                                                code:-999
+                                            userInfo:@{@"errorInfo":message}];
+    MKSKBase_main_safe(^{
+        if (failedBlock) {
+            failedBlock(error);
+        }
+    });
 }
 
 #pragma mark - interface
@@ -263,24 +279,6 @@ static NSInteger const certPackageDataLength = 200;
                                     failedBlock:failedBlock];
 }
 
-- (void)lfxc_configTimeZone:(NSInteger)timeZone
-                   sucBlock:(void (^)(id returnData))sucBlock
-                failedBlock:(void (^)(NSError *error))failedBlock {
-    if (timeZone < -24 || timeZone > 24) {
-        [self operationFailedBlockWithMsg:@"Params Error" failedBlock:failedBlock];
-        return;
-    }
-    NSDictionary *json = @{
-        @"header":@(4009),
-        @"time_zone":@(timeZone)
-    };
-    NSString *jsonString = [MKLFXSocketAdopter convertToJsonData:json];
-    [[MKLFXSocketManager shared] addTaskWithTag:lfxc_socket_configNTPTag
-                                           data:jsonString
-                                       sucBlock:sucBlock
-                                    failedBlock:failedBlock];
-}
-
 #pragma mark - cert
 - (void)sendCertDataToDevice:(NSData *)certData
                         type:(NSInteger)type
@@ -333,18 +331,6 @@ static NSInteger const certPackageDataLength = 200;
     }];
     dispatch_semaphore_wait(self.semaphore, DISPATCH_TIME_FOREVER);
     return success;
-}
-
-#pragma mark - private method
-- (void)operationFailedBlockWithMsg:(NSString *)message failedBlock:(void (^)(NSError *error))failedBlock {
-    NSError *error = [[NSError alloc] initWithDomain:@"com.moko.MKSocketInterface"
-                                                code:-999
-                                            userInfo:@{@"errorInfo":message}];
-    MKSKBase_main_safe(^{
-        if (failedBlock) {
-            failedBlock(error);
-        }
-    });
 }
 
 #pragma mark - getter

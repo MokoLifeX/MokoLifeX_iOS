@@ -438,83 +438,83 @@ PODS:
     - MKBaseModuleLibrary
     - MKCustomUIModule/View/MKTextField
   - MLInputDodger (1.5.2)
-  - MokoLifeX (1.0.1):
+  - MokoLifeX (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
     - MLInputDodger
-    - MokoLifeX/ApplicationModule (= 1.0.1)
-    - MokoLifeX/CTMediator (= 1.0.1)
-    - MokoLifeX/DeviceModel (= 1.0.1)
-    - MokoLifeX/Expand (= 1.0.1)
-    - MokoLifeX/Functions (= 1.0.1)
-    - MokoLifeX/SDK (= 1.0.1)
-    - MokoLifeX/Target (= 1.0.1)
-  - MokoLifeX/ApplicationModule (1.0.1):
+    - MokoLifeX/ApplicationModule (= 1.1.0)
+    - MokoLifeX/CTMediator (= 1.1.0)
+    - MokoLifeX/DeviceModel (= 1.1.0)
+    - MokoLifeX/Expand (= 1.1.0)
+    - MokoLifeX/Functions (= 1.1.0)
+    - MokoLifeX/SDK (= 1.1.0)
+    - MokoLifeX/Target (= 1.1.0)
+  - MokoLifeX/ApplicationModule (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
     - MLInputDodger
-  - MokoLifeX/CTMediator (1.0.1):
+  - MokoLifeX/CTMediator (1.1.0):
     - CTMediator
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
     - MLInputDodger
     - MokoLifeX/DeviceModel
-  - MokoLifeX/DeviceModel (1.0.1):
+  - MokoLifeX/DeviceModel (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
     - MLInputDodger
     - MokoLifeX/SDK/MQTT
-  - MokoLifeX/Expand (1.0.1):
+  - MokoLifeX/Expand (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
     - MLInputDodger
-    - MokoLifeX/Expand/Cell (= 1.0.1)
-    - MokoLifeX/Expand/Controller (= 1.0.1)
-    - MokoLifeX/Expand/DatabaseManager (= 1.0.1)
-    - MokoLifeX/Expand/View (= 1.0.1)
-  - MokoLifeX/Expand/Cell (1.0.1):
+    - MokoLifeX/Expand/Cell (= 1.1.0)
+    - MokoLifeX/Expand/Controller (= 1.1.0)
+    - MokoLifeX/Expand/DatabaseManager (= 1.1.0)
+    - MokoLifeX/Expand/View (= 1.1.0)
+  - MokoLifeX/Expand/Cell (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
     - MLInputDodger
-    - MokoLifeX/Expand/Cell/PowerOnStatusCell (= 1.0.1)
-  - MokoLifeX/Expand/Cell/PowerOnStatusCell (1.0.1):
+    - MokoLifeX/Expand/Cell/PowerOnStatusCell (= 1.1.0)
+  - MokoLifeX/Expand/Cell/PowerOnStatusCell (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
     - MLInputDodger
-  - MokoLifeX/Expand/Controller (1.0.1):
-    - FLAnimatedImage
-    - MKBaseModuleLibrary
-    - MKCustomUIModule
-    - MLInputDodger
-    - MokoLifeX/DeviceModel
-    - MokoLifeX/Expand/Controller/1110X (= 1.0.1)
-    - MokoLifeX/Expand/Controller/BaseController (= 1.0.1)
-    - MokoLifeX/Expand/Controller/Common (= 1.0.1)
-  - MokoLifeX/Expand/Controller/1110X (1.0.1):
+  - MokoLifeX/Expand/Controller (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
     - MLInputDodger
     - MokoLifeX/DeviceModel
-    - MokoLifeX/Expand/Controller/1110X/DeviceInfoPage (= 1.0.1)
-    - MokoLifeX/Expand/Controller/1110X/ElectricityPage (= 1.0.1)
-    - MokoLifeX/Expand/Controller/1110X/PowerOnStatusPage (= 1.0.1)
-  - MokoLifeX/Expand/Controller/1110X/DeviceInfoPage (1.0.1):
+    - MokoLifeX/Expand/Controller/1110X (= 1.1.0)
+    - MokoLifeX/Expand/Controller/BaseController (= 1.1.0)
+    - MokoLifeX/Expand/Controller/Common (= 1.1.0)
+  - MokoLifeX/Expand/Controller/1110X (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
     - MLInputDodger
     - MokoLifeX/DeviceModel
-    - MokoLifeX/Expand/Controller/1110X/DeviceInfoPage/Controller (= 1.0.1)
-    - MokoLifeX/Expand/Controller/1110X/DeviceInfoPage/Protocol (= 1.0.1)
-  - MokoLifeX/Expand/Controller/1110X/DeviceInfoPage/Controller (1.0.1):
+    - MokoLifeX/Expand/Controller/1110X/DeviceInfoPage (= 1.1.0)
+    - MokoLifeX/Expand/Controller/1110X/ElectricityPage (= 1.1.0)
+    - MokoLifeX/Expand/Controller/1110X/PowerOnStatusPage (= 1.1.0)
+  - MokoLifeX/Expand/Controller/1110X/DeviceInfoPage (1.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand/Controller/1110X/DeviceInfoPage/Controller (= 1.1.0)
+    - MokoLifeX/Expand/Controller/1110X/DeviceInfoPage/Protocol (= 1.1.0)
+  - MokoLifeX/Expand/Controller/1110X/DeviceInfoPage/Controller (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -522,35 +522,35 @@ PODS:
     - MokoLifeX/DeviceModel
     - MokoLifeX/Expand/Controller/1110X/DeviceInfoPage/Protocol
     - MokoLifeX/Expand/Controller/BaseController
-  - MokoLifeX/Expand/Controller/1110X/DeviceInfoPage/Protocol (1.0.1):
+  - MokoLifeX/Expand/Controller/1110X/DeviceInfoPage/Protocol (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
     - MLInputDodger
     - MokoLifeX/DeviceModel
-  - MokoLifeX/Expand/Controller/1110X/ElectricityPage (1.0.1):
+  - MokoLifeX/Expand/Controller/1110X/ElectricityPage (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
     - MLInputDodger
     - MokoLifeX/DeviceModel
-    - MokoLifeX/Expand/Controller/1110X/ElectricityPage/Controller (= 1.0.1)
-  - MokoLifeX/Expand/Controller/1110X/ElectricityPage/Controller (1.0.1):
+    - MokoLifeX/Expand/Controller/1110X/ElectricityPage/Controller (= 1.1.0)
+  - MokoLifeX/Expand/Controller/1110X/ElectricityPage/Controller (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
     - MLInputDodger
     - MokoLifeX/DeviceModel
     - MokoLifeX/Expand/Controller/BaseController
-  - MokoLifeX/Expand/Controller/1110X/PowerOnStatusPage (1.0.1):
+  - MokoLifeX/Expand/Controller/1110X/PowerOnStatusPage (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
     - MLInputDodger
     - MokoLifeX/DeviceModel
-    - MokoLifeX/Expand/Controller/1110X/PowerOnStatusPage/Controller (= 1.0.1)
-    - MokoLifeX/Expand/Controller/1110X/PowerOnStatusPage/Protocol (= 1.0.1)
-  - MokoLifeX/Expand/Controller/1110X/PowerOnStatusPage/Controller (1.0.1):
+    - MokoLifeX/Expand/Controller/1110X/PowerOnStatusPage/Controller (= 1.1.0)
+    - MokoLifeX/Expand/Controller/1110X/PowerOnStatusPage/Protocol (= 1.1.0)
+  - MokoLifeX/Expand/Controller/1110X/PowerOnStatusPage/Controller (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -559,34 +559,34 @@ PODS:
     - MokoLifeX/Expand/Cell/PowerOnStatusCell
     - MokoLifeX/Expand/Controller/1110X/PowerOnStatusPage/Protocol
     - MokoLifeX/Expand/Controller/BaseController
-  - MokoLifeX/Expand/Controller/1110X/PowerOnStatusPage/Protocol (1.0.1):
+  - MokoLifeX/Expand/Controller/1110X/PowerOnStatusPage/Protocol (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
     - MLInputDodger
     - MokoLifeX/DeviceModel
-  - MokoLifeX/Expand/Controller/BaseController (1.0.1):
+  - MokoLifeX/Expand/Controller/BaseController (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
     - MLInputDodger
     - MokoLifeX/DeviceModel
-  - MokoLifeX/Expand/Controller/Common (1.0.1):
+  - MokoLifeX/Expand/Controller/Common (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
     - MLInputDodger
     - MokoLifeX/DeviceModel
-    - MokoLifeX/Expand/Controller/Common/SaveDevice (= 1.0.1)
-    - MokoLifeX/Expand/Controller/Common/UpdatePage (= 1.0.1)
-  - MokoLifeX/Expand/Controller/Common/SaveDevice (1.0.1):
+    - MokoLifeX/Expand/Controller/Common/SaveDevice (= 1.1.0)
+    - MokoLifeX/Expand/Controller/Common/UpdatePage (= 1.1.0)
+  - MokoLifeX/Expand/Controller/Common/SaveDevice (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
     - MLInputDodger
     - MokoLifeX/DeviceModel
-    - MokoLifeX/Expand/Controller/Common/SaveDevice/Controller (= 1.0.1)
-  - MokoLifeX/Expand/Controller/Common/SaveDevice/Controller (1.0.1):
+    - MokoLifeX/Expand/Controller/Common/SaveDevice/Controller (= 1.1.0)
+  - MokoLifeX/Expand/Controller/Common/SaveDevice/Controller (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -594,16 +594,16 @@ PODS:
     - MokoLifeX/DeviceModel
     - MokoLifeX/Expand/Controller/BaseController
     - MokoLifeX/Expand/DatabaseManager
-  - MokoLifeX/Expand/Controller/Common/UpdatePage (1.0.1):
+  - MokoLifeX/Expand/Controller/Common/UpdatePage (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
     - MLInputDodger
     - MokoLifeX/DeviceModel
-    - MokoLifeX/Expand/Controller/Common/UpdatePage/Controller (= 1.0.1)
-    - MokoLifeX/Expand/Controller/Common/UpdatePage/Model (= 1.0.1)
-    - MokoLifeX/Expand/Controller/Common/UpdatePage/Protocol (= 1.0.1)
-  - MokoLifeX/Expand/Controller/Common/UpdatePage/Controller (1.0.1):
+    - MokoLifeX/Expand/Controller/Common/UpdatePage/Controller (= 1.1.0)
+    - MokoLifeX/Expand/Controller/Common/UpdatePage/Model (= 1.1.0)
+    - MokoLifeX/Expand/Controller/Common/UpdatePage/Protocol (= 1.1.0)
+  - MokoLifeX/Expand/Controller/Common/UpdatePage/Controller (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -612,43 +612,43 @@ PODS:
     - MokoLifeX/Expand/Controller/BaseController
     - MokoLifeX/Expand/Controller/Common/UpdatePage/Model
     - MokoLifeX/Expand/Controller/Common/UpdatePage/Protocol
-  - MokoLifeX/Expand/Controller/Common/UpdatePage/Model (1.0.1):
+  - MokoLifeX/Expand/Controller/Common/UpdatePage/Model (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
     - MLInputDodger
     - MokoLifeX/DeviceModel
-  - MokoLifeX/Expand/Controller/Common/UpdatePage/Protocol (1.0.1):
+  - MokoLifeX/Expand/Controller/Common/UpdatePage/Protocol (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
     - MLInputDodger
     - MokoLifeX/DeviceModel
-  - MokoLifeX/Expand/DatabaseManager (1.0.1):
+  - MokoLifeX/Expand/DatabaseManager (1.1.0):
     - FLAnimatedImage
     - FMDB
     - MKBaseModuleLibrary
     - MKCustomUIModule
     - MLInputDodger
     - MokoLifeX/DeviceModel
-  - MokoLifeX/Expand/View (1.0.1):
+  - MokoLifeX/Expand/View (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
     - MLInputDodger
-    - MokoLifeX/Expand/View/CountdownPickerView (= 1.0.1)
-    - MokoLifeX/Expand/View/EnergyViews (= 1.0.1)
-  - MokoLifeX/Expand/View/CountdownPickerView (1.0.1):
+    - MokoLifeX/Expand/View/CountdownPickerView (= 1.1.0)
+    - MokoLifeX/Expand/View/EnergyViews (= 1.1.0)
+  - MokoLifeX/Expand/View/CountdownPickerView (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
     - MLInputDodger
-  - MokoLifeX/Expand/View/EnergyViews (1.0.1):
+  - MokoLifeX/Expand/View/EnergyViews (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
     - MLInputDodger
-  - MokoLifeX/Functions (1.0.1):
+  - MokoLifeX/Functions (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -656,12 +656,12 @@ PODS:
     - MokoLifeX/CTMediator
     - MokoLifeX/DeviceModel
     - MokoLifeX/Expand
-    - MokoLifeX/Functions/LifeX (= 1.0.1)
-    - MokoLifeX/Functions/MK10X (= 1.0.1)
-    - MokoLifeX/Functions/MK117 (= 1.0.1)
-    - MokoLifeX/Functions/MK11X (= 1.0.1)
+    - MokoLifeX/Functions/LifeX (= 1.1.0)
+    - MokoLifeX/Functions/MK10X (= 1.1.0)
+    - MokoLifeX/Functions/MK117 (= 1.1.0)
+    - MokoLifeX/Functions/MK11X (= 1.1.0)
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/LifeX (1.0.1):
+  - MokoLifeX/Functions/LifeX (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -669,10 +669,10 @@ PODS:
     - MokoLifeX/CTMediator
     - MokoLifeX/DeviceModel
     - MokoLifeX/Expand
-    - MokoLifeX/Functions/LifeX/Functions (= 1.0.1)
-    - MokoLifeX/Functions/LifeX/MQTT (= 1.0.1)
+    - MokoLifeX/Functions/LifeX/Functions (= 1.1.0)
+    - MokoLifeX/Functions/LifeX/MQTT (= 1.1.0)
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/LifeX/Functions (1.0.1):
+  - MokoLifeX/Functions/LifeX/Functions (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -680,13 +680,13 @@ PODS:
     - MokoLifeX/CTMediator
     - MokoLifeX/DeviceModel
     - MokoLifeX/Expand
-    - MokoLifeX/Functions/LifeX/Functions/AddDevicePage (= 1.0.1)
-    - MokoLifeX/Functions/LifeX/Functions/DeviceListPage (= 1.0.1)
-    - MokoLifeX/Functions/LifeX/Functions/OperationStepsPage (= 1.0.1)
-    - MokoLifeX/Functions/LifeX/Functions/ServerForAPP (= 1.0.1)
+    - MokoLifeX/Functions/LifeX/Functions/AddDevicePage (= 1.1.0)
+    - MokoLifeX/Functions/LifeX/Functions/DeviceListPage (= 1.1.0)
+    - MokoLifeX/Functions/LifeX/Functions/OperationStepsPage (= 1.1.0)
+    - MokoLifeX/Functions/LifeX/Functions/ServerForAPP (= 1.1.0)
     - MokoLifeX/Functions/LifeX/MQTT
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/LifeX/Functions/AddDevicePage (1.0.1):
+  - MokoLifeX/Functions/LifeX/Functions/AddDevicePage (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -694,11 +694,11 @@ PODS:
     - MokoLifeX/CTMediator
     - MokoLifeX/DeviceModel
     - MokoLifeX/Expand
-    - MokoLifeX/Functions/LifeX/Functions/AddDevicePage/Controller (= 1.0.1)
-    - MokoLifeX/Functions/LifeX/Functions/AddDevicePage/View (= 1.0.1)
+    - MokoLifeX/Functions/LifeX/Functions/AddDevicePage/Controller (= 1.1.0)
+    - MokoLifeX/Functions/LifeX/Functions/AddDevicePage/View (= 1.1.0)
     - MokoLifeX/Functions/LifeX/MQTT
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/LifeX/Functions/AddDevicePage/Controller (1.0.1):
+  - MokoLifeX/Functions/LifeX/Functions/AddDevicePage/Controller (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -710,7 +710,7 @@ PODS:
     - MokoLifeX/Functions/LifeX/Functions/OperationStepsPage/Controller
     - MokoLifeX/Functions/LifeX/MQTT
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/LifeX/Functions/AddDevicePage/View (1.0.1):
+  - MokoLifeX/Functions/LifeX/Functions/AddDevicePage/View (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -720,7 +720,7 @@ PODS:
     - MokoLifeX/Expand
     - MokoLifeX/Functions/LifeX/MQTT
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/LifeX/Functions/DeviceListPage (1.0.1):
+  - MokoLifeX/Functions/LifeX/Functions/DeviceListPage (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -728,12 +728,12 @@ PODS:
     - MokoLifeX/CTMediator
     - MokoLifeX/DeviceModel
     - MokoLifeX/Expand
-    - MokoLifeX/Functions/LifeX/Functions/DeviceListPage/Controller (= 1.0.1)
-    - MokoLifeX/Functions/LifeX/Functions/DeviceListPage/Model (= 1.0.1)
-    - MokoLifeX/Functions/LifeX/Functions/DeviceListPage/View (= 1.0.1)
+    - MokoLifeX/Functions/LifeX/Functions/DeviceListPage/Controller (= 1.1.0)
+    - MokoLifeX/Functions/LifeX/Functions/DeviceListPage/Model (= 1.1.0)
+    - MokoLifeX/Functions/LifeX/Functions/DeviceListPage/View (= 1.1.0)
     - MokoLifeX/Functions/LifeX/MQTT
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/LifeX/Functions/DeviceListPage/Controller (1.0.1):
+  - MokoLifeX/Functions/LifeX/Functions/DeviceListPage/Controller (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -747,7 +747,7 @@ PODS:
     - MokoLifeX/Functions/LifeX/Functions/ServerForAPP/Controller
     - MokoLifeX/Functions/LifeX/MQTT
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/LifeX/Functions/DeviceListPage/Model (1.0.1):
+  - MokoLifeX/Functions/LifeX/Functions/DeviceListPage/Model (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -757,7 +757,7 @@ PODS:
     - MokoLifeX/Expand
     - MokoLifeX/Functions/LifeX/MQTT
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/LifeX/Functions/DeviceListPage/View (1.0.1):
+  - MokoLifeX/Functions/LifeX/Functions/DeviceListPage/View (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -767,7 +767,7 @@ PODS:
     - MokoLifeX/Expand
     - MokoLifeX/Functions/LifeX/MQTT
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/LifeX/Functions/OperationStepsPage (1.0.1):
+  - MokoLifeX/Functions/LifeX/Functions/OperationStepsPage (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -775,11 +775,11 @@ PODS:
     - MokoLifeX/CTMediator
     - MokoLifeX/DeviceModel
     - MokoLifeX/Expand
-    - MokoLifeX/Functions/LifeX/Functions/OperationStepsPage/Controller (= 1.0.1)
-    - MokoLifeX/Functions/LifeX/Functions/OperationStepsPage/View (= 1.0.1)
+    - MokoLifeX/Functions/LifeX/Functions/OperationStepsPage/Controller (= 1.1.0)
+    - MokoLifeX/Functions/LifeX/Functions/OperationStepsPage/View (= 1.1.0)
     - MokoLifeX/Functions/LifeX/MQTT
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/LifeX/Functions/OperationStepsPage/Controller (1.0.1):
+  - MokoLifeX/Functions/LifeX/Functions/OperationStepsPage/Controller (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -790,7 +790,7 @@ PODS:
     - MokoLifeX/Functions/LifeX/Functions/OperationStepsPage/View
     - MokoLifeX/Functions/LifeX/MQTT
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/LifeX/Functions/OperationStepsPage/View (1.0.1):
+  - MokoLifeX/Functions/LifeX/Functions/OperationStepsPage/View (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -800,7 +800,7 @@ PODS:
     - MokoLifeX/Expand
     - MokoLifeX/Functions/LifeX/MQTT
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/LifeX/Functions/ServerForAPP (1.0.1):
+  - MokoLifeX/Functions/LifeX/Functions/ServerForAPP (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -808,12 +808,12 @@ PODS:
     - MokoLifeX/CTMediator
     - MokoLifeX/DeviceModel
     - MokoLifeX/Expand
-    - MokoLifeX/Functions/LifeX/Functions/ServerForAPP/Controller (= 1.0.1)
-    - MokoLifeX/Functions/LifeX/Functions/ServerForAPP/Model (= 1.0.1)
-    - MokoLifeX/Functions/LifeX/Functions/ServerForAPP/View (= 1.0.1)
+    - MokoLifeX/Functions/LifeX/Functions/ServerForAPP/Controller (= 1.1.0)
+    - MokoLifeX/Functions/LifeX/Functions/ServerForAPP/Model (= 1.1.0)
+    - MokoLifeX/Functions/LifeX/Functions/ServerForAPP/View (= 1.1.0)
     - MokoLifeX/Functions/LifeX/MQTT
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/LifeX/Functions/ServerForAPP/Controller (1.0.1):
+  - MokoLifeX/Functions/LifeX/Functions/ServerForAPP/Controller (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -825,7 +825,7 @@ PODS:
     - MokoLifeX/Functions/LifeX/Functions/ServerForAPP/View
     - MokoLifeX/Functions/LifeX/MQTT
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/LifeX/Functions/ServerForAPP/Model (1.0.1):
+  - MokoLifeX/Functions/LifeX/Functions/ServerForAPP/Model (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -835,7 +835,7 @@ PODS:
     - MokoLifeX/Expand
     - MokoLifeX/Functions/LifeX/MQTT
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/LifeX/Functions/ServerForAPP/View (1.0.1):
+  - MokoLifeX/Functions/LifeX/Functions/ServerForAPP/View (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -845,7 +845,7 @@ PODS:
     - MokoLifeX/Expand
     - MokoLifeX/Functions/LifeX/MQTT
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/LifeX/MQTT (1.0.1):
+  - MokoLifeX/Functions/LifeX/MQTT (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -854,7 +854,7 @@ PODS:
     - MokoLifeX/DeviceModel
     - MokoLifeX/Expand
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK10X (1.0.1):
+  - MokoLifeX/Functions/MK10X (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -862,12 +862,12 @@ PODS:
     - MokoLifeX/CTMediator
     - MokoLifeX/DeviceModel
     - MokoLifeX/Expand
-    - MokoLifeX/Functions/MK10X/Functions (= 1.0.1)
-    - MokoLifeX/Functions/MK10X/MQTT (= 1.0.1)
-    - MokoLifeX/Functions/MK10X/Socket (= 1.0.1)
-    - MokoLifeX/Functions/MK10X/Target (= 1.0.1)
+    - MokoLifeX/Functions/MK10X/Functions (= 1.1.0)
+    - MokoLifeX/Functions/MK10X/MQTT (= 1.1.0)
+    - MokoLifeX/Functions/MK10X/Socket (= 1.1.0)
+    - MokoLifeX/Functions/MK10X/Target (= 1.1.0)
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK10X/Functions (1.0.1):
+  - MokoLifeX/Functions/MK10X/Functions (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -875,13 +875,13 @@ PODS:
     - MokoLifeX/CTMediator
     - MokoLifeX/DeviceModel
     - MokoLifeX/Expand
-    - MokoLifeX/Functions/MK10X/Functions/MorePage (= 1.0.1)
-    - MokoLifeX/Functions/MK10X/Functions/ServerForDevice (= 1.0.1)
-    - MokoLifeX/Functions/MK10X/Functions/SwitchStatePage (= 1.0.1)
+    - MokoLifeX/Functions/MK10X/Functions/MorePage (= 1.1.0)
+    - MokoLifeX/Functions/MK10X/Functions/ServerForDevice (= 1.1.0)
+    - MokoLifeX/Functions/MK10X/Functions/SwitchStatePage (= 1.1.0)
     - MokoLifeX/Functions/MK10X/MQTT
     - MokoLifeX/Functions/MK10X/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK10X/Functions/MorePage (1.0.1):
+  - MokoLifeX/Functions/MK10X/Functions/MorePage (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -889,12 +889,12 @@ PODS:
     - MokoLifeX/CTMediator
     - MokoLifeX/DeviceModel
     - MokoLifeX/Expand
-    - MokoLifeX/Functions/MK10X/Functions/MorePage/Controller (= 1.0.1)
-    - MokoLifeX/Functions/MK10X/Functions/MorePage/Model (= 1.0.1)
+    - MokoLifeX/Functions/MK10X/Functions/MorePage/Controller (= 1.1.0)
+    - MokoLifeX/Functions/MK10X/Functions/MorePage/Model (= 1.1.0)
     - MokoLifeX/Functions/MK10X/MQTT
     - MokoLifeX/Functions/MK10X/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK10X/Functions/MorePage/Controller (1.0.1):
+  - MokoLifeX/Functions/MK10X/Functions/MorePage/Controller (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -906,7 +906,7 @@ PODS:
     - MokoLifeX/Functions/MK10X/MQTT
     - MokoLifeX/Functions/MK10X/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK10X/Functions/MorePage/Model (1.0.1):
+  - MokoLifeX/Functions/MK10X/Functions/MorePage/Model (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -917,7 +917,7 @@ PODS:
     - MokoLifeX/Functions/MK10X/MQTT
     - MokoLifeX/Functions/MK10X/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK10X/Functions/ServerForDevice (1.0.1):
+  - MokoLifeX/Functions/MK10X/Functions/ServerForDevice (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -925,13 +925,13 @@ PODS:
     - MokoLifeX/CTMediator
     - MokoLifeX/DeviceModel
     - MokoLifeX/Expand
-    - MokoLifeX/Functions/MK10X/Functions/ServerForDevice/Controller (= 1.0.1)
-    - MokoLifeX/Functions/MK10X/Functions/ServerForDevice/Model (= 1.0.1)
-    - MokoLifeX/Functions/MK10X/Functions/ServerForDevice/View (= 1.0.1)
+    - MokoLifeX/Functions/MK10X/Functions/ServerForDevice/Controller (= 1.1.0)
+    - MokoLifeX/Functions/MK10X/Functions/ServerForDevice/Model (= 1.1.0)
+    - MokoLifeX/Functions/MK10X/Functions/ServerForDevice/View (= 1.1.0)
     - MokoLifeX/Functions/MK10X/MQTT
     - MokoLifeX/Functions/MK10X/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK10X/Functions/ServerForDevice/Controller (1.0.1):
+  - MokoLifeX/Functions/MK10X/Functions/ServerForDevice/Controller (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -944,7 +944,7 @@ PODS:
     - MokoLifeX/Functions/MK10X/MQTT
     - MokoLifeX/Functions/MK10X/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK10X/Functions/ServerForDevice/Model (1.0.1):
+  - MokoLifeX/Functions/MK10X/Functions/ServerForDevice/Model (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -955,7 +955,7 @@ PODS:
     - MokoLifeX/Functions/MK10X/MQTT
     - MokoLifeX/Functions/MK10X/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK10X/Functions/ServerForDevice/View (1.0.1):
+  - MokoLifeX/Functions/MK10X/Functions/ServerForDevice/View (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -967,7 +967,7 @@ PODS:
     - MokoLifeX/Functions/MK10X/MQTT
     - MokoLifeX/Functions/MK10X/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK10X/Functions/SwitchStatePage (1.0.1):
+  - MokoLifeX/Functions/MK10X/Functions/SwitchStatePage (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -975,12 +975,12 @@ PODS:
     - MokoLifeX/CTMediator
     - MokoLifeX/DeviceModel
     - MokoLifeX/Expand
-    - MokoLifeX/Functions/MK10X/Functions/SwitchStatePage/Controller (= 1.0.1)
-    - MokoLifeX/Functions/MK10X/Functions/SwitchStatePage/View (= 1.0.1)
+    - MokoLifeX/Functions/MK10X/Functions/SwitchStatePage/Controller (= 1.1.0)
+    - MokoLifeX/Functions/MK10X/Functions/SwitchStatePage/View (= 1.1.0)
     - MokoLifeX/Functions/MK10X/MQTT
     - MokoLifeX/Functions/MK10X/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK10X/Functions/SwitchStatePage/Controller (1.0.1):
+  - MokoLifeX/Functions/MK10X/Functions/SwitchStatePage/Controller (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -993,7 +993,7 @@ PODS:
     - MokoLifeX/Functions/MK10X/MQTT
     - MokoLifeX/Functions/MK10X/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK10X/Functions/SwitchStatePage/View (1.0.1):
+  - MokoLifeX/Functions/MK10X/Functions/SwitchStatePage/View (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1004,7 +1004,7 @@ PODS:
     - MokoLifeX/Functions/MK10X/MQTT
     - MokoLifeX/Functions/MK10X/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK10X/MQTT (1.0.1):
+  - MokoLifeX/Functions/MK10X/MQTT (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1013,7 +1013,7 @@ PODS:
     - MokoLifeX/DeviceModel
     - MokoLifeX/Expand
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK10X/Socket (1.0.1):
+  - MokoLifeX/Functions/MK10X/Socket (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1022,7 +1022,7 @@ PODS:
     - MokoLifeX/DeviceModel
     - MokoLifeX/Expand
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK10X/Target (1.0.1):
+  - MokoLifeX/Functions/MK10X/Target (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1033,7 +1033,7 @@ PODS:
     - MokoLifeX/Functions/MK10X/Functions/ServerForDevice/Controller
     - MokoLifeX/Functions/MK10X/Functions/SwitchStatePage/Controller
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK117 (1.0.1):
+  - MokoLifeX/Functions/MK117 (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1041,13 +1041,13 @@ PODS:
     - MokoLifeX/CTMediator
     - MokoLifeX/DeviceModel
     - MokoLifeX/Expand
-    - MokoLifeX/Functions/MK117/Expand (= 1.0.1)
-    - MokoLifeX/Functions/MK117/Functions (= 1.0.1)
-    - MokoLifeX/Functions/MK117/MQTT (= 1.0.1)
-    - MokoLifeX/Functions/MK117/Socket (= 1.0.1)
-    - MokoLifeX/Functions/MK117/Target (= 1.0.1)
+    - MokoLifeX/Functions/MK117/Expand (= 1.1.0)
+    - MokoLifeX/Functions/MK117/Functions (= 1.1.0)
+    - MokoLifeX/Functions/MK117/MQTT (= 1.1.0)
+    - MokoLifeX/Functions/MK117/Socket (= 1.1.0)
+    - MokoLifeX/Functions/MK117/Target (= 1.1.0)
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK117/Expand (1.0.1):
+  - MokoLifeX/Functions/MK117/Expand (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1055,9 +1055,9 @@ PODS:
     - MokoLifeX/CTMediator
     - MokoLifeX/DeviceModel
     - MokoLifeX/Expand
-    - MokoLifeX/Functions/MK117/Expand/BaseController (= 1.0.1)
+    - MokoLifeX/Functions/MK117/Expand/BaseController (= 1.1.0)
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK117/Expand/BaseController (1.0.1):
+  - MokoLifeX/Functions/MK117/Expand/BaseController (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1067,7 +1067,7 @@ PODS:
     - MokoLifeX/Expand
     - MokoLifeX/Functions/MK117/MQTT
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK117/Functions (1.0.1):
+  - MokoLifeX/Functions/MK117/Functions (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1076,29 +1076,30 @@ PODS:
     - MokoLifeX/DeviceModel
     - MokoLifeX/Expand
     - MokoLifeX/Functions/MK117/Expand
-    - MokoLifeX/Functions/MK117/Functions/ColorSettingPage (= 1.0.1)
-    - MokoLifeX/Functions/MK117/Functions/ConnectionPage (= 1.0.1)
-    - MokoLifeX/Functions/MK117/Functions/DeviceInfoPage (= 1.0.1)
-    - MokoLifeX/Functions/MK117/Functions/ElectricityPage (= 1.0.1)
-    - MokoLifeX/Functions/MK117/Functions/EnergyPage (= 1.0.1)
-    - MokoLifeX/Functions/MK117/Functions/EnergyReportPage (= 1.0.1)
-    - MokoLifeX/Functions/MK117/Functions/LEDSettingPage (= 1.0.1)
-    - MokoLifeX/Functions/MK117/Functions/LoadStatusPage (= 1.0.1)
-    - MokoLifeX/Functions/MK117/Functions/MQTTSettingForDevicePage (= 1.0.1)
-    - MokoLifeX/Functions/MK117/Functions/NTPConfigPage (= 1.0.1)
-    - MokoLifeX/Functions/MK117/Functions/OverThresholdPage (= 1.0.1)
-    - MokoLifeX/Functions/MK117/Functions/PowerOnStatusPage (= 1.0.1)
-    - MokoLifeX/Functions/MK117/Functions/PowerReportPage (= 1.0.1)
-    - MokoLifeX/Functions/MK117/Functions/ProtectionSettingPage (= 1.0.1)
-    - MokoLifeX/Functions/MK117/Functions/ServerForDevice (= 1.0.1)
-    - MokoLifeX/Functions/MK117/Functions/SettingsPage (= 1.0.1)
-    - MokoLifeX/Functions/MK117/Functions/StatusReportPage (= 1.0.1)
-    - MokoLifeX/Functions/MK117/Functions/SwitchStatePage (= 1.0.1)
-    - MokoLifeX/Functions/MK117/Functions/SystemTimePage (= 1.0.1)
+    - MokoLifeX/Functions/MK117/Functions/ColorSettingPage (= 1.1.0)
+    - MokoLifeX/Functions/MK117/Functions/ConnectionPage (= 1.1.0)
+    - MokoLifeX/Functions/MK117/Functions/DeviceInfoPage (= 1.1.0)
+    - MokoLifeX/Functions/MK117/Functions/ElectricityPage (= 1.1.0)
+    - MokoLifeX/Functions/MK117/Functions/EnergyPage (= 1.1.0)
+    - MokoLifeX/Functions/MK117/Functions/EnergyReportPage (= 1.1.0)
+    - MokoLifeX/Functions/MK117/Functions/LEDSettingPage (= 1.1.0)
+    - MokoLifeX/Functions/MK117/Functions/LoadStatusPage (= 1.1.0)
+    - MokoLifeX/Functions/MK117/Functions/MK117DPages (= 1.1.0)
+    - MokoLifeX/Functions/MK117/Functions/MQTTSettingForDevicePage (= 1.1.0)
+    - MokoLifeX/Functions/MK117/Functions/NTPConfigPage (= 1.1.0)
+    - MokoLifeX/Functions/MK117/Functions/OverThresholdPage (= 1.1.0)
+    - MokoLifeX/Functions/MK117/Functions/PowerOnStatusPage (= 1.1.0)
+    - MokoLifeX/Functions/MK117/Functions/PowerReportPage (= 1.1.0)
+    - MokoLifeX/Functions/MK117/Functions/ProtectionSettingPage (= 1.1.0)
+    - MokoLifeX/Functions/MK117/Functions/ServerForDevice (= 1.1.0)
+    - MokoLifeX/Functions/MK117/Functions/SettingsPage (= 1.1.0)
+    - MokoLifeX/Functions/MK117/Functions/StatusReportPage (= 1.1.0)
+    - MokoLifeX/Functions/MK117/Functions/SwitchStatePage (= 1.1.0)
+    - MokoLifeX/Functions/MK117/Functions/SystemTimePage (= 1.1.0)
     - MokoLifeX/Functions/MK117/MQTT
     - MokoLifeX/Functions/MK117/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK117/Functions/ColorSettingPage (1.0.1):
+  - MokoLifeX/Functions/MK117/Functions/ColorSettingPage (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1107,13 +1108,13 @@ PODS:
     - MokoLifeX/DeviceModel
     - MokoLifeX/Expand
     - MokoLifeX/Functions/MK117/Expand
-    - MokoLifeX/Functions/MK117/Functions/ColorSettingPage/Controller (= 1.0.1)
-    - MokoLifeX/Functions/MK117/Functions/ColorSettingPage/Model (= 1.0.1)
-    - MokoLifeX/Functions/MK117/Functions/ColorSettingPage/View (= 1.0.1)
+    - MokoLifeX/Functions/MK117/Functions/ColorSettingPage/Controller (= 1.1.0)
+    - MokoLifeX/Functions/MK117/Functions/ColorSettingPage/Model (= 1.1.0)
+    - MokoLifeX/Functions/MK117/Functions/ColorSettingPage/View (= 1.1.0)
     - MokoLifeX/Functions/MK117/MQTT
     - MokoLifeX/Functions/MK117/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK117/Functions/ColorSettingPage/Controller (1.0.1):
+  - MokoLifeX/Functions/MK117/Functions/ColorSettingPage/Controller (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1127,7 +1128,7 @@ PODS:
     - MokoLifeX/Functions/MK117/MQTT
     - MokoLifeX/Functions/MK117/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK117/Functions/ColorSettingPage/Model (1.0.1):
+  - MokoLifeX/Functions/MK117/Functions/ColorSettingPage/Model (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1139,7 +1140,7 @@ PODS:
     - MokoLifeX/Functions/MK117/MQTT
     - MokoLifeX/Functions/MK117/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK117/Functions/ColorSettingPage/View (1.0.1):
+  - MokoLifeX/Functions/MK117/Functions/ColorSettingPage/View (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1151,7 +1152,7 @@ PODS:
     - MokoLifeX/Functions/MK117/MQTT
     - MokoLifeX/Functions/MK117/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK117/Functions/ConnectionPage (1.0.1):
+  - MokoLifeX/Functions/MK117/Functions/ConnectionPage (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1160,36 +1161,11 @@ PODS:
     - MokoLifeX/DeviceModel
     - MokoLifeX/Expand
     - MokoLifeX/Functions/MK117/Expand
-    - MokoLifeX/Functions/MK117/Functions/ConnectionPage/Controller (= 1.0.1)
+    - MokoLifeX/Functions/MK117/Functions/ConnectionPage/Controller (= 1.1.0)
     - MokoLifeX/Functions/MK117/MQTT
     - MokoLifeX/Functions/MK117/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK117/Functions/ConnectionPage/Controller (1.0.1):
-    - FLAnimatedImage
-    - MKBaseModuleLibrary
-    - MKCustomUIModule
-    - MLInputDodger
-    - MokoLifeX/CTMediator
-    - MokoLifeX/DeviceModel
-    - MokoLifeX/Expand
-    - MokoLifeX/Functions/MK117/Expand
-    - MokoLifeX/Functions/MK117/MQTT
-    - MokoLifeX/Functions/MK117/Socket
-    - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK117/Functions/DeviceInfoPage (1.0.1):
-    - FLAnimatedImage
-    - MKBaseModuleLibrary
-    - MKCustomUIModule
-    - MLInputDodger
-    - MokoLifeX/CTMediator
-    - MokoLifeX/DeviceModel
-    - MokoLifeX/Expand
-    - MokoLifeX/Functions/MK117/Expand
-    - MokoLifeX/Functions/MK117/Functions/DeviceInfoPage/Controller (= 1.0.1)
-    - MokoLifeX/Functions/MK117/MQTT
-    - MokoLifeX/Functions/MK117/Socket
-    - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK117/Functions/DeviceInfoPage/Controller (1.0.1):
+  - MokoLifeX/Functions/MK117/Functions/ConnectionPage/Controller (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1201,7 +1177,7 @@ PODS:
     - MokoLifeX/Functions/MK117/MQTT
     - MokoLifeX/Functions/MK117/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK117/Functions/ElectricityPage (1.0.1):
+  - MokoLifeX/Functions/MK117/Functions/DeviceInfoPage (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1210,11 +1186,11 @@ PODS:
     - MokoLifeX/DeviceModel
     - MokoLifeX/Expand
     - MokoLifeX/Functions/MK117/Expand
-    - MokoLifeX/Functions/MK117/Functions/ElectricityPage/Controller (= 1.0.1)
+    - MokoLifeX/Functions/MK117/Functions/DeviceInfoPage/Controller (= 1.1.0)
     - MokoLifeX/Functions/MK117/MQTT
     - MokoLifeX/Functions/MK117/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK117/Functions/ElectricityPage/Controller (1.0.1):
+  - MokoLifeX/Functions/MK117/Functions/DeviceInfoPage/Controller (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1226,7 +1202,7 @@ PODS:
     - MokoLifeX/Functions/MK117/MQTT
     - MokoLifeX/Functions/MK117/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK117/Functions/EnergyPage (1.0.1):
+  - MokoLifeX/Functions/MK117/Functions/ElectricityPage (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1235,13 +1211,38 @@ PODS:
     - MokoLifeX/DeviceModel
     - MokoLifeX/Expand
     - MokoLifeX/Functions/MK117/Expand
-    - MokoLifeX/Functions/MK117/Functions/EnergyPage/Controller (= 1.0.1)
-    - MokoLifeX/Functions/MK117/Functions/EnergyPage/Model (= 1.0.1)
-    - MokoLifeX/Functions/MK117/Functions/EnergyPage/View (= 1.0.1)
+    - MokoLifeX/Functions/MK117/Functions/ElectricityPage/Controller (= 1.1.0)
     - MokoLifeX/Functions/MK117/MQTT
     - MokoLifeX/Functions/MK117/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK117/Functions/EnergyPage/Controller (1.0.1):
+  - MokoLifeX/Functions/MK117/Functions/ElectricityPage/Controller (1.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/EnergyPage (1.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/Functions/EnergyPage/Controller (= 1.1.0)
+    - MokoLifeX/Functions/MK117/Functions/EnergyPage/Model (= 1.1.0)
+    - MokoLifeX/Functions/MK117/Functions/EnergyPage/View (= 1.1.0)
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/EnergyPage/Controller (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1255,7 +1256,7 @@ PODS:
     - MokoLifeX/Functions/MK117/MQTT
     - MokoLifeX/Functions/MK117/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK117/Functions/EnergyPage/Model (1.0.1):
+  - MokoLifeX/Functions/MK117/Functions/EnergyPage/Model (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1267,7 +1268,7 @@ PODS:
     - MokoLifeX/Functions/MK117/MQTT
     - MokoLifeX/Functions/MK117/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK117/Functions/EnergyPage/View (1.0.1):
+  - MokoLifeX/Functions/MK117/Functions/EnergyPage/View (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1279,7 +1280,7 @@ PODS:
     - MokoLifeX/Functions/MK117/MQTT
     - MokoLifeX/Functions/MK117/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK117/Functions/EnergyReportPage (1.0.1):
+  - MokoLifeX/Functions/MK117/Functions/EnergyReportPage (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1288,13 +1289,13 @@ PODS:
     - MokoLifeX/DeviceModel
     - MokoLifeX/Expand
     - MokoLifeX/Functions/MK117/Expand
-    - MokoLifeX/Functions/MK117/Functions/EnergyReportPage/Controller (= 1.0.1)
-    - MokoLifeX/Functions/MK117/Functions/EnergyReportPage/Model (= 1.0.1)
-    - MokoLifeX/Functions/MK117/Functions/EnergyReportPage/View (= 1.0.1)
+    - MokoLifeX/Functions/MK117/Functions/EnergyReportPage/Controller (= 1.1.0)
+    - MokoLifeX/Functions/MK117/Functions/EnergyReportPage/Model (= 1.1.0)
+    - MokoLifeX/Functions/MK117/Functions/EnergyReportPage/View (= 1.1.0)
     - MokoLifeX/Functions/MK117/MQTT
     - MokoLifeX/Functions/MK117/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK117/Functions/EnergyReportPage/Controller (1.0.1):
+  - MokoLifeX/Functions/MK117/Functions/EnergyReportPage/Controller (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1308,7 +1309,7 @@ PODS:
     - MokoLifeX/Functions/MK117/MQTT
     - MokoLifeX/Functions/MK117/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK117/Functions/EnergyReportPage/Model (1.0.1):
+  - MokoLifeX/Functions/MK117/Functions/EnergyReportPage/Model (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1320,7 +1321,7 @@ PODS:
     - MokoLifeX/Functions/MK117/MQTT
     - MokoLifeX/Functions/MK117/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK117/Functions/EnergyReportPage/View (1.0.1):
+  - MokoLifeX/Functions/MK117/Functions/EnergyReportPage/View (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1332,7 +1333,7 @@ PODS:
     - MokoLifeX/Functions/MK117/MQTT
     - MokoLifeX/Functions/MK117/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK117/Functions/LEDSettingPage (1.0.1):
+  - MokoLifeX/Functions/MK117/Functions/LEDSettingPage (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1341,11 +1342,11 @@ PODS:
     - MokoLifeX/DeviceModel
     - MokoLifeX/Expand
     - MokoLifeX/Functions/MK117/Expand
-    - MokoLifeX/Functions/MK117/Functions/LEDSettingPage/Controller (= 1.0.1)
+    - MokoLifeX/Functions/MK117/Functions/LEDSettingPage/Controller (= 1.1.0)
     - MokoLifeX/Functions/MK117/MQTT
     - MokoLifeX/Functions/MK117/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK117/Functions/LEDSettingPage/Controller (1.0.1):
+  - MokoLifeX/Functions/MK117/Functions/LEDSettingPage/Controller (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1358,7 +1359,7 @@ PODS:
     - MokoLifeX/Functions/MK117/MQTT
     - MokoLifeX/Functions/MK117/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK117/Functions/LoadStatusPage (1.0.1):
+  - MokoLifeX/Functions/MK117/Functions/LoadStatusPage (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1367,12 +1368,12 @@ PODS:
     - MokoLifeX/DeviceModel
     - MokoLifeX/Expand
     - MokoLifeX/Functions/MK117/Expand
-    - MokoLifeX/Functions/MK117/Functions/LoadStatusPage/Controller (= 1.0.1)
-    - MokoLifeX/Functions/MK117/Functions/LoadStatusPage/Model (= 1.0.1)
+    - MokoLifeX/Functions/MK117/Functions/LoadStatusPage/Controller (= 1.1.0)
+    - MokoLifeX/Functions/MK117/Functions/LoadStatusPage/Model (= 1.1.0)
     - MokoLifeX/Functions/MK117/MQTT
     - MokoLifeX/Functions/MK117/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK117/Functions/LoadStatusPage/Controller (1.0.1):
+  - MokoLifeX/Functions/MK117/Functions/LoadStatusPage/Controller (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1385,7 +1386,7 @@ PODS:
     - MokoLifeX/Functions/MK117/MQTT
     - MokoLifeX/Functions/MK117/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK117/Functions/LoadStatusPage/Model (1.0.1):
+  - MokoLifeX/Functions/MK117/Functions/LoadStatusPage/Model (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1397,7 +1398,7 @@ PODS:
     - MokoLifeX/Functions/MK117/MQTT
     - MokoLifeX/Functions/MK117/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK117/Functions/MQTTSettingForDevicePage (1.0.1):
+  - MokoLifeX/Functions/MK117/Functions/MK117DPages (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1406,12 +1407,132 @@ PODS:
     - MokoLifeX/DeviceModel
     - MokoLifeX/Expand
     - MokoLifeX/Functions/MK117/Expand
-    - MokoLifeX/Functions/MK117/Functions/MQTTSettingForDevicePage/Controller (= 1.0.1)
-    - MokoLifeX/Functions/MK117/Functions/MQTTSettingForDevicePage/View (= 1.0.1)
+    - MokoLifeX/Functions/MK117/Functions/MK117DPages/ModifyMQTTServerPage (= 1.1.0)
+    - MokoLifeX/Functions/MK117/Functions/MK117DPages/ServerForDevicePage (= 1.1.0)
     - MokoLifeX/Functions/MK117/MQTT
     - MokoLifeX/Functions/MK117/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK117/Functions/MQTTSettingForDevicePage/Controller (1.0.1):
+  - MokoLifeX/Functions/MK117/Functions/MK117DPages/ModifyMQTTServerPage (1.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/Functions/MK117DPages/ModifyMQTTServerPage/Controller (= 1.1.0)
+    - MokoLifeX/Functions/MK117/Functions/MK117DPages/ModifyMQTTServerPage/Model (= 1.1.0)
+    - MokoLifeX/Functions/MK117/Functions/MK117DPages/ModifyMQTTServerPage/View (= 1.1.0)
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/MK117DPages/ModifyMQTTServerPage/Controller (1.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/Functions/MK117DPages/ModifyMQTTServerPage/Model
+    - MokoLifeX/Functions/MK117/Functions/MK117DPages/ModifyMQTTServerPage/View
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/MK117DPages/ModifyMQTTServerPage/Model (1.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/MK117DPages/ModifyMQTTServerPage/View (1.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/MK117DPages/ServerForDevicePage (1.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/Functions/MK117DPages/ServerForDevicePage/Controller (= 1.1.0)
+    - MokoLifeX/Functions/MK117/Functions/MK117DPages/ServerForDevicePage/Model (= 1.1.0)
+    - MokoLifeX/Functions/MK117/Functions/MK117DPages/ServerForDevicePage/View (= 1.1.0)
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/MK117DPages/ServerForDevicePage/Controller (1.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/Functions/MK117DPages/ServerForDevicePage/Model
+    - MokoLifeX/Functions/MK117/Functions/MK117DPages/ServerForDevicePage/View
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/MK117DPages/ServerForDevicePage/Model (1.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/MK117DPages/ServerForDevicePage/View (1.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/MQTTSettingForDevicePage (1.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/Functions/MQTTSettingForDevicePage/Controller (= 1.1.0)
+    - MokoLifeX/Functions/MK117/Functions/MQTTSettingForDevicePage/View (= 1.1.0)
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/MQTTSettingForDevicePage/Controller (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1424,7 +1545,7 @@ PODS:
     - MokoLifeX/Functions/MK117/MQTT
     - MokoLifeX/Functions/MK117/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK117/Functions/MQTTSettingForDevicePage/View (1.0.1):
+  - MokoLifeX/Functions/MK117/Functions/MQTTSettingForDevicePage/View (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1436,7 +1557,7 @@ PODS:
     - MokoLifeX/Functions/MK117/MQTT
     - MokoLifeX/Functions/MK117/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK117/Functions/NTPConfigPage (1.0.1):
+  - MokoLifeX/Functions/MK117/Functions/NTPConfigPage (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1445,12 +1566,12 @@ PODS:
     - MokoLifeX/DeviceModel
     - MokoLifeX/Expand
     - MokoLifeX/Functions/MK117/Expand
-    - MokoLifeX/Functions/MK117/Functions/NTPConfigPage/Controller (= 1.0.1)
-    - MokoLifeX/Functions/MK117/Functions/NTPConfigPage/Model (= 1.0.1)
+    - MokoLifeX/Functions/MK117/Functions/NTPConfigPage/Controller (= 1.1.0)
+    - MokoLifeX/Functions/MK117/Functions/NTPConfigPage/Model (= 1.1.0)
     - MokoLifeX/Functions/MK117/MQTT
     - MokoLifeX/Functions/MK117/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK117/Functions/NTPConfigPage/Controller (1.0.1):
+  - MokoLifeX/Functions/MK117/Functions/NTPConfigPage/Controller (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1463,7 +1584,7 @@ PODS:
     - MokoLifeX/Functions/MK117/MQTT
     - MokoLifeX/Functions/MK117/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK117/Functions/NTPConfigPage/Model (1.0.1):
+  - MokoLifeX/Functions/MK117/Functions/NTPConfigPage/Model (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1475,7 +1596,7 @@ PODS:
     - MokoLifeX/Functions/MK117/MQTT
     - MokoLifeX/Functions/MK117/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK117/Functions/OverThresholdPage (1.0.1):
+  - MokoLifeX/Functions/MK117/Functions/OverThresholdPage (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1484,13 +1605,13 @@ PODS:
     - MokoLifeX/DeviceModel
     - MokoLifeX/Expand
     - MokoLifeX/Functions/MK117/Expand
-    - MokoLifeX/Functions/MK117/Functions/OverThresholdPage/Controller (= 1.0.1)
-    - MokoLifeX/Functions/MK117/Functions/OverThresholdPage/Model (= 1.0.1)
-    - MokoLifeX/Functions/MK117/Functions/OverThresholdPage/View (= 1.0.1)
+    - MokoLifeX/Functions/MK117/Functions/OverThresholdPage/Controller (= 1.1.0)
+    - MokoLifeX/Functions/MK117/Functions/OverThresholdPage/Model (= 1.1.0)
+    - MokoLifeX/Functions/MK117/Functions/OverThresholdPage/View (= 1.1.0)
     - MokoLifeX/Functions/MK117/MQTT
     - MokoLifeX/Functions/MK117/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK117/Functions/OverThresholdPage/Controller (1.0.1):
+  - MokoLifeX/Functions/MK117/Functions/OverThresholdPage/Controller (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1504,7 +1625,7 @@ PODS:
     - MokoLifeX/Functions/MK117/MQTT
     - MokoLifeX/Functions/MK117/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK117/Functions/OverThresholdPage/Model (1.0.1):
+  - MokoLifeX/Functions/MK117/Functions/OverThresholdPage/Model (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1516,7 +1637,7 @@ PODS:
     - MokoLifeX/Functions/MK117/MQTT
     - MokoLifeX/Functions/MK117/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK117/Functions/OverThresholdPage/View (1.0.1):
+  - MokoLifeX/Functions/MK117/Functions/OverThresholdPage/View (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1528,7 +1649,7 @@ PODS:
     - MokoLifeX/Functions/MK117/MQTT
     - MokoLifeX/Functions/MK117/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK117/Functions/PowerOnStatusPage (1.0.1):
+  - MokoLifeX/Functions/MK117/Functions/PowerOnStatusPage (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1537,36 +1658,11 @@ PODS:
     - MokoLifeX/DeviceModel
     - MokoLifeX/Expand
     - MokoLifeX/Functions/MK117/Expand
-    - MokoLifeX/Functions/MK117/Functions/PowerOnStatusPage/Controller (= 1.0.1)
+    - MokoLifeX/Functions/MK117/Functions/PowerOnStatusPage/Controller (= 1.1.0)
     - MokoLifeX/Functions/MK117/MQTT
     - MokoLifeX/Functions/MK117/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK117/Functions/PowerOnStatusPage/Controller (1.0.1):
-    - FLAnimatedImage
-    - MKBaseModuleLibrary
-    - MKCustomUIModule
-    - MLInputDodger
-    - MokoLifeX/CTMediator
-    - MokoLifeX/DeviceModel
-    - MokoLifeX/Expand
-    - MokoLifeX/Functions/MK117/Expand
-    - MokoLifeX/Functions/MK117/MQTT
-    - MokoLifeX/Functions/MK117/Socket
-    - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK117/Functions/PowerReportPage (1.0.1):
-    - FLAnimatedImage
-    - MKBaseModuleLibrary
-    - MKCustomUIModule
-    - MLInputDodger
-    - MokoLifeX/CTMediator
-    - MokoLifeX/DeviceModel
-    - MokoLifeX/Expand
-    - MokoLifeX/Functions/MK117/Expand
-    - MokoLifeX/Functions/MK117/Functions/PowerReportPage/Controller (= 1.0.1)
-    - MokoLifeX/Functions/MK117/MQTT
-    - MokoLifeX/Functions/MK117/Socket
-    - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK117/Functions/PowerReportPage/Controller (1.0.1):
+  - MokoLifeX/Functions/MK117/Functions/PowerOnStatusPage/Controller (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1578,7 +1674,7 @@ PODS:
     - MokoLifeX/Functions/MK117/MQTT
     - MokoLifeX/Functions/MK117/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK117/Functions/ProtectionSettingPage (1.0.1):
+  - MokoLifeX/Functions/MK117/Functions/PowerReportPage (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1587,11 +1683,36 @@ PODS:
     - MokoLifeX/DeviceModel
     - MokoLifeX/Expand
     - MokoLifeX/Functions/MK117/Expand
-    - MokoLifeX/Functions/MK117/Functions/ProtectionSettingPage/Controller (= 1.0.1)
+    - MokoLifeX/Functions/MK117/Functions/PowerReportPage/Controller (= 1.1.0)
     - MokoLifeX/Functions/MK117/MQTT
     - MokoLifeX/Functions/MK117/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK117/Functions/ProtectionSettingPage/Controller (1.0.1):
+  - MokoLifeX/Functions/MK117/Functions/PowerReportPage/Controller (1.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/ProtectionSettingPage (1.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/Functions/ProtectionSettingPage/Controller (= 1.1.0)
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/ProtectionSettingPage/Controller (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1604,7 +1725,7 @@ PODS:
     - MokoLifeX/Functions/MK117/MQTT
     - MokoLifeX/Functions/MK117/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK117/Functions/ServerForDevice (1.0.1):
+  - MokoLifeX/Functions/MK117/Functions/ServerForDevice (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1613,13 +1734,13 @@ PODS:
     - MokoLifeX/DeviceModel
     - MokoLifeX/Expand
     - MokoLifeX/Functions/MK117/Expand
-    - MokoLifeX/Functions/MK117/Functions/ServerForDevice/Controller (= 1.0.1)
-    - MokoLifeX/Functions/MK117/Functions/ServerForDevice/Model (= 1.0.1)
-    - MokoLifeX/Functions/MK117/Functions/ServerForDevice/View (= 1.0.1)
+    - MokoLifeX/Functions/MK117/Functions/ServerForDevice/Controller (= 1.1.0)
+    - MokoLifeX/Functions/MK117/Functions/ServerForDevice/Model (= 1.1.0)
+    - MokoLifeX/Functions/MK117/Functions/ServerForDevice/View (= 1.1.0)
     - MokoLifeX/Functions/MK117/MQTT
     - MokoLifeX/Functions/MK117/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK117/Functions/ServerForDevice/Controller (1.0.1):
+  - MokoLifeX/Functions/MK117/Functions/ServerForDevice/Controller (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1633,7 +1754,7 @@ PODS:
     - MokoLifeX/Functions/MK117/MQTT
     - MokoLifeX/Functions/MK117/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK117/Functions/ServerForDevice/Model (1.0.1):
+  - MokoLifeX/Functions/MK117/Functions/ServerForDevice/Model (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1645,7 +1766,7 @@ PODS:
     - MokoLifeX/Functions/MK117/MQTT
     - MokoLifeX/Functions/MK117/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK117/Functions/ServerForDevice/View (1.0.1):
+  - MokoLifeX/Functions/MK117/Functions/ServerForDevice/View (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1657,7 +1778,7 @@ PODS:
     - MokoLifeX/Functions/MK117/MQTT
     - MokoLifeX/Functions/MK117/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK117/Functions/SettingsPage (1.0.1):
+  - MokoLifeX/Functions/MK117/Functions/SettingsPage (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1666,12 +1787,12 @@ PODS:
     - MokoLifeX/DeviceModel
     - MokoLifeX/Expand
     - MokoLifeX/Functions/MK117/Expand
-    - MokoLifeX/Functions/MK117/Functions/SettingsPage/Controller (= 1.0.1)
-    - MokoLifeX/Functions/MK117/Functions/SettingsPage/Model (= 1.0.1)
+    - MokoLifeX/Functions/MK117/Functions/SettingsPage/Controller (= 1.1.0)
+    - MokoLifeX/Functions/MK117/Functions/SettingsPage/Model (= 1.1.0)
     - MokoLifeX/Functions/MK117/MQTT
     - MokoLifeX/Functions/MK117/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK117/Functions/SettingsPage/Controller (1.0.1):
+  - MokoLifeX/Functions/MK117/Functions/SettingsPage/Controller (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1695,7 +1816,7 @@ PODS:
     - MokoLifeX/Functions/MK117/MQTT
     - MokoLifeX/Functions/MK117/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK117/Functions/SettingsPage/Model (1.0.1):
+  - MokoLifeX/Functions/MK117/Functions/SettingsPage/Model (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1707,7 +1828,7 @@ PODS:
     - MokoLifeX/Functions/MK117/MQTT
     - MokoLifeX/Functions/MK117/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK117/Functions/StatusReportPage (1.0.1):
+  - MokoLifeX/Functions/MK117/Functions/StatusReportPage (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1716,11 +1837,11 @@ PODS:
     - MokoLifeX/DeviceModel
     - MokoLifeX/Expand
     - MokoLifeX/Functions/MK117/Expand
-    - MokoLifeX/Functions/MK117/Functions/StatusReportPage/Controller (= 1.0.1)
+    - MokoLifeX/Functions/MK117/Functions/StatusReportPage/Controller (= 1.1.0)
     - MokoLifeX/Functions/MK117/MQTT
     - MokoLifeX/Functions/MK117/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK117/Functions/StatusReportPage/Controller (1.0.1):
+  - MokoLifeX/Functions/MK117/Functions/StatusReportPage/Controller (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1732,7 +1853,7 @@ PODS:
     - MokoLifeX/Functions/MK117/MQTT
     - MokoLifeX/Functions/MK117/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK117/Functions/SwitchStatePage (1.0.1):
+  - MokoLifeX/Functions/MK117/Functions/SwitchStatePage (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1741,12 +1862,12 @@ PODS:
     - MokoLifeX/DeviceModel
     - MokoLifeX/Expand
     - MokoLifeX/Functions/MK117/Expand
-    - MokoLifeX/Functions/MK117/Functions/SwitchStatePage/Controller (= 1.0.1)
-    - MokoLifeX/Functions/MK117/Functions/SwitchStatePage/View (= 1.0.1)
+    - MokoLifeX/Functions/MK117/Functions/SwitchStatePage/Controller (= 1.1.0)
+    - MokoLifeX/Functions/MK117/Functions/SwitchStatePage/View (= 1.1.0)
     - MokoLifeX/Functions/MK117/MQTT
     - MokoLifeX/Functions/MK117/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK117/Functions/SwitchStatePage/Controller (1.0.1):
+  - MokoLifeX/Functions/MK117/Functions/SwitchStatePage/Controller (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1762,7 +1883,7 @@ PODS:
     - MokoLifeX/Functions/MK117/MQTT
     - MokoLifeX/Functions/MK117/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK117/Functions/SwitchStatePage/View (1.0.1):
+  - MokoLifeX/Functions/MK117/Functions/SwitchStatePage/View (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1774,7 +1895,7 @@ PODS:
     - MokoLifeX/Functions/MK117/MQTT
     - MokoLifeX/Functions/MK117/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK117/Functions/SystemTimePage (1.0.1):
+  - MokoLifeX/Functions/MK117/Functions/SystemTimePage (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1783,12 +1904,12 @@ PODS:
     - MokoLifeX/DeviceModel
     - MokoLifeX/Expand
     - MokoLifeX/Functions/MK117/Expand
-    - MokoLifeX/Functions/MK117/Functions/SystemTimePage/Controller (= 1.0.1)
-    - MokoLifeX/Functions/MK117/Functions/SystemTimePage/View (= 1.0.1)
+    - MokoLifeX/Functions/MK117/Functions/SystemTimePage/Controller (= 1.1.0)
+    - MokoLifeX/Functions/MK117/Functions/SystemTimePage/View (= 1.1.0)
     - MokoLifeX/Functions/MK117/MQTT
     - MokoLifeX/Functions/MK117/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK117/Functions/SystemTimePage/Controller (1.0.1):
+  - MokoLifeX/Functions/MK117/Functions/SystemTimePage/Controller (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1802,7 +1923,7 @@ PODS:
     - MokoLifeX/Functions/MK117/MQTT
     - MokoLifeX/Functions/MK117/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK117/Functions/SystemTimePage/View (1.0.1):
+  - MokoLifeX/Functions/MK117/Functions/SystemTimePage/View (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1814,7 +1935,7 @@ PODS:
     - MokoLifeX/Functions/MK117/MQTT
     - MokoLifeX/Functions/MK117/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK117/MQTT (1.0.1):
+  - MokoLifeX/Functions/MK117/MQTT (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1823,7 +1944,7 @@ PODS:
     - MokoLifeX/DeviceModel
     - MokoLifeX/Expand
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK117/Socket (1.0.1):
+  - MokoLifeX/Functions/MK117/Socket (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1832,7 +1953,7 @@ PODS:
     - MokoLifeX/DeviceModel
     - MokoLifeX/Expand
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK117/Target (1.0.1):
+  - MokoLifeX/Functions/MK117/Target (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1843,7 +1964,7 @@ PODS:
     - MokoLifeX/Functions/MK117/Functions/ServerForDevice/Controller
     - MokoLifeX/Functions/MK117/Functions/SwitchStatePage/Controller
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK11X (1.0.1):
+  - MokoLifeX/Functions/MK11X (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1851,12 +1972,12 @@ PODS:
     - MokoLifeX/CTMediator
     - MokoLifeX/DeviceModel
     - MokoLifeX/Expand
-    - MokoLifeX/Functions/MK11X/Functions (= 1.0.1)
-    - MokoLifeX/Functions/MK11X/MQTT (= 1.0.1)
-    - MokoLifeX/Functions/MK11X/Socket (= 1.0.1)
-    - MokoLifeX/Functions/MK11X/Target (= 1.0.1)
+    - MokoLifeX/Functions/MK11X/Functions (= 1.1.0)
+    - MokoLifeX/Functions/MK11X/MQTT (= 1.1.0)
+    - MokoLifeX/Functions/MK11X/Socket (= 1.1.0)
+    - MokoLifeX/Functions/MK11X/Target (= 1.1.0)
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK11X/Functions (1.0.1):
+  - MokoLifeX/Functions/MK11X/Functions (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1864,17 +1985,17 @@ PODS:
     - MokoLifeX/CTMediator
     - MokoLifeX/DeviceModel
     - MokoLifeX/Expand
-    - MokoLifeX/Functions/MK11X/Functions/ColorSettingPage (= 1.0.1)
-    - MokoLifeX/Functions/MK11X/Functions/ConfigDataPage (= 1.0.1)
-    - MokoLifeX/Functions/MK11X/Functions/EnergyPage (= 1.0.1)
-    - MokoLifeX/Functions/MK11X/Functions/MorePage (= 1.0.1)
-    - MokoLifeX/Functions/MK11X/Functions/ServerForDevice (= 1.0.1)
-    - MokoLifeX/Functions/MK11X/Functions/SettingsPage (= 1.0.1)
-    - MokoLifeX/Functions/MK11X/Functions/SwitchStatePage (= 1.0.1)
+    - MokoLifeX/Functions/MK11X/Functions/ColorSettingPage (= 1.1.0)
+    - MokoLifeX/Functions/MK11X/Functions/ConfigDataPage (= 1.1.0)
+    - MokoLifeX/Functions/MK11X/Functions/EnergyPage (= 1.1.0)
+    - MokoLifeX/Functions/MK11X/Functions/MorePage (= 1.1.0)
+    - MokoLifeX/Functions/MK11X/Functions/ServerForDevice (= 1.1.0)
+    - MokoLifeX/Functions/MK11X/Functions/SettingsPage (= 1.1.0)
+    - MokoLifeX/Functions/MK11X/Functions/SwitchStatePage (= 1.1.0)
     - MokoLifeX/Functions/MK11X/MQTT
     - MokoLifeX/Functions/MK11X/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK11X/Functions/ColorSettingPage (1.0.1):
+  - MokoLifeX/Functions/MK11X/Functions/ColorSettingPage (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1882,13 +2003,13 @@ PODS:
     - MokoLifeX/CTMediator
     - MokoLifeX/DeviceModel
     - MokoLifeX/Expand
-    - MokoLifeX/Functions/MK11X/Functions/ColorSettingPage/Controller (= 1.0.1)
-    - MokoLifeX/Functions/MK11X/Functions/ColorSettingPage/Model (= 1.0.1)
-    - MokoLifeX/Functions/MK11X/Functions/ColorSettingPage/View (= 1.0.1)
+    - MokoLifeX/Functions/MK11X/Functions/ColorSettingPage/Controller (= 1.1.0)
+    - MokoLifeX/Functions/MK11X/Functions/ColorSettingPage/Model (= 1.1.0)
+    - MokoLifeX/Functions/MK11X/Functions/ColorSettingPage/View (= 1.1.0)
     - MokoLifeX/Functions/MK11X/MQTT
     - MokoLifeX/Functions/MK11X/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK11X/Functions/ColorSettingPage/Controller (1.0.1):
+  - MokoLifeX/Functions/MK11X/Functions/ColorSettingPage/Controller (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1901,7 +2022,7 @@ PODS:
     - MokoLifeX/Functions/MK11X/MQTT
     - MokoLifeX/Functions/MK11X/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK11X/Functions/ColorSettingPage/Model (1.0.1):
+  - MokoLifeX/Functions/MK11X/Functions/ColorSettingPage/Model (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1912,7 +2033,7 @@ PODS:
     - MokoLifeX/Functions/MK11X/MQTT
     - MokoLifeX/Functions/MK11X/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK11X/Functions/ColorSettingPage/View (1.0.1):
+  - MokoLifeX/Functions/MK11X/Functions/ColorSettingPage/View (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1923,7 +2044,7 @@ PODS:
     - MokoLifeX/Functions/MK11X/MQTT
     - MokoLifeX/Functions/MK11X/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK11X/Functions/ConfigDataPage (1.0.1):
+  - MokoLifeX/Functions/MK11X/Functions/ConfigDataPage (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1931,12 +2052,12 @@ PODS:
     - MokoLifeX/CTMediator
     - MokoLifeX/DeviceModel
     - MokoLifeX/Expand
-    - MokoLifeX/Functions/MK11X/Functions/ConfigDataPage/Controller (= 1.0.1)
-    - MokoLifeX/Functions/MK11X/Functions/ConfigDataPage/View (= 1.0.1)
+    - MokoLifeX/Functions/MK11X/Functions/ConfigDataPage/Controller (= 1.1.0)
+    - MokoLifeX/Functions/MK11X/Functions/ConfigDataPage/View (= 1.1.0)
     - MokoLifeX/Functions/MK11X/MQTT
     - MokoLifeX/Functions/MK11X/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK11X/Functions/ConfigDataPage/Controller (1.0.1):
+  - MokoLifeX/Functions/MK11X/Functions/ConfigDataPage/Controller (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1948,7 +2069,7 @@ PODS:
     - MokoLifeX/Functions/MK11X/MQTT
     - MokoLifeX/Functions/MK11X/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK11X/Functions/ConfigDataPage/View (1.0.1):
+  - MokoLifeX/Functions/MK11X/Functions/ConfigDataPage/View (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1959,7 +2080,7 @@ PODS:
     - MokoLifeX/Functions/MK11X/MQTT
     - MokoLifeX/Functions/MK11X/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK11X/Functions/EnergyPage (1.0.1):
+  - MokoLifeX/Functions/MK11X/Functions/EnergyPage (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1967,13 +2088,13 @@ PODS:
     - MokoLifeX/CTMediator
     - MokoLifeX/DeviceModel
     - MokoLifeX/Expand
-    - MokoLifeX/Functions/MK11X/Functions/EnergyPage/Controller (= 1.0.1)
-    - MokoLifeX/Functions/MK11X/Functions/EnergyPage/Model (= 1.0.1)
-    - MokoLifeX/Functions/MK11X/Functions/EnergyPage/View (= 1.0.1)
+    - MokoLifeX/Functions/MK11X/Functions/EnergyPage/Controller (= 1.1.0)
+    - MokoLifeX/Functions/MK11X/Functions/EnergyPage/Model (= 1.1.0)
+    - MokoLifeX/Functions/MK11X/Functions/EnergyPage/View (= 1.1.0)
     - MokoLifeX/Functions/MK11X/MQTT
     - MokoLifeX/Functions/MK11X/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK11X/Functions/EnergyPage/Controller (1.0.1):
+  - MokoLifeX/Functions/MK11X/Functions/EnergyPage/Controller (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1986,7 +2107,7 @@ PODS:
     - MokoLifeX/Functions/MK11X/MQTT
     - MokoLifeX/Functions/MK11X/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK11X/Functions/EnergyPage/Model (1.0.1):
+  - MokoLifeX/Functions/MK11X/Functions/EnergyPage/Model (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -1997,7 +2118,7 @@ PODS:
     - MokoLifeX/Functions/MK11X/MQTT
     - MokoLifeX/Functions/MK11X/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK11X/Functions/EnergyPage/View (1.0.1):
+  - MokoLifeX/Functions/MK11X/Functions/EnergyPage/View (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -2008,7 +2129,7 @@ PODS:
     - MokoLifeX/Functions/MK11X/MQTT
     - MokoLifeX/Functions/MK11X/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK11X/Functions/MorePage (1.0.1):
+  - MokoLifeX/Functions/MK11X/Functions/MorePage (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -2016,12 +2137,12 @@ PODS:
     - MokoLifeX/CTMediator
     - MokoLifeX/DeviceModel
     - MokoLifeX/Expand
-    - MokoLifeX/Functions/MK11X/Functions/MorePage/Controller (= 1.0.1)
-    - MokoLifeX/Functions/MK11X/Functions/MorePage/Model (= 1.0.1)
+    - MokoLifeX/Functions/MK11X/Functions/MorePage/Controller (= 1.1.0)
+    - MokoLifeX/Functions/MK11X/Functions/MorePage/Model (= 1.1.0)
     - MokoLifeX/Functions/MK11X/MQTT
     - MokoLifeX/Functions/MK11X/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK11X/Functions/MorePage/Controller (1.0.1):
+  - MokoLifeX/Functions/MK11X/Functions/MorePage/Controller (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -2033,7 +2154,7 @@ PODS:
     - MokoLifeX/Functions/MK11X/MQTT
     - MokoLifeX/Functions/MK11X/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK11X/Functions/MorePage/Model (1.0.1):
+  - MokoLifeX/Functions/MK11X/Functions/MorePage/Model (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -2044,7 +2165,7 @@ PODS:
     - MokoLifeX/Functions/MK11X/MQTT
     - MokoLifeX/Functions/MK11X/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK11X/Functions/ServerForDevice (1.0.1):
+  - MokoLifeX/Functions/MK11X/Functions/ServerForDevice (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -2052,13 +2173,13 @@ PODS:
     - MokoLifeX/CTMediator
     - MokoLifeX/DeviceModel
     - MokoLifeX/Expand
-    - MokoLifeX/Functions/MK11X/Functions/ServerForDevice/Controller (= 1.0.1)
-    - MokoLifeX/Functions/MK11X/Functions/ServerForDevice/Model (= 1.0.1)
-    - MokoLifeX/Functions/MK11X/Functions/ServerForDevice/View (= 1.0.1)
+    - MokoLifeX/Functions/MK11X/Functions/ServerForDevice/Controller (= 1.1.0)
+    - MokoLifeX/Functions/MK11X/Functions/ServerForDevice/Model (= 1.1.0)
+    - MokoLifeX/Functions/MK11X/Functions/ServerForDevice/View (= 1.1.0)
     - MokoLifeX/Functions/MK11X/MQTT
     - MokoLifeX/Functions/MK11X/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK11X/Functions/ServerForDevice/Controller (1.0.1):
+  - MokoLifeX/Functions/MK11X/Functions/ServerForDevice/Controller (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -2071,7 +2192,7 @@ PODS:
     - MokoLifeX/Functions/MK11X/MQTT
     - MokoLifeX/Functions/MK11X/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK11X/Functions/ServerForDevice/Model (1.0.1):
+  - MokoLifeX/Functions/MK11X/Functions/ServerForDevice/Model (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -2082,7 +2203,7 @@ PODS:
     - MokoLifeX/Functions/MK11X/MQTT
     - MokoLifeX/Functions/MK11X/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK11X/Functions/ServerForDevice/View (1.0.1):
+  - MokoLifeX/Functions/MK11X/Functions/ServerForDevice/View (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -2094,7 +2215,7 @@ PODS:
     - MokoLifeX/Functions/MK11X/MQTT
     - MokoLifeX/Functions/MK11X/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK11X/Functions/SettingsPage (1.0.1):
+  - MokoLifeX/Functions/MK11X/Functions/SettingsPage (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -2102,12 +2223,12 @@ PODS:
     - MokoLifeX/CTMediator
     - MokoLifeX/DeviceModel
     - MokoLifeX/Expand
-    - MokoLifeX/Functions/MK11X/Functions/SettingsPage/Controller (= 1.0.1)
-    - MokoLifeX/Functions/MK11X/Functions/SettingsPage/View (= 1.0.1)
+    - MokoLifeX/Functions/MK11X/Functions/SettingsPage/Controller (= 1.1.0)
+    - MokoLifeX/Functions/MK11X/Functions/SettingsPage/View (= 1.1.0)
     - MokoLifeX/Functions/MK11X/MQTT
     - MokoLifeX/Functions/MK11X/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK11X/Functions/SettingsPage/Controller (1.0.1):
+  - MokoLifeX/Functions/MK11X/Functions/SettingsPage/Controller (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -2121,7 +2242,7 @@ PODS:
     - MokoLifeX/Functions/MK11X/MQTT
     - MokoLifeX/Functions/MK11X/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK11X/Functions/SettingsPage/View (1.0.1):
+  - MokoLifeX/Functions/MK11X/Functions/SettingsPage/View (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -2132,7 +2253,7 @@ PODS:
     - MokoLifeX/Functions/MK11X/MQTT
     - MokoLifeX/Functions/MK11X/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK11X/Functions/SwitchStatePage (1.0.1):
+  - MokoLifeX/Functions/MK11X/Functions/SwitchStatePage (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -2140,12 +2261,12 @@ PODS:
     - MokoLifeX/CTMediator
     - MokoLifeX/DeviceModel
     - MokoLifeX/Expand
-    - MokoLifeX/Functions/MK11X/Functions/SwitchStatePage/Controller (= 1.0.1)
-    - MokoLifeX/Functions/MK11X/Functions/SwitchStatePage/View (= 1.0.1)
+    - MokoLifeX/Functions/MK11X/Functions/SwitchStatePage/Controller (= 1.1.0)
+    - MokoLifeX/Functions/MK11X/Functions/SwitchStatePage/View (= 1.1.0)
     - MokoLifeX/Functions/MK11X/MQTT
     - MokoLifeX/Functions/MK11X/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK11X/Functions/SwitchStatePage/Controller (1.0.1):
+  - MokoLifeX/Functions/MK11X/Functions/SwitchStatePage/Controller (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -2160,7 +2281,7 @@ PODS:
     - MokoLifeX/Functions/MK11X/MQTT
     - MokoLifeX/Functions/MK11X/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK11X/Functions/SwitchStatePage/View (1.0.1):
+  - MokoLifeX/Functions/MK11X/Functions/SwitchStatePage/View (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -2171,7 +2292,7 @@ PODS:
     - MokoLifeX/Functions/MK11X/MQTT
     - MokoLifeX/Functions/MK11X/Socket
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK11X/MQTT (1.0.1):
+  - MokoLifeX/Functions/MK11X/MQTT (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -2180,7 +2301,7 @@ PODS:
     - MokoLifeX/DeviceModel
     - MokoLifeX/Expand
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK11X/Socket (1.0.1):
+  - MokoLifeX/Functions/MK11X/Socket (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -2189,7 +2310,7 @@ PODS:
     - MokoLifeX/DeviceModel
     - MokoLifeX/Expand
     - MokoLifeX/SDK
-  - MokoLifeX/Functions/MK11X/Target (1.0.1):
+  - MokoLifeX/Functions/MK11X/Target (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -2200,27 +2321,27 @@ PODS:
     - MokoLifeX/Functions/MK11X/Functions/ServerForDevice/Controller
     - MokoLifeX/Functions/MK11X/Functions/SwitchStatePage/Controller
     - MokoLifeX/SDK
-  - MokoLifeX/SDK (1.0.1):
+  - MokoLifeX/SDK (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
     - MLInputDodger
-    - MokoLifeX/SDK/MQTT (= 1.0.1)
-    - MokoLifeX/SDK/Socket (= 1.0.1)
-  - MokoLifeX/SDK/MQTT (1.0.1):
+    - MokoLifeX/SDK/MQTT (= 1.1.0)
+    - MokoLifeX/SDK/Socket (= 1.1.0)
+  - MokoLifeX/SDK/MQTT (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKBaseMQTTModule
     - MKCustomUIModule
     - MLInputDodger
     - MQTTClient
-  - MokoLifeX/SDK/Socket (1.0.1):
+  - MokoLifeX/SDK/Socket (1.1.0):
     - CocoaAsyncSocket
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
     - MLInputDodger
-  - MokoLifeX/Target (1.0.1):
+  - MokoLifeX/Target (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -2276,7 +2397,7 @@ SPEC CHECKSUMS:
   MKBaseMQTTModule: a897389b91385b06f3eee1c9be26e89ca449ef93
   MKCustomUIModule: 91646517fc7a90d94dd5578d119fec38d67d6a90
   MLInputDodger: 79a0e420a80d0d3bba122bf2639603cc76609ba8
-  MokoLifeX: 87d191d5c20a7d3eb47c2045982ba9df923e617c
+  MokoLifeX: b89bbbb8f0667c5f864b8355264d4004b73637a7
   MQTTClient: 0dfa04e789479c2e461786464969895c1fcb0875
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
   WRNavigationBar: 10bfdf96addf14d640d07c2ef08a029c18d8af10

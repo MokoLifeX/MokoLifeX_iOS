@@ -12,6 +12,8 @@
 
 #import "MKLFXCSwitchStateController.h"
 
+#import "MKLFXCDServerForDeviceController.h"
+
 @implementation Target_MokoLifeX_MK117_Module
 
 - (UIViewController *)Action_MokoLifeX_MK117_Module_ServerForDevicePage:(NSDictionary *)params {
@@ -20,11 +22,15 @@
     return vc;
 }
 
-/// 设备开关页面
-/// @param params @{@"deviceModel":id <MKLFXDeviceModel *>deviceModel}
 - (UIViewController *)Action_MokoLifeX_MK117_Module_SwitchStatePage:(NSDictionary *)params {
     MKLFXCSwitchStateController *vc = [[MKLFXCSwitchStateController alloc] init];
     vc.deviceModel = params[@"deviceModel"];
+    return vc;
+}
+
+- (UIViewController *)Action_MokoLifeX_MK117_Module_117DServerForDevicePage:(NSDictionary *)params {
+    MKLFXCDServerForDeviceController *vc = [[MKLFXCDServerForDeviceController alloc] init];
+    vc.deviceInfo = params;
     return vc;
 }
 

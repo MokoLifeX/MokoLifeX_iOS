@@ -14,6 +14,7 @@
 #import "MKLFXServerManager.h"
 
 #import "MKLFXCSocketInterface.h"
+#import "MKLFXCSocketInterface+MKLFX117Add.h"
 
 static NSString *const defaultSubTopic = @"{device_name}/{device_id}/app_to_device";
 static NSString *const defaultPubTopic = @"{device_name}/{device_id}/device_to_app";

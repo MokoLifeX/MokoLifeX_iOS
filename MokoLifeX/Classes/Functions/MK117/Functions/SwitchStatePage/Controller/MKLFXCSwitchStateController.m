@@ -22,6 +22,7 @@
 
 #import "MKLFXCMQTTManager.h"
 #import "MKLFXCMQTTInterface.h"
+#import "MKLFXCDeviceMQTTNotifications.h"
 
 #import "MKLFXCSwitchViewButton.h"
 

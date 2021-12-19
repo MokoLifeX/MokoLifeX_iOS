@@ -23,7 +23,7 @@
 #import "MKLFXDeviceModel.h"
 
 #import "MKLFXCMQTTInterface.h"
-#import "MKLFXCMQTTManager.h"
+#import "MKLFXCDeviceMQTTNotifications.h"
 
 @interface MKLFXCPowerReportController ()
 

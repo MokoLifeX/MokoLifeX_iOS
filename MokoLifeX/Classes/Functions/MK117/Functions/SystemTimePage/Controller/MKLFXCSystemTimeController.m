@@ -24,7 +24,9 @@
 #import "MKLFXDeviceModel.h"
 
 #import "MKLFXCMQTTInterface.h"
-#import "MKLFXCMQTTManager.h"
+#import "MKLFXCMQTTInterface+MKLFX117Add.h"
+#import "MKLFXCMQTTInterface+MKLFX117DAdd.h"
+#import "MKLFXCDeviceMQTTNotifications.h"
 
 #import "MKLFXCSystemTimeCell.h"
 
@@ -49,7 +51,7 @@ MKTextButtonCellDelegate>
 
 @property (nonatomic, strong)dispatch_source_t readDateTimer;
 
-@property (nonatomic, strong)NSArray *timeZoneList;
+@property (nonatomic, strong)NSMutableArray *timeZoneList;
 
 @property (nonatomic, assign)NSInteger timeZone;
 
@@ -69,6 +71,7 @@ MKTextButtonCellDelegate>
     [super viewDidLoad];
     [self loadSubViews];
     [self loadSectionDatas];
+    [self.timeZoneList addObjectsFromArray:[self loadTimeZoneList]];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(receiveDeviceTime:)
                                                  name:MKLFXCReceiveDeviceCurrentTimeNotification
@@ -173,6 +176,25 @@ MKTextButtonCellDelegate>
 #pragma mark - interface
 - (void)configDeviceTimeWithTimeZone:(NSInteger)timeZone {
     [[MKHudManager share] showHUDWithTitle:@"Config..." inView:self.view isPenetration:NO];
+    
+    if ([self.deviceModel.deviceType integerValue] == 5) {
+        //MK117D
+        [MKLFXCMQTTInterface lfxc_config117DDeviceTimeZone:timeZone
+                                                  deviceID:self.deviceModel.deviceID
+                                                     topic:[self.deviceModel currentSubscribedTopic]
+                                                  sucBlock:^{
+            [[MKHudManager share] hide];
+            [self.view showCentralToast:@"Success"];
+            self.timeZone = timeZone;
+            [self readTimeFromDevice];
+        }
+                                               failedBlock:^(NSError * _Nonnull error) {
+            [[MKHudManager share] hide];
+            [self.view showCentralToast:error.userInfo[@"errorInfo"]];
+        }];
+        return;
+    }
+    
     [MKLFXCMQTTInterface lfxc_configDeviceTimeZone:timeZone
                                           deviceID:self.deviceModel.deviceID
                                              topic:[self.deviceModel currentSubscribedTopic]
@@ -310,17 +332,9 @@ MKTextButtonCellDelegate>
     return _timeLabel;
 }
 
-- (NSArray *)timeZoneList {
+- (NSMutableArray *)timeZoneList {
     if (!_timeZoneList) {
-        _timeZoneList = @[@"UTC-12:00",@"UTC-11:30",@"UTC-11:00",@"UTC-10:30",@"UTC-10:00",@"UTC-09:30",
-                          @"UTC-09:00",@"UTC-08:30",@"UTC-08:00",@"UTC-07:30",@"UTC-07:00",@"UTC-06:30",
-                          @"UTC-06:00",@"UTC-05:30",@"UTC-05:00",@"UTC-04:30",@"UTC-04:00",@"UTC-03:30",
-                          @"UTC-03:00",@"UTC-02:30",@"UTC-02:00",@"UTC-01:30",@"UTC-01:00",@"UTC-00:30",
-                          @"UTC+00:00",@"UTC+00:30",@"UTC+01:00",@"UTC+01:30",@"UTC+02:00",@"UTC+02:30",
-                          @"UTC+03:00",@"UTC+03:30",@"UTC+04:00",@"UTC+04:30",@"UTC+05:00",@"UTC+05:30",
-                          @"UTC+06:00",@"UTC+06:30",@"UTC+07:00",@"UTC+07:30",@"UTC+08:00",@"UTC+08:30",
-                          @"UTC+09:00",@"UTC+09:30",@"UTC+10:00",@"UTC+10:30",@"UTC+11:00",@"UTC+11:30",
-                          @"UTC+12:00"];
+        _timeZoneList = [NSMutableArray array];
     }
     return _timeZoneList;
 }
@@ -333,6 +347,31 @@ MKTextButtonCellDelegate>
     [self.timeLabel setFrame:CGRectMake(15.f, 20.f, kViewWidth - 2 * 15.f, MKFont(13.f).lineHeight)];
     
     return footerView;
+}
+
+- (NSArray *)loadTimeZoneList {
+    if ([self.deviceModel.deviceType integerValue] == 5) {
+        //MK117D
+        return @[@"UTC-12:00",@"UTC-11:30",@"UTC-11:00",@"UTC-10:30",@"UTC-10:00",@"UTC-09:30",
+                 @"UTC-09:00",@"UTC-08:30",@"UTC-08:00",@"UTC-07:30",@"UTC-07:00",@"UTC-06:30",
+                 @"UTC-06:00",@"UTC-05:30",@"UTC-05:00",@"UTC-04:30",@"UTC-04:00",@"UTC-03:30",
+                 @"UTC-03:00",@"UTC-02:30",@"UTC-02:00",@"UTC-01:30",@"UTC-01:00",@"UTC-00:30",
+                 @"UTC+00:00",@"UTC+00:30",@"UTC+01:00",@"UTC+01:30",@"UTC+02:00",@"UTC+02:30",
+                 @"UTC+03:00",@"UTC+03:30",@"UTC+04:00",@"UTC+04:30",@"UTC+05:00",@"UTC+05:30",
+                 @"UTC+06:00",@"UTC+06:30",@"UTC+07:00",@"UTC+07:30",@"UTC+08:00",@"UTC+08:30",
+                 @"UTC+09:00",@"UTC+09:30",@"UTC+10:00",@"UTC+10:30",@"UTC+11:00",@"UTC+11:30",
+                 @"UTC+12:00",@"UTC+12:30",@"UTC+13:00",@"UTC+13:30",@"UTC+14:00"];
+    }
+    //MK117
+    return @[@"UTC-12:00",@"UTC-11:30",@"UTC-11:00",@"UTC-10:30",@"UTC-10:00",@"UTC-09:30",
+             @"UTC-09:00",@"UTC-08:30",@"UTC-08:00",@"UTC-07:30",@"UTC-07:00",@"UTC-06:30",
+             @"UTC-06:00",@"UTC-05:30",@"UTC-05:00",@"UTC-04:30",@"UTC-04:00",@"UTC-03:30",
+             @"UTC-03:00",@"UTC-02:30",@"UTC-02:00",@"UTC-01:30",@"UTC-01:00",@"UTC-00:30",
+             @"UTC+00:00",@"UTC+00:30",@"UTC+01:00",@"UTC+01:30",@"UTC+02:00",@"UTC+02:30",
+             @"UTC+03:00",@"UTC+03:30",@"UTC+04:00",@"UTC+04:30",@"UTC+05:00",@"UTC+05:30",
+             @"UTC+06:00",@"UTC+06:30",@"UTC+07:00",@"UTC+07:30",@"UTC+08:00",@"UTC+08:30",
+             @"UTC+09:00",@"UTC+09:30",@"UTC+10:00",@"UTC+10:30",@"UTC+11:00",@"UTC+11:30",
+             @"UTC+12:00"];
 }
 
 @end

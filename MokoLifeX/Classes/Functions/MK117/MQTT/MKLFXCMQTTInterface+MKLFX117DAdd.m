@@ -115,6 +115,112 @@
                              failedBlock:failedBlock];
 }
 
++ (void)lfxc_otaMasterFirmware:(NSString *)host
+                          port:(NSInteger)port
+                      filePath:(NSString *)filePath
+                      deviceID:(NSString *)deviceID
+                         topic:(NSString *)topic
+                      sucBlock:(void (^)(void))sucBlock
+                   failedBlock:(void (^)(NSError *error))failedBlock {
+    if (!ValidStr(topic) || topic.length > 128 || ![topic isAsciiString]) {
+        [self operationFailedBlockWithMsg:@"Topic error" failedBlock:failedBlock];
+        return;
+    }
+    if (!ValidStr(deviceID) || deviceID.length > 32 || ![deviceID isAsciiString]) {
+        [self operationFailedBlockWithMsg:@"ClientID error" failedBlock:failedBlock];
+        return;
+    }
+    if (!ValidStr(host) || host.length > 64 || !ValidStr(filePath) || filePath.length > 100 || port < 0 || port > 65535) {
+        [self operationFailedBlockWithMsg:@"Params error" failedBlock:failedBlock];
+        return;
+    }
+    NSDictionary *dataDic = @{
+                              @"msg_id":@(2128),
+                              @"id":deviceID,
+                              @"data":@{
+                                  @"host":SafeStr(host),
+                                  @"port":@(port),
+                                  @"firmware_way":SafeStr(filePath),
+                                },
+                              };
+    [[MKLFXCMQTTManager shared] sendData:dataDic
+                                   topic:topic
+                                sucBlock:sucBlock
+                             failedBlock:failedBlock];
+}
+
++ (void)lfxc_otaCACertificate:(NSString *)host
+                         port:(NSInteger)port
+                     filePath:(NSString *)filePath
+                     deviceID:(NSString *)deviceID
+                        topic:(NSString *)topic
+                     sucBlock:(void (^)(void))sucBlock
+                  failedBlock:(void (^)(NSError *error))failedBlock {
+    if (!ValidStr(topic) || topic.length > 128 || ![topic isAsciiString]) {
+        [self operationFailedBlockWithMsg:@"Topic error" failedBlock:failedBlock];
+        return;
+    }
+    if (!ValidStr(deviceID) || deviceID.length > 32 || ![deviceID isAsciiString]) {
+        [self operationFailedBlockWithMsg:@"ClientID error" failedBlock:failedBlock];
+        return;
+    }
+    if (!ValidStr(host) || host.length > 64 || !ValidStr(filePath) || filePath.length > 100 || port < 0 || port > 65535) {
+        [self operationFailedBlockWithMsg:@"Params error" failedBlock:failedBlock];
+        return;
+    }
+    NSDictionary *dataDic = @{
+                              @"msg_id":@(2129),
+                              @"id":deviceID,
+                              @"data":@{
+                                  @"host":SafeStr(host),
+                                  @"port":@(port),
+                                  @"ca_way":SafeStr(filePath),
+                                },
+                              };
+    [[MKLFXCMQTTManager shared] sendData:dataDic
+                                   topic:topic
+                                sucBlock:sucBlock
+                             failedBlock:failedBlock];
+}
+
++ (void)lfxc_otaSelfSignedCertificates:(NSString *)host
+                                  port:(NSInteger)port
+                            caFilePath:(NSString *)caFilePath
+                         clientKeyPath:(NSString *)clientKeyPath
+                        clientCertPath:(NSString *)clientCertPath
+                              deviceID:(NSString *)deviceID
+                                 topic:(NSString *)topic
+                              sucBlock:(void (^)(void))sucBlock
+                           failedBlock:(void (^)(NSError *error))failedBlock {
+    if (!ValidStr(topic) || topic.length > 128 || ![topic isAsciiString]) {
+        [self operationFailedBlockWithMsg:@"Topic error" failedBlock:failedBlock];
+        return;
+    }
+    if (!ValidStr(deviceID) || deviceID.length > 32 || ![deviceID isAsciiString]) {
+        [self operationFailedBlockWithMsg:@"ClientID error" failedBlock:failedBlock];
+        return;
+    }
+    if (!ValidStr(host) || host.length > 64 || !ValidStr(caFilePath) || caFilePath.length > 100 || port < 0 || port > 65535 || !ValidStr(clientKeyPath) || clientKeyPath.length > 100 || !ValidStr(clientCertPath) || clientCertPath.length > 100) {
+        [self operationFailedBlockWithMsg:@"Params error" failedBlock:failedBlock];
+        return;
+    }
+    NSDictionary *dataDic = @{
+                              @"msg_id":@(2130),
+                              @"id":deviceID,
+                              @"data":@{
+                                  @"host":SafeStr(host),
+                                  @"port":@(port),
+                                  @"ca_way":SafeStr(caFilePath),
+                                  @"client_cer_way":SafeStr(clientCertPath),
+                                  @"client_key_way":SafeStr(clientKeyPath),
+                                },
+                              };
+    [[MKLFXCMQTTManager shared] sendData:dataDic
+                                   topic:topic
+                                sucBlock:sucBlock
+                             failedBlock:failedBlock];
+}
+
 #pragma mark - private method
 + (BOOL)checkMQTTServerProtocol:(id <lfxc_117d_updateMQTTServerProtocol>)protocol {
     if (!protocol || ![protocol conformsToProtocol:@protocol(lfxc_117d_updateMQTTServerProtocol)]) {

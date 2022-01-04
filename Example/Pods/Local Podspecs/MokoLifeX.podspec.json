@@ -807,6 +807,24 @@
                           "source_files": "MokoLifeX/Classes/Functions/MK117/Functions/MK117DPages/ModifyMQTTServerPage/View/**"
                         }
                       ]
+                    },
+                    {
+                      "name": "OTAPage",
+                      "subspecs": [
+                        {
+                          "name": "Controller",
+                          "source_files": "MokoLifeX/Classes/Functions/MK117/Functions/MK117DPages/OTAPage/Controller/**",
+                          "dependencies": {
+                            "MokoLifeX/Functions/MK117/Functions/MK117DPages/OTAPage/Model": [
+
+                            ]
+                          }
+                        },
+                        {
+                          "name": "Model",
+                          "source_files": "MokoLifeX/Classes/Functions/MK117/Functions/MK117DPages/OTAPage/Model/**"
+                        }
+                      ]
                     }
                   ]
                 },

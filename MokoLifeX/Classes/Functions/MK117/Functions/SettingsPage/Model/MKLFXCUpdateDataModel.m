@@ -9,7 +9,7 @@
 #import "MKLFXCUpdateDataModel.h"
 
 #import "MKLFXCMQTTInterface+MKLFX117Add.h"
-#import "MKLFXCDeviceMQTTNotifications.h"
+#import "MKLFXC117MQTTNotifications.h"
 
 @implementation MKLFXCUpdateDataModel
 

@@ -42,7 +42,10 @@
 #import "MKLFXCProtectionSettingController.h"
 #import "MKLFXCMQTTSettingForDeviceController.h"
 #import "MKLFXCSystemTimeController.h"
+
+
 #import "MKLFXCDModifyServerController.h"
+#import "MKLFXCDOTAController.h"
 
 @interface MKLFXCSettingsController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -177,18 +180,33 @@
     
 #pragma mark - section3
     if (indexPath.section == 3) {
-        if ([self.deviceModel.deviceType integerValue] == 5 && indexPath.row == 0) {
-            //MK117D的Modify MQTT settings页面
-            MKLFXCDModifyServerController *vc = [[MKLFXCDModifyServerController alloc] init];
+        if ([self.deviceModel.deviceType integerValue] == 5) {
+            //MK117D
+            if (indexPath.row == 0) {
+                //MK117D的Modify MQTT settings页面
+                MKLFXCDModifyServerController *vc = [[MKLFXCDModifyServerController alloc] init];
+                vc.deviceModel = self.deviceModel;
+                [self.navigationController pushViewController:vc animated:YES];
+                return;
+            }
+            if (indexPath.row == 1) {
+                //MK117D OTA
+                MKLFXCDOTAController *vc = [[MKLFXCDOTAController alloc] init];
+                vc.deviceModel = self.deviceModel;
+                [self.navigationController pushViewController:vc animated:YES];
+                return;
+            }
+            return;
+        }
+        if (indexPath.row == 0) {
+            //MK117 OTA
+            MKLFXUpdateController *vc = [[MKLFXUpdateController alloc] init];
             vc.deviceModel = self.deviceModel;
+            vc.protocol = [[MKLFXCUpdateDataModel alloc] init];
             [self.navigationController pushViewController:vc animated:YES];
             return;
         }
         //OTA
-        MKLFXUpdateController *vc = [[MKLFXUpdateController alloc] init];
-        vc.deviceModel = self.deviceModel;
-        vc.protocol = [[MKLFXCUpdateDataModel alloc] init];
-        [self.navigationController pushViewController:vc animated:YES];
         return;
     }
     

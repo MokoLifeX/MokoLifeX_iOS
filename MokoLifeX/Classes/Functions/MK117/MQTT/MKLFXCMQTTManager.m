@@ -11,6 +11,7 @@
 #import "MKLFXServerManager.h"
 
 #import "MKLFXCDeviceMQTTNotifications.h"
+#import "MKLFXC117MQTTNotifications.h"
 #import "MKLFXC117DMQTTNotifications.h"
 
 static MKLFXCMQTTManager *manager = nil;
@@ -212,6 +213,10 @@ static dispatch_once_t onceToken;
     if (msgID == 1125) {
         //发布网络切换结果
         return MKLFXCReceiveReconnectNetworkMQTTConfigNotification;
+    }
+    if (msgID == 1126) {
+        //设备OTA结果
+        return MKLFXCReceiveOTAResultNotification;
     }
     return @"";
 }

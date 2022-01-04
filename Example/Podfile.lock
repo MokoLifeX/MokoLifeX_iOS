@@ -1408,6 +1408,7 @@ PODS:
     - MokoLifeX/Expand
     - MokoLifeX/Functions/MK117/Expand
     - MokoLifeX/Functions/MK117/Functions/MK117DPages/ModifyMQTTServerPage (= 1.1.0)
+    - MokoLifeX/Functions/MK117/Functions/MK117DPages/OTAPage (= 1.1.0)
     - MokoLifeX/Functions/MK117/Functions/MK117DPages/ServerForDevicePage (= 1.1.0)
     - MokoLifeX/Functions/MK117/MQTT
     - MokoLifeX/Functions/MK117/Socket
@@ -1454,6 +1455,45 @@ PODS:
     - MokoLifeX/Functions/MK117/Socket
     - MokoLifeX/SDK
   - MokoLifeX/Functions/MK117/Functions/MK117DPages/ModifyMQTTServerPage/View (1.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/MK117DPages/OTAPage (1.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/Functions/MK117DPages/OTAPage/Controller (= 1.1.0)
+    - MokoLifeX/Functions/MK117/Functions/MK117DPages/OTAPage/Model (= 1.1.0)
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/MK117DPages/OTAPage/Controller (1.1.0):
+    - FLAnimatedImage
+    - MKBaseModuleLibrary
+    - MKCustomUIModule
+    - MLInputDodger
+    - MokoLifeX/CTMediator
+    - MokoLifeX/DeviceModel
+    - MokoLifeX/Expand
+    - MokoLifeX/Functions/MK117/Expand
+    - MokoLifeX/Functions/MK117/Functions/MK117DPages/OTAPage/Model
+    - MokoLifeX/Functions/MK117/MQTT
+    - MokoLifeX/Functions/MK117/Socket
+    - MokoLifeX/SDK
+  - MokoLifeX/Functions/MK117/Functions/MK117DPages/OTAPage/Model (1.1.0):
     - FLAnimatedImage
     - MKBaseModuleLibrary
     - MKCustomUIModule
@@ -2397,7 +2437,7 @@ SPEC CHECKSUMS:
   MKBaseMQTTModule: a897389b91385b06f3eee1c9be26e89ca449ef93
   MKCustomUIModule: 91646517fc7a90d94dd5578d119fec38d67d6a90
   MLInputDodger: 79a0e420a80d0d3bba122bf2639603cc76609ba8
-  MokoLifeX: b89bbbb8f0667c5f864b8355264d4004b73637a7
+  MokoLifeX: 449c3952e66612f51d3c936f844fa9091e1104ef
   MQTTClient: 0dfa04e789479c2e461786464969895c1fcb0875
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
   WRNavigationBar: 10bfdf96addf14d640d07c2ef08a029c18d8af10

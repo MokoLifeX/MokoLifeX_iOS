@@ -506,6 +506,17 @@ TODO: Add long description of the pod here.
               sssssss.source_files = 'MokoLifeX/Classes/Functions/MK117/Functions/MK117DPages/ModifyMQTTServerPage/View/**'
             end
           end
+          
+          sssss.subspec 'OTAPage' do |ssssss|
+            ssssss.subspec 'Controller' do |sssssss|
+              sssssss.source_files = 'MokoLifeX/Classes/Functions/MK117/Functions/MK117DPages/OTAPage/Controller/**'
+              
+              sssssss.dependency 'MokoLifeX/Functions/MK117/Functions/MK117DPages/OTAPage/Model'
+            end
+            ssssss.subspec 'Model' do |sssssss|
+              sssssss.source_files = 'MokoLifeX/Classes/Functions/MK117/Functions/MK117DPages/OTAPage/Model/**'
+            end
+          end
         
         end
         

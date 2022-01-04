@@ -104,6 +104,59 @@ NS_ASSUME_NONNULL_BEGIN
                                  sucBlock:(void (^)(void))sucBlock
                               failedBlock:(void (^)(NSError *error))failedBlock;
 
+/// OTA upgrade host firmware.
+/// @param host 1-64 Characters
+/// @param port 0~65535
+/// @param filePath 1-100 Characters
+/// @param deviceID deviceID,1-32 Characters
+/// @param topic topic 1-128 Characters
+/// @param sucBlock Success callback
+/// @param failedBlock Failed callback
++ (void)lfxc_otaMasterFirmware:(NSString *)host
+                          port:(NSInteger)port
+                      filePath:(NSString *)filePath
+                      deviceID:(NSString *)deviceID
+                         topic:(NSString *)topic
+                      sucBlock:(void (^)(void))sucBlock
+                   failedBlock:(void (^)(NSError *error))failedBlock;
+
+/// OTA CA certificate.
+/// @param host 1-64 Characters
+/// @param port 0~65535
+/// @param filePath 1-100 Characters
+/// @param deviceID deviceID,1-32 Characters
+/// @param topic topic 1-128 Characters
+/// @param sucBlock Success callback
+/// @param failedBlock Failed callback
++ (void)lfxc_otaCACertificate:(NSString *)host
+                         port:(NSInteger)port
+                     filePath:(NSString *)filePath
+                     deviceID:(NSString *)deviceID
+                        topic:(NSString *)topic
+                     sucBlock:(void (^)(void))sucBlock
+                  failedBlock:(void (^)(NSError *error))failedBlock;
+
+/// OTA Self signed server certificates.
+/// @param host 1-64 Characters
+/// @param port 0~65535
+/// @param caFilePath 1-100 Characters
+/// @param clientKeyPath 1-100 Characters
+/// @param clientCertPath 1-100 Characters
+/// @param deviceID deviceID,1-32 Characters
+/// @param topic topic 1-128 Characters
+/// @param sucBlock Success callback
+/// @param failedBlock Failed callback
++ (void)lfxc_otaSelfSignedCertificates:(NSString *)host
+                                  port:(NSInteger)port
+                            caFilePath:(NSString *)caFilePath
+                         clientKeyPath:(NSString *)clientKeyPath
+                        clientCertPath:(NSString *)clientCertPath
+                              deviceID:(NSString *)deviceID
+                                 topic:(NSString *)topic
+                              sucBlock:(void (^)(void))sucBlock
+                           failedBlock:(void (^)(NSError *error))failedBlock;
+
+
 @end
 
 NS_ASSUME_NONNULL_END

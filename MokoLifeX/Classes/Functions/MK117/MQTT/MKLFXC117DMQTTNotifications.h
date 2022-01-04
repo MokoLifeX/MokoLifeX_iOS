@@ -8,3 +8,8 @@ static NSString *const MKLFXCReceiveModifyMQTTConfigNotification = @"MKLFXCRecei
  对应2127,当插座从服务器接收到修改网络配置参数指令（2127），插座会应答.
  */
 static NSString *const MKLFXCReceiveReconnectNetworkMQTTConfigNotification = @"MKLFXCReceiveReconnectNetworkMQTTConfigNotification";
+
+/*
+ 设备OTA结果
+ */
+static NSString *const MKLFXCReceiveOTAResultNotification = @"MKLFXCReceiveOTAResultNotification";

@@ -16,11 +16,6 @@ static NSString *const MKLFXCReceiveFirmwareInfoNotification = @"MKLFXCReceiveFi
 static NSString *const MKLFXCReceiveDelayTimeNotification = @"MKLFXCReceiveDelayTimeNotification";
 
 /*
- 接收到固件升级结果
- */
-static NSString *const MKLFXCReceiveUpdateResultNotification = @"MKLFXCReceiveUpdateResultNotification";
-
-/*
  接收到电量信息通知
  */
 static NSString *const MKLFXCReceiveElectricityNotification = @"MKLFXCReceiveElectricityNotification";

@@ -156,9 +156,9 @@ MKLFXCOverThresholdCellDelegate>
         return;
     }
     mk_lfxc_productModel productModel = mk_lfxc_productModel_FE;
-    if ([userInfo[@"data"][@"product_type"] isEqualToString:@"MK117-B"]) {
+    if ([userInfo[@"data"][@"product_type"] isEqualToString:@"MK117-B"] || [userInfo[@"data"][@"product_type"] isEqualToString:@"MK117D-B"]) {
         productModel = mk_lfxc_productModel_B;
-    }else if ([userInfo[@"data"][@"product_type"] isEqualToString:@"MK117-G"]) {
+    }else if ([userInfo[@"data"][@"product_type"] isEqualToString:@"MK117-G"] || [userInfo[@"data"][@"product_type"] isEqualToString:@"MK117D-G"]) {
         productModel = mk_lfxc_productModel_G;
     }
     self.dataModel.productModel = productModel;

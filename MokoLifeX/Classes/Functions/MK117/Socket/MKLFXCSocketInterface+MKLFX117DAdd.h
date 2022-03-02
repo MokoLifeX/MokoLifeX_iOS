@@ -12,6 +12,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MKLFXCSocketInterface (MKLFX117DAdd)
 
+/// 读取当前设备时区
+/// @param sucBlock 成功回调
+/// @param failedBlock 失败回调
+- (void)lfxc_read117DTimeZoneWithSucBlock:(void (^)(id returnData))sucBlock
+                              failedBlock:(void (^)(NSError *error))failedBlock;
+
 /// 读取当前设备频段
 /// @param sucBlock 成功回调
 /// @param failedBlock 失败回调

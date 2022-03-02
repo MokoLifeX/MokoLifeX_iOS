@@ -38,7 +38,6 @@ static NSString *const defaultPubTopic = @"{device_name}/{device_id}/device_to_a
         _cleanSession = YES;
         _keepAlive = @"60";
         _qos = 1;
-        _timeZone = 24;
     }
     return self;
 }
@@ -101,12 +100,21 @@ static NSString *const defaultPubTopic = @"{device_name}/{device_id}/device_to_a
 
 - (void)readDataWithSucBlock:(void (^)(void))sucBlock
                  failedBlock:(void (^)(NSError *error))failedBlock {
-    [[MKLFXCSocketInterface shared] lfxc_readChannelWithSucBlock:^(id  _Nonnull returnData) {
-        self.domain = [returnData[@"result"][@"channel_plan"] integerValue];
-        if (sucBlock) {
-            sucBlock();
+    dispatch_async(self.configQueue, ^{
+        if (![self readChannel]) {
+            [self operationFailedBlockWithMsg:@"Read Channel Failed" block:failedBlock];
+            return;
         }
-    } failedBlock:failedBlock];
+        if (![self readTimeZone]) {
+            [self operationFailedBlockWithMsg:@"Read Time Zone Failed" block:failedBlock];
+            return;
+        }
+        moko_dispatch_main_safe(^{
+            if (sucBlock) {
+                sucBlock();
+            }
+        });
+    });
 }
 
 - (void)configParamsWithWifiSSID:(NSString *)ssid
@@ -201,6 +209,32 @@ static NSString *const defaultPubTopic = @"{device_name}/{device_id}/device_to_a
     __block BOOL success = NO;
     [[MKLFXCSocketInterface shared] connectWithSucBlock:^{
         success = YES;
+        dispatch_semaphore_signal(self.semaphore);
+    } failedBlock:^(NSError * _Nonnull error) {
+        dispatch_semaphore_signal(self.semaphore);
+    }];
+    dispatch_semaphore_wait(self.semaphore, DISPATCH_TIME_FOREVER);
+    return success;
+}
+
+- (BOOL)readChannel {
+    __block BOOL success = NO;
+    [[MKLFXCSocketInterface shared] lfxc_readChannelWithSucBlock:^(id  _Nonnull returnData) {
+        success = YES;
+        self.domain = [returnData[@"result"][@"channel_plan"] integerValue];
+        dispatch_semaphore_signal(self.semaphore);
+    } failedBlock:^(NSError * _Nonnull error) {
+        dispatch_semaphore_signal(self.semaphore);
+    }];
+    dispatch_semaphore_wait(self.semaphore, DISPATCH_TIME_FOREVER);
+    return success;
+}
+
+- (BOOL)readTimeZone {
+    __block BOOL success = NO;
+    [[MKLFXCSocketInterface shared] lfxc_read117DTimeZoneWithSucBlock:^(id  _Nonnull returnData) {
+        success = YES;
+        self.timeZone = [returnData[@"result"][@"time_zone"] integerValue] + 24;
         dispatch_semaphore_signal(self.semaphore);
     } failedBlock:^(NSError * _Nonnull error) {
         dispatch_semaphore_signal(self.semaphore);

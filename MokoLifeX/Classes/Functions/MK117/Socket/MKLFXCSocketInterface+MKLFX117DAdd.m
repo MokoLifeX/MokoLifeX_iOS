@@ -15,8 +15,21 @@
 static long const lfxc_socket_config117DTimeZoneTag = 2021121701;
 static long const lfxc_socket_config117DChannelTag = 2021121702;
 static long const lfxc_socket_read117DChannelTag = 2021121703;
+static long const lfxc_socket_read117DTimeZoneTag = 2021121704;
 
 @implementation MKLFXCSocketInterface (MKLFX117DAdd)
+
+- (void)lfxc_read117DTimeZoneWithSucBlock:(void (^)(id returnData))sucBlock
+                              failedBlock:(void (^)(NSError *error))failedBlock {
+         NSDictionary *json = @{
+             @"header":@(4012),
+         };
+         NSString *jsonString = [MKLFXSocketAdopter convertToJsonData:json];
+         [[MKLFXSocketManager shared] addTaskWithTag:lfxc_socket_read117DTimeZoneTag
+                                                data:jsonString
+                                            sucBlock:sucBlock
+                                         failedBlock:failedBlock];
+     }
 
 - (void)lfxc_readChannelWithSucBlock:(void (^)(id returnData))sucBlock
                          failedBlock:(void (^)(NSError *error))failedBlock {

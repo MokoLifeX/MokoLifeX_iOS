@@ -182,8 +182,8 @@ MKTextFieldCellDelegate>
     MKTextFieldCellModel *cellModel = [[MKTextFieldCellModel alloc] init];
     cellModel.index = 0;
     cellModel.msg = @"NTP Server";
-    cellModel.maxLength = 20;
-    cellModel.textPlaceholder = @"0~20 Characters";
+    cellModel.maxLength = 64;
+    cellModel.textPlaceholder = @"0~64 Characters";
     [self.section1List addObject:cellModel];
 }
 

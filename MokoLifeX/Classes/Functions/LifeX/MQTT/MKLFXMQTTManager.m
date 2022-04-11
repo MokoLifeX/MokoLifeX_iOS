@@ -40,7 +40,7 @@ static dispatch_once_t onceToken;
 }
 
 + (void)singleDealloc {
-    [[MKLFXServerManager shared] removeDataManager:self];
+    [[MKLFXServerManager shared] removeDataManager:manager];
     onceToken = 0;
     manager = nil;
 }

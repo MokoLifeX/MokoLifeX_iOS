@@ -209,6 +209,7 @@ MKTextFieldCellDelegate>
     if (!ValidDict(userInfo) || !ValidStr(userInfo[@"id"]) || ![userInfo[@"id"] isEqualToString:self.deviceModel.deviceID]) {
         return;
     }
+    [[MKHudManager share] hide];
     if ([userInfo[@"data"][@"ota_result"] integerValue] != 0) {
         //升级失败
         [self.view showCentralToast:@"Update Failed!"];
@@ -226,7 +227,6 @@ MKTextFieldCellDelegate>
         //双向证书
         return;
     }
-    [[MKHudManager share] hide];
     self.leftButton.enabled = YES;
     
     //升级失败

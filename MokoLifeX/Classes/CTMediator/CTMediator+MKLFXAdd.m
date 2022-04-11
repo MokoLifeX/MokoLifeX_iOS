@@ -18,17 +18,28 @@
 
 - (UIViewController *)CTMediator_MokoLifeX_ServerForDevicePage:(NSDictionary *)params {
     NSInteger deviceType = [params[@"device_type"] integerValue];
+    NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:params];
     if (deviceType == 0 || deviceType == 1) {
         //MK102、MK112、MK114
+        NSString *deviceID = params[@"device_id"];
+        NSString *deviceName = params[@"device_name"];
+        NSString *tempID = [deviceID substringFromIndex:8];
+        NSString *name = [NSString stringWithFormat:@"%@-%@",deviceName,tempID];
+        [dic setObject:name forKey:@"device_name"];
         return [self Action_MokoLifeX_ViewControllerWithTarget:kTarget_MokoLifeX_MK10X_module
                                                         action:kAction_MokoLifeX_MK10X_serverForDevicePage
-                                                        params:params];
+                                                        params:dic];
     }
     if (deviceType == 2 || deviceType == 3) {
         //MK115、MK116
+        NSString *deviceID = params[@"device_id"];
+        NSString *deviceName = params[@"device_name"];
+        NSString *tempID = [deviceID substringFromIndex:8];
+        NSString *name = [NSString stringWithFormat:@"%@-%@",deviceName,tempID];
+        [dic setObject:name forKey:@"device_name"];
         return [self Action_MokoLifeX_ViewControllerWithTarget:kTarget_MokoLifeX_MK11X_module
                                                         action:kAction_MokoLifeX_MK11X_serverForDevicePage
-                                                        params:params];
+                                                        params:dic];
     }
     if (deviceType == 4) {
         //MK117

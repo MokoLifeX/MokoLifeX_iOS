@@ -426,7 +426,7 @@ MKLFXAMQTTManagerDeviceOnlineDelegate>
     deviceModel.subscribedTopic = [self.dataModel currentSubscribeTopic];
     deviceModel.publishedTopic = [self.dataModel currentPublishTopic];
     deviceModel.macAddress = self.deviceInfo[@"device_id"];
-    deviceModel.deviceName = [NSString stringWithFormat:@"%@-%@",SafeStr(self.deviceInfo[@"device_name"]),SafeStr(self.deviceInfo[@"device_id"])];
+    deviceModel.deviceName = SafeStr(self.deviceInfo[@"device_name"]);
     deviceModel.deviceType = [NSString stringWithFormat:@"%ld",(long)[self.deviceInfo[@"device_type"] integerValue]];
     deviceModel.state = MKLFXDeviceModelStateOff;
     

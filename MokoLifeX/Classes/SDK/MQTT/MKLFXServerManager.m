@@ -76,7 +76,7 @@ static dispatch_once_t onceToken;
 }
 
 + (void)singleDealloc {
-    [[MKMQTTServerManager shared] removeDataManager:self];
+    [[MKMQTTServerManager shared] removeDataManager:manager];
     onceToken = 0;
     manager = nil;
 }

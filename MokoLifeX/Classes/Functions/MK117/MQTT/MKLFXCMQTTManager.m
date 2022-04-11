@@ -36,14 +36,13 @@ static dispatch_once_t onceToken;
 }
 
 + (void)singleDealloc {
-    [[MKLFXServerManager shared] removeDataManager:self];
+    [[MKLFXServerManager shared] removeDataManager:manager];
     onceToken = 0;
     manager = nil;
 }
 
 #pragma mark - MKLFXServerManagerProtocol
 - (void)lfx_didReceiveMessage:(NSDictionary *)data onTopic:(NSString *)topic {
-    NSLog(@"接收到数据:%@",data);
     if ([self.delegate respondsToSelector:@selector(lfxc_deviceOnline:)]) {
         [self.delegate lfxc_deviceOnline:data[@"id"]];
     }

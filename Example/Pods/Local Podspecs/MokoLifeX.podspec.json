@@ -294,6 +294,24 @@
               },
               "subspecs": [
                 {
+                  "name": "AboutPage",
+                  "subspecs": [
+                    {
+                      "name": "Controller",
+                      "source_files": "MokoLifeX/Classes/Functions/LifeX/Functions/AboutPage/Controller/**",
+                      "dependencies": {
+                        "MokoLifeX/Functions/LifeX/Functions/AboutPage/View": [
+
+                        ]
+                      }
+                    },
+                    {
+                      "name": "View",
+                      "source_files": "MokoLifeX/Classes/Functions/LifeX/Functions/AboutPage/View/**"
+                    }
+                  ]
+                },
+                {
                   "name": "AddDevicePage",
                   "subspecs": [
                     {
@@ -325,6 +343,9 @@
 
                         ],
                         "MokoLifeX/Functions/LifeX/Functions/ServerForAPP/Controller": [
+
+                        ],
+                        "MokoLifeX/Functions/LifeX/Functions/AboutPage/Controller": [
 
                         ],
                         "MokoLifeX/Functions/LifeX/Functions/DeviceListPage/View": [

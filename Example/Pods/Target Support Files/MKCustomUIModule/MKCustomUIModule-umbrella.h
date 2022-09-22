@@ -39,6 +39,7 @@
 #import "MKHaveRefreshCollectionView.h"
 #import "MKHaveRefreshTableView.h"
 #import "MKHaveRefreshViewProtocol.h"
+#import "MKAlertView.h"
 #import "MKHexKeyboard.h"
 #import "MKHudManager.h"
 #import "MKPageControl.h"

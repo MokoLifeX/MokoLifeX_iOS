@@ -21,7 +21,6 @@
 #import "MKHudManager.h"
 #import "MKCustomUIAdopter.h"
 #import "MKAlertController.h"
-#import "MKAboutController.h"
 
 #import "MKNetworkManager.h"
 
@@ -40,6 +39,7 @@
 
 #import "MKLFXAddDeviceController.h"
 #import "MKLFXServerForAppController.h"
+#import "MKLFXAboutController.h"
 
 static NSTimeInterval const kRefreshInterval = 0.5f;
 
@@ -90,7 +90,7 @@ MKLFXDeviceListCellDelegate>
 }
 
 - (void)rightButtonMethod {
-    MKAboutController *vc = [[MKAboutController alloc] init];
+    MKLFXAboutController *vc = [[MKLFXAboutController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

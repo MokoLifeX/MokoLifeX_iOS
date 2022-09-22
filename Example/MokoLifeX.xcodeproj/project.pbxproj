@@ -472,7 +472,7 @@
 				GCC_PREFIX_HEADER = "MokoLifeX/MokoLifeX-Prefix.pch";
 				INFOPLIST_FILE = "MokoLifeX/MokoLifeX-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
-				MARKETING_VERSION = 1.4.2;
+				MARKETING_VERSION = 1.4.3;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = com.moko.MokoLifeX;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -615,7 +615,7 @@
 				GCC_PREFIX_HEADER = "MokoLifeX/MokoLifeX-Prefix.pch";
 				INFOPLIST_FILE = "MokoLifeX/MokoLifeX-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
-				MARKETING_VERSION = 1.4.2;
+				MARKETING_VERSION = 1.4.3;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = com.moko.MokoLifeX;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -637,7 +637,7 @@
 				GCC_PREFIX_HEADER = "MokoLifeX/MokoLifeX-Prefix.pch";
 				INFOPLIST_FILE = "MokoLifeX/MokoLifeX-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
-				MARKETING_VERSION = 1.4.2;
+				MARKETING_VERSION = 1.4.3;
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = com.moko.MokoLifeX;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -17,7 +17,11 @@
 
 #import "MKLFXServerParamsModel.h"
 
+#import "MKMQTTServerLogManager.h"
+
 NSString *const MKLFXMQTTSessionManagerStateChangedNotification = @"MKLFXMQTTSessionManagerStateChangedNotification";
+
+static NSString *const mqttLogName = @"MKMQTTData";
 
 static MKLFXServerManager *manager = nil;
 static dispatch_once_t onceToken;
@@ -105,6 +109,13 @@ static dispatch_once_t onceToken;
 
 - (void)sessionManager:(MQTTSessionManager *)sessionManager didChangeState:(MKMQTTSessionManagerState)newState {
     self.state = newState;
+    NSString *msg = [NSString stringWithFormat:@"MQTT Session Manager State:%@",@(newState)];
+    [MKMQTTServerLogManager saveDataWithFileName:mqttLogName dataList:@[msg]];
+    if (newState == MKMQTTSessionManagerStateError) {
+        NSError *error = [sessionManager lastErrorCode];
+        NSString *errorMsg = [NSString stringWithFormat:@"MQTT Session Manager Error:%@",error.localizedDescription];
+        [MKMQTTServerLogManager saveDataWithFileName:mqttLogName dataList:@[errorMsg]];
+    }
     [[NSNotificationCenter defaultCenter] postNotificationName:MKLFXMQTTSessionManagerStateChangedNotification object:nil];
     @synchronized (self.managerList) {
         for (id <MKLFXServerManagerProtocol>protocol in self.managerList) {
@@ -117,12 +128,15 @@ static dispatch_once_t onceToken;
 
 #pragma mark - note
 - (void)networkStateChanged{
+    NSString *stateMsg = [NSString stringWithFormat:@"%@:%@",@"Network State Changed",[MKNetworkManager currentWifiSSID]];
+    [MKMQTTServerLogManager saveDataWithFileName:mqttLogName dataList:@[stateMsg]];
     if (![self.paramsModel paramsCanConnectServer]) {
         //服务器连接参数缺失
         return;
     }
     if (![[MKNetworkManager sharedInstance] currentNetworkAvailable]) {
         //如果是当前网络不可用，则断开当前手机与mqtt服务器的连接操作
+        [MKMQTTServerLogManager saveDataWithFileName:mqttLogName dataList:@[@"Network Reachability Status Not Reachable"]];
         [[MKMQTTServerManager shared] disconnect];
         self.state = MKLFXMQTTSessionManagerStateStarting;
         [[NSNotificationCenter defaultCenter] postNotificationName:MKLFXMQTTSessionManagerStateChangedNotification object:nil];

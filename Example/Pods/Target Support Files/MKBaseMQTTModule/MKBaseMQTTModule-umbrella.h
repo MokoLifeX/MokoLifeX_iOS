@@ -10,6 +10,7 @@
 #endif
 #endif
 
+#import "MKMQTTServerLogManager.h"
 #import "MKMQTTServerManager.h"
 #import "MKMQTTServerSDKAdopter.h"
 #import "MKMQTTServerSDKDefines.h"

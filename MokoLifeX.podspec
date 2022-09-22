@@ -194,6 +194,18 @@ TODO: Add long description of the pod here.
       
       sss.subspec 'Functions' do |ssss|
         
+        ssss.subspec 'AboutPage' do |sssss|
+            sssss.subspec 'Controller' do |ssssss|
+              ssssss.source_files = 'MokoLifeX/Classes/Functions/LifeX/Functions/AboutPage/Controller/**'
+              
+              ssssss.dependency 'MokoLifeX/Functions/LifeX/Functions/AboutPage/View'
+            end
+            
+            sssss.subspec 'View' do |ssssss|
+              ssssss.source_files = 'MokoLifeX/Classes/Functions/LifeX/Functions/AboutPage/View/**'
+            end
+        end
+        
         ssss.subspec 'AddDevicePage' do |sssss|
             sssss.subspec 'Controller' do |ssssss|
               ssssss.source_files = 'MokoLifeX/Classes/Functions/LifeX/Functions/AddDevicePage/Controller/**'
@@ -213,6 +225,7 @@ TODO: Add long description of the pod here.
               
               ssssss.dependency 'MokoLifeX/Functions/LifeX/Functions/AddDevicePage/Controller'
               ssssss.dependency 'MokoLifeX/Functions/LifeX/Functions/ServerForAPP/Controller'
+              ssssss.dependency 'MokoLifeX/Functions/LifeX/Functions/AboutPage/Controller'
               
               ssssss.dependency 'MokoLifeX/Functions/LifeX/Functions/DeviceListPage/View'
               ssssss.dependency 'MokoLifeX/Functions/LifeX/Functions/DeviceListPage/Model'
